@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>PPC SLAM - BBB - BaptBeautifulBlog</title>
-  <meta name="description" content="Un SLAM utilisant la programmation par contrainte">
+  <meta name="description" content="Un SLAM basique utilisant la programmation par contrainte">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -79,14 +79,14 @@
 </script>
 
 <meta property="og:title" content="PPC SLAM" />
-<meta property="og:description" content="Un SLAM utilisant la programmation par contrainte">
+<meta property="og:description" content="Un SLAM basique utilisant la programmation par contrainte">
 <meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
 <meta property="og:url" content="https://BaptisteHudyma.github.io/fr/post/ppc_slam/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BBB - BaptBeautifulBlog" />
 
   <meta name="twitter:title" content="PPC SLAM" />
-  <meta name="twitter:description" content="Un SLAM utilisant la programmation par contrainte">
+  <meta name="twitter:description" content="Un SLAM basique utilisant la programmation par contrainte">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -242,7 +242,7 @@
               
               
                 
-                  <h2 class="post-subheading">Un SLAM utilisant la programmation par contrainte</h2>
+                  <h2 class="post-subheading">Un SLAM basique utilisant la programmation par contrainte</h2>
                 
               
               
@@ -291,7 +291,7 @@ Mon implémentation est une amélioration de l&rsquo;exemple final du tuto (<a h
 Le dead reckoning consiste a estimer la trajectoire via une intégration directe de la valeur de ses capteurs.
 C&rsquo;est une solution très simple, mais qui a le désavantage d&rsquo;accumuler rapidement les erreurs avec le temps.</p>
 <p>Tubex représente l&rsquo;incertitude des trajectoires en utilisant des tubes, affichés par un gradient de couleur.</p>
-<p><img src="https://github.com/BaptisteHudyma/Range-Bearing-constraint-SLAM/blob/main/images/DeadReck.png" alt="Image: Dead Reckoning trajectory"></p>
+<p><img src="/static/img_ppc_slam/ppc_slam_deadreck.png" alt="Image: Dead reckoning trajectory"></p>
 <p>Sur l&rsquo;image ci dessus, on peut voir le la trajectoire réelle du robot en rouge, et sa trajectoire estimée via dead reckoning en gradients de bleu.
 L&rsquo;incertitude de la position du robot augmente avec le temps, d&rsquo;ou l&rsquo;élargissement de la trajectoire en bleu, jusqu&rsquo;à atteindre la position finale, dans un interval de 18x18 mètres.
 Son point de départ est l&rsquo;endroit avec le moins d&rsquo;incertitude, ou la trajectoire bleu est la plus resserrée.
@@ -300,7 +300,7 @@ Malgré ce manque de précision, la trajectoire réelle ne se retrouve jamais en
 <p>Cette trajectoire est notre variable de départ, qui sera contrainte par le programme en fonction des observations de marqueurs.</p>
 <h1 id="une-v1">Une V1</h1>
 <p>Allez on saute au résultat directement:</p>
-<p><img src="https://github.com/BaptisteHudyma/Range-Bearing-constraint-SLAM/blob/main/images/finalTrajectory.png" alt="Image: SLAMED!"></p>
+<p><img src="/static/img_ppc_slam/ppc_slam_refined.png" alt="Image: SLAMED!"></p>
 <p>Bon alors, qu&rsquo;est ce qu&rsquo;on voit sur cette image ?
 La partie grisée est l&rsquo;estimation dead reckoning, qui a été réduite jusqu&rsquo;à la partie bleutée.
 On remarque tout de suite que la position estimée du robot est bien meilleure qu&rsquo;avant : on est dans un interval de environ 2x1 mètres, ce qui représente une amélioration de l&rsquo;aire finale de 99.38%.</p>
@@ -310,7 +310,7 @@ Tout comme le robot, leur position finale est située par un interval.</p>
 <p>Bon, le résultat de la V1 est bien beau, mais en fait c&rsquo;est un système assez peu utile : Notre robot est déjà arrivé au bout de se trajectoire quand on fait l&rsquo;estimation de sa position.
 Une implémentation plus utile serait d&rsquo;obtenir la position du robot a chaque instant <em>t</em>, et c&rsquo;est ce que nous allons faire.</p>
 <p>Notre code n&rsquo;a pas besoin de beaucoup de modifications pour ca : nous avons seulement besoin d&rsquo;obtenir la position (et donc réduire les variables) plus régulièrement que juste une fois a la fin.</p>
-<p><img src="https://github.com/BaptisteHudyma/Range-Bearing-constraint-SLAM/blob/main/images/realTimeProcessing.png" alt="Image: SLAMED V2!"></p>
+<p><img src="/static/img_ppc_slam/ppc_slam_rt.png" alt="Image: SLAMED V2!"></p>
 <p>Cette fois ci la trajectoire dead reckoning n&rsquo;est pas modifiée, et est juste affichée pour comparaison.
 La position du robot a chaque instant <em>t</em> est représentée par un interval en noir.</p>
 <p>L&rsquo;estimation de position instantanée sera de moins bonne qualité que la V1, car on a pas accès tout de suite a l&rsquo;ensemble des données.
