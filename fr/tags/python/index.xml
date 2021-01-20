@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Python on BBB - BaptBeautifulBlog</title>
-    <link>https://BaptHudyma.github.io/fr/tags/python/</link>
+    <link>https://BaptisteHudyma.github.io/fr/tags/python/</link>
     <description>Recent content in Python on BBB - BaptBeautifulBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Thu, 26 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptHudyma.github.io/fr/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 26 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/fr/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Programmation par Contraintes</title>
-      <link>https://BaptHudyma.github.io/fr/post/ppc_intro/</link>
+      <link>https://BaptisteHudyma.github.io/fr/post/ppc_intro/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptHudyma.github.io/fr/post/ppc_intro/</guid>
+      <guid>https://BaptisteHudyma.github.io/fr/post/ppc_intro/</guid>
       <description>&lt;p&gt;Qu&amp;rsquo;est ce que la programmation par contraintes ?
 Quels en sont les avantages et les limites ?
 Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;

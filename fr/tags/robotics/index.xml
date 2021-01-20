@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Robotics on BBB - BaptBeautifulBlog</title>
-    <link>https://BaptHudyma.github.io/fr/tags/robotics/</link>
+    <link>https://BaptisteHudyma.github.io/fr/tags/robotics/</link>
     <description>Recent content in Robotics on BBB - BaptBeautifulBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptHudyma.github.io/fr/tags/robotics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 28 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/fr/tags/robotics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PPC SLAM</title>
-      <link>https://BaptHudyma.github.io/fr/post/ppc_slam/</link>
+      <link>https://BaptisteHudyma.github.io/fr/post/ppc_slam/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptHudyma.github.io/fr/post/ppc_slam/</guid>
+      <guid>https://BaptisteHudyma.github.io/fr/post/ppc_slam/</guid>
       <description>&lt;p&gt;Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.&lt;/p&gt;</description>
     </item>
     

@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on BBB - BaptBeautifulBlog</title>
-    <link>https://BaptHudyma.github.io/tags/</link>
+    <link>https://BaptisteHudyma.github.io/tags/</link>
     <description>Recent content in Tags on BBB - BaptBeautifulBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
-    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster><atom:link href="https://BaptHudyma.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster><atom:link href="https://BaptisteHudyma.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
