@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>example on BBB - BaptBeautifulBlog</title>
+    <link>https://BaptHudyma.github.io/tags/example/</link>
+    <description>Recent content in example on BBB - BaptBeautifulBlog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
+    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
+    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptHudyma.github.io/tags/example/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test post</title>
+      <link>https://BaptHudyma.github.io/post/first_test/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptHudyma.github.io/post/first_test/</guid>
+      <description>Test English English for the win !
+this is the details This is the developped content.  Details
+This is column 1.
+Test de brasse
+This is column 2.
+Test de brasse 2
+ End
+ Quote One does not thank logic &amp;ndash; Sarek, &amp;ldquo;Journey to Babel&amp;rdquo;, stardate 3842.4    array test     1 2    </description>
+    </item>
+    
+  </channel>
+</rss>
