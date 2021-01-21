@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,12 +19,47 @@
   
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/post/de_cape_et_d_opes/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/optimisation/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/post/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/rgb-d/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/traitement-dimages/</loc>
+    <lastmod>2021-01-11T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -45,21 +80,6 @@
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/tags/slam/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/fr/tags/</loc>
-    <lastmod>2020-12-28T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/tags/"
-                />
   </url>
   
   <url>

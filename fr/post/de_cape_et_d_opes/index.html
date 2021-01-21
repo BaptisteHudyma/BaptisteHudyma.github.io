@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>PPC SLAM - BBB - BaptBeautifulBlog</title>
-  <meta name="description" content="Un SLAM basique utilisant la programmation par contrainte">
+  <title>De CAPE et d&#39;Opés - BBB - BaptBeautifulBlog</title>
+  <meta name="description" content="Corriger et optimiser le code d&#39;un papier">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -44,8 +44,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/fr\/post\/ppc_slam\/",
-          "name": "P p c s l a m"
+          "@id": "https:\/\/BaptisteHudyma.github.io\/fr\/post\/de_cape_et_d_opes\/",
+          "name": "De c a p e et d\u0027 opés"
         }
     }]
 }
@@ -56,15 +56,15 @@
   "author": {
     "name" : "Baptiste Hudyma"
   },
-  "headline": "PPC SLAM",
-  "description" : "Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.\n",
+  "headline": "De CAPE et d\u0027Opés",
+  "description" : "CAPE (Cylinder And Plane Extraction) est une méthode extrêmement efficace d\u0026rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC. Malgré l\u0026rsquo;efficacité de cette méthode, l\u0026rsquo;implémentation C\u002b\u002b du papier présente de nombreux défauts.\nDans ce post, je vais expliquer comment j\u0026rsquo;ai réparé la plupart de ces problèmes.\n",
   "inLanguage" : "fr",
-  "wordCount":  700 ,
-  "datePublished" : "2020-12-28T00:00:00",
-  "dateModified" : "2020-12-28T00:00:00",
+  "wordCount":  1203 ,
+  "datePublished" : "2021-01-11T00:00:00",
+  "dateModified" : "2021-01-11T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "PPC, SLAM, Robotics, C\u002b\u002b, tubex" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/fr\/post\/ppc_slam\/",
+  "keywords" : [ "c\u002b\u002b, RGB-D, Traitement d\u0027images, Optimisation" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/fr\/post\/de_cape_et_d_opes\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/BaptisteHudyma.github.io",
@@ -78,15 +78,15 @@
 }
 </script>
 
-<meta property="og:title" content="PPC SLAM" />
-<meta property="og:description" content="Un SLAM basique utilisant la programmation par contrainte">
+<meta property="og:title" content="De CAPE et d&#39;Opés" />
+<meta property="og:description" content="Corriger et optimiser le code d&#39;un papier">
 <meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/fr/post/ppc_slam/" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/fr/post/de_cape_et_d_opes/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BBB - BaptBeautifulBlog" />
 
-  <meta name="twitter:title" content="PPC SLAM" />
-  <meta name="twitter:description" content="Un SLAM basique utilisant la programmation par contrainte">
+  <meta name="twitter:title" content="De CAPE et d&#39;Opés" />
+  <meta name="twitter:description" content="Corriger et optimiser le code d&#39;un papier">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -237,23 +237,23 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>PPC SLAM</h1>
+                <h1>De CAPE et d&#39;Opés</h1>
               
               
               
                 
-                  <h2 class="post-subheading">Un SLAM basique utilisant la programmation par contrainte</h2>
+                  <h2 class="post-subheading">Corriger et optimiser le code d&#39;un papier</h2>
                 
               
               
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posté le December 28, 2020
+  <i class="fas fa-calendar"></i>&nbsp;Posté le January 11, 2021
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;700&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1203&nbsp;mots
   
   
   
@@ -274,58 +274,80 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.</p>
-<p>Dans <a href="https://BaptisteHudyma.github.io/fr/post/ppc_intro/">l&rsquo;article précédent</a>, j&rsquo;ai présenté rapidement la programmation par contrainte avec beaucoup de texte et un exemple concret.
-Dans celui ci je présente une implémentation d&rsquo;un SLAM (Simultaneous Localization And Mapping), chargé de localiser un robot mobile dans un environnement virtuel.</p>
-<p>Dans cet exemple, on considère que la position du robot a t0 est connue, ainsi que les informations de ses capteurs, comme sa vitesse et son orientation.
-Durant son périple dans le monde virtuel, notre robot utilisera un LIDAR (également simulé) qui lui donne accès a la distance et l&rsquo;orientation absolue a des marqueurs de position inconnu.
-On considère également qu&rsquo;on sait quel marqueur a été remarqué.</p>
-<p>Toutes ces mesures ont bien sur une marge d&rsquo;erreur que l&rsquo;on considère connue (dans le monde réel, ces informations sont obtenues d&rsquo;après la documentation des capteurs utilisés).
-Cependant, dans notre petit monde virtuel, on exclu totalement l&rsquo;apparition d&rsquo;outliers dans les données.</p>
-<p><strong>Cette implémentation ne peut pas fonctionner en l&rsquo;état dans le monde vrai de la vie réelle</strong>.</p>
-<p>Pour ce projet, j&rsquo;ai utilisé <a href="http://simon-rohou.fr/research/tubex-lib/">Tubex</a>, une librairie pour C++/Python de PPC, proposant des outils pour estimer des trajectoires contraintes.
-Mon implémentation est une amélioration de l&rsquo;exemple final du tuto (<a href="http://simon-rohou.fr/research/tubex-lib/doc/tutorial/08-rangeonly-slam/">Range Only SLAM</a>).</p>
-<p>Pour estimer les performances de notre SLAM, nous allons définir un point de comparaison initial : l&rsquo;estimation de trajectoire par dead reckoning, &ldquo;Navigation a l&rsquo;estime&rdquo; (???) en bon François, d&rsquo;après Wikipedia.
-Le dead reckoning consiste a estimer la trajectoire via une intégration directe de la valeur de ses capteurs.
-C&rsquo;est une solution très simple, mais qui a le désavantage d&rsquo;accumuler rapidement les erreurs avec le temps.</p>
-<p>Tubex représente l&rsquo;incertitude des trajectoires en utilisant des tubes, affichés par un gradient de couleur.</p>
-<p><img src="/static/img_ppc_slam/ppc_slam_deadreck.png" alt="Image: Dead reckoning trajectory"></p>
-<p>Sur l&rsquo;image ci dessus, on peut voir le la trajectoire réelle du robot en rouge, et sa trajectoire estimée via dead reckoning en gradients de bleu.
-L&rsquo;incertitude de la position du robot augmente avec le temps, d&rsquo;ou l&rsquo;élargissement de la trajectoire en bleu, jusqu&rsquo;à atteindre la position finale, dans un interval de 18x18 mètres.
-Son point de départ est l&rsquo;endroit avec le moins d&rsquo;incertitude, ou la trajectoire bleu est la plus resserrée.
-Malgré ce manque de précision, la trajectoire réelle ne se retrouve jamais en dehors de la trajectoire estimée.</p>
-<p>Les quatre marqueurs de la map sont représentés en orange, et leur position est inconnue.</p>
-<p>Cette trajectoire est notre variable de départ, qui sera contrainte par le programme en fonction des observations de marqueurs.</p>
-<h1 id="une-v1">Une V1</h1>
-<p>Allez on saute au résultat directement:</p>
-<p><img src="/static/img_ppc_slam/ppc_slam_refined.png" alt="Image: SLAMED!"></p>
-<p>Bon alors, qu&rsquo;est ce qu&rsquo;on voit sur cette image ?
-La partie grisée est l&rsquo;estimation dead reckoning, qui a été réduite jusqu&rsquo;à la partie bleutée.
-On remarque tout de suite que la position estimée du robot est bien meilleure qu&rsquo;avant : on est dans un interval de environ 2x1 mètres, ce qui représente une amélioration de l&rsquo;aire finale de 99.38%.</p>
-<p>On observe également des rectangles autour des marqueurs, qui représentent l&rsquo;estimation de la position des marqueurs par le robot a la fin du processus de mapping.
-Tout comme le robot, leur position finale est située par un interval.</p>
-<h1 id="une-v2-">Une V2 !</h1>
-<p>Bon, le résultat de la V1 est bien beau, mais en fait c&rsquo;est un système assez peu utile : Notre robot est déjà arrivé au bout de se trajectoire quand on fait l&rsquo;estimation de sa position.
-Une implémentation plus utile serait d&rsquo;obtenir la position du robot a chaque instant <em>t</em>, et c&rsquo;est ce que nous allons faire.</p>
-<p>Notre code n&rsquo;a pas besoin de beaucoup de modifications pour ca : nous avons seulement besoin d&rsquo;obtenir la position (et donc réduire les variables) plus régulièrement que juste une fois a la fin.</p>
-<p><img src="/static/img_ppc_slam/ppc_slam_rt.png" alt="Image: SLAMED V2!"></p>
-<p>Cette fois ci la trajectoire dead reckoning n&rsquo;est pas modifiée, et est juste affichée pour comparaison.
-La position du robot a chaque instant <em>t</em> est représentée par un interval en noir.</p>
-<p>L&rsquo;estimation de position instantanée sera de moins bonne qualité que la V1, car on a pas accès tout de suite a l&rsquo;ensemble des données.
-Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;contractée&rdquo; en prenant en compte toutes les données précédentes, et on reviendra au même cas que la V1.</p>
+        <p><a href="https://arxiv.org/abs/1803.02380">CAPE (Cylinder And Plane Extraction)</a> est une méthode extrêmement efficace d&rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
+Malgré l&rsquo;efficacité de cette méthode, l&rsquo;implémentation C++ du papier présente de nombreux défauts.</p>
+<p>Dans ce post, je vais expliquer comment j&rsquo;ai réparé la plupart de ces problèmes.</p>
+<p>CAPE est une méthode efficace, fiable et rapide (&lt; 4ms pour une image de 640 * 480 pixels), dont l&rsquo;idée est basée sur <a href="https://www.merl.com/research/license/PEAC">PEAC</a>.
+CAPE améliore la méthode PEAC en accélérant la détection de plans, et en ajoutant une détection de cylindres par un algorithme RANSAC.
+Si la méthode présentée dans le papier est très impressionnante, son <a href="https://github.com/pedropro/CAPE">implémentation</a> présente de nombreux défauts, notamment au niveau de la gestion de mémoire.</p>
+<h1 id="petite-présentation-de-lahc">Petite présentation de l&rsquo;AHC</h1>
+<p>AHC (Agglomerative hierarchical clustering) est une méthode introduite par PEAC en 2014, qui consiste a analyser les images RGB-D en les découpant en une grille de NxM rectangles.
+Les pixels dans ces rectangles sont ensuite analysés individuellement pour déterminer s&rsquo;ils font partie d&rsquo;un plan 3D, et si c&rsquo;est le cas, utiliser la position relative de ces rectangles dans l&rsquo;image pour fusionner les plans proches et construire un graph de l&rsquo;ensemble des plans.</p>
+<p>Cette méthode présente l&rsquo;avantage de traiter une image 3D comme une image 2D, et est donc bien plus rapide qu&rsquo;une analyse d&rsquo;un nuage de points.
+Elle est cependant limitée en l&rsquo;état a l&rsquo;analyse d&rsquo;images RGB-D.</p>
+<p>Lors de sa publication, PEAC était la méthode de détection de plan 3D la plus rapide (de loin), et présentant des performances équivalentes a l&rsquo;état de l&rsquo;art des algorithmes de détection de plans 3D.</p>
+<h1 id="corriger-cape">Corriger CAPE</h1>
+<p>L&rsquo;implémentation de CAPE, fournie par les auteurs, propose des performances impressionnantes de rapidité et fiabilité.
+Elle est capable de gérer l&rsquo;étape de détection de plans en moins de 4 millisecondes, ce qui est plus que suffisant pour du temps réel.</p>
+<p>Cependant, le code est mal organisé et présente de nombreux défauts d&rsquo;implémentation, notamment pour la gestion de mémoire et les copies de classes dans les <code>vector</code>.
+Corriger ces erreurs améliore légèrement les performances de cette méthode.</p>
+<p>Je ne vais pas préciser ici la correction des erreurs classiques comme l&rsquo;absence des <code>ifndef</code> dans les <code>.hpp</code>, ou l&rsquo;absence des <code>const</code> et <code>const&amp;</code> pour les paramètres en entrée des fonctions et classe.</p>
+<h2 id="classe-cape">Classe <code>CAPE</code></h2>
+<p><strong>Allocations inutiles</strong></p>
+<p>Dans le constructeur, le <code>vector</code> Grid, contenant une liste de N pointeurs vers une classe (<code>PlaneSegment*</code>), est initialisé par une boucle qui le rempli de <code>nullptr</code> (utiliser la méthode <code>reserve</code> aurait été plus adapté).
+Les pointeurs de <code>Grid</code> sont enduite réaffectés dans la fonction <code>process</code>, appelée pour chaque nouvelle image RGBD, via la ligne <code>Grid[id] = new PlaneSeg(....);</code>.
+Utiliser <code>new</code> pour remplacer un <code>nullptr</code> est ok, mais au deuxième appel a la fonction <code>process</code>, on va surtout allouer une nouvelle zone mémoire sans désallouer l&rsquo;ancienne.
+Une petite fuite de mémoire potentielle donc.</p>
+<p>Mais une petite minute&hellip; <code>Grid</code> utilise la classe <code>vector</code> avec un nombre constant d&rsquo;éléments, mais n&rsquo;utilise jamais les propriétés de <code>vector</code>. Pourquoi utiliser un <code>vector</code> ?</p>
+<p>Je l&rsquo;ai donc remplacé par un tableau de <code>unique_ptr</code> initialisé via un <code>new unique_ptr&lt;PlaneSegment&gt;[N]</code>, puis ajouté un constructeur basique a la classe <code>PlaneSegment</code>, appelée dans le constructeur, ainsi qu&rsquo;une fonction <code>init</code> pour éviter N allocations a chaque appel de la fonction <code>process</code>.
+J&rsquo;ai également ajouté un destructeur a la classe <code>CAPE</code> pour libérer <code>Grid</code>.</p>
+<p>Une fuite bouchée, une amélioration (minime) des performances en évitant N allocations par appel.</p>
+<p><strong>Une réinitialisation évitable</strong></p>
+<p>Dans la fonction <code>process</code>, appelée a chaque analyse d&rsquo;image, une variable <code>H</code> de la classe <code>Histogram</code> est alloué, contenant deux <code>vector</code> avec chacun une taille constante de 20 éléments.
+Le fait de le déclarer dans le bloc de la fonction évite les fuites mémoires, mais nécessite de rajouter 40 allocations par appel a la fonction <code>process</code>.
+J&rsquo;ai donc fait de <code>H</code> une variable membre de la classe <code>CAPE</code>, remplacé les <code>vector</code> de <code>Histogram</code> par des tableaux, puis ajouté a la fonction <code>initHistogram</code> un appel a <code>fill_n</code> pour initialiser les éléments de ces tableaux a 0.
+Sans oublier bien sur un petit Destructeur pour désallouer ces tableaux.</p>
+<p><strong>Une erreur d&rsquo;index</strong></p>
+<p>La boucle <code>for</code> ligne 126 a pour but de chercher l&rsquo;index de la cellule avec l&rsquo;erreur minimum.
+La valeur de <code>minMSE</code> est comparée a <code>Grid[seed_candidate]-&gt;MSE</code>, et si elle est supérieure, on lui affecte <code>min_MSE = Grid[i]-&gt;MSE;</code>.
+J&rsquo;ai donc corrigé la sélection d&rsquo;index par <code>min_MSE = Grid[seed_candidate]-&gt;MSE;</code>.</p>
+<p>J&rsquo;ai également modifié toutes les classes pour que les membres soient <code>private</code> et ajouté des fonctions get.</p>
+<p><strong>Une copie en arrière-plan</strong></p>
+<p><code>PlaneSeg new_ps = *Grid[seed_id];</code>.
+À première vue, c&rsquo;est assez innocent.
+Ce qui se passe en arrière-plan est un peu moins Innocent: c&rsquo;est un appel a un constructeur par copie.
+Si on n&rsquo;a pas de constructeur par copie déclaré dans notre classe, le compilateur va en créer un par défaut, dont le comportement n&rsquo;est peut-être pas celui désiré.</p>
+<p>Une bonne pratique pour éviter ce genre de copies par défaut est de déclarer le constructeur par défaut ainsi que l&rsquo;opérateur = en privé dans notre classe.
+Le compilateur nous préviendra des copies à l&rsquo;avenir, avec une bonne erreur des familles.
+Ajouter ces méthodes fait également sortir un autre message d&rsquo;erreur que je n&rsquo;avais pas vu venir : <code>vector.push_back(class)</code> appelle le constructeur par copie de la classe.</p>
+<p>À mon avis, la meilleure manière de contourner ce comportement est d&rsquo;utiliser des vecteurs de pointeurs, notamment de <code>shared_ptr</code> dans ce cas précis.</p>
+<p><strong>Une autre erreur d&rsquo;index</strong></p>
+<p>Ligne 238, la distance au plan est calculée par le produit scalaire de la normale d&rsquo;un plan par la valeur <code>mean</code> d&rsquo;un autre plan.
+Cependant, le premier terme <code>plane_segments[r].normal[0]</code> devrait être <code>plane_segments[plane_id].normal[0]</code>.</p>
+<p>Pour éviter les erreurs de copier coller, j&rsquo;ai remplacé les tableaux <code>normal</code> et <code>mean</code> de la classe <code>PlaneSegment</code> par des <code>Eigen::Vector3d</code> afin d&rsquo;utiliser directement la fonction <code>Vector3d.dot(Vector3d)</code>.
+Une autre méthode pour continuer d&rsquo;utiliser des tableaux de double aurait été de définir une fonction <code>double dot(const&amp; double vecA[3], const&amp; double vecB[3])</code> pour éviter le code redondant, ou encore de définir une fonction membre <code>getDistance</code> dans la classe <code>PlaneSegment</code>, qui a l&rsquo;avantage de ne pas utiliser de getter.</p>
+<p><strong>Boucles redondante</strong></p>
+<p>La boucle ligne 434 a 445 sert à copier le résultat de l&rsquo;analyse des cylindres dans le <code>vector</code> avec les cylindres finaux.
+Son existence est justifiée pour une certaine clarté du code, mais une petite optimisation peut être réalisée en faisant la copie des résultats finaux dans la boucle précédente (vers la ligne 348).</p>
+<p>De même, maintenant que nous avons remplacé <code>Grid</code> par un tableau fixe non réalloué a chaque appel de fonction, la boucle de 449 a 455 est également à éliminer.</p>
+<p>Dans la fonction <code>getConnectedComponents</code>, une autre boucle peut être supprimée.
+Il s&rsquo;agit de la double boucle de la ligne 476 a 480, qui rend la matrice <code>planes_association_matrix</code> symétrique.
+Il suffit de copier directement les valeurs symétriques au niveau des lignes 471 et 472.</p>
+<h2 id="résultat-des-courses">Résultat des courses</h2>
+<p>j&rsquo;ai vérifié mon travail a l&rsquo;aide de <em>valgrind</em>, et j&rsquo;ai pu confirmer le rebouchage des fuites mémoire, avec une légère amélioration (de l&rsquo;ordre de la demi milliseconde) des performances sans incidence sur la sortie.
+La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de performances générales de l&rsquo;algo.</p>
+<p>J&rsquo;ai profité de mes modifications pour ajouter des métriques d&rsquo;évaluation, inspirée de PEAC, a la place de certaines constantes.</p>
 
         
           <div class="blog-tags">
             
-              <a href="https://BaptisteHudyma.github.io/fr/tags/ppc/">PPC</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/">c&#43;&#43;</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/fr/tags/slam/">SLAM</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/fr/tags/rgb-d/">RGB-D</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/fr/tags/robotics/">Robotics</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/fr/tags/traitement-dimages/">Traitement d&#39;images</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/">C&#43;&#43;</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/fr/tags/tubex/">tubex</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/fr/tags/optimisation/">Optimisation</a>&nbsp;
             
           </div>
         
@@ -340,42 +362,42 @@ Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;co
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;text=PPC%20SLAM&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fde_cape_et_d_opes%2f&amp;text=De%20CAPE%20et%20d%27Op%c3%a9s&amp;via=" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fde_cape_et_d_opes%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;description=PPC%20SLAM" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fde_cape_et_d_opes%2f&amp;description=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -389,17 +411,6 @@ Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;co
 
         
           
-            
-          
-
-          
-                  <h4 class="see-also">Voir également</h4>
-                  <ul>
-                
-                
-                    <li><a href="/fr/post/ppc_intro/">Programmation par Contraintes</a></li>
-                
-              </ul>
 
           
         
@@ -409,13 +420,9 @@ Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;co
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/fr/post/ppc_intro/" data-toggle="tooltip" data-placement="top" title="Programmation par Contraintes">&larr; Post précédent</a>
+              <a href="https://BaptisteHudyma.github.io/fr/post/ppc_slam/" data-toggle="tooltip" data-placement="top" title="PPC SLAM">&larr; Post précédent</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/fr/post/de_cape_et_d_opes/" data-toggle="tooltip" data-placement="top" title="De CAPE et d&#39;Opés">Post suivant &rarr;</a>
-            </li>
           
         </ul>
       

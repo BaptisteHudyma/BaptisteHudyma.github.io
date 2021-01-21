@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>c&#43;&#43; on BBB - BaptBeautifulBlog</title>
-    <link>https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/</link>
-    <description>Recent content in c&#43;&#43; on BBB - BaptBeautifulBlog</description>
+    <title>Optimisation on BBB - BaptBeautifulBlog</title>
+    <link>https://BaptisteHudyma.github.io/fr/tags/optimisation/</link>
+    <description>Recent content in Optimisation on BBB - BaptBeautifulBlog</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/fr/tags/c++/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 11 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/fr/tags/optimisation/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>De CAPE et d&#39;Opés</title>
       <link>https://BaptisteHudyma.github.io/fr/post/de_cape_et_d_opes/</link>
@@ -17,15 +17,6 @@
       <description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; est une méthode extrêmement efficace d&amp;rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
 Malgré l&amp;rsquo;efficacité de cette méthode, l&amp;rsquo;implémentation C++ du papier présente de nombreux défauts.&lt;/p&gt;
 &lt;p&gt;Dans ce post, je vais expliquer comment j&amp;rsquo;ai réparé la plupart de ces problèmes.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>PPC SLAM</title>
-      <link>https://BaptisteHudyma.github.io/fr/post/ppc_slam/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/fr/post/ppc_slam/</guid>
-      <description>&lt;p&gt;Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.&lt;/p&gt;</description>
     </item>
     
   </channel>
