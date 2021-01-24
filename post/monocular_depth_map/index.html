@@ -59,7 +59,7 @@
   "headline": "Monocular Depth Map",
   "description" : "Use a video taken by a single camera to estimate the depth of objects in an image. A small dip in the world of epipolar geometry and key points analysis.\n",
   "inLanguage" : "en",
-  "wordCount":  1276 ,
+  "wordCount":  1311 ,
   "datePublished" : "2021-01-24T00:00:00",
   "dateModified" : "2021-01-24T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -253,7 +253,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1276&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1311&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: <a href="https://BaptisteHudyma.github.io/fr/post/monocular_depth_map/" lang="fr">fr</a>
@@ -319,8 +319,9 @@ I wont get into the details and try to approximate the whole operation in one se
 <li>Estimate the transformation of the points from the first image to get the points of the other one.</li>
 <li>Estimate the disparity map (sort of depth map)</li>
 </ul>
-<p>All of those operations can be done with OpenCV.
-To find the key points, I used the OpenCV SURF feature detector.
+<p>All of those operations can be done with OpenCV.</p>
+<h3 id="key-points">Key points</h3>
+<p>To find the key points, I used the OpenCV SURF feature detector.
 Those key points can than be matched using the OpenCV DescriptorMatcher, using FLANN.</p>
 <p><img src="/static/depthmap/matched_keypoints.png" alt="Matched keypoints"></p>
 <p>We than get matched pairs, that we can prune based on their distances to the target point, and obtain a clean list of matched points.</p>
@@ -329,12 +330,16 @@ Those outliers will be eliminated by the distance check mentioned earlier, or wi
 <p><strong>A quick note</strong>: Epipolar projection of the two images will deform them so two matched keypoints will be placed on the same straight line on the two images.
 Here, it almost look like it&rsquo;s already the case: it&rsquo;s due to the proximity of the two images in time.
 A better visualization (and in depth explanations !) can be seen on the <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">OpenCV page</a>.</p>
+<h3 id="fundamental-matrix">Fundamental Matrix</h3>
 <p>OpenCV will also help use with the &ldquo;Estimate the transformation&rdquo; step.
 Calling the function <code>cv::findHomography</code> with the matched points pairs will return a fundamental matrice, that we can use to warp the second image with (<code>cv::warpPerspective</code>).
-I used <code>findHomography</code> with a <code>cv::FM_RANSAC</code> parameter.
-RANSAC is a great method, that I advise you to take a look at.
+I used <code>findHomography</code> with a <code>cv::FM_RANSAC</code> parameter.</p>
+<p>RANSAC is a great method, that I advise you to take a look at.
 It allows (in this case) to find the optimal transformation matrix without being affected by outliers.
 We can also get back the in/outliers list (as a vector) to further prune the points of interest (We don&rsquo;t really need them here).</p>
+<p>Ransac can be use for a lot more use cases of course !
+I also used it to extract cylinders from a plane graph, like CAPE did.</p>
+<h3 id="stereo-matching">Stereo matching</h3>
 <p>The last trick to obtain the depth map is as simple as the previous one.
 We call once more to our glorious OpenCV, with the class <code>StereoSGBM</code>.
 This class should be use with a stereo setup, but now that our two images are projected correctly, nobody will stop us from pretending they are from a stereo setup.</p>
@@ -346,6 +351,7 @@ This class should be use with a stereo setup, but now that our two images are pr
 <p><img src="/static/depthmap/rgb_monodepth_default.png" alt="Ugly mess map"></p>
 <p>We can clearly see that some flat textures are displayed as depth features (like the QR codes).
 This is also the case in the top image, but the difference is less visible.</p>
+<h3 id="filtering-step">Filtering step</h3>
 <p>The last step for now is to filter a bit our estimation, to obtain a cleaner depth map.
 For this purpose, I use a <code>DisparityWLSDFilter</code> from <code>cv::ximgproc</code>, normally use with a true stereo system.</p>
 <p>The final result can be observed below, with the monocular generated depth map to the left, and the depth map from the depth camera to the right for comparison purposes :</p>

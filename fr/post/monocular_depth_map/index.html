@@ -59,7 +59,7 @@
   "headline": "Monocular Depth Map",
   "description" : "Utiliser un flux vidéo issu d\u0026rsquo;une seule caméra pour estimer la profondeur des objets dans l\u0026rsquo;image. Un petit plongeon dans le monde de la géométrie épipolaire et de l\u0026rsquo;analyse des points d\u0026rsquo;intérêts.\n",
   "inLanguage" : "fr",
-  "wordCount":  1487 ,
+  "wordCount":  1520 ,
   "datePublished" : "2021-01-24T00:00:00",
   "dateModified" : "2021-01-24T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -253,7 +253,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1487&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1520&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" lang="en">en</a>
@@ -313,7 +313,7 @@ Il n&rsquo;y a pas un foule de réponses, la plupart d&rsquo;entre elles sont &l
 <p>Pourquoi ne pas utiliser deux images qui se suivent dans notre vidéo comme si elles étaient issues d&rsquo;un système stéréo ? On pourrait alors déduire la transformée entre ces images et en extraire les informations 3D (cad de profondeur).
 Et vous savez quoi ? Cette transformée est relativement facile à obtenir.</p>
 <p>La clef de cette histoire a un nom : la géométrie épipolaire.
-Je n&rsquo;entrerais pas dans les détails ici, et essayer de donner une explication approximative en une phrase : la géométrie épipolaire estime la transformée d&rsquo;une image a une autre.</p>
+Je n&rsquo;entrerais pas dans les détails ici, mais voici une explication approximative en une phrase : la géométrie épipolaire permet d&rsquo;estimer la transformée d&rsquo;une image vers une autre.</p>
 <p>Ce n&rsquo;est pas exact, ni précis, mais une meilleure explication se trouve facilement dans la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">documentation OpenCV</a>.</p>
 <p>La logique pour obtenir notre profondeur est assez simple :</p>
 <ul>
@@ -322,8 +322,9 @@ Je n&rsquo;entrerais pas dans les détails ici, et essayer de donner une explica
 <li>Estimer la transformation (épipolaire, vous suivez ?) à appliquer aux points d&rsquo;une image pour retrouver les points de l&rsquo;autre.</li>
 <li>Obtenir une image de disparité (une sorte de représentation de profondeur dans notre cas)</li>
 </ul>
-<p>Toutes ces opérations peuvent être réalisées à l&rsquo;aide d&rsquo;OpenCV.
-Pour trouver les points d&rsquo;intérêt, j&rsquo;ai utilisé le détecteur SURF.
+<p>Toutes ces opérations peuvent être réalisées à l&rsquo;aide d&rsquo;OpenCV.</p>
+<h3 id="points-dintérêt">Points d&rsquo;intérêt</h3>
+<p>Pour trouver les points d&rsquo;intérêt, j&rsquo;ai utilisé le détecteur SURF.
 Ces points peuvent ensuite être associés a l&rsquo;aide du <code>DescriptorMatcher</code> en utilisant FLANN.</p>
 <p><img src="/static/depthmap/matched_keypoints.png" alt="Matched keypoints"></p>
 <p>On obtient les points d&rsquo;intérêts associés entre les deux images.
@@ -333,11 +334,14 @@ Ces outliers seront éliminés par notre test de distance évoqué précédemmen
 <p><strong>Une note rapide</strong>: La projection épipolaire des deux images les déforme de façon a ce que deux points d&rsquo;intérêts associés se retrouvent sur la même ligne.
 Ici, on dirait que c&rsquo;est déjà le cas : C&rsquo;est à cause de la proximité temporelle des deux images (issues d&rsquo;une vidéo).
 Pour une meilleure visualisation (et explications en profondeur), consultez la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">page OpenCV</a>.</p>
+<h3 id="matrice-fondamentale">Matrice fondamentale</h3>
 <p>OpenCV va également nous aider pour trouver la matrice de transformation entre les deux images.
 Appeler la fonction <code>cv::findHomography</code> sur nos pairs de points d&rsquo;intérêts nous renverra une matrice fondamentale, que nous pouvons utiliser pour déformer notre deuxième image (avec la fonction <code>cv::warpPerspective</code>).
-J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.
-C&rsquo;est une méthode fantastique qui permet de trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.
+J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.</p>
+<p>RANSAC est une méthode fantastique qui permet (ici) de trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.
 Nous pouvons également en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici nous n&rsquo;en aurons pas besoin.</p>
+<p>RANSAC a bien d&rsquo;autres cas d&rsquo;applications bien sur, je l&rsquo;ai également utilisé pour détecter les cylindres dans un graph de plans, comme CAPE l&rsquo;a fait.</p>
+<h3 id="stereo-matching">Stereo matching</h3>
 <p>La dernière astuce pour obtenir la depth map est aussi simple que la précédente.
 Nous pouvons utiliser une fois de plus le glorieux OpenCV, avec sa classe <code>StereSGBM</code>.
 Cette classe est censée être utilisée sur des images issues d&rsquo;un setup d&rsquo;acquisition stéréo, mais maintenant que nos deux images sont projetées correctement, personne ne nous empêchera de faire semblant qu&rsquo;elles viennent d&rsquo;un setup stéréo !</p>
@@ -349,9 +353,10 @@ Cette classe est censée être utilisée sur des images issues d&rsquo;un setup 
 <p><img src="/static/depthmap/rgb_monodepth_default.png" alt="Ugly mess map"></p>
 <p>On peut y voir assez clairement que des textures censées êtres plates sont affichées avec du relief (une différence de couleur), notamment la feuille de QR codes.
 C&rsquo;est également le cas en haut de l&rsquo;image, mais la différence est moins visible.</p>
+<h3 id="filtrage">Filtrage</h3>
 <p>La dernière étape (non obligatoire) est de filtrer un peu notre estimation, pour obtenir une depth map plus propre.
 Pour cela, j&rsquo;utilise <code>DisparityWLSDFilter</code> de <code>cv::ximproc</code>, à utiliser normalement sur un setup stéréo.</p>
-<p>Le résultat final est affiché sur l&rsquo;image ci-dessous, avec la depth map monoculaire à gauche et la depth map issue directement de la caméra RGB à droite, afin de pouvoir les comparer :</p>
+<p>Le résultat final est affiché sur l&rsquo;image ci-dessous, avec la depth map monoculaire à gauche et la depth map issue directement de la caméra RGB-D à droite, afin de pouvoir les comparer :</p>
 <p><img src="/static/depthmap/depth_monodepth.png" alt="Filtered result"></p>
 <p>Globalement, le résultat final est plutôt bon !
 Mieux qu&rsquo;attendu, dans mon cas.</p>
