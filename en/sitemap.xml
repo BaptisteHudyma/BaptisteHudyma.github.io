@@ -3,6 +3,126 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://BaptisteHudyma.github.io/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/c&#43;&#43;/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/c&#43;&#43;/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/computer-vision/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/computer-vision/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/computer-vision/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/depth-map/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/depth-map/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/depth-map/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/post/monocular_depth_map/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/monocular_depth_map/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/monocular_depth_map/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/opencv/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/opencv/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/opencv/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/post/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/"
+                />
+  </url>
+  
+  <url>
     <loc>https://BaptisteHudyma.github.io/page/about/</loc>
     <xhtml:link
                 rel="alternate"
@@ -13,20 +133,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://BaptisteHudyma.github.io/page/about/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/"
                 />
   </url>
   
@@ -55,20 +161,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://BaptisteHudyma.github.io/page/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/tags/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/tags/"
                 />
   </url>
   
