@@ -18,21 +18,6 @@
   </url>
   
   <url>
-    <loc>https://BaptisteHudyma.github.io/tags/c&#43;&#43;/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/tags/c&#43;&#43;/"
-                />
-  </url>
-  
-  <url>
     <loc>https://BaptisteHudyma.github.io/tags/computer-vision/</loc>
     <lastmod>2021-01-24T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -44,6 +29,21 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://BaptisteHudyma.github.io/tags/computer-vision/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/cpp/</loc>
+    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/cpp/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/cpp/"
                 />
   </url>
   

@@ -9,20 +9,20 @@
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
     <lastBuildDate>Sun, 24 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/fr/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>c&#43;&#43;</title>
-      <link>https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/</link>
-      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/fr/tags/c&#43;&#43;/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Computer vision</title>
       <link>https://BaptisteHudyma.github.io/fr/tags/computer-vision/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/fr/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cpp</title>
+      <link>https://BaptisteHudyma.github.io/fr/tags/cpp/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/fr/tags/cpp/</guid>
       <description></description>
     </item>
     
@@ -59,15 +59,6 @@
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/fr/tags/optimisation/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Traitement d&#39;images</title>
-      <link>https://BaptisteHudyma.github.io/fr/tags/traitement-dimages/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/fr/tags/traitement-dimages/</guid>
       <description></description>
     </item>
     
