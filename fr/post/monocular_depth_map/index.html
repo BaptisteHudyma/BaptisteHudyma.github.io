@@ -59,7 +59,7 @@
   "headline": "Monocular Depth Map",
   "description" : "Utiliser un flux vidéo issu d\u0026rsquo;une seule caméra pour estimer la profondeur des objets dans l\u0026rsquo;image. Un petit plongeon dans le monde de la géométrie épipolaire et de l\u0026rsquo;analyse des points d\u0026rsquo;intérêts.\n",
   "inLanguage" : "fr",
-  "wordCount":  1520 ,
+  "wordCount":  1525 ,
   "datePublished" : "2021-01-24T00:00:00",
   "dateModified" : "2021-01-24T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -227,6 +227,8 @@
 
 
 
+
+
   
 
   <header class="header-section ">
@@ -253,7 +255,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1520&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1525&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" lang="en">en</a>
@@ -285,7 +287,7 @@ Un petit plongeon dans le monde de la géométrie épipolaire et de l&rsquo;anal
 </ul>
 <p>Chacune de ces options a ses propres qualités et défauts.
 La vision stéréo donne des estimations correctes a une distance convenable, mais demande une puissance de calcul non négligeable.
-Un système monoculaire peut fonctionner avec du machine learning, ou en exploitant la suite d&rsquo;image comme un système stéréo (Plus a ce sujet un peu plus tard), avec les mêmes limitations que celui-ci.
+Un système monoculaire peut fonctionner avec du <a href="https://paperswithcode.com/sota/monocular-depth-estimation-on-kitti-eigen">machine learning</a>, ou en exploitant la suite d&rsquo;image comme un système stéréo (Plus a ce sujet un peu plus tard), avec les mêmes limitations que celui-ci.
 La camera RGB-D est très fiable et donne des mesures précises, mais ne fonctionne qu&rsquo;a courte distance.</p>
 <p>Eh bien je n&rsquo;ai pas de quoi faire un système stéréo, mais je possède la meilleure des caméras : une RGB-D (Oui j&rsquo;adore les RGB-D).
 Cette caméra est fantastique mais son estimation de profondeur dépend exclusivement d&rsquo;une projection infrarouge, ce qui amène son lot de problèmes.
@@ -309,7 +311,8 @@ Les trous <em>alignés</em> sur le sol sont dues (a mon avis) a la nature discr�
 <p>Bon, comment on obtenir une estimation de profondeur depuis une seule image ?
 Il n&rsquo;y a pas un foule de réponses, la plupart d&rsquo;entre elles sont &ldquo;réseaux de neurones&rdquo;.</p>
 <p>Mais comme l&rsquo;a évoqué notre mentor Maitre Yoda,
-<img src="/static/rand/yoda.png" alt="There is another"></p>
+<img src="/static/rand/yoda.png" alt="There is another">
+Merci Yoda !</p>
 <p>Pourquoi ne pas utiliser deux images qui se suivent dans notre vidéo comme si elles étaient issues d&rsquo;un système stéréo ? On pourrait alors déduire la transformée entre ces images et en extraire les informations 3D (cad de profondeur).
 Et vous savez quoi ? Cette transformée est relativement facile à obtenir.</p>
 <p>La clef de cette histoire a un nom : la géométrie épipolaire.
@@ -348,8 +351,7 @@ Cette classe est censée être utilisée sur des images issues d&rsquo;un setup 
 <p>Eh bien le résultat n&rsquo;est pas si mal (après une bonne dose de réglages de paramètres) :</p>
 <p><img src="/static/depthmap/rgb_monodepth.png" alt="Simulated depth map"></p>
 <p>il y a quelques trous, quelques discontinuités dans la profondeur, et quelques aberrations au niveau du sommet du cylindre, mais c&rsquo;est globalement pas mal.</p>
-<p><strong>J&rsquo;ai ici sélectionné une image propre pour des besoins de démonstration, mais la plupart sont encore très bruitées</strong></p>
-<p>Pour la comparaison, voici la version brute, avec les paramètres par défaut :</p>
+<p>Pour la comparaison, voici la version brute (avec les paramètres par défaut) :</p>
 <p><img src="/static/depthmap/rgb_monodepth_default.png" alt="Ugly mess map"></p>
 <p>On peut y voir assez clairement que des textures censées êtres plates sont affichées avec du relief (une différence de couleur), notamment la feuille de QR codes.
 C&rsquo;est également le cas en haut de l&rsquo;image, mais la différence est moins visible.</p>
@@ -367,6 +369,8 @@ Quelques remarques tout de même :</p>
 <li>Le processus de filtrage à créer des &ldquo;fuites&rdquo; de profondeur au niveau des côtés du cylindre (fond plus sombre)</li>
 <li>La texture des QR codes est encore visible sur le sol, ce qui est une erreur d&rsquo;estimation</li>
 <li>Le haut du cylindre est montré plus proche de l&rsquo;observateur que le sol en bas du l&rsquo;image, et nous pouvons voir que c&rsquo;est faux (voir image de profondeur brut pour comparaison)</li>
+<li>Plus il y a de mouvement, meilleure est l&rsquo;estimation.
+En cas de mouvement trop faible, on obtient une map aberrante.</li>
 </ul>
 <p>Un autre point très important que je n&rsquo;ai pas mentionné avant : L&rsquo;estimation de profondeur monoculaire ne peut pas être aussi bonne que l&rsquo;estimation stéréo.
 Les depth map stéréo sont bien plus précises et fiables.

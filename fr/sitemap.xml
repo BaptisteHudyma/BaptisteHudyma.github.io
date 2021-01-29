@@ -216,6 +216,14 @@
   </url>
   
   <url>
+    <loc>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/octree/</loc>
+  </url>
+  
+  <url>
     <loc>https://BaptisteHudyma.github.io/fr/page/</loc>
     <xhtml:link
                 rel="alternate"
@@ -227,6 +235,10 @@
                 hreflang="fr"
                 href="https://BaptisteHudyma.github.io/fr/page/"
                 />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/procedural-generation/</loc>
   </url>
   
 </urlset>

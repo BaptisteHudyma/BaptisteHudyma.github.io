@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://BaptisteHudyma.github.io/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="fr"
@@ -14,6 +14,26 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://BaptisteHudyma.github.io/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/post/depth_map_merging/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/post/</loc>
+    <lastmod>2021-01-25T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/"
                 />
   </url>
   
@@ -89,21 +109,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://BaptisteHudyma.github.io/tags/opencv/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/post/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/post/"
                 />
   </url>
   
