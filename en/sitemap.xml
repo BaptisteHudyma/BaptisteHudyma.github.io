@@ -143,6 +143,66 @@
   </url>
   
   <url>
+    <loc>https://BaptisteHudyma.github.io/post/ppc_intro/</loc>
+    <lastmod>2020-11-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/ppc_intro/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/ppc_intro/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/ppc/</loc>
+    <lastmod>2020-11-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/ppc/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/ppc/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/python/</loc>
+    <lastmod>2020-11-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/python/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/python/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/sudoku/</loc>
+    <lastmod>2020-11-26T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/sudoku/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/sudoku/"
+                />
+  </url>
+  
+  <url>
     <loc>https://BaptisteHudyma.github.io/post/galaxy_generation/</loc>
     <lastmod>2020-06-15T00:00:00+00:00</lastmod>
     <xhtml:link

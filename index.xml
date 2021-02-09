@@ -29,6 +29,18 @@ A small dip in the world of epipolar geometry and key points analysis.&lt;/p&gt;
     </item>
     
     <item>
+      <title>Constraint Programming</title>
+      <link>https://BaptisteHudyma.github.io/post/ppc_intro/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/post/ppc_intro/</guid>
+      <description>&lt;p&gt;What is Constraint Programming ?
+What are the advantages/limits ?
+Can we make a sudoku solver in less than thirty minutes ?&lt;/p&gt;
+&lt;p&gt;One of those answers is &lt;em&gt;&lt;strong&gt;yes&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Galaxis Generation</title>
       <link>https://BaptisteHudyma.github.io/post/galaxy_generation/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
