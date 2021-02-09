@@ -143,6 +143,51 @@
   </url>
   
   <url>
+    <loc>https://BaptisteHudyma.github.io/post/galaxy_generation/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/galaxy_generation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/galaxy_generation/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/octree/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/octree/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/octree/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/tags/procedural-generation/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/procedural-generation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/procedural-generation/"
+                />
+  </url>
+  
+  <url>
     <loc>https://BaptisteHudyma.github.io/page/about/</loc>
     <xhtml:link
                 rel="alternate"

@@ -28,5 +28,14 @@ Those cameras are very handy . They are able to estimate depth thanks to a small
 A small dip in the world of epipolar geometry and key points analysis.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Galaxis Generation</title>
+      <link>https://BaptisteHudyma.github.io/post/galaxy_generation/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/post/galaxy_generation/</guid>
+      <description>&lt;p&gt;After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

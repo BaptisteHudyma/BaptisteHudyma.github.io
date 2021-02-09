@@ -188,6 +188,51 @@
   </url>
   
   <url>
+    <loc>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/galaxy_generation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/galaxy_generation/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/octree/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/octree/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/octree/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/procedural-generation/</loc>
+    <lastmod>2020-06-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/procedural-generation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/procedural-generation/"
+                />
+  </url>
+  
+  <url>
     <loc>https://BaptisteHudyma.github.io/fr/page/about/</loc>
     <xhtml:link
                 rel="alternate"
@@ -216,14 +261,6 @@
   </url>
   
   <url>
-    <loc>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</loc>
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/fr/tags/octree/</loc>
-  </url>
-  
-  <url>
     <loc>https://BaptisteHudyma.github.io/fr/page/</loc>
     <xhtml:link
                 rel="alternate"
@@ -235,10 +272,6 @@
                 hreflang="fr"
                 href="https://BaptisteHudyma.github.io/fr/page/"
                 />
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/fr/tags/procedural-generation/</loc>
   </url>
   
 </urlset>

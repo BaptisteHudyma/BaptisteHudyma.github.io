@@ -51,6 +51,15 @@ Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
     </item>
     
     <item>
+      <title>Génération de galaxies</title>
+      <link>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</guid>
+      <description>&lt;p&gt;Après m&amp;rsquo;être attaqué a la génération procédurale de systèmes planétaires, j&amp;rsquo;ai décidé de monter un peu dans l&amp;rsquo;échelle de l&amp;rsquo;univers en tentant ma chance sur les galaxies.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>About me</title>
       <link>https://BaptisteHudyma.github.io/fr/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -58,16 +67,6 @@ Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
       <guid>https://BaptisteHudyma.github.io/fr/page/about/</guid>
       <description>Bien le bonjour ! Mon nom est Baptiste Hudyma. Je suis un ingénieur en robotique bien trop curieux de bien trop de sujets différents. De la programmation au bricolage, de la chimie aux jeux vidéos jusqu&amp;rsquo;à l&amp;rsquo;organisation d&amp;rsquo;évènements, je vous propose de vous balader sur ce site pour voir des projets plus ou moins complexes que j&amp;rsquo;ai pu développer au fur et à mesure des années
 Dans ce blog/portfolio/patchwork de posts, vous trouverez des descriptions de certains projets dont je pensais intéressant de partager les détails.</description>
-    </item>
-    
-    <item>
-      <title>Génération de galaxies</title>
-      <link>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/fr/post/galaxy_generation/</guid>
-      <description>Après m&amp;rsquo;être attaqué a la génération procédurale de systèmes solaires, j&amp;rsquo;ai décidé de monter un peu dans l&amp;rsquo;échelle de l&amp;rsquo;univers en tentant ma chance sur les galaxies.
- L&amp;rsquo;observateur peut se trouver n&amp;rsquo;importe ou dans la galaxie les étoiles brillantes doivent être vues de très loin  Définir la forme Quand on dit &amp;ldquo;galaxie&amp;rdquo;, on pense généralement a une structure en spirale aplatie sur un plan, avec un noyau a son centre.</description>
     </item>
     
   </channel>
