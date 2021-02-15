@@ -14,7 +14,7 @@
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/fr/post/depth_map_segmentation/</guid>
-      <description>&lt;p&gt;Dans ce post, j&amp;rsquo;implémente un système de segmentation naïve de depth map en temps réel.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Dans ce post, j&amp;rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&amp;rsquo;analyse d&amp;rsquo;une normal map.&lt;/p&gt;</description>
     </item>
     
     <item>

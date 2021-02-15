@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <title>Segmentation de depth map - BBB - BaptBeautifulBlog</title>
-  <meta name="description" content="Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.">
+  <meta name="description" content="Dans ce post, j&rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&rsquo;analyse d&rsquo;une normal map.">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Segmentation de depth map",
-  "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation naïve de depth map en temps réel.\n",
+  "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l\u0026rsquo;analyse d\u0026rsquo;une normal map.\n",
   "inLanguage" : "fr",
-  "wordCount":  1184 ,
+  "wordCount":  1189 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -79,14 +79,14 @@
 </script>
 
 <meta property="og:title" content="Segmentation de depth map" />
-<meta property="og:description" content="Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.">
+<meta property="og:description" content="Dans ce post, j&rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&rsquo;analyse d&rsquo;une normal map.">
 <meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
 <meta property="og:url" content="https://BaptisteHudyma.github.io/fr/post/depth_map_segmentation/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BBB - BaptBeautifulBlog" />
 
   <meta name="twitter:title" content="Segmentation de depth map" />
-  <meta name="twitter:description" content="Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.">
+  <meta name="twitter:description" content="Dans ce post, j&rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&rsquo;analyse d&rsquo;une normal map.">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -251,7 +251,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1184&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1189&nbsp;mots
   
   
   
@@ -272,7 +272,7 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.</p>
+        <p>Dans ce post, j&rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&rsquo;analyse d&rsquo;une normal map.</p>
 <p>L&rsquo;analyse d&rsquo;une depth map (obtenue par une caméra RGB-D par exemple) n&rsquo;est pas une tâche particulièrement facile ou rapide.
 Le but de ce post est d&rsquo;implémenter une méthode pour en segmenter les éléments, comme les objets, plans, n&rsquo;importe quelle surface 3D en fait.</p>
 <p>Comme toujours, j&rsquo;ai une certaine aversion (méfiance ?) envers les réseaux de neurone donc je fais en sorte d&rsquo;en utiliser le moins possible, et toujours dans un contexte ou leur bon fonctionnement est garanti.
