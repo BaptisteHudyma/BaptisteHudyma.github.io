@@ -59,7 +59,7 @@
   "headline": "Monocular Depth Map",
   "description" : "Utiliser un flux vidéo issu d\u0026rsquo;une seule caméra pour estimer la profondeur des objets dans l\u0026rsquo;image. Un petit plongeon dans le monde de la géométrie épipolaire et de l\u0026rsquo;analyse des points d\u0026rsquo;intérêts.\n",
   "inLanguage" : "fr",
-  "wordCount":  1525 ,
+  "wordCount":  1531 ,
   "datePublished" : "2021-01-24T00:00:00",
   "dateModified" : "2021-01-24T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -255,7 +255,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1525&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1531&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" lang="en">en</a>
@@ -341,7 +341,7 @@ Pour une meilleure visualisation (et explications en profondeur), consultez la <
 <p>OpenCV va également nous aider pour trouver la matrice de transformation entre les deux images.
 Appeler la fonction <code>cv::findHomography</code> sur nos pairs de points d&rsquo;intérêts nous renverra une matrice fondamentale, que nous pouvons utiliser pour déformer notre deuxième image (avec la fonction <code>cv::warpPerspective</code>).
 J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.</p>
-<p>RANSAC est une méthode fantastique qui permet (ici) de trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.
+<p>RANSAC est une méthode fantastique qui permet (ici) d&rsquo;associer les paires de points caractéristiques pour trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.
 Nous pouvons également en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici nous n&rsquo;en aurons pas besoin.</p>
 <p>RANSAC a bien d&rsquo;autres cas d&rsquo;applications bien sur, je l&rsquo;ai également utilisé pour détecter les cylindres dans un graph de plans, comme CAPE l&rsquo;a fait.</p>
 <h3 id="stereo-matching">Stereo matching</h3>
@@ -468,6 +468,8 @@ Comme prévu, les erreurs d&rsquo;estimation de profondeur sont pour la plupart 
                   <ul>
                 
                 
+                    <li><a href="/fr/post/depth_map_segmentation/">Segmentation de depth map</a></li>
+                
                     <li><a href="/fr/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
                 
                     <li><a href="/fr/post/ppc_slam/">PPC SLAM</a></li>
@@ -487,6 +489,10 @@ Comme prévu, les erreurs d&rsquo;estimation de profondeur sont pour la plupart 
               <a href="https://BaptisteHudyma.github.io/fr/post/de_cape_et_d_opes/" data-toggle="tooltip" data-placement="top" title="De CAPE et d&#39;Opés">&larr; Post précédent</a>
             </li>
           
+          
+            <li class="next">
+              <a href="https://BaptisteHudyma.github.io/fr/post/depth_map_segmentation/" data-toggle="tooltip" data-placement="top" title="Segmentation de depth map">Post suivant &rarr;</a>
+            </li>
           
         </ul>
       

@@ -4,7 +4,7 @@
   
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -19,7 +19,7 @@
   
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/tags/computer-vision/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -34,7 +34,7 @@
   
   <url>
     <loc>https://BaptisteHudyma.github.io/fr/tags/cpp/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -44,6 +44,56 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://BaptisteHudyma.github.io/fr/tags/cpp/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/opencv/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/opencv/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/opencv/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/post/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/post/"
+                />
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/post/depth_map_segmentation/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://BaptisteHudyma.github.io/fr/tags/</loc>
+    <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/fr/tags/"
                 />
   </url>
   
@@ -78,36 +128,6 @@
   </url>
   
   <url>
-    <loc>https://BaptisteHudyma.github.io/fr/tags/opencv/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/tags/opencv/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/tags/opencv/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/fr/post/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/post/"
-                />
-  </url>
-  
-  <url>
     <loc>https://BaptisteHudyma.github.io/fr/tags/rgb-d/</loc>
     <lastmod>2021-01-24T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -119,21 +139,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://BaptisteHudyma.github.io/fr/tags/rgb-d/"
-                />
-  </url>
-  
-  <url>
-    <loc>https://BaptisteHudyma.github.io/fr/tags/</loc>
-    <lastmod>2021-01-24T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/fr/tags/"
                 />
   </url>
   

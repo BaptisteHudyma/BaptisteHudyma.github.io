@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>PPC SLAM - BBB - BaptBeautifulBlog</title>
-  <meta name="description" content="Un SLAM basique utilisant la programmation par contrainte">
+  <title>Segmentation de depth map - BBB - BaptBeautifulBlog</title>
+  <meta name="description" content="Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -44,8 +44,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/fr\/post\/ppc_slam\/",
-          "name": "P p c s l a m"
+          "@id": "https:\/\/BaptisteHudyma.github.io\/fr\/post\/depth_map_segmentation\/",
+          "name": "Segmentation de depth map"
         }
     }]
 }
@@ -56,15 +56,15 @@
   "author": {
     "name" : "Baptiste Hudyma"
   },
-  "headline": "PPC SLAM",
-  "description" : "Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.\n",
+  "headline": "Segmentation de depth map",
+  "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation naïve de depth map en temps réel.\n",
   "inLanguage" : "fr",
-  "wordCount":  700 ,
-  "datePublished" : "2020-12-28T00:00:00",
-  "dateModified" : "2020-12-28T00:00:00",
+  "wordCount":  1184 ,
+  "datePublished" : "2021-02-15T00:00:00",
+  "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "PPC, SLAM, Robotics, Cpp, tubex" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/fr\/post\/ppc_slam\/",
+  "keywords" : [ "Cpp, opencv, Computer vision" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/fr\/post\/depth_map_segmentation\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/BaptisteHudyma.github.io",
@@ -78,15 +78,15 @@
 }
 </script>
 
-<meta property="og:title" content="PPC SLAM" />
-<meta property="og:description" content="Un SLAM basique utilisant la programmation par contrainte">
+<meta property="og:title" content="Segmentation de depth map" />
+<meta property="og:description" content="Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.">
 <meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/fr/post/ppc_slam/" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/fr/post/depth_map_segmentation/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="BBB - BaptBeautifulBlog" />
 
-  <meta name="twitter:title" content="PPC SLAM" />
-  <meta name="twitter:description" content="Un SLAM basique utilisant la programmation par contrainte">
+  <meta name="twitter:title" content="Segmentation de depth map" />
+  <meta name="twitter:description" content="Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -239,23 +239,19 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>PPC SLAM</h1>
+                <h1>Segmentation de depth map</h1>
               
               
-              
-                
-                  <h2 class="post-subheading">Un SLAM basique utilisant la programmation par contrainte</h2>
-                
               
               
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posté le December 28, 2020
+  <i class="fas fa-calendar"></i>&nbsp;Posté le February 15, 2021
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;700&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1184&nbsp;mots
   
   
   
@@ -276,58 +272,106 @@
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.</p>
-<p>Dans <a href="https://BaptisteHudyma.github.io/fr/post/ppc_intro/">l&rsquo;article précédent</a>, j&rsquo;ai présenté rapidement la programmation par contrainte avec beaucoup de texte et un exemple concret.
-Dans celui ci je présente une implémentation d&rsquo;un SLAM (Simultaneous Localization And Mapping), chargé de localiser un robot mobile dans un environnement virtuel.</p>
-<p>Dans cet exemple, on considère que la position du robot a t0 est connue, ainsi que les informations de ses capteurs, comme sa vitesse et son orientation.
-Durant son périple dans le monde virtuel, notre robot utilisera un LIDAR (également simulé) qui lui donne accès a la distance et l&rsquo;orientation absolue a des marqueurs de position inconnu.
-On considère également qu&rsquo;on sait quel marqueur a été remarqué.</p>
-<p>Toutes ces mesures ont bien sur une marge d&rsquo;erreur que l&rsquo;on considère connue (dans le monde réel, ces informations sont obtenues d&rsquo;après la documentation des capteurs utilisés).
-Cependant, dans notre petit monde virtuel, on exclu totalement l&rsquo;apparition d&rsquo;outliers dans les données.</p>
-<p><strong>Cette implémentation ne peut pas fonctionner en l&rsquo;état dans le monde vrai de la vie réelle</strong>.</p>
-<p>Pour ce projet, j&rsquo;ai utilisé <a href="http://simon-rohou.fr/research/tubex-lib/">Tubex</a>, une librairie pour C++/Python de PPC, proposant des outils pour estimer des trajectoires contraintes.
-Mon implémentation est une amélioration de l&rsquo;exemple final du tuto (<a href="http://simon-rohou.fr/research/tubex-lib/doc/tutorial/08-rangeonly-slam/">Range Only SLAM</a>).</p>
-<p>Pour estimer les performances de notre SLAM, nous allons définir un point de comparaison initial : l&rsquo;estimation de trajectoire par dead reckoning, &ldquo;Navigation a l&rsquo;estime&rdquo; (???) en bon François, d&rsquo;après Wikipedia.
-Le dead reckoning consiste a estimer la trajectoire via une intégration directe de la valeur de ses capteurs.
-C&rsquo;est une solution très simple, mais qui a le désavantage d&rsquo;accumuler rapidement les erreurs avec le temps.</p>
-<p>Tubex représente l&rsquo;incertitude des trajectoires en utilisant des tubes, affichés par un gradient de couleur.</p>
-<p><img src="/static/img_ppc_slam/ppc_slam_deadreck.png" alt="Image: Dead reckoning trajectory"></p>
-<p>Sur l&rsquo;image ci dessus, on peut voir le la trajectoire réelle du robot en rouge, et sa trajectoire estimée via dead reckoning en gradients de bleu.
-L&rsquo;incertitude de la position du robot augmente avec le temps, d&rsquo;ou l&rsquo;élargissement de la trajectoire en bleu, jusqu&rsquo;à atteindre la position finale, dans un interval de 18x18 mètres.
-Son point de départ est l&rsquo;endroit avec le moins d&rsquo;incertitude, ou la trajectoire bleu est la plus resserrée.
-Malgré ce manque de précision, la trajectoire réelle ne se retrouve jamais en dehors de la trajectoire estimée.</p>
-<p>Les quatre marqueurs de la map sont représentés en orange, et leur position est inconnue.</p>
-<p>Cette trajectoire est notre variable de départ, qui sera contrainte par le programme en fonction des observations de marqueurs.</p>
-<h1 id="une-v1">Une V1</h1>
-<p>Allez on saute au résultat directement:</p>
-<p><img src="/static/img_ppc_slam/ppc_slam_refined.png" alt="Image: SLAMED!"></p>
-<p>Bon alors, qu&rsquo;est ce qu&rsquo;on voit sur cette image ?
-La partie grisée est l&rsquo;estimation dead reckoning, qui a été réduite jusqu&rsquo;à la partie bleutée.
-On remarque tout de suite que la position estimée du robot est bien meilleure qu&rsquo;avant : on est dans un interval de environ 2x1 mètres, ce qui représente une amélioration de l&rsquo;aire finale de 99.38%.</p>
-<p>On observe également des rectangles autour des marqueurs, qui représentent l&rsquo;estimation de la position des marqueurs par le robot a la fin du processus de mapping.
-Tout comme le robot, leur position finale est située par un interval.</p>
-<h1 id="une-v2-">Une V2 !</h1>
-<p>Bon, le résultat de la V1 est bien beau, mais en fait c&rsquo;est un système assez peu utile : Notre robot est déjà arrivé au bout de se trajectoire quand on fait l&rsquo;estimation de sa position.
-Une implémentation plus utile serait d&rsquo;obtenir la position du robot a chaque instant <em>t</em>, et c&rsquo;est ce que nous allons faire.</p>
-<p>Notre code n&rsquo;a pas besoin de beaucoup de modifications pour ca : nous avons seulement besoin d&rsquo;obtenir la position (et donc réduire les variables) plus régulièrement que juste une fois a la fin.</p>
-<p><img src="/static/img_ppc_slam/ppc_slam_rt.png" alt="Image: SLAMED V2!"></p>
-<p>Cette fois ci la trajectoire dead reckoning n&rsquo;est pas modifiée, et est juste affichée pour comparaison.
-La position du robot a chaque instant <em>t</em> est représentée par un interval en noir.</p>
-<p>L&rsquo;estimation de position instantanée sera de moins bonne qualité que la V1, car on a pas accès tout de suite a l&rsquo;ensemble des données.
-Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;contractée&rdquo; en prenant en compte toutes les données précédentes, et on reviendra au même cas que la V1.</p>
+        <p>Dans ce post, j&rsquo;implémente un système de segmentation naïve de depth map en temps réel.</p>
+<p>L&rsquo;analyse d&rsquo;une depth map (obtenue par une caméra RGB-D par exemple) n&rsquo;est pas une tâche particulièrement facile ou rapide.
+Le but de ce post est d&rsquo;implémenter une méthode pour en segmenter les éléments, comme les objets, plans, n&rsquo;importe quelle surface 3D en fait.</p>
+<p>Comme toujours, j&rsquo;ai une certaine aversion (méfiance ?) envers les réseaux de neurone donc je fais en sorte d&rsquo;en utiliser le moins possible, et toujours dans un contexte ou leur bon fonctionnement est garanti.
+L&rsquo;état de l&rsquo;art de la segmentation de depth map en temps réel ([4]) utilise à la fois une méthode de segmentation par normales, comme [1], [2] et [3], en y ajoutant un réseau de neurone pour une proposition de classes.
+Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&rsquo;une séparation par normales.</p>
+<p>Pour rappel sur les depth map:</p>
+<ul>
+<li>Une depth map est une image dont chaque pixel équivaut à une mesure de distance</li>
+<li>Les trous (valeurs a 0) dans les depths maps représentent une absence de données.</li>
+</ul>
+<h1 id="réparer-la-depth-map">Réparer la depth map</h1>
+<p>Afin de corriger quelques défauts de la depth map en prévision de son utilisation pour calculer les normales, je lui ai appliqué quelques traitements.</p>
+<p>J&rsquo;ai ici utilisé une fermeture morphologique, un filtrage médian puis un filtrage bilatéral, qui ont pour but dans l&rsquo;ordre, de refermer les petits trous introduits par la warping, lisser ces modifications et effectuer un lissage global favorisant la conservation des surfaces planes.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">cv::Mat newTempoMat
+cv::morphologyEx(depthMap, newTempoMat, cv::MORPH_CLOSE, kernel); // kernel is a 3x3 square
+cv::medianBlur(newTempoMat, newTempoMat, 3);
+cv::bilateralFilter(newTempoMat, depthMap,  7, 31, 15);
+</code></pre></div><p>Les papiers que j&rsquo;ai utilisé comme référence utilisent tous une vertex map, qui est une depth map convertie en unités &ldquo;réelles&rdquo;.</p>
+<h1 id="calculer-la-normal-map">Calculer la Normal Map</h1>
+<p>Une normal map est une image RGB représentant les vecteurs normaux a chaque plan au niveau de chaque pixel de l&rsquo;image de départ (voir <a href="https://fr.wikipedia.org/wiki/Normale_%C3%A0_une_surface">Wikipedia: Normale a une surface</a> pour plus de détails, je n&rsquo;irais pas plus loin ici).</p>
+<p>Cette structure est composée de NxM vecteurs 3D pour une image de taille NxM, et est intelligemment représentée par une image RGB dont chaque channel stocke une composante du vecteur.
+L&rsquo;effet final est une image en nuances de bleu/vert/rouge en fonction de la direction dominante de chaque normales (voir <a href="https://blog.developpez.com/bouye/p12696/langage/java/javafx-8-x/bump">Blog de Fabrice Bouyé</a> pour de belles images).</p>
+<p>Une depth map à partir de données théoriques est plutôt &ldquo;jolie&rdquo;.
+Elle présente peu de bruit (donc visuellement un gradient de couleurs continue), mais dans nos mesures réelles on va relever beaucoup de bruit.</p>
+<p>On peut calculer la valeur d&rsquo;une normale a un point <code>(x, y)</code> de la depth map avec le code c++ suivant :</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">float dzdx = ( depthMap.at&lt;float&gt;(x + 1, y) - depthMap.at&lt;float&gt;(x - 1, y) ) / 2.0;
+float dzdy = ( depthMap.at&lt;float&gt;(x, y + 1) - depthMap.at&lt;float&gt;(x, y + 1) ) / 2.0;
+normalMap.at&lt;Vec3f&gt;(x, y) = cv::normalize( cv::Vec3f(-dzdx, -dzdy, 1.0));
+</code></pre></div><p>On ignore bien sur les points sans donnée de profondeur.
+<img src="/static/depthMapSegm/normalMap.png" alt="Image: Depth map et normals">
+Dans l&rsquo;ordre: image RGB, depth map, normal map.</p>
+<p>Sur la normal map, on peut voir des artefacts (lignes verticales de couleur cyan), probablement dues au traitement effectués sur la depth map précédemment.
+On remarque surtout que même les surfaces planes (comme le sol et la porte du rangement) présentent un bruit important (sans parler des éléments en arrière-plan, complètement méconnaissables).
+Ces erreurs de calcul dans les normals sont dues aux erreurs de mesure dans la depth map (voir [6] pour une modélisation de ces erreurs).</p>
+<p>J&rsquo;ai également ajouté un filtrage median 3 x 3 sur la normal map finale, afin de diminuer le bruit.</p>
+<h1 id="détection-de-surfaces-concaves">Détection de surfaces concaves</h1>
+<p>On va ensuite parcourir la normal map pour y détecter les surfaces concaves.
+J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec ses points voisin <code>(xn, yn)</code> :</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const cv::Vec3f&amp; centerNormal = normalMap.at&lt;cv::Vec3f&gt;(x, y); //normal au centre de la zone à analyser
+const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
+float minConcavity = 1;
+for(each neigbor) {
+    float concavity = 1;
+    if (depthMap.at&lt;float&gt;(xn, yn) - centerDepth &lt;= 0) {
+        concavity = centerNormal.dot( normalMap.at&lt;cv::Vec3f&gt;(xn, yn) );
+    }
+    minConcavity = std::min(minConcavity, concavity);
+}
+thresholdedConcavity = minConcavity &gt; 0.94;
+</code></pre></div><p>J&rsquo;ai également ajouté a cela une méthode permettant de diminuer grandement le bruit des mesures, observée dans [2] et [5], non présentée dans le code ici.</p>
+<p>Le résultat de la map de concavité est montré ici :
+<img src="/static/depthMapSegm/concavityMap.png" alt="Image: Concavity map"></p>
+<p>Cette image est seuillée avec une valeur de 0.94 (comme dans [1]) afin de récupérer les bords.</p>
+<h1 id="détection-de-discontinuités-de-surfaces">Détection de discontinuités de surfaces</h1>
+<p>Cette fois ci on cherche les discontinuités de profondeur.
+J&rsquo;ai utilisé le même opérateur que [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const cv::Vec3f&amp; centerNormal = normalMap.at&lt;cv::Vec3f&gt;(x, y); //normal au centre de la zone à analyser
+const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
+float maxDiscontinuity = 0;
+for(each neigbor) {
+    float discontinuity = cv::norm( (depthMap.at&lt;float&gt;(xn, yn) - centerDepth) * centerNormal);
+    maxDiscontinuity = std::max(maxDiscontinuity, discontinuity);
+}
+thresholdedDiscontinuity = maxDiscontinuity &lt; (0.0012 + 0.0019 * pow(centerDepth - 0.4, 2.0));  //noise model from [6]
+</code></pre></div><p>La dernière ligne montre le seuillage de la valeur de discontinuité par le modèle du bruit d&rsquo;une camera RGB-D (ici, une Kinect).
+<img src="/static/depthMapSegm/discontinuityMap.png" alt="Image: disontinuity map"></p>
+<p>On va alors combiner les informations de concavité et discontinuité pour obtenir la map de contours.</p>
+<h1 id="map-de-contours">Map de contours</h1>
+<p>Les maps de concavité et de discontinuité sont fusionnées a l&rsquo;aide d&rsquo;un opérateur AND binaire <code>&amp;</code> afin de récupérer une map de contours :</p>
+<p><img src="/static/depthMapSegm/contourMap.png" alt="Image: contours map"></p>
+<p>Cette map de contours peut ensuite être lissée avec une fermeture géodésique suivie d&rsquo;une ouverture morphologique pour filtrer les plus petits éléments.</p>
+<h1 id="segmentation-de-composants">Segmentation de composants</h1>
+<p>Il suffit maintenant d&rsquo;appliquer une simple détection de composants connectés pour récupérer une première depth map segmentée.
+J&rsquo;ai également filtré les composants avec une aire sous un certain seuil afin de finir le nettoyage des données.</p>
+<p>Pour optimiser le résultat final, j&rsquo;ai implémenté tout ce système avec un paramètre permettant de régler l&rsquo;échelle de traitement.
+Effectuer le traitement sur la depth map totale (640x480 pixels) serait trop lourd, et elle est donc réduite par un facteur d&rsquo;échelle (0.45 pour un rapport de performance/précision optimal selon mes tests).</p>
+<p>Dans l&rsquo;ordre: détection de plans et cylindres par une version personnalisée de CAPE, segmentation présentée ici (scale=1)
+<img src="/static/depthMapSegm/segmentedRGB.png" alt="Image: segmented Depth Map"></p>
+<p>La comparaison de ce système avec CAPE est simplement a titre indicatif.
+Ici, CAPE est meilleurs car la scène est composée de plans et cylindres, mais on peut s&rsquo;attendre a ce que la segmentation présentée dans ce blog soit plus apte à gérer des objets de forme quelconques.</p>
+<p>Pour de meilleures reconstructions de masques, il manque une gestion d&rsquo;une carte en mémoire, ce qui transforme le système en SLAM comme dans [1].</p>
+<h1 id="bibliographie">Bibliographie:</h1>
+<ul>
+<li>[1] <a href="http://far.in.tum.de/pub/tateno2015iros/tateno2015iros.pdf">Real-Time and Scalable Incremental Segmentation on Dense SLAM</a></li>
+<li>[2] <a href="https://www.researchgate.net/publication/261353757_3D_scene_segmentation_for_autonomous_robot_grasping">3D scene segmentation for autonomous robot grasping</a></li>
+<li>[3] <a href="https://www.researchgate.net/publication/220877151_KinectFusion_Real-time_3D_reconstruction_and_interaction_using_a_moving_depth_camera">KinectFusion: Real-time 3D reconstruction and interaction using a moving depth camera</a></li>
+<li>[4] <a href="https://arxiv.org/pdf/1803.02784.pdf">Fast and Accurate Semantic Mapping through Geometric-based Incremental Segmentation</a></li>
+<li>[5] <a href="https://www.researchgate.net/publication/264738039_Generative_Cognitive_Representation_for_Embodied_Agents">Generative Cognitive Representation for Embodied Agents</a></li>
+<li>[6] <a href="https://www.researchgate.net/publication/234028266_Modeling_Kinect_Sensor_Noise_for_Improved_3D_Reconstruction_and_Tracking">Modeling Kinect Sensor Noise for Improved 3D Reconstruction and Tracking</a></li>
+</ul>
 
         
           <div class="blog-tags">
             
-              <a href="https://BaptisteHudyma.github.io/fr/tags/ppc/">PPC</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/fr/tags/slam/">SLAM</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/fr/tags/robotics/">Robotics</a>&nbsp;
-            
               <a href="https://BaptisteHudyma.github.io/fr/tags/cpp/">Cpp</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/fr/tags/tubex/">tubex</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/fr/tags/opencv/">opencv</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/fr/tags/computer-vision/">Computer vision</a>&nbsp;
             
           </div>
         
@@ -342,42 +386,42 @@ Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;co
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;text=PPC%20SLAM&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fdepth_map_segmentation%2f&amp;text=Segmentation%20de%20depth%20map&amp;via=" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fdepth_map_segmentation%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fdepth_map_segmentation%2f&amp;title=Segmentation%20de%20depth%20map" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fdepth_map_segmentation%2f&amp;title=Segmentation%20de%20depth%20map" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fdepth_map_segmentation%2f&amp;title=Segmentation%20de%20depth%20map" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fppc_slam%2f&amp;description=PPC%20SLAM" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2ffr%2fpost%2fdepth_map_segmentation%2f&amp;description=Segmentation%20de%20depth%20map" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -399,13 +443,11 @@ Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;co
                   <ul>
                 
                 
-                    <li><a href="/fr/post/depth_map_segmentation/">Segmentation de depth map</a></li>
-                
                     <li><a href="/fr/post/monocular_depth_map/">Monocular Depth Map</a></li>
                 
                     <li><a href="/fr/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
                 
-                    <li><a href="/fr/post/ppc_intro/">Programmation par Contraintes</a></li>
+                    <li><a href="/fr/post/ppc_slam/">PPC SLAM</a></li>
                 
               </ul>
 
@@ -417,13 +459,9 @@ Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;co
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/fr/post/ppc_intro/" data-toggle="tooltip" data-placement="top" title="Programmation par Contraintes">&larr; Post précédent</a>
+              <a href="https://BaptisteHudyma.github.io/fr/post/monocular_depth_map/" data-toggle="tooltip" data-placement="top" title="Monocular Depth Map">&larr; Post précédent</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/fr/post/de_cape_et_d_opes/" data-toggle="tooltip" data-placement="top" title="De CAPE et d&#39;Opés">Post suivant &rarr;</a>
-            </li>
           
         </ul>
       
