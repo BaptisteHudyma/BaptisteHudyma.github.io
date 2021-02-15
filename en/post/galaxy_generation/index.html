@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Galaxis Generation - B. Hudyma logs</title>
+  <meta name="description" content="After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies">
+  <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "B. Hudyma logs",
+    
+    "url": "https:\/\/BaptisteHudyma.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/BaptisteHudyma.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io\/en\/post\/galaxy_generation\/",
+          "name": "Galaxis generation"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Baptiste Hudyma"
+  },
+  "headline": "Galaxis Generation",
+  "description" : "After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies\n",
+  "inLanguage" : "en",
+  "wordCount":  1042 ,
+  "datePublished" : "2020-06-15T00:00:00",
+  "dateModified" : "2020-06-15T00:00:00",
+  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+  "keywords" : [ "Procedural generation, Octree" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/en\/post\/galaxy_generation\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/BaptisteHudyma.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Galaxis Generation" />
+<meta property="og:description" content="After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies">
+<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/galaxy_generation/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="B. Hudyma logs" />
+
+  <meta name="twitter:title" content="Galaxis Generation" />
+  <meta name="twitter:description" content="After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies">
+  <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <link rel="alternate" href="https://BaptisteHudyma.github.io/en/index.xml" type="application/rss+xml" title="B. Hudyma logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://BaptisteHudyma.github.io/en/">B. Hudyma logs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="/en/post">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/en/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About me" href="/en/page/about">About me</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+              
+                
+                  <a href="/fr" lang="fr">fr</a>
+                
+              
+            </li>
+          
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span class="hidden-sm hidden-md hidden-lg">Search</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="B. Hudyma logs" href="https://BaptisteHudyma.github.io/en/">
+            <img class="avatar-img" src="https://BaptisteHudyma.github.io/img/github_profile.jpg" alt="B. Hudyma logs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Search B. Hudyma logs</h4>
+        </div>
+        <div class="modal-body">
+          <gcse:search></gcse:search>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Galaxis Generation</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on June 15, 2020
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1042&nbsp;words
+  
+  
+  &nbsp;&bull;&nbsp;Other languages: <a href="https://BaptisteHudyma.github.io/post/galaxy_generation/" lang="fr">fr</a>
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies</p>
+<p>Here, we want to keep some conditions in mind.
+Those conditions are basics for an observer, placed anywhere in the galaxy:</p>
+<ul>
+<li>Most shinny stars are visible from afar</li>
+<li>Close stars can be seen even with a low brightness</li>
+<li>The galactic model must be defined for every point (x, y, z)</li>
+</ul>
+<h1 id="define-the-shape">Define the shape</h1>
+<p>When we say &ldquo;Galaxy&rdquo;, we usually think about a sort of planar spiral structure with a bulge in the center.</p>
+<p>In our universe, we can see various (an infinity of) other shapes, from spirales to sombrero, from barred spirals to shapeless (irregular galaxies).
+Here, we only care about spiral galaxy generation, in my opinion the nicest and those with the most difficult shape to define with an algorithm.</p>
+<p>For the spiral shape, I decided to go with <a href="https://arxiv.org/pdf/0908.0892.pdf">A New Formula Describing the Scaffold Structure of Spiral Galaxies</a>, describing a formula easy enough to parametrize, and with a good approximation of what we can find in nature.
+It is based on a log spiral, with variations allowing to link naturally the arms to the central bar.</p>
+<p>It defines the shape of a spiral galaxy in polar coordinates with the following equation:
+$$
+r(\phi) = \frac{A}{ log(B \tan\frac{\phi}{2N}) }
+$$
+With A a scale parameter, B and N to control the degree and slope of the spiral.</p>
+<p>Some exemples with A = 1:
+<img src="/static/galaxies/parameters.png" alt="Results of shapes"></p>
+<p>I implemented this equation in a way allowing me to use it as a density function of space : We take a point (x, y, z) in space and the function returns the star density of our galaxy at this point.</p>
+<p>Here is a little two armes galaxy:
+<img src="/static/galaxies/full_galaxy.png" alt="Bras de galaxies"></p>
+<h1 id="define-densities">Define densities</h1>
+<p>Once the shape defined, I layed out a general algorithm to obtain the density at each point depending on where we are:</p>
+<h2 id="bulge">Bulge</h2>
+<p>The heart of our galaxy is a simple inverse exponential equation.
+I decided to use <strong>de Vancouleurs law</strong>.</p>
+<p>$$
+d_{bulge}(r) = I_0 e^{-K  r^{0.25} - 1}
+$$</p>
+<p>With r the normalized distance to the center of the galaxy (between 0 and 1), K a parameter changing the diminution of density with distance (&gt; 0), I0 a multiplier for the final value.</p>
+<h2 id="global-density">Global Density</h2>
+<p>The arms are also modelled with an inverse exponential :
+$$
+d_{arms}(r) = I_0 e^{-K Br^{0.25} - 1} * e^{-\frac{r - Br}{R_5} }
+$$</p>
+<p>With Br the normalized radius of the central bulge (between 0 &amp; 1), and R5 the distance at which the density passes below 0.5.</p>
+<p>This formula is used with a similar equation as the first one, to control the diminution of density when we get further from the center of the arm.</p>
+<p>We switch from equation 1 to equation 2 in with our distance from the center:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">    if (r &lt; Br)
+        //use bulge density
+    else
+        //use arms density
+</code></pre></div><p>Result of the law of density for the parameters I0 = 2, Br = 0.1, K = 0.2, R5 = 0.2, function of the normalized radius:</p>
+<p><img src="/static/galaxies/galaxy_density.png" alt="Densité galactique"></p>
+<p>This equation can describe the density of stars in a galaxy of any shape, and we must add a density formula for the arms.</p>
+<h2 id="arms">Arms</h2>
+<p>$$
+d_{from arms} = e^{-\frac{Da}{Ra}}.
+$$</p>
+<p>With Da the distance from the closest arm and Ra the normalized arm radius.</p>
+<p>And here is our arms, with 4000 stars.
+<img src="/static/galaxies/galaxy_with_stars.png" alt="petites etoiles"></p>
+<p>We can observe that density is higher when we get closer to the center of the galaxy, and center of the arms (Bulge and arm not displayed).</p>
+<h1 id="400-billon-stars-without-burning-ram">400 billon stars without burning RAM</h1>
+<p>In our dear Milky Way, we have an estimate of around 200 to 400 billion stars.
+Stars from Earth are visible (with a naked eye) because they emit light, and they are close to us.
+In fact, we can expect that very bright stars are visible from afar, and close stars can also be seen even if they emit dimly.</p>
+<p>However, the brightest stars are also the rarest (B and O class), while the most numerous and also closest from Earth are very dim in comparison (M and K class).
+To avoid generating in memory the billion of stars in our galaxy and make my computer explode, it would be wiser to only generate only the visible stars from our observing point.</p>
+<p>Inspired by the <a href="https://www.gamedev.net/blog/73/entry-1952708-galaxy-generation/">Journal de Ysaneya</a>, I decided to use an octree (briefly explained, the 3D struct of a 2D binary tree), splitting my galaxy in 8 principal cubes, which can also be divided in 8, and on and on until we reach a certain scale.
+The biggest cubes are placed at &ldquo;level 0&rdquo;, until the smaller ones at &ldquo;level 12&rdquo;.</p>
+<p>The observer is in a cube of level 12, that mean in a cube taking 1/4096 of the all galaxy.
+For the Milky Way, it should represent a cube 126.9 x 126.9 x 126.9 light years, enough to contain the Sun and it&rsquo;s close neighbors, and that represent already a big amount of stars (take a look at <a href="http://atunivers.free.fr/250lys.html">the Sun neighborhood at 250 LY</a>).</p>
+<p>An ilage of the subdivided octree to level 12, with a few stars generated with uniform density.
+<img src="/static/galaxies/octree.png" alt="subdivided octree">
+We can se that even with an uniform density, the stars are much more present around the observer.</p>
+<p>Each level of the octree posses a spawning probability of star: the lower levels (0-3) favor the very bright stars, visible from afar, but rare in our galaxy (&lt;1-2% of all stars).
+Intermediate level (4-9) are used for stars dimmer than O and B, but also much more frequent.
+The following levels are handling the very dim stars, which are also the most numerous, like yellow, orange and red dwarfs.
+The last level can also handle the special stars, like white dwarfs, failed stars (K, J, &hellip;) and maybe black holes.</p>
+<p>In conclusion, using the structure of the octree, we garanti that the far bright stars will be generated as well as the close dim stars, without generating all stars.</p>
+<p>I did not yet thing about a reliable solution to handle black hole and nebulas.
+I also currently search for a method to make the octree stars probabilities much more procedural than entering them by hand, to obtain more diverse and interesting results.</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://BaptisteHudyma.github.io/en/tags/procedural-generation/">Procedural generation</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/en/tags/octree/">Octree</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fgalaxy_generation%2f&amp;text=Galaxis%20Generation&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fgalaxy_generation%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fgalaxy_generation%2f&amp;title=Galaxis%20Generation" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fgalaxy_generation%2f&amp;title=Galaxis%20Generation" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fgalaxy_generation%2f&amp;title=Galaxis%20Generation" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fgalaxy_generation%2f&amp;description=Galaxis%20Generation" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="https://BaptisteHudyma.github.io/en/post/ppc_intro/" data-toggle="tooltip" data-placement="top" title="Constraint Programming">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/BaptisteHudyma" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/BaptHdm" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Baptiste Hudyma
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://BaptisteHudyma.github.io/en/">B. Hudyma logs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.80.0</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
+<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+
+
+
+<script>
+  (function() {
+    var cx = 'LDS3KGTLhiHinKeGueGxbRB5f1MRAhXCniZu_BcNHs4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

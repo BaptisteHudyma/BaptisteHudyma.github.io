@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>PPC SLAM - B. Hudyma logs</title>
+  <meta name="description" content="Un SLAM basique utilisant la programmation par contrainte">
+  <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "B. Hudyma logs",
+    
+    "url": "https:\/\/BaptisteHudyma.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/BaptisteHudyma.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io\/post\/ppc_slam\/",
+          "name": "P p c s l a m"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Baptiste Hudyma"
+  },
+  "headline": "PPC SLAM",
+  "description" : "Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.\n",
+  "inLanguage" : "fr",
+  "wordCount":  700 ,
+  "datePublished" : "2020-12-28T00:00:00",
+  "dateModified" : "2020-12-28T00:00:00",
+  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+  "keywords" : [ "PPC, SLAM, Robotics, Cpp, tubex" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/ppc_slam\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/BaptisteHudyma.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="PPC SLAM" />
+<meta property="og:description" content="Un SLAM basique utilisant la programmation par contrainte">
+<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/post/ppc_slam/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="B. Hudyma logs" />
+
+  <meta name="twitter:title" content="PPC SLAM" />
+  <meta name="twitter:description" content="Un SLAM basique utilisant la programmation par contrainte">
+  <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.80.0" />
+  <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://BaptisteHudyma.github.io">B. Hudyma logs</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="/post">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About me" href="/page/about">About me</a>
+            </li>
+          
+        
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+          <li>
+            <a href="#modalSearch" data-toggle="modal" data-target="#modalSearch" style="outline: none;">
+              <span class="hidden-sm hidden-md hidden-lg">Rechercher</span> <span id="searchGlyph" class="glyphicon glyphicon-search"></span>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="B. Hudyma logs" href="https://BaptisteHudyma.github.io">
+            <img class="avatar-img" src="https://BaptisteHudyma.github.io/img/github_profile.jpg" alt="B. Hudyma logs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+  <div id="modalSearch" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Rechercher B. Hudyma logs</h4>
+        </div>
+        <div class="modal-body">
+          <gcse:search></gcse:search>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>PPC SLAM</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">Un SLAM basique utilisant la programmation par contrainte</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posté le December 28, 2020
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;700&nbsp;mots
+  
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.</p>
+<p>Dans <a href="https://BaptisteHudyma.github.io/post/ppc_intro/">l&rsquo;article précédent</a>, j&rsquo;ai présenté rapidement la programmation par contrainte avec beaucoup de texte et un exemple concret.
+Dans celui ci je présente une implémentation d&rsquo;un SLAM (Simultaneous Localization And Mapping), chargé de localiser un robot mobile dans un environnement virtuel.</p>
+<p>Dans cet exemple, on considère que la position du robot a t0 est connue, ainsi que les informations de ses capteurs, comme sa vitesse et son orientation.
+Durant son périple dans le monde virtuel, notre robot utilisera un LIDAR (également simulé) qui lui donne accès a la distance et l&rsquo;orientation absolue a des marqueurs de position inconnu.
+On considère également qu&rsquo;on sait quel marqueur a été remarqué.</p>
+<p>Toutes ces mesures ont bien sur une marge d&rsquo;erreur que l&rsquo;on considère connue (dans le monde réel, ces informations sont obtenues d&rsquo;après la documentation des capteurs utilisés).
+Cependant, dans notre petit monde virtuel, on exclu totalement l&rsquo;apparition d&rsquo;outliers dans les données.</p>
+<p><strong>Cette implémentation ne peut pas fonctionner en l&rsquo;état dans le monde vrai de la vie réelle</strong>.</p>
+<p>Pour ce projet, j&rsquo;ai utilisé <a href="http://simon-rohou.fr/research/tubex-lib/">Tubex</a>, une librairie pour C++/Python de PPC, proposant des outils pour estimer des trajectoires contraintes.
+Mon implémentation est une amélioration de l&rsquo;exemple final du tuto (<a href="http://simon-rohou.fr/research/tubex-lib/doc/tutorial/08-rangeonly-slam/">Range Only SLAM</a>).</p>
+<p>Pour estimer les performances de notre SLAM, nous allons définir un point de comparaison initial : l&rsquo;estimation de trajectoire par dead reckoning, &ldquo;Navigation a l&rsquo;estime&rdquo; (???) en bon François, d&rsquo;après Wikipedia.
+Le dead reckoning consiste a estimer la trajectoire via une intégration directe de la valeur de ses capteurs.
+C&rsquo;est une solution très simple, mais qui a le désavantage d&rsquo;accumuler rapidement les erreurs avec le temps.</p>
+<p>Tubex représente l&rsquo;incertitude des trajectoires en utilisant des tubes, affichés par un gradient de couleur.</p>
+<p><img src="/static/img_ppc_slam/ppc_slam_deadreck.png" alt="Image: Dead reckoning trajectory"></p>
+<p>Sur l&rsquo;image ci dessus, on peut voir le la trajectoire réelle du robot en rouge, et sa trajectoire estimée via dead reckoning en gradients de bleu.
+L&rsquo;incertitude de la position du robot augmente avec le temps, d&rsquo;ou l&rsquo;élargissement de la trajectoire en bleu, jusqu&rsquo;à atteindre la position finale, dans un interval de 18x18 mètres.
+Son point de départ est l&rsquo;endroit avec le moins d&rsquo;incertitude, ou la trajectoire bleu est la plus resserrée.
+Malgré ce manque de précision, la trajectoire réelle ne se retrouve jamais en dehors de la trajectoire estimée.</p>
+<p>Les quatre marqueurs de la map sont représentés en orange, et leur position est inconnue.</p>
+<p>Cette trajectoire est notre variable de départ, qui sera contrainte par le programme en fonction des observations de marqueurs.</p>
+<h1 id="une-v1">Une V1</h1>
+<p>Allez on saute au résultat directement:</p>
+<p><img src="/static/img_ppc_slam/ppc_slam_refined.png" alt="Image: SLAMED!"></p>
+<p>Bon alors, qu&rsquo;est ce qu&rsquo;on voit sur cette image ?
+La partie grisée est l&rsquo;estimation dead reckoning, qui a été réduite jusqu&rsquo;à la partie bleutée.
+On remarque tout de suite que la position estimée du robot est bien meilleure qu&rsquo;avant : on est dans un interval de environ 2x1 mètres, ce qui représente une amélioration de l&rsquo;aire finale de 99.38%.</p>
+<p>On observe également des rectangles autour des marqueurs, qui représentent l&rsquo;estimation de la position des marqueurs par le robot a la fin du processus de mapping.
+Tout comme le robot, leur position finale est située par un interval.</p>
+<h1 id="une-v2-">Une V2 !</h1>
+<p>Bon, le résultat de la V1 est bien beau, mais en fait c&rsquo;est un système assez peu utile : Notre robot est déjà arrivé au bout de se trajectoire quand on fait l&rsquo;estimation de sa position.
+Une implémentation plus utile serait d&rsquo;obtenir la position du robot a chaque instant <em>t</em>, et c&rsquo;est ce que nous allons faire.</p>
+<p>Notre code n&rsquo;a pas besoin de beaucoup de modifications pour ca : nous avons seulement besoin d&rsquo;obtenir la position (et donc réduire les variables) plus régulièrement que juste une fois a la fin.</p>
+<p><img src="/static/img_ppc_slam/ppc_slam_rt.png" alt="Image: SLAMED V2!"></p>
+<p>Cette fois ci la trajectoire dead reckoning n&rsquo;est pas modifiée, et est juste affichée pour comparaison.
+La position du robot a chaque instant <em>t</em> est représentée par un interval en noir.</p>
+<p>L&rsquo;estimation de position instantanée sera de moins bonne qualité que la V1, car on a pas accès tout de suite a l&rsquo;ensemble des données.
+Cependant, une fois arrivé au point final, la trajectoire finale sera &ldquo;contractée&rdquo; en prenant en compte toutes les données précédentes, et on reviendra au même cas que la V1.</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://BaptisteHudyma.github.io/tags/ppc/">PPC</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/tubex/">tubex</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fppc_slam%2f&amp;text=PPC%20SLAM&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fppc_slam%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fppc_slam%2f&amp;title=PPC%20SLAM" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fppc_slam%2f&amp;description=PPC%20SLAM" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Voir également</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/depth_map_segmentation/">Segmentation de depth map</a></li>
+                
+                    <li><a href="/post/monocular_depth_map/">Monocular Depth Map</a></li>
+                
+                    <li><a href="/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
+                
+                    <li><a href="/post/ppc_intro/">Programmation par Contraintes</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://BaptisteHudyma.github.io/post/ppc_intro/" data-toggle="tooltip" data-placement="top" title="Programmation par Contraintes">&larr; Post précédent</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/" data-toggle="tooltip" data-placement="top" title="De CAPE et d&#39;Opés">Post suivant &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/BaptisteHudyma" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/BaptHdm" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Baptiste Hudyma
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://BaptisteHudyma.github.io">B. Hudyma logs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Carbure avec <a href="https://gohugo.io">Hugo v0.80.0</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
+<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+
+
+
+<script>
+  (function() {
+    var cx = 'LDS3KGTLhiHinKeGueGxbRB5f1MRAhXCniZu_BcNHs4';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

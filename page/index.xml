@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Pages on BBB - BaptBeautifulBlog</title>
+    <title>Pages on B. Hudyma logs</title>
     <link>https://BaptisteHudyma.github.io/page/</link>
-    <description>Recent content in Pages on BBB - BaptBeautifulBlog</description>
+    <description>Recent content in Pages on B. Hudyma logs</description>
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster><atom:link href="https://BaptisteHudyma.github.io/page/index.xml" rel="self" type="application/rss+xml" />
@@ -13,8 +13,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/page/about/</guid>
-      <description>Hi ! My name is Baptiste Hudyma, I&amp;rsquo;m a robotic engineer way too curious about way too much subjects. From programming to wood crafting, from physics to video games, and events organization,
-In this blog/posts mashup/portfolio thingy, you will find details on some projects that I though were interesting to share It will also serve as a written trace of some realizations, enabling me to take more time and more room to explain what the idea and processes behind those projects.</description>
+      <description>Bien le bonjour ! Mon nom est Baptiste Hudyma. Je suis un ingénieur en robotique bien trop curieux de bien trop de sujets différents. De la programmation au bricolage, de la chimie aux jeux vidéos jusqu&amp;rsquo;à l&amp;rsquo;organisation d&amp;rsquo;évènements, je vous propose de vous balader sur ce site pour voir des projets plus ou moins complexes que j&amp;rsquo;ai pu développer au fur et à mesure des années
+Dans ce blog/portfolio/patchwork de posts, vous trouverez des descriptions de certains projets dont je pensais intéressant de partager les détails.</description>
     </item>
     
   </channel>

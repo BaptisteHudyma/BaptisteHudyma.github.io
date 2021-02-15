@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on B. Hudyma logs</title>
+    <link>https://BaptisteHudyma.github.io/en/tags/</link>
+    <description>Recent content in Tags on B. Hudyma logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
+    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
+    <lastBuildDate>Sun, 24 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Computer vision</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/computer-vision/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cpp</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/cpp/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Depth map</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/depth-map/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/depth-map/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenCV</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/opencv/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/opencv/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rgb-d</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/rgb-d/</link>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/rgb-d/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PPC</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/ppc/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/ppc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/python/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Sudoku</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/sudoku/</link>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/sudoku/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Octree</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/octree/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/octree/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Procedural generation</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/procedural-generation/</link>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/tags/procedural-generation/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
