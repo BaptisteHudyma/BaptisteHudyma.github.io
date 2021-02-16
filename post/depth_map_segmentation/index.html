@@ -59,7 +59,7 @@
   "headline": "Segmentation de depth map",
   "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l\u0026rsquo;analyse d\u0026rsquo;une normal map.\n",
   "inLanguage" : "fr",
-  "wordCount":  1189 ,
+  "wordCount":  1266 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -262,7 +262,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1189&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1266&nbsp;mots
   
   
   
@@ -311,7 +311,7 @@ Elle présente peu de bruit (donc visuellement un gradient de couleurs continue)
 <p>On peut calculer la valeur d&rsquo;une normale a un point <code>(x, y)</code> de la depth map avec le code c++ suivant :</p>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">float dzdx = ( depthMap.at&lt;float&gt;(x + 1, y) - depthMap.at&lt;float&gt;(x - 1, y) ) / 2.0;
 float dzdy = ( depthMap.at&lt;float&gt;(x, y + 1) - depthMap.at&lt;float&gt;(x, y + 1) ) / 2.0;
-normalMap.at&lt;Vec3f&gt;(x, y) = cv::normalize( cv::Vec3f(-dzdx, -dzdy, 1.0));
+normalMap.at&lt;Vec3f&gt;(x, y) = cv::normalize( cv::Vec3f(-dzdx, -dzdy, -1.0));
 </code></pre></div><p>On ignore bien sur les points sans donnée de profondeur.
 <img src="/static/depthMapSegm/normalMap.png" alt="Image: Depth map et normals">
 Dans l&rsquo;ordre: image RGB, depth map, normal map.</p>
@@ -325,12 +325,12 @@ J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rs
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const cv::Vec3f&amp; centerNormal = normalMap.at&lt;cv::Vec3f&gt;(x, y); //normal au centre de la zone à analyser
 const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
 float minConcavity = 1;
-for(each neigbor) {
-    float concavity = 1;
-    if (depthMap.at&lt;float&gt;(xn, yn) - centerDepth &lt;= 0) {
-        concavity = centerNormal.dot( normalMap.at&lt;cv::Vec3f&gt;(xn, yn) );
+for( each neigbor ) {
+    float neightborDepth = depthMap.at&lt;float&gt;(xn, yn);
+    double vertexDot = centerVertex.dot(cv::Vec3f(xn - x, yn - y, neightborDepth - centerDepth));
+    if ( vertexDot &lt;= 0 ) {
+        minConcavity = std::min(minConcavity, centerNormal.dot( normalMap.at&lt;cv::Vec3f&gt;(xn, yn) );
     }
-    minConcavity = std::min(minConcavity, concavity);
 }
 thresholdedConcavity = minConcavity &gt; 0.94;
 </code></pre></div><p>J&rsquo;ai également ajouté a cela une méthode permettant de diminuer grandement le bruit des mesures, observée dans [2] et [5], non présentée dans le code ici.</p>
@@ -340,14 +340,14 @@ thresholdedConcavity = minConcavity &gt; 0.94;
 <h1 id="détection-de-discontinuités-de-surfaces">Détection de discontinuités de surfaces</h1>
 <p>Cette fois ci on cherche les discontinuités de profondeur.
 J&rsquo;ai utilisé le même opérateur que [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const cv::Vec3f&amp; centerNormal = normalMap.at&lt;cv::Vec3f&gt;(x, y); //normal au centre de la zone à analyser
-const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
 float maxDiscontinuity = 0;
-for(each neigbor) {
-    float discontinuity = cv::norm( (depthMap.at&lt;float&gt;(xn, yn) - centerDepth) * centerNormal);
-    maxDiscontinuity = std::max(maxDiscontinuity, discontinuity);
+for( each neigbor ) {
+    float neightborDepth = depthMap.at&lt;float&gt;(xn, yn);
+    double vertexDot = centerVertex.dot(cv::Vec3f(xn - x, yn - y, neightborDepth - centerDepth));
+    maxDiscontinuity = std::max( maxDiscontinuity, abs(vertexDot) );
 }
-thresholdedDiscontinuity = maxDiscontinuity &lt; (0.0012 + 0.0019 * pow(centerDepth - 0.4, 2.0));  //noise model from [6]
+thresholdedDiscontinuity = maxDiscontinuity &lt; (0.12 + 0.19 * pow(centerDepth - 40, 2.0));  //noise model from [6]
 </code></pre></div><p>La dernière ligne montre le seuillage de la valeur de discontinuité par le modèle du bruit d&rsquo;une camera RGB-D (ici, une Kinect).
 <img src="/static/depthMapSegm/discontinuityMap.png" alt="Image: disontinuity map"></p>
 <p>On va alors combiner les informations de concavité et discontinuité pour obtenir la map de contours.</p>
@@ -359,11 +359,17 @@ thresholdedDiscontinuity = maxDiscontinuity &lt; (0.0012 + 0.0019 * pow(centerDe
 <p>Il suffit maintenant d&rsquo;appliquer une simple détection de composants connectés pour récupérer une première depth map segmentée.
 J&rsquo;ai également filtré les composants avec une aire sous un certain seuil afin de finir le nettoyage des données.</p>
 <p>Pour optimiser le résultat final, j&rsquo;ai implémenté tout ce système avec un paramètre permettant de régler l&rsquo;échelle de traitement.
-Effectuer le traitement sur la depth map totale (640x480 pixels) serait trop lourd, et elle est donc réduite par un facteur d&rsquo;échelle (0.45 pour un rapport de performance/précision optimal selon mes tests).</p>
-<p>Dans l&rsquo;ordre: détection de plans et cylindres par une version personnalisée de CAPE, segmentation présentée ici (scale=1)
-<img src="/static/depthMapSegm/segmentedRGB.png" alt="Image: segmented Depth Map"></p>
-<p>La comparaison de ce système avec CAPE est simplement a titre indicatif.
-Ici, CAPE est meilleurs car la scène est composée de plans et cylindres, mais on peut s&rsquo;attendre a ce que la segmentation présentée dans ce blog soit plus apte à gérer des objets de forme quelconques.</p>
+Effectuer le traitement sur la depth map totale (640x480 pixels) serait trop lourd, et elle est donc réduite par un facteur d&rsquo;échelle (0.45 pour un rapport de performance/précision optimale selon mes tests).</p>
+<p>Voila le résultat de segmentation final a coté de l&rsquo;image RGB originelle.
+<img src="/static/depthMapSegm/segmentedDepthMap.png" alt="Image: segmented rgb"></p>
+<h2 id="comparaison-qualitative">Comparaison qualitative</h2>
+<p>A titre d&rsquo;indication, voici une comparaison de la segmentation obtenue avec CAPE, un système capable de détecter uniquement les plans et cylindres.</p>
+<p><img src="/static/depthMapSegm/segmentedRGB.png" alt="Image: segmented rgb comparaison">
+A gauche, segmentation avec CAPE, a droite la méthode de segmentation présentée ici (scale=1).</p>
+<p>Ici, CAPE donne de meilleurs résultats car la scène est composée majoritairement de plans et cylindres, mais on peut s&rsquo;attendre a ce que la segmentation présentée dans ce blog soit plus apte à gérer des objets de forme quelconques.
+Cette méthode de segmentation permet ici de récupérer des surfaces non segmentées par CAPE, notamment dans le background.
+Elle demande également plus de ressources que CAPE, mais est facilement parallélisable.</p>
+<p>En somme, ces deux méthodes peuvent être fusionnées pour tirer parti des avantages de chacune.</p>
 <p>Pour de meilleures reconstructions de masques, il manque une gestion d&rsquo;une carte en mémoire, ce qui transforme le système en SLAM comme dans [1].</p>
 <h1 id="bibliographie">Bibliographie:</h1>
 <ul>
