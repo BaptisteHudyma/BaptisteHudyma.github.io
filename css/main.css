@@ -3,7 +3,7 @@
 html {
 	--link-color: #404040;
   --main-background-color: #FFFFFF;
-  --main-text-color: hsl(0, 0%, 20%);
+  --main-text-color: #FFF;
   --main-underline-color: #008AFF;
   --main-oversight-color: #0085a1; 
   --main-header-color: #F5F5F5;
@@ -12,13 +12,13 @@ html {
 
 @media (prefers-color-scheme: dark) { 
     html {
-      --link-color: rgb( 100, 210, 255);
-      --main-background-color: hsl(0, 0%, 20%);
-      --main-text-color: hsl(0, 0%, 85%); 
-      --main-underline-color: #008AFF;
-      --main-oversight-color: #0085a1; 
+      --link-color: #C0BAB2;
+      --main-background-color: #181A1B;
+      --main-text-color: #E8E6E3; 
+      --main-underline-color: #5BE3FF;
+      --main-oversight-color: #5BE3FF; 
       --main-header-color: #1E2021;
-      --main-gray-color: #808080;
+      --main-gray-color: #5B6367;
     }
 }
 
@@ -614,7 +614,7 @@ footer .theme-by {
 
 .header-section.has-img .no-img {
   margin-top: 0;
-  background: #FCFCFC;
+  background: var(--main-background-color);
   margin: 0 0 40px;
   padding: 20px 0;
   box-shadow: 0 0 5px #AAA;
