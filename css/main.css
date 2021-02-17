@@ -1,11 +1,35 @@
 /* --- General --- */
 
+html {
+	--link-color: #404040;
+  --main-background-color: #FFFFFF;
+  --main-text-color: hsl(0, 0%, 20%);
+  --main-underline-color: #008AFF;
+  --main-oversight-color: #0085a1; 
+  --main-header-color: #F5F5F5;
+  --main-gray-color: #808080;
+}
+
+@media (prefers-color-scheme: dark) { 
+    html {
+      --link-color: rgb( 100, 210, 255);
+      --main-background-color: hsl(0, 0%, 20%);
+      --main-text-color: hsl(0, 0%, 85%); 
+      --main-underline-color: #008AFF;
+      --main-oversight-color: #0085a1; 
+      --main-header-color: #1E2021;
+      --main-gray-color: #808080;
+    }
+}
+
+
+
 body {
   font-family: 'Lora', 'Times New Roman', serif;
   font-size: 18px;
-  color: #404040;
+  color: var(--main-text-color);
   position: relative;
-  background: #FFF;
+  background: var(--main-background-color);
   display: flex;
   flex-flow: column;
   height: 100vh;
@@ -31,21 +55,21 @@ p + p {
 }
 p a {
   /* text-decoration: underline */
-  color: #008AFF;
+  color: var(--main-underline);
 }
 h1,h2,h3,h4,h5,h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 800;
 }
 a {
-  color: #008AFF;
+  color: var(--main-underline-color);
 }
 a:hover,
 a:focus {
-  color: #0085a1;
+  color: var(--main-oversight-color);
 }
 blockquote {
-  color: #808080;
+  color: var(--main-gray-color);
   font-style: italic;
 }
 blockquote p:first-child {
@@ -96,21 +120,21 @@ div.panel-body a.list-group-item.view-all {
 }
 
 ::-moz-selection {
-  color: white;
+  color: var(--main-background-color);
   text-shadow: none;
-  background: #0085a1;
+  background: var(--main-oversight-color);
 }
 ::selection {
-  color: white;
+  color: var(--main-background-color);
   text-shadow: none;
-  background: #0085a1;
+  background: var(--main-oversight-color);
 }
 img::selection {
-  color: white;
+  color: var(--main-background-color);
   background: transparent;
 }
 img::-moz-selection {
-  color: white;
+  color: var(--main-background-color);
   background: transparent;
 }
 
@@ -137,7 +161,7 @@ img {
 /* --- Navbar --- */
 
 .navbar-custom {
-  background: #F5F5F5;
+  background: var(--main-header-color);
   border-bottom: 1px solid #EAEAEA;
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -151,14 +175,14 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
   font-weight: 800;
-  color: #404040;
+  color: var(--link-color);
 }
 
 .navbar-custom .navbar-brand:hover,
 .navbar-custom .navbar-brand:focus ,
 .navbar-custom .nav li a:hover,
 .navbar-custom .nav li a:focus {
-  color: #0085a1;
+  color: var(--main-oversight-color);
 }
 
 .navbar-custom .navbar-brand-logo {
@@ -262,7 +286,7 @@ img {
   display: block;
   padding: 10px;
   padding-left: 30px;
-  background: #f5f5f5;
+  background: var(--main-header-color);
   text-decoration: none !important;
   border-width: 0 1px 1px 1px;
   font-weight: normal;
@@ -299,14 +323,14 @@ img {
 
 footer {
   padding: 30px 0;
-  background: #F5F5F5;
+  background: var(--main-header-color);
   border-top: 1px #EAEAEA solid;
   margin-top: auto;
   font-size: 14px;
 }
 
 footer a {
-  color: #404040;
+  color: var(--link-color);
 }
 
 footer .list-inline {
@@ -354,13 +378,13 @@ footer .theme-by {
 
 .post-preview a {
   text-decoration: none;
-  color: #404040;
+  color: var(--link-color);
 }
 
 .post-preview a:focus,
 .post-preview a:hover {
   text-decoration: none;
-  color: #0085a1;
+  color: var(--main-oversight-color);
 }
 
 .post-preview .post-title {
@@ -375,7 +399,7 @@ footer .theme-by {
 .post-preview .post-meta,
 .post-heading .post-meta,
 .page-meta {
-  color: #808080;
+  color: var(--main-gray-color);
   font-size: 18px;
   font-style: italic;
   margin: 0 0 10px;
@@ -386,7 +410,7 @@ footer .theme-by {
 .post-preview .post-meta a,
 .post-heading .post-meta a,
 .page-meta a {
-  color: #404040;
+  color: var(--link-color);
   text-decoration: none;
 }
 .post-preview .post-entry {
@@ -440,7 +464,7 @@ footer .theme-by {
 }
 
 .blog-tags a {
-  color: #008AFF;
+  color: var(--main-underline-color);
   text-decoration: none;
   padding: 0px 5px;
 }
@@ -451,7 +475,7 @@ footer .theme-by {
 
 .blog-tags a:hover {
   border-radius: 2px;
-  color: #008AFF;
+  color: var(--main-underline-color);
   background-color: #CCC;
 }
 
@@ -516,7 +540,7 @@ footer .theme-by {
 .intro-header.big-img .page-heading,
 .intro-header.big-img .post-heading {
   padding: 100px 0;
-  color: #FFF;
+  color: var(--main-background-color);
   text-shadow: 1px 1px 3px #000;
 }
 .intro-header .page-heading h1,
@@ -641,9 +665,9 @@ footer .theme-by {
   font-weight: 800;
   letter-spacing: 1px;
   padding: 10px 5px;
-  background: #FFF;
+  background: var(--main-background-color);
   border-radius: 0;
-  color: #404040;
+  color: var(--link-color);
 }
 @media only screen and (min-width: 768px) {
   .pager li a {
@@ -652,9 +676,9 @@ footer .theme-by {
 }
 .pager li a:hover,
 .pager li a:focus {
-  color: #FFF;
-  background: #0085a1;
-  border: 1px solid #0085a1;
+  color: var(--main-background-color);
+  background: var(--main-oversight-color);
+  border: 1px solid var(--main-oversight-color);
 }
 
 .pager {
@@ -682,7 +706,7 @@ table {
 }
 table tr {
   border-top: 1px solid #cccccc;
-  background-color: #ffffff;
+  background-color: var(--main-background-color);
   margin: 0;
   padding: 0;
 }
@@ -758,9 +782,9 @@ div.splitbox div.right {
   font-weight: 800;
   letter-spacing: 1px;
   padding: 10px 5px;
-  background: #FFF;
+  background: var(--main-background-color);
   border-radius: 0;
-  color: #404040;
+  color: var(--link-color);
 }
 @media only screen and (min-width: 768px) {
   .disqus-comments button {
@@ -769,9 +793,9 @@ div.splitbox div.right {
 }
 .disqus-comments button:hover, 
 .disqus-comments button:focus {
-  color: #FFF;
-  background: #0085a1;
-  border: 1px solid #0085a1;
+  color: var(--main-background-color);
+  background: var(--main-oversight-color);
+  border: 1px solid var(--main-oversight-color);
 }
 
 /* Related posts */
@@ -803,7 +827,7 @@ h4.see-also {
   font-size: 16px;
   text-align: center;
   transition: all 150ms ease-in-out;
-  color: #fff;
+  color: var(--main-background-color);
 }
  ul.share li a {
   background-color: #b5c6ce;
