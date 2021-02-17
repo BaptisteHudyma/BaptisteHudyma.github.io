@@ -8,6 +8,8 @@ html {
   --main-oversight-color: #0085a1; 
   --main-header-color: #F5F5F5;
   --main-gray-color: #808080;
+  --main-bar-color: #EEE;
+  --main-link-over: #CCC;
 }
 
 @media (prefers-color-scheme: dark) { 
@@ -19,6 +21,8 @@ html {
       --main-oversight-color: #5BE3FF; 
       --main-header-color: #1E2021;
       --main-gray-color: #5B6367;
+      --main-bar-color: #35393B;
+      --main-link-over: #35393B;
     }
 }
 
@@ -476,7 +480,7 @@ footer .theme-by {
 .blog-tags a:hover {
   border-radius: 2px;
   color: var(--main-underline-color);
-  background-color: #CCC;
+  background-color: var(--main-link-over);
 }
 
 .post-preview .blog-tags {
