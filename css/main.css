@@ -28,7 +28,7 @@ html[data-theme="dark"] {
   --main-underline-color: #33A7FF;
   --main-oversight-color: #5BE3FF; 
   --main-header-color: #1E2021;
-  --main-header-title-color: #C0BAB2;
+  --main-header-title-color: #E8E6E3;
   --main-gray-color: #5B6367;
   --main-bar-color: #35393B;
   --main-link-over: #35393B;
@@ -52,7 +52,7 @@ html[data-theme="dark"] {
       --main-underline-color: #33A7FF;
       --main-oversight-color: #5BE3FF; 
       --main-header-color: #1E2021;
-      --main-header-title-color: #C0BAB2;
+      --main-header-title-color: #E8E6E3;
       --main-gray-color: #5B6367;
       --main-bar-color: #35393B;
       --main-link-over: #35393B;

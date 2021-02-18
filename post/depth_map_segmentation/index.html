@@ -59,7 +59,7 @@
   "headline": "Segmentation de depth map",
   "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l\u0026rsquo;analyse d\u0026rsquo;une normal map.\n",
   "inLanguage" : "fr",
-  "wordCount":  1267 ,
+  "wordCount":  1266 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -260,7 +260,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1267&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1266&nbsp;mots
   
   
   
@@ -492,8 +492,7 @@ Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&r
 <h1 id="réparer-la-depth-map">Réparer la depth map</h1>
 <p>Afin de corriger quelques défauts de la depth map en prévision de son utilisation pour calculer les normales, je lui ai appliqué quelques traitements.</p>
 <p>J&rsquo;ai ici utilisé une fermeture morphologique, un filtrage médian puis un filtrage bilatéral, qui ont pour but dans l&rsquo;ordre, de refermer les petits trous introduits par la warping, lisser ces modifications et effectuer un lissage global favorisant la conservation des surfaces planes.</p>
-<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="cp">#include</span> <span class="cpf">&#34;test&#34;</span><span class="cp">
-</span><span class="cp"></span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
+<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
 <span class="n">cv</span><span class="o">::</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">depthMap</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">);</span> <span class="c1">// kernel is a 3x3 square
 </span><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="n">cv</span><span class="o">::</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">depthMap</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
