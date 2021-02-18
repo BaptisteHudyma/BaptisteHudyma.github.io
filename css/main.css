@@ -1,9 +1,8 @@
 /* --- General --- */
 
 html, html[data-theme="light"] {
-	--link-color: #404040;
   --main-background-color: #FFFFFF;
-  --main-text-color: #FFF;
+  --main-text-color: #404040;
   --main-underline-color: #008AFF;
   --main-oversight-color: #0085a1; 
   --main-header-color: #F5F5F5;
@@ -18,7 +17,6 @@ html, html[data-theme="light"] {
 }
 
 html[data-theme="dark"] {
-  --link-color: #C0BAB2;
   --main-background-color: #181A1B;
   --main-text-color: #C0BAB2; 
   --main-underline-color: #33A7FF;
@@ -37,7 +35,6 @@ html[data-theme="dark"] {
 
 @media (prefers-color-scheme: dark) { 
     html, html[data-theme="dark"] {
-      --link-color: #C0BAB2;
       --main-background-color: #181A1B;
       --main-text-color: #C0BAB2; 
       --main-underline-color: #33A7FF;
@@ -54,9 +51,8 @@ html[data-theme="dark"] {
     }
 
     html[data-theme="light"] {
-    	--link-color: #404040;
       --main-background-color: #FFFFFF;
-      --main-text-color: #FFF;
+      --main-text-color: #404040;
       --main-underline-color: #008AFF;
       --main-oversight-color: #0085a1; 
       --main-header-color: #F5F5F5;
@@ -224,7 +220,7 @@ img {
 .navbar-custom .navbar-brand,
 .navbar-custom .nav li a {
   font-weight: 800;
-  color: var(--link-color);
+  color: var(--main-text-color);
 }
 
 .navbar-custom .navbar-brand:hover,
@@ -379,7 +375,7 @@ footer {
 }
 
 footer a {
-  color: var(--link-color);
+  color: var(--main-text-color);
 }
 
 footer .list-inline {
@@ -427,7 +423,7 @@ footer .theme-by {
 
 .post-preview a {
   text-decoration: none;
-  color: var(--link-color);
+  color: var(--main-text-color);
 }
 
 .post-preview a:focus,
@@ -459,7 +455,7 @@ footer .theme-by {
 .post-preview .post-meta a,
 .post-heading .post-meta a,
 .page-meta a {
-  color: var(--link-color);
+  color: var(--main-text-color);
   text-decoration: none;
 }
 .post-preview .post-entry {
@@ -589,7 +585,7 @@ footer .theme-by {
 .intro-header.big-img .page-heading,
 .intro-header.big-img .post-heading {
   padding: 100px 0;
-  color: var(--main-text-color);
+  color: var(--main-header-color);
   text-shadow: 1px 1px 3px #000;
 }
 .intro-header .page-heading h1,
@@ -716,7 +712,7 @@ footer .theme-by {
   padding: 10px 5px;
   background: var(--main-background-color);
   border-radius: 0;
-  color: var(--link-color);
+  color: var(--main-text-color);
 }
 @media only screen and (min-width: 768px) {
   .pager li a {
@@ -833,7 +829,7 @@ div.splitbox div.right {
   padding: 10px 5px;
   background: var(--main-background-color);
   border-radius: 0;
-  color: var(--link-color);
+  color: var(--main-text-color);
 }
 @media only screen and (min-width: 768px) {
   .disqus-comments button {
