@@ -59,7 +59,7 @@
   "headline": "Segmentation de depth map",
   "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l\u0026rsquo;analyse d\u0026rsquo;une normal map.\n",
   "inLanguage" : "fr",
-  "wordCount":  1266 ,
+  "wordCount":  1267 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -94,8 +94,8 @@
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/syntax.css" />
+  <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
@@ -260,7 +260,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1266&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1267&nbsp;mots
   
   
   
@@ -492,10 +492,11 @@ Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&r
 <h1 id="réparer-la-depth-map">Réparer la depth map</h1>
 <p>Afin de corriger quelques défauts de la depth map en prévision de son utilisation pour calculer les normales, je lui ai appliqué quelques traitements.</p>
 <p>J&rsquo;ai ici utilisé une fermeture morphologique, un filtrage médian puis un filtrage bilatéral, qui ont pour but dans l&rsquo;ordre, de refermer les petits trous introduits par la warping, lisser ces modifications et effectuer un lissage global favorisant la conservation des surfaces planes.</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">cv::Mat newTempoMat
-cv::morphologyEx(depthMap, newTempoMat, cv::MORPH_CLOSE, kernel); // kernel is a 3x3 square
-cv::medianBlur(newTempoMat, newTempoMat, 3);
-cv::bilateralFilter(newTempoMat, depthMap,  7, 31, 15);
+<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="cp">#include</span> <span class="cpf">&#34;test&#34;</span><span class="cp">
+</span><span class="cp"></span><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
+<span class="n">cv</span><span class="o">::</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">depthMap</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">);</span> <span class="c1">// kernel is a 3x3 square
+</span><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+<span class="n">cv</span><span class="o">::</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">depthMap</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 </code></pre></div><p>Les papiers que j&rsquo;ai utilisé comme référence utilisent tous une vertex map, qui est une depth map convertie en unités &ldquo;réelles&rdquo;.</p>
 <h1 id="calculer-la-normal-map">Calculer la Normal Map</h1>
 <p>Une normal map est une image RGB représentant les vecteurs normaux a chaque plan au niveau de chaque pixel de l&rsquo;image de départ (voir <a href="https://fr.wikipedia.org/wiki/Normale_%C3%A0_une_surface">Wikipedia: Normale a une surface</a> pour plus de détails, je n&rsquo;irais pas plus loin ici).</p>
@@ -507,8 +508,7 @@ Elle présente peu de bruit (donc visuellement un gradient de couleurs continue)
 <div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="kt">float</span> <span class="n">dzdx</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 <span class="kt">float</span> <span class="n">dzdy</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">normalize</span><span class="p">(</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="o">-</span><span class="n">dzdx</span><span class="p">,</span> <span class="o">-</span><span class="n">dzdy</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">));</span>
-</code></pre></div>
-<p>On ignore bien sur les points sans donnée de profondeur.
+</code></pre></div><p>On ignore bien sur les points sans donnée de profondeur.
 <img src="/static/depthMapSegm/normalMap.png" alt="Image: Depth map et normals">
 Dans l&rsquo;ordre: image RGB, depth map, normal map.</p>
 <p>Sur la normal map, on peut voir des artefacts (lignes verticales de couleur cyan), probablement dues au traitement effectués sur la depth map précédemment.
@@ -518,17 +518,17 @@ Ces erreurs de calcul dans les normals sont dues aux erreurs de mesure dans la d
 <h1 id="détection-de-surfaces-concaves">Détection de surfaces concaves</h1>
 <p>On va ensuite parcourir la normal map pour y détecter les surfaces concaves.
 J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec ses points voisin <code>(xn, yn)</code> :</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const cv::Vec3f&amp; centerNormal = normalMap.at&lt;cv::Vec3f&gt;(x, y); //normal au centre de la zone à analyser
-const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
-float minConcavity = 1;
-for( each neigbor ) {
-    float neightborDepth = depthMap.at&lt;float&gt;(xn, yn);
-    double vertexDot = centerVertex.dot(cv::Vec3f(xn - x, yn - y, neightborDepth - centerDepth));
-    if ( vertexDot &lt;= 0 ) {
-        minConcavity = std::min(minConcavity, centerNormal.dot( normalMap.at&lt;cv::Vec3f&gt;(xn, yn) );
-    }
-}
-thresholdedConcavity = minConcavity &gt; 0.94;
+<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&amp;</span> <span class="n">centerNormal</span> <span class="o">=</span> <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="c1">//normal au centre de la zone à analyser
+</span><span class="c1"></span><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
+</span><span class="c1"></span><span class="kt">float</span> <span class="n">minConcavity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">neightborDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">vertexDot</span> <span class="o">=</span> <span class="n">centerVertex</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="n">xn</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">neightborDepth</span> <span class="o">-</span> <span class="n">centerDepth</span><span class="p">));</span>
+    <span class="k">if</span> <span class="p">(</span> <span class="n">vertexDot</span> <span class="o">&lt;=</span> <span class="mi">0</span> <span class="p">)</span> <span class="p">{</span>
+        <span class="n">minConcavity</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">min</span><span class="p">(</span><span class="n">minConcavity</span><span class="p">,</span> <span class="n">centerNormal</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span> <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">)</span> <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+<span class="n">thresholdedConcavity</span> <span class="o">=</span> <span class="n">minConcavity</span> <span class="o">&gt;</span> <span class="mf">0.94</span><span class="p">;</span>
 </code></pre></div><p>J&rsquo;ai également ajouté a cela une méthode permettant de diminuer grandement le bruit des mesures, observée dans [2] et [5], non présentée dans le code ici.</p>
 <p>Le résultat de la map de concavité est montré ici :
 <img src="/static/depthMapSegm/concavityMap.png" alt="Image: Concavity map"></p>
@@ -536,15 +536,15 @@ thresholdedConcavity = minConcavity &gt; 0.94;
 <h1 id="détection-de-discontinuités-de-surfaces">Détection de discontinuités de surfaces</h1>
 <p>Cette fois ci on cherche les discontinuités de profondeur.
 J&rsquo;ai utilisé le même opérateur que [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
-<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">const float&amp; centerDepth = depthMap.at&lt;float&gt;(x, y);           //Valeur de la depth map au centre
-float maxDiscontinuity = 0;
-for( each neigbor ) {
-    float neightborDepth = depthMap.at&lt;float&gt;(xn, yn);
-    double vertexDot = centerVertex.dot(cv::Vec3f(xn - x, yn - y, neightborDepth - centerDepth));
-    maxDiscontinuity = std::max( maxDiscontinuity, abs(vertexDot) );
-}
-thresholdedDiscontinuity = maxDiscontinuity &lt; (0.12 + 0.19 * pow(centerDepth - 40, 2.0));  //noise model from [6]
-</code></pre></div><p>La dernière ligne montre le seuillage de la valeur de discontinuité par le modèle du bruit d&rsquo;une camera RGB-D (ici, une Kinect).
+<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
+</span><span class="c1"></span><span class="kt">float</span> <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="kt">float</span> <span class="n">neightborDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">);</span>
+    <span class="kt">double</span> <span class="n">vertexDot</span> <span class="o">=</span> <span class="n">centerVertex</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="n">xn</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">neightborDepth</span> <span class="o">-</span> <span class="n">centerDepth</span><span class="p">));</span>
+    <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span> <span class="n">maxDiscontinuity</span><span class="p">,</span> <span class="n">abs</span><span class="p">(</span><span class="n">vertexDot</span><span class="p">)</span> <span class="p">);</span>
+<span class="p">}</span>
+<span class="n">thresholdedDiscontinuity</span> <span class="o">=</span> <span class="n">maxDiscontinuity</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mf">0.12</span> <span class="o">+</span> <span class="mf">0.19</span> <span class="o">*</span> <span class="n">pow</span><span class="p">(</span><span class="n">centerDepth</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">));</span>  <span class="c1">//noise model from [6]
+</span></code></pre></div><p>La dernière ligne montre le seuillage de la valeur de discontinuité par le modèle du bruit d&rsquo;une camera RGB-D (ici, une Kinect).
 <img src="/static/depthMapSegm/discontinuityMap.png" alt="Image: disontinuity map"></p>
 <p>On va alors combiner les informations de concavité et discontinuité pour obtenir la map de contours.</p>
 <h1 id="map-de-contours">Map de contours</h1>

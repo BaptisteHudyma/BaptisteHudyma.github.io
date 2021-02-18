@@ -16,6 +16,10 @@ html, html[data-theme="light"] {
   --main-share-inside: #FFFFFF;
   --main-post-tags: #999;
   --main-footer-bar-color: #EAEAEA;
+  --code-background-color: #F8F8F8;
+  --code-text-color: #3F3F3F;
+  --code-box-background: #F9F2F4;
+  --code-box-text: #C7254E;
 }
 
 html[data-theme="dark"] {
@@ -34,6 +38,10 @@ html[data-theme="dark"] {
   --main-share-inside: #FFFFFF;
   --main-post-tags: #868178;
   --main-footer-bar-color: #363A3D;
+  --code-background-color: #1C1E1F;
+  --code-text-color: #DCDCD7;
+  --code-box-background: #2B141A;
+  --code-box-text: #DD496E;
 }
 
 
@@ -54,6 +62,10 @@ html[data-theme="dark"] {
       --main-share-inside: #FFFFFF;
       --main-post-tags: #868178;
       --main-footer-bar-color: #363A3D;
+      --code-background-color: #1C1E1F;
+      --code-text-color: #DCDCD7;
+      --code-box-background: #2B141A;
+      --code-box-text: #DD496E;
     }
 
     html[data-theme="light"] {
@@ -72,6 +84,10 @@ html[data-theme="dark"] {
       --main-share-inside: #FFFFFF;
       --main-post-tags: #999;
       --main-footer-bar-color: #EAEAEA;
+      --code-background-color: #F8F8F8;
+      --code-text-color: #3F3F3F;
+      --code-box-background: #F9F2F4;
+      --code-box-text: #C7254E;
     }
 }
 
@@ -508,6 +524,37 @@ footer .theme-by {
   }
 }
 
+
+/*Code*/
+code, kbd, pre, samp {
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    font-size: 92%;
+}
+code {
+    overflow-x:auto;
+    color: var(--code-box-text);
+    background: var(--code-box-background);
+}
+pre {
+    padding: 1rem;
+    margin: 2rem 0;
+    background: var(--main-background-color);
+    border: 0;
+    border-radius: 2px;
+    line-height: 1.15;
+    display:block;
+}
+pre code {
+    display:block;
+    background: var(--code-background-color);
+    color: var(--code-text-color);
+    white-space: inherit;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 15px;
+}
+
 /* --- Tags --- */
 
 .blog-tags {
@@ -897,3 +944,4 @@ h4.see-also {
  ul.share li:hover .fab {
   transform: scale(1.4)
 }
+
