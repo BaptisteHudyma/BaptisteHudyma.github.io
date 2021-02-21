@@ -59,7 +59,7 @@
   "headline": "Plante tactile",
   "description" : "Un petit projet d\u0026rsquo;une après-midi pour implémenter une interface tactile a l\u0026rsquo;aide d\u0026rsquo;un microcontrôleur.\n",
   "inLanguage" : "fr",
-  "wordCount":  941 ,
+  "wordCount":  1118 ,
   "datePublished" : "2019-12-13T00:00:00",
   "dateModified" : "2019-12-13T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;941&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1118&nbsp;mots
   
   
   
@@ -490,7 +490,7 @@ if (!doNotTrack) {
         <p>Un petit projet d&rsquo;une après-midi pour implémenter une interface tactile a l&rsquo;aide d&rsquo;un microcontrôleur.</p>
 <p>Un peu de contexte : Nous sommes en 2019, je suis en 5e année d&rsquo;école d&rsquo;ingénieur, en cours d&rsquo;IoT (Internet of Things, objet connectés).
 Par groupe de 5, nous devons réaliser un projet sur 4 jours, sur le thème &ldquo;un objet connecté inutile mais désirable&rdquo; (un sujet de société finalement).
-Notre équipe décide de s&rsquo;orienter vers une plante connectée appelée <em>Super Spinach 2000</em>, mais pour moi, il manque quelque chose pour que l&rsquo;ensemble soit plus désirable.</p>
+Notre équipe décide de s&rsquo;orienter vers une plante connectée appelée <em>Super Spinach 3000</em>, mais pour moi, il manque quelque chose pour que l&rsquo;ensemble soit plus désirable.</p>
 <p>Je me rappelle alors du projet <a href="https://www.youtube.com/watch?v=EcRSKEIucjk">&ldquo;Botanicus interacticus&rdquo; de Disney Research Hub</a>, permettant de brancher une interface sur une plante pour visualiser les interactions tactiles avec un utilisateur.
 Une plante connectée c&rsquo;est bien, mais une plante connectée qui peut exprimer sa joie d&rsquo;être caressée ou permet d&rsquo;allumer la lumière/musique, c&rsquo;est bien mieux !</p>
 <p>L&rsquo;équipe, convaincue par mon idée, m&rsquo;a confié la réalisation de cette partie (oups !).</p>
@@ -509,6 +509,7 @@ Une plante connectée c&rsquo;est bien, mais une plante connectée qui peut expr
 <p>J&rsquo;ai simplement mis un fil de la pin A0, et j&rsquo;observe les données pendant quelques temps avant de poser mon doigt dessus.
 Voilà un exemple des données bruts, au moment où je touche le fil :
 <img src="/static/plant_touch/contact_fil.png" alt=""></p>
+<p>Le signal ressemble a une sinusoïdal oscillant autour de 512 (1024/2) a vide, saturée entre 0 et 1023 quand un contact est établi.</p>
 <details><summary>Qu&rsquo;est-ce que c&rsquo;est que cette sinusoïdal ? (cliquer pour étendre)</summary>
 <p>Le convertisseur analogique vers digital (ADC) de l&rsquo;Arduino utilise 10 bits, ce qui nous donne des valeurs de 0 a 1023.</p>
 <p>Ici, observe un bruit sinusoïdal, assez faible avant que j&rsquo;établisse le contact, puis fortement amplifié.
@@ -524,7 +525,8 @@ Cela indique qu&rsquo;il s&rsquo;agit d&rsquo;un bruit extérieur au système, c
 <h2 id="pull-up-2-m-ohms">Pull up 2 M Ohms</h2>
 <p>En ajoutant une résistance de 2 Mega Ohms entre notre pin et l&rsquo;alimentation Vcc (ici, 5 Volts), on &ldquo;force&rdquo; la lecture et la reinitialisation de la pin.</p>
 <p><img src="/static/plant_touch/contact_fil_pullup.png" alt=""></p>
-<p>Cette fois on peut simplement ajouter une condition pour allumer la led si on passe en dessous de la valeur 1000 :</p>
+<p>La valeur de base est cette fois très proche de 1023, et descend vers 980 quand un contact est établit.
+Cette fois on peut simplement ajouter une condition pour allumer la led si on passe en dessous de la valeur 1000 :</p>
 <div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//allumer la led si on passe sous le seuil, sinon eteindre
 </span><span class="c1"></span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">sensorValue</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">);</span>
 </code></pre></div><p><img src="/static/plant_touch/touch_pullup.gif" alt="">
@@ -538,7 +540,7 @@ Cette implémentation repose uniquement sur la résistance du corps humain, une 
 Ce composant présente une certaine capacité à retenir et libérer des charges, et on va utiliser cette propriété pour détecter un contact avec notre plante.</p>
 <p>On cherche ici à charger le condensateur, puis détecter le temps qu&rsquo;il prend à se décharger complètement (via la valeur <code>cycles</code>).
 Cette valeur est comparée a une baseline <code>cycleThreshold</code> qui représente notre capacitance de base de l&rsquo;environnement, étalonnée quand le système est à vide, ou réglée via un potentiomètre.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">const</span> <span class="n">in</span> <span class="n">plantSensor</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">const</span> <span class="kt">int</span> <span class="n">plantSensor</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 <span class="kt">uint8_t</span> <span class="n">cycleThreshold</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
 
 <span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
@@ -560,19 +562,8 @@ Cette valeur est comparée a une baseline <code>cycleThreshold</code> qui repré
             <span class="k">break</span><span class="p">;</span>
     <span class="p">}</span>
     
-    <span class="c1">//empty capacitor 
-</span><span class="c1"></span>    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-
     <span class="c1">//touch detected
-</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">cycles</span> <span class="o">&gt;</span> <span class="n">cycleThreshold</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">HIGH</span><span class="p">);</span>
-        <span class="n">delay</span><span class="p">(</span><span class="mi">50</span><span class="p">);</span>
-    <span class="p">}</span>
-    <span class="k">else</span> <span class="p">{</span>
-        <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-        <span class="n">delay</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
-    <span class="p">}</span>
+</span><span class="c1"></span>    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">cycles</span> <span class="o">&gt;</span> <span class="n">cycleThreshold</span><span class="p">);</span>
 <span class="p">}</span>
 </code></pre></div><p>Ce système est moins sensible au bruit et la valeur de sortie est bien plus stable.
 De même, la résistance du corps humain influe beaucoup moins sur le résultat.
@@ -583,10 +574,18 @@ J&rsquo;ai fait des tests avec un fils relié au GND sur ma peau, de plus en plu
 <img src="/static/plant_touch/banana_touch.gif" alt="Banana gif"></p>
 <p>Une plante :
 <img src="/static/plant_touch/plant_touch.gif" alt="Banana gif"></p>
-<p>Notre projet <em>Super Spinach 2000</em> et son interface tactile nous a value un petit 18/20, tout le monde voulait caresser notre plante.</p>
+<p>Notre projet <em>Super Spinach 3000</em> et son interface tactile nous a offert un petit 18/20, tout le monde voulait caresser notre plante (voir <a href="https://gitlab.com/TheWindWalker/connected_plant_iot_2019">le code du projet final</a>).
+Je me suis également occupé de l&rsquo;affichage de l&rsquo;état de contentement de la plante via l&rsquo;écran E-paper (la qualité du code général n&rsquo;est pas de mon ressort&hellip;).</p>
 <p>Sur le gif de la plante, on peut voir que la led s&rsquo;allume avant que j&rsquo;établisse le contact.
 Cela est dû a une valeur de <em>cycleThreshold</em> trop basse : la proximité de ma main a la plante est suffisante pour que la capacité change (avec un condensateur crée par ma main | l&rsquo;air comme isolant | la plante).
 Intéressant pour un petit tour de magie.</p>
+<h3 id="notes">Notes</h3>
+<p>Je ne suis pas sur de l&rsquo;effet a long terme de ce type d&rsquo;interface capacitive sur un organisme vivant, mais on peut faire quelques observation/déductions:</p>
+<ul>
+<li>Aucune idée de ce que peut avoir comme effet de charger et décharger en permanence la plante (ne le risquez pas : probablement pas bon)</li>
+<li>Le fil connecté dans la plante va agir comme une cathode, et attaquer le milieu (surement pas bon)</li>
+<li>Le fil est composé de métal (cuivre ?), qui est plutôt du coté &ldquo;mauvais&rdquo; sur le spectre de la santé des plantes. En tous cas, percer un trou dans la plante pour y passer le fil n&rsquo;est certainement pas bon d&rsquo;un point de vue contamination (certainement pas bon)</li>
+</ul>
 
         
           <div class="blog-tags">
