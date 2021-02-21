@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Electronic on B. Hudyma Logs</title>
+    <link>https://BaptisteHudyma.github.io/tags/electronic/</link>
+    <description>Recent content in Electronic on B. Hudyma Logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
+    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
+    <lastBuildDate>Fri, 13 Dec 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/tags/electronic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Plante tactile</title>
+      <link>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</link>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</guid>
+      <description>&lt;p&gt;Un petit projet d&amp;rsquo;une après-midi pour implémenter une interface tactile a l&amp;rsquo;aide d&amp;rsquo;un microcontrôleur.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

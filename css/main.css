@@ -18,8 +18,13 @@ html, html[data-theme="light"] {
   --main-footer-bar-color: #EAEAEA;
   --code-background-color: #F8F8F8;
   --code-text-color: #3F3F3F;
+  --code-text-color-dark: #DCDCD7;
   --code-box-background: #F9F2F4;
   --code-box-text: #C7254E;
+  --code-detail-header-text-color: #000;
+  --code-detail-header-back-color: #95FFBE;
+  --code-detail-content-text-color: #444;
+  --code-detail-content-back-color: #FDF3BB;
 }
 
 html[data-theme="dark"] {
@@ -40,8 +45,17 @@ html[data-theme="dark"] {
   --main-footer-bar-color: #363A3D;
   --code-background-color: #1C1E1F;
   --code-text-color: #DCDCD7;
+  --code-text-color-dark: #3F3F3F;
   --code-box-background: #2B141A;
   --code-box-text: #DD496E;
+  --code-detail-header-text-color: #E8E6E3;
+  --code-detail-header-back-color: #00733E;
+  --code-detail-content-text-color: #BDB7AF;
+  --code-detail-content-back-color: #5A4D03;
+  /*
+  back :#5A4D03
+texte: #B9B3A8
+*/
 }
 
 
@@ -64,8 +78,13 @@ html[data-theme="dark"] {
       --main-footer-bar-color: #363A3D;
       --code-background-color: #1C1E1F;
       --code-text-color: #DCDCD7;
+      --code-text-color-dark: #3F3F3F;
       --code-box-background: #2B141A;
       --code-box-text: #DD496E;
+      --code-detail-header-text-color: #E8E6E3;
+      --code-detail-header-back-color: #00733E;
+      --code-detail-content-text-color: #BDB7AF;
+      --code-detail-content-back-color: #5A4D03;
     }
 
     html[data-theme="light"] {
@@ -86,8 +105,13 @@ html[data-theme="dark"] {
       --main-footer-bar-color: #EAEAEA;
       --code-background-color: #F8F8F8;
       --code-text-color: #3F3F3F;
+      --code-text-color-dark: #DCDCD7;
       --code-box-background: #F9F2F4;
       --code-box-text: #C7254E;
+      --code-detail-header-text-color: #000;
+      --code-detail-header-back-color: #95FFBE;
+      --code-detail-content-text-color: #444;
+      --code-detail-content-back-color: #FDF3BB;
     }
 }
 
@@ -525,7 +549,7 @@ footer .theme-by {
 }
 
 
-/*Code*/
+/* --- Code --- */
 code, kbd, pre, samp {
     font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
     font-size: 92%;
@@ -554,6 +578,25 @@ pre code {
     margin: 0;
     font-size: 15px;
 }
+
+/* --- Details --- */
+summary {
+    color: var(--code-detail-header-text-color);
+    background: var(--code-detail-header-back-color);
+}
+details[open] summary {
+    color: var(--code-detail-header-text-color);
+    background: var(--code-detail-header-back-color);
+}
+details {
+    color: var(--code-detail-content-text-color);
+    background: var(--code-detail-content-back-color);
+}
+details[open] {
+    color: var(--code-detail-content-text-color);
+    background: var(--code-detail-content-back-color);
+}
+
 
 /* --- Tags --- */
 
