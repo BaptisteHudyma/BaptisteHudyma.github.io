@@ -80,6 +80,16 @@
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/paper/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/paper/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/paper/"
+                />
   </url>
   
   <url>
@@ -115,6 +125,16 @@
   <url>
     <loc>https://BaptisteHudyma.github.io/post/depth_map_segmentation/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/depth_map_segmentation/"
+                />
   </url>
   
   <url>
@@ -175,16 +195,46 @@
   <url>
     <loc>https://BaptisteHudyma.github.io/post/ppc_slam/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/ppc_slam/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/ppc_slam/"
+                />
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/robotics/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/robotics/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/robotics/"
+                />
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/slam/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/slam/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/slam/"
+                />
   </url>
   
   <url>
@@ -280,26 +330,76 @@
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/arduino/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/arduino/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/arduino/"
+                />
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/electronic/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/electronic/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/electronic/"
+                />
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/one-day-build/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/one-day-build/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/one-day-build/"
+                />
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</loc>
     <lastmod>2019-12-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/plant_touch_sensor/"
+                />
   </url>
   
   <url>
     <loc>https://BaptisteHudyma.github.io/post/harpe_laser/</loc>
     <lastmod>2018-12-20T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/harpe_laser/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/harpe_laser/"
+                />
   </url>
   
   <url>

@@ -59,7 +59,7 @@
   "headline": "Segmentation de depth map",
   "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l\u0026rsquo;analyse d\u0026rsquo;une normal map.\n",
   "inLanguage" : "fr",
-  "wordCount":  1266 ,
+  "wordCount":  1267 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -459,10 +459,10 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1266&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1267&nbsp;mots
   
   
-  
+  &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" lang="en">en</a>
 </span>
 
 
@@ -506,7 +506,7 @@ Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&r
 <p>Une normal map est une image RGB représentant les vecteurs normaux a chaque plan au niveau de chaque pixel de l&rsquo;image de départ (voir <a href="https://fr.wikipedia.org/wiki/Normale_%C3%A0_une_surface">Wikipedia: Normale a une surface</a> pour plus de détails, je n&rsquo;irais pas plus loin ici).</p>
 <p>Cette structure est composée de NxM vecteurs 3D pour une image de taille NxM, et est intelligemment représentée par une image RGB dont chaque channel stocke une composante du vecteur.
 L&rsquo;effet final est une image en nuances de bleu/vert/rouge en fonction de la direction dominante de chaque normales (voir <a href="https://blog.developpez.com/bouye/p12696/langage/java/javafx-8-x/bump">Blog de Fabrice Bouyé</a> pour de belles images).</p>
-<p>Une depth map à partir de données théoriques est plutôt &ldquo;jolie&rdquo;.
+<p>Une normal map construite à partir de données théoriques est plutôt &ldquo;jolie&rdquo;.
 Elle présente peu de bruit (donc visuellement un gradient de couleurs continue), mais dans nos mesures réelles on va relever beaucoup de bruit.</p>
 <p>On peut calculer la valeur d&rsquo;une normale a un point <code>(x, y)</code> de la depth map avec le code c++ suivant :</p>
 <div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="kt">float</span> <span class="n">dzdx</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
@@ -539,7 +539,7 @@ J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rs
 <p>Cette image est seuillée avec une valeur de 0.94 (comme dans [1]) afin de récupérer les bords.</p>
 <h1 id="détection-de-discontinuités-de-surfaces">Détection de discontinuités de surfaces</h1>
 <p>Cette fois ci on cherche les discontinuités de profondeur.
-J&rsquo;ai utilisé le même opérateur que [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
+J&rsquo;ai utilisé le même opérateur que [1], qui compare la distance d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
 <div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
 </span><span class="c1"></span><span class="kt">float</span> <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
