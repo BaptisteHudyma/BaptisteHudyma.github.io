@@ -77,5 +77,14 @@ Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
       <description>&lt;p&gt;Un petit projet d&amp;rsquo;une après-midi pour implémenter une interface tactile a l&amp;rsquo;aide d&amp;rsquo;un microcontrôleur.&lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>Harpe laser</title>
+      <link>https://BaptisteHudyma.github.io/post/harpe_laser/</link>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/post/harpe_laser/</guid>
+      <description>&lt;p&gt;Que faire avec 12 lasers, une Arduino, 4 planches et une après-midi ?&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

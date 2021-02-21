@@ -63,7 +63,7 @@
   "datePublished" : "2019-12-13T00:00:00",
   "dateModified" : "2019-12-13T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Arduino, Electronic, Art, One Day Build, IOT" ],
+  "keywords" : [ "Arduino, Electronic, One Day Build" ],
   "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/plant_touch_sensor\/",
   "publisher" : {
     "@type": "Organization",
@@ -530,7 +530,7 @@ Cette fois on peut simplement ajouter une condition pour allumer la led si on pa
 <div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//allumer la led si on passe sous le seuil, sinon eteindre
 </span><span class="c1"></span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">sensorValue</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">);</span>
 </code></pre></div><p><img src="/static/plant_touch/touch_pullup.gif" alt="">
-(Les clignotements sont dues au bruit sinusoidal vu précédemment)</p>
+(Les clignotements sont dus au bruit sinusoidal vu précédemment)</p>
 <p>Plus de problèmes de pin chargée maintenant, la forte impédance de la résistance permet également d&rsquo;éliminer la plupart des bruits.</p>
 <p>Cependant, utiliser un simple seuil n&rsquo;est pas une bonne idée, le système devient sensible a toute perturbation.
 Cette implémentation repose uniquement sur la résistance du corps humain, une valeur assez variable en fonction des conditions (humidité et épaisseur de la peau, isolation du sol, &hellip;), mais surtout cette méthode ne fonctionne pas très bien si on veut détecter le contact avec un autre objet, comme une plante dans notre cas.</p>
@@ -594,11 +594,7 @@ Intéressant pour un petit tour de magie.</p>
             
               <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/tags/art/">Art</a>&nbsp;
-            
               <a href="https://BaptisteHudyma.github.io/tags/one-day-build/">One Day Build</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/tags/iot/">IOT</a>&nbsp;
             
           </div>
         
@@ -662,6 +658,17 @@ Intéressant pour un petit tour de magie.</p>
 
         
           
+            
+          
+
+          
+                  <h4 class="see-also">Voir également</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/harpe_laser/">Harpe laser</a></li>
+                
+              </ul>
 
           
         
@@ -669,6 +676,10 @@ Intéressant pour un petit tour de magie.</p>
 
       
         <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://BaptisteHudyma.github.io/post/harpe_laser/" data-toggle="tooltip" data-placement="top" title="Harpe laser">&larr; Post précédent</a>
+            </li>
           
           
             <li class="next">

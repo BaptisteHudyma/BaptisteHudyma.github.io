@@ -45,9 +45,18 @@
     </item>
     
     <item>
+      <title>Paper</title>
+      <link>https://BaptisteHudyma.github.io/tags/paper/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/tags/paper/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>RGB-D</title>
       <link>https://BaptisteHudyma.github.io/tags/rgb-d/</link>
-      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/tags/rgb-d/</guid>
       <description></description>
@@ -86,15 +95,6 @@
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/tags/slam/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tubex</title>
-      <link>https://BaptisteHudyma.github.io/tags/tubex/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/tags/tubex/</guid>
       <description></description>
     </item>
     
@@ -144,29 +144,11 @@
     </item>
     
     <item>
-      <title>Art</title>
-      <link>https://BaptisteHudyma.github.io/tags/art/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/tags/art/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Electronic</title>
       <link>https://BaptisteHudyma.github.io/tags/electronic/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/tags/electronic/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>IOT</title>
-      <link>https://BaptisteHudyma.github.io/tags/iot/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/tags/iot/</guid>
       <description></description>
     </item>
     
