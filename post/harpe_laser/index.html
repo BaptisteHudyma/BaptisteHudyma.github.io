@@ -59,7 +59,7 @@
   "headline": "Harpe laser",
   "description" : "Que faire avec 12 lasers, une Arduino, 4 planches et une après-midi ?\n",
   "inLanguage" : "fr",
-  "wordCount":  757 ,
+  "wordCount":  756 ,
   "datePublished" : "2018-12-20T00:00:00",
   "dateModified" : "2018-12-20T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;757&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;756&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/harpe_laser/" lang="en">en</a>
@@ -519,12 +519,12 @@ Les capteurs utilisés seront de simples photorésistances, issues du même proj
 Seule la mémoire humaine persiste !</p>
 <p>Comme précisé précédemment, les lasers et photorésistances sont activés par paires, une paire a la fois.
 La vitesse de balayage est tellement élevée qu&rsquo;on ne remarque pas la différence avec des lasers toujours allumés, et on économise en énergie le coût (non négligeable !) de tous les lasers éteints.</p>
-<p>J&rsquo;ai communiqué avec mes collègues musiciens de l&rsquo;époque, qui m&rsquo;ont tous conseillé de coder une interface MIDI (pour <em>Musical Instrument Digital Interface</em>), que j&rsquo;ai bien sur écouté en ne faisant pas du tout ça, et en réalisant plutôt une table de fréquences musicales en dur (la raison étant qu&rsquo;une interface MIDI est compliquée a mettre en place, et ici j&rsquo;ai déjà un haut parleur de sortie qui ne nécessite pas d&rsquo;interface).
+<p>J&rsquo;ai communiqué avec mes collègues musiciens de l&rsquo;époque, qui m&rsquo;ont tous conseillé de coder un MIDI (pour <em>Musical Instrument Digital Interface</em>), que j&rsquo;ai bien sur écouté en ne faisant pas du tout ça, et en réalisant plutôt une table de fréquences musicales en dur (la raison étant que ce genre d&rsquo;interface est compliquée a mettre en place, et ici j&rsquo;ai déjà un haut parleur de sortie qui ne nécessite pas d&rsquo;interface).
 Il suffit d&rsquo;associer chaque fréquence a une corde de la harpe, et envoyer la fréquence activée en PWM sur la pin de sortie.</p>
 <p>L&rsquo;Arduino ne peux pas gérer plusieurs sorties PWM simultanées, limitant donc la sortie audio a un seul haut parleur.
 Quel est le problème ? Les harmoniques des sons de plusieurs cordes simultanées, la polyphonie, impossible de faire ca proprement.
 La méthode la moins désagréable a l&rsquo;oreille (je ne suis pas musicien fort heureusement) est une simple interpolation linéaire de fréquences.
-Est ce que l&rsquo;utilisation d&quot;une interface MIDI aurait contourné ce problème ? Assurément.</p>
+Est ce que l&rsquo;utilisation d&rsquo;un MIDI aurait contourné ce problème ? Assurément.</p>
 <h1 id="le-résultat-">Le Résultat !</h1>
 <p>Une photo du prototype avant le passage de la breadboard a la plaque définitive (observez l&rsquo;alignement irréprochable des trous !) :
 <img src="/static/harpe_laser/harpe_laser.png" alt=""></p>

@@ -59,7 +59,7 @@
   "headline": "Monocular Depth Map",
   "description" : "Utiliser un flux vidéo issu d\u0026rsquo;une seule caméra pour estimer la profondeur des objets dans l\u0026rsquo;image. Un petit plongeon dans le monde de la géométrie épipolaire et de l\u0026rsquo;analyse des points d\u0026rsquo;intérêts.\n",
   "inLanguage" : "fr",
-  "wordCount":  1531 ,
+  "wordCount":  1561 ,
   "datePublished" : "2021-01-24T00:00:00",
   "dateModified" : "2021-01-24T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1531&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1561&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" lang="en">en</a>
@@ -545,16 +545,24 @@ Ces points peuvent ensuite être associés a l&rsquo;aide du <code>DescriptorMat
 On peut ensuite en éliminer certains en fonction de leur distance au point d&rsquo;origine, et obtenir une liste de points nettoyés.</p>
 <p>Dans l&rsquo;image ci-dessus, on peut voir au moins deux <em>outliers</em>, c&rsquo;est-à-dire dans ce contexte, des points reliés a un autre point qui ne leur correspondent pas.
 Ces outliers seront éliminés par notre test de distance évoqué précédemment, où seront supprimés par la prochaine étape.</p>
-<p><strong>Une note rapide</strong>: La projection épipolaire des deux images les déforme de façon a ce que deux points d&rsquo;intérêts associés se retrouvent sur la même ligne.
+<details><summary>Détails sur la représentation épipolaire</summary>
+<strong>Une note rapide</strong>: La projection épipolaire des deux images les déforme de façon a ce que deux points d&rsquo;intérêts associés se retrouvent sur la même ligne.
 Ici, on dirait que c&rsquo;est déjà le cas : C&rsquo;est à cause de la proximité temporelle des deux images (issues d&rsquo;une vidéo).
-Pour une meilleure visualisation (et explications en profondeur), consultez la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">page OpenCV</a>.</p>
+Pour une meilleure visualisation (et explications en profondeur), consultez la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">page OpenCV</a>.
+</details>
+
 <h3 id="matrice-fondamentale">Matrice fondamentale</h3>
 <p>OpenCV va également nous aider pour trouver la matrice de transformation entre les deux images.
 Appeler la fonction <code>cv::findHomography</code> sur nos pairs de points d&rsquo;intérêts nous renverra une matrice fondamentale, que nous pouvons utiliser pour déformer notre deuxième image (avec la fonction <code>cv::warpPerspective</code>).
-J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.</p>
-<p>RANSAC est une méthode fantastique qui permet (ici) d&rsquo;associer les paires de points caractéristiques pour trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.
-Nous pouvons également en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici nous n&rsquo;en aurons pas besoin.</p>
+J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.
+Nous pouvons en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici nous n&rsquo;en aurons pas besoin.</p>
+<details><summary>Détails sur RANSAC</summary>
+<p>RANSAC (RANdom SAmples Consensus) est une méthode fantastique (mais non déterministe, personne n&rsquo;est parfait) qui permet entre autre de détecter les outlier dans un set de données.
+Ici on l&rsquo;utilise pour associer les paires de points caractéristiques pour trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.</p>
 <p>RANSAC a bien d&rsquo;autres cas d&rsquo;applications bien sur, je l&rsquo;ai également utilisé pour détecter les cylindres dans un graph de plans, comme CAPE l&rsquo;a fait.</p>
+
+</details>
+
 <h3 id="stereo-matching">Stereo matching</h3>
 <p>La dernière astuce pour obtenir la depth map est aussi simple que la précédente.
 Nous pouvons utiliser une fois de plus le glorieux OpenCV, avec sa classe <code>StereoSGBM</code>.
