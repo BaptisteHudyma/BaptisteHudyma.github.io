@@ -7,8 +7,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-  <title>Monocular Depth Map - B. Hudyma Logs</title>
-  <meta name="description" content="Construire une depth map avec un flux d&#39;image monoculaire">
+  <title>Exploration de possibilités - Partie 1 - B. Hudyma Logs</title>
+  <meta name="description" content="Faire des IA pour les jeux de plateau">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -44,8 +44,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/post\/monocular_depth_map\/",
-          "name": "Monocular depth map"
+          "@id": "https:\/\/BaptisteHudyma.github.io\/post\/monte_carlo_tree\/",
+          "name": "Exploration de possibilités partie 1"
         }
     }]
 }
@@ -56,15 +56,15 @@
   "author": {
     "name" : "Baptiste Hudyma"
   },
-  "headline": "Monocular Depth Map",
-  "description" : "Utiliser un flux vidéo issu d\u0026rsquo;une seule caméra pour estimer la profondeur des objets dans l\u0026rsquo;image. Un petit plongeon dans le monde de la géométrie épipolaire et de l\u0026rsquo;analyse des points d\u0026rsquo;intérêts.\n",
+  "headline": "Exploration de possibilités - Partie 1",
+  "description" : "Partie 1: Blabla et implémentation\nJe suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.\n",
   "inLanguage" : "fr",
-  "wordCount":  1561 ,
-  "datePublished" : "2021-01-24T00:00:00",
-  "dateModified" : "2021-01-24T00:00:00",
+  "wordCount":  2261 ,
+  "datePublished" : "2021-04-22T00:00:00",
+  "dateModified" : "2021-04-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Computer vision, Cpp, OpenCV, Depth Map" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/monocular_depth_map\/",
+  "keywords" : [ "Cpp, IA, Optimisation" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/monte_carlo_tree\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/BaptisteHudyma.github.io",
@@ -78,15 +78,15 @@
 }
 </script>
 
-<meta property="og:title" content="Monocular Depth Map" />
-<meta property="og:description" content="Construire une depth map avec un flux d&#39;image monoculaire">
+<meta property="og:title" content="Exploration de possibilités - Partie 1" />
+<meta property="og:description" content="Faire des IA pour les jeux de plateau">
 <meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/post/monocular_depth_map/" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/post/monte_carlo_tree/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="B. Hudyma Logs" />
 
-  <meta name="twitter:title" content="Monocular Depth Map" />
-  <meta name="twitter:description" content="Construire une depth map avec un flux d&#39;image monoculaire">
+  <meta name="twitter:title" content="Exploration de possibilités - Partie 1" />
+  <meta name="twitter:description" content="Faire des IA pour les jeux de plateau">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
@@ -447,26 +447,26 @@ if (!doNotTrack) {
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Monocular Depth Map</h1>
+                <h1>Exploration de possibilités - Partie 1</h1>
               
               
               
                 
-                  <h2 class="post-subheading">Construire une depth map avec un flux d&#39;image monoculaire</h2>
+                  <h2 class="post-subheading">Faire des IA pour les jeux de plateau</h2>
                 
               
               
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posté le January 24, 2021
+  <i class="fas fa-calendar"></i>&nbsp;Posté le April 22, 2021
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1561&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2261&nbsp;mots
   
   
-  &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" lang="en">en</a>
+  
 </span>
 
 
@@ -487,133 +487,194 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Utiliser un flux vidéo issu d&rsquo;une seule caméra pour estimer la profondeur des objets dans l&rsquo;image.
-Un petit plongeon dans le monde de la géométrie épipolaire et de l&rsquo;analyse des points d&rsquo;intérêts.</p>
-<h1 id="depth-maps-">Depth maps ?</h1>
-<p>Si vous voulez donner a votre système de vision une notion de distance, il n&rsquo;existe pas (encore !) 36 solutions :</p>
+        <p><em><strong>Partie 1: Blabla et implémentation</strong></em></p>
+<p>Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.</p>
+<p>Petite précision : à partir d&rsquo;ici quand je dis &ldquo;suite de coups&rdquo; je parle d&rsquo;un ordre de jeux : je joue, puis mon adversaire puis moi etc</p>
+<!-- raw HTML omitted -->
+<p>Faire un petit saut au-dessus du blabla jusqu&rsquo;à la partie intéressante.</p>
+<h1 id="imaginez-vous-en-train-de-jouer-aux-échecs">Imaginez-vous en train de jouer aux échecs</h1>
+<p>Quelle stratégie adopter ? On peut se dire qu&rsquo;on va faire au plus simple, et jouer des pions au hasard, mais la probabilité de gagner est assez faible si votre adversaire n&rsquo;a pas la même stratégie (à part si vous faites semblant de savoir ce que vous faites, ce qui peut le déstabiliser).
+On va l&rsquo;appeler la &ldquo;méthode hasard&rdquo;.</p>
+<p>L&rsquo;étape au-dessus serait de choisir des coups au hasard complet et garder le meilleur en tête jusqu&rsquo;à ce que votre adversaire vous annonce &ldquo;que bon ça fait une heure que tu n&rsquo;as pas bougé ton pion, je me casse&rdquo; (victoire !) ou si vous jouez avec un sablier, votre défaite.
+Cette approche est bien meilleure que jouer directement des coups au hasard, votre solution finale dépend de tous les coups précédents.
+Il se trouve cependant que dans ce type de jeux, le nombre de coups possibles augmente exponentiellement, impossible de tous les essayer (enfin, possible mais pas sous la pression du sablier !).
+On l&rsquo;appellera &ldquo;méthode exploration&rdquo;.</p>
+<p>Ou alors une autre méthode serait de réfléchir uniquement aux meilleurs coups que vous pouvez faire, puis les meilleurs coups que vous pouvez faire après ces meilleurs coups yadi yada&hellip;
+Ce genre de méthode est qualifiée de greedy (gloutonne), c&rsquo;est-à-dire qu&rsquo;elle prend ses décisions sur l&rsquo;instant, pas le temps de réfléchir a la suite des évènements !
+Cette approche est déjà meilleure que les deux précédentes, car on explore moins de possibilités (moins de mal de tête !) et on effectue sont une suite d&rsquo;actions forcément positives (pour un résultat pas forcément aussi positif).
+Son désavantage est de tomber facilement dans les minimums locaux, comme se jeter sur un cavalier avec votre dame pour se la faire piquer par un pion.
+De même, elle ne sacrifiera jamais un pion pour en manger un autre plus dangereux, et sa stratégie est donc très prévisible.
+On va appeler celle-ci &ldquo;méthode greedy&rdquo;.</p>
+<p>Ce qu&rsquo;il nous faut c&rsquo;est une méthode capable de rassembler les forces de ses copines, une espèce de Captain Planet des jeux de société !
+Heureusement, ce problème a été beaucoup retourné par des gens intelligents (et/ou payez pour ça), qui nous on trouvé un ensemble de solutions toutes plus originales les une que les autres.
+Mais ici on ne fait pas dans l&rsquo;originalité et on ne va parler que d&rsquo;arbres, na !</p>
+<h1 id="construire-un-arbre">Construire un arbre</h1>
+<p>Si vous avez déjà touché a l&rsquo;orienté objet un jour, il est probable que ce genre d&rsquo;exercice vous soit déjà tombé dessus.
+Un arbre est une structure de donnée assez basique, ou on a un ensemble de nœuds qui appartiennent a un parent, et ont eu même des enfants qui ont des enfants etc.
+C&rsquo;est une représentation assez intuitive pour nous, pauvre singes, et on la retrouve partout, dans tous les domaines d&rsquo;application (voir mon petit post sur <a href="https://BaptisteHudyma.github.io/post/galaxy_generation/">la génération de galaxies procédurales</a>, ou la galaxie est créé dans un arbre).</p>
+<p>Ici, notre racine va être la position de base du plateau, sans aucuns mouvements si je joue commence, ou avec un mouvement de l&rsquo;adversaire s&rsquo;il commence (moins de coups à calculer yes !).
+Chaque possibilité de jeux depuis la situation initiale va représenter un nouvel enfant pour notre racine.
+Puis une fois qu&rsquo;on à explorer tous nos mouvements, c&rsquo;est le tour de l&rsquo;adversaire.
+On génère ses mouvements possibles depuis chacun de nos mouvements, puis c&rsquo;est mon tour, et ainsi de suite jusqu&rsquo;à ce qu&rsquo;on atteigne la fin de la partie (gagné, perdu, égalité, que sais-je).</p>
+<p>Petit exemple avec le TicTacToe :
+<img src="/static/monteCarloTree/tree_tictactoe.gif" alt="">
+(Emprunté au site <a href="http://turing.cs.pub.ro/auf2/html/chapters/chapter3/chapter_3_4_2.html">turing.cs</a>, à visiter pour des explications d&rsquo;algorithmes plus variés)</p>
+<p>Bien on a un arbre maintenant.</p>
+<h1 id="exploration-avec-monte-carlo">Exploration avec Monte Carlo</h1>
+<p>L&rsquo;arbre qu&rsquo;on vient de construire est de taille raisonnable pour un tictactoe, ou le nombre de possibilités est réduite.
+Pour un Puissance 4 ça pourrait encore fonctionner, mais pour les échecs (ou le Go) ça n&rsquo;est pas viable.
+Il existe plusieurs techniques pour améliorer tout ça, celle qui nous intéresse s&rsquo;appelle <em>MCTS</em> &ldquo;Recherche Arborescente Monte-Carlo&rdquo; (voir la <a href="https://fr.wikipedia.org/wiki/Recherche_arborescente_Monte-Carlo">page Wikipedia</a>, qui bavarde moins que moi).</p>
+<p>Cette technique a été utilisée comme la base pour l&rsquo;algorithme AlphaGo, champion du monde du jeu de Go en 2015 (ptit coup de vieux).
+Elle se base sur quelques euristiques pour trouver une balance entre exploration de nouvelles possibilités et recherche autour des meilleurs suites d&rsquo;action déjà trouvées.
+Cela permet de n&rsquo;explorer qu&rsquo;une fraction des possibilités tout en trouvant des coups intéressants.</p>
+<p>Le but de ce billet de blog n&rsquo;est pas de faire un historique ou d&rsquo;expliquer une énième fois cette méthode sur internet, mais proposer quelques modifications</p>
+<p>Un petit résumé vite fait, pour être sur la même page : le dur de la technique est constitué de 4 étapes :</p>
 <ul>
-<li>Vision stéréo : Utiliser deux caméras et un peu d&rsquo;ingéniosité</li>
-<li>Vision monoculaire : utiliser une caméra et <strong>beaucoup plus</strong> d&rsquo;ingéniosité.</li>
-<li>Utiliser une caméra RGB-D, qui donne directement une information de profondeur.</li>
+<li>Se balader dans l&rsquo;arbre avec des euristiques jusqu&rsquo;à atteindre une feuille (un nœud sans enfants).</li>
+<li>Lui créer des enfants : en gros lui ajouter en enfant tous les coups possibles à partir de ce nœud</li>
+<li>Jouer des coups au hasard depuis l&rsquo;enfant crée juste avant jusqu&rsquo;à atteindre un état final.</li>
+<li>Faire remonter le score final depuis l&rsquo;enfant jusqu&rsquo;à la racine.</li>
 </ul>
-<p>Chacune de ces options a ses propres qualités et défauts.
-La vision stéréo donne des estimations correctes a une distance convenable, mais demande une puissance de calcul non négligeable.
-Un système monoculaire peut fonctionner avec du <a href="https://paperswithcode.com/sota/monocular-depth-estimation-on-kitti-eigen">machine learning</a>, ou en exploitant la suite d&rsquo;image comme un système stéréo (Plus a ce sujet un peu plus tard), avec les mêmes limitations que celui-ci.
-La camera RGB-D est très fiable et donne des mesures précises, mais ne fonctionne qu&rsquo;a courte distance.</p>
-<p>Eh bien je n&rsquo;ai pas de quoi faire un système stéréo, mais je possède la meilleure des caméras : une RGB-D (Oui j&rsquo;adore les RGB-D).
-Cette caméra est fantastique mais son estimation de profondeur dépend exclusivement d&rsquo;une projection infrarouge, ce qui amène son lot de problèmes.
-L&rsquo;estimation de profondeur est dérangée par plusieurs facteurs :</p>
-<ul>
-<li>Les surfaces sombres, ou très peu réfléchissantes</li>
-<li>Les surfaces très réfléchissantes (miroirs)</li>
-<li>les surfaces très texturées (comme les tapis)</li>
-<li>La lumière du soleil, qui ajoute sa dose d&rsquo;infrarouge a nos mesures</li>
-<li>La distance, limitée généralement a 4 ou 5 mètres.</li>
-</ul>
-<p>Un petit exemple d&rsquo;une depth map incomplète (dataset: <em>yoga_mat</em>, de CAPE) :
-<img src="/static/depthmap/rgb_depth_holes.png" alt="depth Holes Holes Holes"></p>
-<p>On observe des trous dans la mesure de profondeur, dues a des discontinuités de profondeur/une occlusion (à gauche du cylindre), et des trous qui découlent de la transformation géométrique de l&rsquo;image pour correspondre a l&rsquo;image RGB (en haut et à droite de l&rsquo;image).
-Les trous <em>alignés</em> sur le sol sont dues (a mon avis) a la nature discrète de la mesure de profondeur, qui ressort ici à cause de la transformation géométrique.</p>
-<p>Il y a un bon nombre de méthodes pour remplir ces discontinuités (<a href="https://github.com/pedropro/OMG_Depth_Fusion">Gaussian fusion</a>, Machine learning, &hellip;) mais j&rsquo;ai voulu tenter ma chance avec une idée assez simple : Pourquoi ne pas fusionner l&rsquo;estimation de profondeur avec une autre estimation, moins précise mais plus fiable ?</p>
-<p>Eh bien j&rsquo;ai une caméra RGB-D sur mon bureau (et donc des mesures de profondeur), reste plus qu&rsquo;à trouver une autre estimation de profondeur avec les données RGB.</p>
-<p>La première étape, pas des plus simples, est d&rsquo;obtenir l&rsquo;image de profondeur monoculaire.
-<strong>C&rsquo;est parti.</strong></p>
-<h1 id="map-de-profondeur-monoculaire">Map de profondeur monoculaire</h1>
-<p>Bon, comment on obtenir une estimation de profondeur depuis une seule image ?
-Il n&rsquo;y a pas un foule de réponses, la plupart d&rsquo;entre elles sont &ldquo;réseaux de neurones&rdquo;.</p>
-<p>Mais comme l&rsquo;a évoqué notre mentor Maitre Yoda,
-<img src="/static/rand/yoda.png" alt="There is another">
-Merci Yoda !</p>
-<p>Pourquoi ne pas utiliser deux images qui se suivent dans notre vidéo comme si elles étaient issues d&rsquo;un système stéréo ? On pourrait alors déduire la transformée entre ces images et en extraire les informations 3D (cad de profondeur).
-Et vous savez quoi ? Cette transformée est relativement facile à obtenir.</p>
-<p>La clef de cette histoire a un nom : la géométrie épipolaire.
-Je n&rsquo;entrerais pas dans les détails ici, mais voici une explication approximative en une phrase : la géométrie épipolaire permet d&rsquo;estimer la transformée d&rsquo;une image vers une autre.</p>
-<p>Ce n&rsquo;est pas exact, ni précis, mais une meilleure explication se trouve facilement dans la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">documentation OpenCV</a>.</p>
-<p>La logique pour obtenir notre profondeur est assez simple :</p>
-<ul>
-<li>Trouver les points clefs/caractéristiques/d&rsquo;intérêt des deux images</li>
-<li>Trouver quel point d&rsquo;une image correspond à quel point de l&rsquo;autre.</li>
-<li>Estimer la transformation (épipolaire, vous suivez ?) à appliquer aux points d&rsquo;une image pour retrouver les points de l&rsquo;autre.</li>
-<li>Obtenir une image de disparité (une sorte de représentation de profondeur dans notre cas)</li>
-</ul>
-<p>Toutes ces opérations peuvent être réalisées à l&rsquo;aide d&rsquo;OpenCV.</p>
-<h3 id="points-dintérêt">Points d&rsquo;intérêt</h3>
-<p>Pour trouver les points d&rsquo;intérêt, j&rsquo;ai utilisé le détecteur SURF.
-Ces points peuvent ensuite être associés a l&rsquo;aide du <code>DescriptorMatcher</code> en utilisant FLANN.</p>
-<p><img src="/static/depthmap/matched_keypoints.png" alt="Matched keypoints"></p>
-<p>On obtient les points d&rsquo;intérêts associés entre les deux images.
-On peut ensuite en éliminer certains en fonction de leur distance au point d&rsquo;origine, et obtenir une liste de points nettoyés.</p>
-<p>Dans l&rsquo;image ci-dessus, on peut voir au moins deux <em>outliers</em>, c&rsquo;est-à-dire dans ce contexte, des points reliés a un autre point qui ne leur correspondent pas.
-Ces outliers seront éliminés par notre test de distance évoqué précédemment, où seront supprimés par la prochaine étape.</p>
-<details><summary>Détails sur la représentation épipolaire</summary>
-<strong>Une note rapide</strong>: La projection épipolaire des deux images les déforme de façon a ce que deux points d&rsquo;intérêts associés se retrouvent sur la même ligne.
-Ici, on dirait que c&rsquo;est déjà le cas : C&rsquo;est à cause de la proximité temporelle des deux images (issues d&rsquo;une vidéo).
-Pour une meilleure visualisation (et explications en profondeur), consultez la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">page OpenCV</a>.
-</details>
+<h1 id="représenter-ça-en-code">Représenter ça en code</h1>
+<p>On va faire une classe générique très simple pour l&rsquo;arbre, qui sera responsable de choisir les coups possibles, les dérouler jusqu&rsquo;à la fin et propager le résultat.
+Le but n&rsquo;est pas de donner du code, mais simplement la structure globale et le détail de quelques méthodes.</p>
+<h2 id="interface-game-state">Interface Game State</h2>
+<p>Nous allons avoir besoin de coder la logique du jeu.
+Pour cela, libre à vous de faire ce que vous voulez !
+Il y a pour seule contrainte que votre classe de logique hérite de notre interface ci-dessous :</p>
+<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//Interface
+</span><span class="c1"></span><span class="k">class</span> <span class="nc">IGame_State</span> <span class="p">{</span>
+    <span class="c1">//renvoi le score de cet etat
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">get_score</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-<h3 id="matrice-fondamentale">Matrice fondamentale</h3>
-<p>OpenCV va également nous aider pour trouver la matrice de transformation entre les deux images.
-Appeler la fonction <code>cv::findHomography</code> sur nos pairs de points d&rsquo;intérêts nous renverra une matrice fondamentale, que nous pouvons utiliser pour déformer notre deuxième image (avec la fonction <code>cv::warpPerspective</code>).
-J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.
-Nous pouvons en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici nous n&rsquo;en aurons pas besoin.</p>
-<details><summary>Détails sur RANSAC</summary>
-<p>RANSAC (RANdom SAmples Consensus) est une méthode fantastique (mais non déterministe, personne n&rsquo;est parfait) qui permet entre autre de détecter les outlier dans un set de données.
-Ici on l&rsquo;utilise pour associer les paires de points caractéristiques pour trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.</p>
-<p>RANSAC a bien d&rsquo;autres cas d&rsquo;applications bien sur, je l&rsquo;ai également utilisé pour détecter les cylindres dans un graph de plans, comme CAPE l&rsquo;a fait.</p>
+    <span class="c1">//renvoi le nombre de coups possible depuis cet etat
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">get_move_count</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-</details>
+    <span class="c1">//effectue un mouvement depuis cet etat et le renvoi
+</span><span class="c1"></span>    <span class="k">virtual</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="nf">do_move</span><span class="p">(</span><span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 
-<h3 id="stereo-matching">Stereo matching</h3>
-<p>La dernière astuce pour obtenir la depth map est aussi simple que la précédente.
-Nous pouvons utiliser une fois de plus le glorieux OpenCV, avec sa classe <code>StereoSGBM</code>.
-Cette classe est censée être utilisée sur des images issues d&rsquo;un setup d&rsquo;acquisition stéréo, mais maintenant que nos deux images sont projetées correctement, personne ne nous empêchera de faire semblant qu&rsquo;elles viennent d&rsquo;un setup stéréo !</p>
-<p>Eh bien le résultat n&rsquo;est pas si mal (après une bonne dose de réglages de paramètres) :</p>
-<p><img src="/static/depthmap/rgb_monodepth.png" alt="Simulated depth map"></p>
-<p>il y a quelques trous, quelques discontinuités dans la profondeur, et quelques aberrations au niveau du sommet du cylindre, mais c&rsquo;est globalement pas mal.</p>
-<p>Pour la comparaison, voici la version brute (avec les paramètres par défaut) :</p>
-<p><img src="/static/depthmap/rgb_monodepth_default.png" alt="Ugly mess map"></p>
-<p>On peut y voir assez clairement que des textures censées êtres plates sont affichées avec du relief (une différence de couleur), notamment la feuille de QR codes.
-C&rsquo;est également le cas en haut de l&rsquo;image, mais la différence est moins visible.</p>
-<h3 id="filtrage">Filtrage</h3>
-<p>La dernière étape (non obligatoire) est de filtrer un peu notre estimation, pour obtenir une depth map plus propre.
-Pour cela, j&rsquo;utilise <code>DisparityWLSDFilter</code> de <code>cv::ximproc</code>, à utiliser normalement sur un setup stéréo.</p>
-<p>Le résultat final est affiché sur l&rsquo;image ci-dessous, avec la depth map monoculaire à gauche et la depth map issue directement de la caméra RGB-D à droite, afin de pouvoir les comparer :</p>
-<p><img src="/static/depthmap/depth_monodepth.png" alt="Filtered result"></p>
-<p>Globalement, le résultat final est plutôt bon !
-Mieux qu&rsquo;attendu, dans mon cas.</p>
-<p>Comparé a la depth map brut de la RGB-D, la depth map monoculaire a moins de trous de discontinuités (ces deux images devraient être exactement les mêmes dans un monde idéal).
-Quelques remarques tout de même :</p>
-<ul>
-<li>La depth map monoculaire n&rsquo;a pas d&rsquo;unités (mètres, mm, &hellip;) et ne peux pas être utilisée tel quel.</li>
-<li>Le processus de filtrage à créer des &ldquo;fuites&rdquo; de profondeur au niveau des côtés du cylindre (fond plus sombre)</li>
-<li>La texture des QR codes est encore visible sur le sol, ce qui est une erreur d&rsquo;estimation</li>
-<li>Le haut du cylindre est montré plus proche de l&rsquo;observateur que le sol en bas du l&rsquo;image, et nous pouvons voir que c&rsquo;est faux (voir image de profondeur brut pour comparaison)</li>
-<li>Plus il y a de mouvement, meilleure est l&rsquo;estimation.
-En cas de mouvement trop faible, on obtient une map aberrante.</li>
-</ul>
-<p>Un autre point très important que je n&rsquo;ai pas mentionné avant : L&rsquo;estimation de profondeur monoculaire ne peut pas être aussi bonne que l&rsquo;estimation stéréo.
-Les depth map stéréo sont bien plus précises et fiables.
-Elles fournissent également une vraie mesure de profondeur (avec des unités), car la distance/rotation entre les deux caméras est connue précisément, ou du moins elle est fixe.</p>
-<p>La qualité de la depth map dépend beaucoup de la distance : un exercice de trigonométrie basique indique que l&rsquo;estimation de profondeur sera OK seulement pour des points dans la même échelle que cette distance.
-Ici, mes &ldquo;deux&rdquo; caméras se trouvent à un temps/distance proches l&rsquo;une de l&rsquo;autre, leur prise se suivant uniquement de quelques centièmes de secondes.
-La qualité d&rsquo;estimation de profondeur sera seulement bonne pour des distances courtes, de l&rsquo;ordre du mètre.</p>
-<p>Mais malgré ces imperfections, je suis satisfait du résultat initial.
-Cette depth map monoculaire relève des informations utiles de l&rsquo;environnement qui sont exactement ce qu&rsquo;il me faut pour la prochaine étape : la fusion des depth map.</p>
-<h1 id="un-petit-bonus">Un petit bonus</h1>
-<p>Voici le résultat de la map d&rsquo;erreur, sortie tout droit du filtre.
-Comme prévu, les erreurs d&rsquo;estimation de profondeur sont pour la plupart situées au niveau des discontinuités de profondeur.</p>
-<p><img src="/static/depthmap/monodepth_error.png" alt="Filtered result"></p>
+<span class="p">}</span>
+</code></pre></div><p>Notre classe dérivée <code>IGame_State</code> sera utilisée dans notre arbre pour savoir ou on en est dans la partie.
+Elle représente toute la logique du jeu, qui est donc proprement séparé de l&rsquo;exploration de l&rsquo;arbre.</p>
+<h3 id="get_score">get_score</h3>
+<p>Cette méthode nous donne le score de l&rsquo;état de jeux actuel.
+On peut donc donner un gros score si on gagne, un score négatif si l&rsquo;on perd, etc</p>
+<p>C&rsquo;est ici qu&rsquo;on peut devenir un peu créatif : Pour AlphaGo, Google a utilisé des réseaux de neurones pour évaluer une situation, de mon côté j&rsquo;ai fait une simple grille d&rsquo;occupation, mais on peut aussi se contenter de la somme des scores des pièces en jeu, ce que vous voulez vraiment !</p>
+<p>Si notre jeu se joue a plusieurs, contre des adversaires, n&rsquo;oubliez pas de renvoyer le score <code>* -1.0</code> ou autre pour que notre arbre comprenne qu&rsquo;un bon coup joué par un adversaire est un mauvais coup pour nous !
+À vous de garder l&rsquo;ordre de jeux en tête dans cette classe, notre arbre ne verra que des scores.</p>
+<h3 id="get_move_count">get_move_count</h3>
+<p>On renvoie le nombre de coups possibles après celui-ci (de 0 a l&rsquo;infini).
+Ce nombre sera utilisé comme index par notre exploration d&rsquo;arbre : Si on lui dit qu&rsquo;il a 3 coups possibles, il appellera la fonction membre <code>do_move</code> avec un index de 0 a 2.
+Si cette fonction renvoi 0, cela signifie qu&rsquo;aucun coup n&rsquo;est jouable par la suite : on a fini d&rsquo;explorer cette branche.</p>
+<p>Pour cette fonction, je vous conseille de garder en mémoire (dans un <code>vector</code> par exemple) les coups possibles, pour ne les calculer qu&rsquo;une seule fois.</p>
+<p>Calculer les coups possibles dépend du jeu que vous avez choisi d&rsquo;implémenter, bon courage donc.</p>
+<h3 id="do_move">do_move</h3>
+<p>Cette méthode est la plus importante : elle prend en entré l&rsquo;index d&rsquo;un coup possible (entre 0 et <code>get_move_count() - 1</code>) et nous renvoie un nouveau game state qui correspond a l&rsquo;état du jeu une fois ce coup joué.</p>
+<p>Pas de soucis de désallocation, notre classe Node s&rsquo;en occupera (même si l&rsquo;utilisation d&rsquo;un smart pointer aurait été à préférer)</p>
+<h2 id="notre-arbre">Notre arbre</h2>
+<p>Enfin la partie intéressante !
+On fait ici une classe Node, qui représente un nœud de l&rsquo;arbre.
+Il est responsable du choix des enfants a crée, de comment explorer le bazar et de remonter les scores, puis nous dire quel est le meilleur combo.</p>
+<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
+    <span class="c1">//creer la node depuis un etat de jeux
+</span><span class="c1"></span>    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
+
+    <span class="c1">//trouve l enfant avec le meilleur score
+</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child</span> <span class="p">();</span>
+
+    <span class="c1">//Ajoute un enfant parmi les coups possibles
+</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">expand_children</span> <span class="p">();</span>
+
+    <span class="c1">//deroule une partie au depuis cette node
+</span><span class="c1"></span>    <span class="kt">float</span> <span class="nf">rollout</span> <span class="p">();</span>
+
+    <span class="c1">//remonte le score
+</span><span class="c1"></span>    <span class="kt">void</span> <span class="nf">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">);</span>
+
+
+    <span class="k">private</span><span class="o">:</span>
+        <span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">;</span>           <span class="c1">//référence au parent
+</span><span class="c1"></span>        <span class="n">list</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span> <span class="n">children</span><span class="p">;</span>   <span class="c1">//référence aux enfants
+</span><span class="c1"></span>        <span class="n">Game_State</span><span class="o">*</span> <span class="n">state</span><span class="p">;</span>      <span class="c1">//référence a l&#39;état de jeu associé a cette node
+</span><span class="c1"></span>
+        <span class="kt">int</span> <span class="n">nombreDeVisites</span><span class="p">;</span>    <span class="c1">//Nombre de passages par cette node
+</span><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span><span class="p">;</span>           <span class="c1">//score a cette node
+</span><span class="c1"></span>
+<span class="p">}</span>
+</code></pre></div><p>Élaborons un peu tout ça.</p>
+<h3 id="constructeur">Constructeur</h3>
+<p>Notre constructeur prend une classe dérivée de notre interface <code>IGame_State</code>, qui correspond a l&rsquo;état de jeu de cette node.
+Il récupère aussi son parent pour l&rsquo;étape de backpropagation.</p>
+<p>Il va alors vérifier si on à atteins le bout de l&rsquo;arbre, en appelant la méthode <code>get_move_count ()</code> de notre game state, et vérifier s&rsquo;il est égal a 0.</p>
+<p>Si c&rsquo;est le cas, la recherche dans cette branche est terminée, on peut appeler <code>backpropagate ()</code> et faire un petit café pour fêter ça : une suite de coups terminée, une !</p>
+<h3 id="get_best_child">get_best_child</h3>
+<p>On appelle cette méthode lors de l&rsquo;exploration, seulement quand notre node courant à des enfants.</p>
+<p>Ça parait simple : trouver le meilleur des enfants et le renvoyer.
+Mais comment on sélectionne le meilleur enfant ?
+Si on utilise la fonction <code>get_score</code>, on va faire une recherche greedy sans exploration, on ne veut pas de ca.
+Ça n&rsquo;est pas non plus le moment de créer une euristique d&rsquo;évaluation (quoi que si ça vous amuse&hellip;)</p>
+<p>J&rsquo;ai beaucoup vu sortir la formule UCB1 (Upper Confidence Bound 1), qui renvoi la somme des scores sur la somme des visites, qui permet de balancer l&rsquo;exploration et les performances.
+$$
+UCB1(visits, score) = \frac{score}{visits}
+$$</p>
+<p>On va utiliser Une amélioration de cette méthode, appelé UCT (UCb1 applied to Trees)
+$$
+UCT(visits, score, parentVisits) = UCB1(visits, score) + c \sqrt{ \frac{ln(parentVisits)}{visits}  }
+$$
+Avec c un paramètre permettant de régler le &ldquo;taux&rdquo; d&rsquo;exploration désiré (&gt; 0).</p>
+<p>Le principe est encore une fois assez simple : on additionne a l&rsquo;UCB1 un nombre qui favorise l&rsquo;exploration.
+Le logarithme utilisé ici sur le nombre de visites du parent permet ici d&rsquo;explorer en priorité les enfants les moins explorés (nombre de visites petit par rapport aux visites du parent).
+Le logarithme permet de diminuer l&rsquo;exploration quand le nombre de visites augmente (ie: on converge vers une solution).</p>
+<h3 id="expand_children">expand_children</h3>
+<p>Cette méthode choisie un coup à jouer parmi ceux proposés par le game state, et ajoute une node en enfant de notre node.
+L&rsquo;adresse de ce nouvel enfant est renvoyé pour pouvoir lancer la phase rollout.</p>
+<h3 id="rollout">rollout</h3>
+<p>Une de mes préférées !
+C&rsquo;est la phase &ldquo;joue des coups jusqu&rsquo;à ce que ca ne soit plus possible&rdquo; de notre exploration.</p>
+<p>L&rsquo;appellation <em>Monte Carlo</em> désigne un choix aléatoire quelque part dans notre programme, et c&rsquo;est généralement a cet endroit : On va choisir un coup possible au hasard depuis notre état actuel, et faire un coup possible depuis ce nouvel état et ainsi de suite.
+On récupère alors le score de l&rsquo;état final qu&rsquo;on renvoie.</p>
+<p>J&rsquo;ai vu assez souvent des gens qui oublient la partie <em>Monte Carlo</em> de l&rsquo;exploration d&rsquo;arbre avec Monte Carlo, mais on leur pardonne, après tout on fait ce qu&rsquo;on veut !</p>
+<p>Pour s&rsquo;amuser, on peut changer le choix aléatoire par un choix déterministe, et faire des choix greedy, ou inventer une euristique, liberté absolue de ce côté la.</p>
+<h3 id="backpropagate">backpropagate</h3>
+<p>Une fois la phase de rollout terminée, on va remonter le score de notre node jusqu&rsquo;à la racine.
+Elle ajoute le score au score de la node actuel, et on incrémente le compteur de visites.</p>
+<p>Cette fonction est récursive : si on a un parent, on appelle <code>parent-&gt;backpropagate(score)</code> après avoir changé nos scores et le tour est joué !</p>
+<h2 id="faire-fonctionner-le-tout">Faire fonctionner le tout</h2>
+<p>Il manque une étape, on a toute la logique mais rien pour la lancer.
+Ça n&rsquo;est pas bien compliqué maintenant, le gros du travail est fait.</p>
+<p>Il reste cependant un aspect intéressant non abordé : décider de la limite.
+On ne va pas laisser cet algorithme tourner jusqu&rsquo;à ce que le ciel nous tombe sur la tête, il nous faut décider d&rsquo;une limite au-delà de laquelle on arrête nos itérations.
+Un simple compteur fera l&rsquo;affaire (&ldquo;cherche N solutions, et rappels moi quand t&rsquo;as fini !&quot;), mais une solution à peine plus élaborée sera de choisir une limite temporelle (&ldquo;fais ton bazar pendant 5 secondes et zou&rdquo;).</p>
+<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
+<span class="k">do</span> <span class="p">{</span>
+    <span class="c1">//cherche meilleure feuille
+</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
+    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
+            <span class="c1">//node peut encore être développée
+</span><span class="c1"></span>            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">//can expand
+</span><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
+        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span><span class="p">);</span>
+</code></pre></div><p>Et voilà !
+La structure de l&rsquo;arbre est très basique, dans la partie 2 on va discuter améliorations !</p>
 
         
           <div class="blog-tags">
             
-              <a href="https://BaptisteHudyma.github.io/tags/computer-vision/">Computer vision</a>&nbsp;
-            
               <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/tags/opencv/">OpenCV</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/tags/ia/">IA</a>&nbsp;
             
-              <a href="https://BaptisteHudyma.github.io/tags/depth-map/">Depth Map</a>&nbsp;
+              <a href="https://BaptisteHudyma.github.io/tags/optimisation/">Optimisation</a>&nbsp;
             
           </div>
         
@@ -628,42 +689,42 @@ Comme prévu, les erreurs d&rsquo;estimation de profondeur sont pour la plupart 
     <ul class="share">
       
       <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonocular_depth_map%2f&amp;text=Monocular%20Depth%20Map&amp;via=" target="_blank" title="Share on Twitter">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonte_carlo_tree%2f&amp;text=Exploration%20de%20possibilit%c3%a9s%20-%20Partie%201&amp;via=" target="_blank" title="Share on Twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonocular_depth_map%2f" target="_blank" title="Share on Facebook">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonte_carlo_tree%2f" target="_blank" title="Share on Facebook">
           <i class="fab fa-facebook"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" title="Share on Reddit">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonte_carlo_tree%2f&amp;title=Exploration%20de%20possibilit%c3%a9s%20-%20Partie%201" target="_blank" title="Share on Reddit">
           <i class="fab fa-reddit"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" title="Share on LinkedIn">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonte_carlo_tree%2f&amp;title=Exploration%20de%20possibilit%c3%a9s%20-%20Partie%201" target="_blank" title="Share on LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" title="Share on StumbleUpon">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonte_carlo_tree%2f&amp;title=Exploration%20de%20possibilit%c3%a9s%20-%20Partie%201" target="_blank" title="Share on StumbleUpon">
           <i class="fab fa-stumbleupon"></i>
         </a>
       </li>
   
       
       <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonocular_depth_map%2f&amp;description=Monocular%20Depth%20Map" target="_blank" title="Share on Pinterest">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fmonte_carlo_tree%2f&amp;description=Exploration%20de%20possibilit%c3%a9s%20-%20Partie%201" target="_blank" title="Share on Pinterest">
           <i class="fab fa-pinterest"></i>
         </a>
       </li>
@@ -685,15 +746,13 @@ Comme prévu, les erreurs d&rsquo;estimation de profondeur sont pour la plupart 
                   <ul>
                 
                 
-                    <li><a href="/post/monte_carlo_tree/">Exploration de possibilités - Partie 1</a></li>
-                
                     <li><a href="/post/depth_map_segmentation/">Segmentation de depth map</a></li>
+                
+                    <li><a href="/post/monocular_depth_map/">Monocular Depth Map</a></li>
                 
                     <li><a href="/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
                 
                     <li><a href="/post/ppc_slam/">PPC SLAM</a></li>
-                
-                    <li><a href="/post/ppc_intro/">Programmation par Contraintes</a></li>
                 
               </ul>
 
@@ -705,13 +764,9 @@ Comme prévu, les erreurs d&rsquo;estimation de profondeur sont pour la plupart 
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/" data-toggle="tooltip" data-placement="top" title="De CAPE et d&#39;Opés">&larr; Post précédent</a>
+              <a href="https://BaptisteHudyma.github.io/post/depth_map_segmentation/" data-toggle="tooltip" data-placement="top" title="Segmentation de depth map">&larr; Post précédent</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/post/depth_map_segmentation/" data-toggle="tooltip" data-placement="top" title="Segmentation de depth map">Post suivant &rarr;</a>
-            </li>
           
         </ul>
       

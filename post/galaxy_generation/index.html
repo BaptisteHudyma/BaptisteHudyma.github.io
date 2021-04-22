@@ -59,7 +59,7 @@
   "headline": "Génération de galaxies",
   "description" : "Après m\u0026rsquo;être attaqué a la génération procédurale de systèmes planétaires, j\u0026rsquo;ai décidé de monter un peu dans l\u0026rsquo;échelle de l\u0026rsquo;univers en tentant ma chance sur les galaxies.\n",
   "inLanguage" : "fr",
-  "wordCount":  1053 ,
+  "wordCount":  1063 ,
   "datePublished" : "2020-06-15T00:00:00",
   "dateModified" : "2020-06-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.80.0" />
+  <meta name="generator" content="Hugo 0.82.0" />
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -459,7 +459,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1053&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1063&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/galaxy_generation/" lang="en">en</a>
@@ -543,8 +543,8 @@ Les étoiles visibles (a l&rsquo;œil nue) depuis la terre le sont surtout en fo
 On peut en effet s&rsquo;attendre a ce que des étoiles très lumineuses soient visibles de très loin, et que des étoiles très proches soient également visibles malgré leur faible luminosité</p>
 <p>Cependant, les étoiles les plus lumineuses sont également les plus rares (classe O et B), tandis que les plus nombreuses et également les plus proches sont les moins lumineuses (classe M, K).
 Afin de ne pas générer les milliard d&rsquo;étoiles de notre galaxie en mémoire et faire exploser mon ordinateur, il serait plus intelligent de ne générer que les étoiles visibles depuis notre point d&rsquo;observation.</p>
-<p>En m&rsquo;inspirant du <a href="https://www.gamedev.net/blog/73/entry-1952708-galaxy-generation/">Journal de Ysaneya</a>, j&rsquo;ai décidé de mettre en place un octree (en gros la structure 3D d&rsquo;un arbre binaire), séparant ma galaxie en 8 cubes principaux, également subdivisibles jusqu&rsquo;à une certaine échelle.
-Les cubes les plus grands sont placés au &ldquo;niveau 0&rdquo;, jusqu&rsquo;aux plus petits au &ldquo;niveau 12&rdquo;.</p>
+<p>En m&rsquo;inspirant du <a href="https://www.youtube.com/watch?v=Vz3nhCykZNw">développement d&rsquo;Elite Dangerous</a> et du <a href="https://www.gamedev.net/blog/73/entry-1952708-galaxy-generation/">Journal de Ysaneya</a>, j&rsquo;ai décidé de mettre en place un octree (en gros la structure 3D d&rsquo;un arbre binaire), séparant ma galaxie en 8 cubes principaux, également subdivisibles jusqu&rsquo;à une certaine échelle.
+Les cubes les plus grands sont placés au &ldquo;niveau 0&rdquo;, jusqu&rsquo;aux plus petits au &ldquo;niveau 12&rdquo; (Elite Dangerous utilise 8 niveaux).</p>
 <p>L&rsquo;observateur se situe dans un cube de niveau 12, c&rsquo;est-à-dire dans un cube occupant 1/4096 ème de la galaxie.
 Pour la voie lactée, ca représenterait un cube de 126.9 x 126.9 x 126.9 années lumière, assez pour contenir le soleil et son voisinage proche, ce qui représente un nombre considérable d&rsquo;étoiles (voir un exemple du <a href="http://atunivers.free.fr/250lys.html">voisinage a 250 années lumières du soleil</a>).</p>
 <p>Image de l&rsquo;octree subdivisé jusqu&rsquo;au niveau 12, avec quelques étoiles réparties avec une loi de densité uniforme.
@@ -726,7 +726,7 @@ Je cherche en ce moment une méthode pour rendre les coefficients d&rsquo;appari
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.80.0</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.82.0</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

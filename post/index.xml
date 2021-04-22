@@ -7,7 +7,17 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploration de possibilités - Partie 1</title>
+      <link>https://BaptisteHudyma.github.io/post/monte_carlo_tree/</link>
+      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 1: Blabla et implémentation&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title>Segmentation de depth map</title>
       <link>https://BaptisteHudyma.github.io/post/depth_map_segmentation/</link>
