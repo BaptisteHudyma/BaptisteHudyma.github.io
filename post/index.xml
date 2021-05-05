@@ -14,8 +14,9 @@
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</guid>
-      <description>Partie 2: Améliorations et encore plus de blabla !
-Nous en étions resté a la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search). Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j&amp;rsquo;ai remarqué des points d&amp;rsquo;amélioration. Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvé pour la méthode de base.</description>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2: Améliorations et encore plus de blabla !&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Nous en étions resté a la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
+Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvé pour la méthode de base.&lt;/p&gt;</description>
     </item>
     
     <item>

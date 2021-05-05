@@ -57,7 +57,7 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Exploration de possibilités - Partie 2",
-  "description" : "Partie 2: Améliorations et encore plus de blabla !\nNous en étions resté a la construction d\u0026rsquo;une structure d\u0026rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l\u0026rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search). Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j\u0026rsquo;ai remarqué des points d\u0026rsquo;amélioration. Dans cette deuxième partie, je vais montrer les améliorations que j\u0026rsquo;ai trouvé pour la méthode de base.",
+  "description" : "Partie 2: Améliorations et encore plus de blabla !\nNous en étions resté a la construction d\u0026rsquo;une structure d\u0026rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l\u0026rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search). Dans cette deuxième partie, je vais montrer les améliorations que j\u0026rsquo;ai trouvé pour la méthode de base.\n",
   "inLanguage" : "fr",
   "wordCount":  1458 ,
   "datePublished" : "2021-05-04T00:00:00",
@@ -489,8 +489,8 @@ if (!doNotTrack) {
       <article role="main" class="blog-post">
         <p><em><strong>Partie 2: Améliorations et encore plus de blabla !</strong></em></p>
 <p>Nous en étions resté a la construction d&rsquo;une structure d&rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
-Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j&rsquo;ai remarqué des points d&rsquo;amélioration.
 Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai trouvé pour la méthode de base.</p>
+<p>Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j&rsquo;ai remarqué des points d&rsquo;amélioration.</p>
 <p>On rappelle notre programme principal :</p>
 <div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
 <span class="k">do</span> <span class="p">{</span>
@@ -682,7 +682,6 @@ Pour le saut, je fais un jet aléatoire entre 0 et le nombre d&rsquo;enfants non
 <p>-&gt; tout les states dans une map&lt;hash, state&gt;</p>
 <p>-&gt; multiple parents
 Backprop se fait depuis chaque parent, le score augmente donc beaucoup pour chaque noeuds dans le graph</p>
-
 
         
           <div class="blog-tags">
