@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -542,7 +542,7 @@ Le but n&rsquo;est pas de donner du code, mais simplement la structure globale e
 <p>Nous allons avoir besoin de coder la logique du jeu.
 Pour cela, libre à vous de faire ce que vous voulez !
 Il y a pour seule contrainte que votre classe de logique hérite de notre interface ci-dessous :</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//Interface
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//Interface
 </span><span class="c1"></span><span class="k">class</span> <span class="nc">IGame_State</span> <span class="p">{</span>
     <span class="c1">//renvoi le score de cet etat
 </span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">get_score</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -575,7 +575,7 @@ Si cette fonction renvoi 0, cela signifie qu&rsquo;aucun coup n&rsquo;est jouabl
 <p>Enfin la partie intéressante !
 On fait ici une classe Node, qui représente un nœud de l&rsquo;arbre.
 Il est responsable du choix des enfants a crée, de comment explorer le bazar et de remonter les scores, puis nous dire quel est le meilleur combo.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
     <span class="c1">//creer la node depuis un etat de jeux
 </span><span class="c1"></span>    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
 
@@ -645,7 +645,7 @@ Le logarithme permet de diminuer l&rsquo;exploration quand le nombre de visites 
 L&rsquo;adresse de ce nouvel enfant est renvoyé pour pouvoir lancer la phase rollout.</p>
 <p>Pour créer un nouvel enfant, on va utilise la fonction <code>do_move</code> de notre interface <code>IGame_State</code> pour obtenir un nouvel état de jeu correspondant a l&rsquo;état de l&rsquo;enfant.
 On peut ensuite appeler le constructeur de node avec cet état de jeu.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp">    <span class="n">Node</span><span class="o">*</span> <span class="n">Node</span><span class="o">::</span><span class="n">expand_children</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp">    <span class="n">Node</span><span class="o">*</span> <span class="n">Node</span><span class="o">::</span><span class="n">expand_children</span> <span class="p">()</span> <span class="p">{</span>
         <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="c1">//choisir un index non exploré
 </span><span class="c1"></span>
         <span class="c1">//obtenir le prochain etat
@@ -664,7 +664,7 @@ C&rsquo;est la phase &ldquo;joue des coups jusqu&rsquo;à ce que ca ne soit plus
 On récupère alors le score de l&rsquo;état final qu&rsquo;on renvoie.</p>
 <p>J&rsquo;ai vu assez souvent des gens qui oublient la partie <em>Monte Carlo</em> de l&rsquo;exploration d&rsquo;arbre avec Monte Carlo, mais on leur pardonne, après tout on fait ce qu&rsquo;on veut !</p>
 <p>Pour s&rsquo;amuser, on peut changer le choix aléatoire par un choix déterministe, et faire des choix greedy, ou inventer une euristique, liberté absolue de ce côté la.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">IGame_State</span><span class="o">*</span> <span class="n">currentState</span> <span class="o">=</span> <span class="n">_state</span><span class="p">;</span>
     
     <span class="k">while</span><span class="p">(</span><span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
@@ -683,7 +683,7 @@ On récupère alors le score de l&rsquo;état final qu&rsquo;on renvoie.</p>
 Elle ajoute le score au score de la node actuel, et on incrémente le compteur de visites.</p>
 <p>Cette fonction est récursive : si on a un parent, on appelle <code>_parent-&gt;backpropagate(score)</code> après avoir changé nos scores et le tour est joué !</p>
 <p>Quelque chose comme</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">//incremente le nombre de visites et score
 </span><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
@@ -700,7 +700,7 @@ Elle ajoute le score au score de la node actuel, et on incrémente le compteur d
 <p>Il reste cependant un aspect intéressant non abordé : décider de la limite.
 On ne va pas laisser cet algorithme tourner jusqu&rsquo;à ce que le ciel nous tombe sur la tête, il nous faut décider d&rsquo;une limite au-delà de laquelle on arrête nos itérations.
 Un simple compteur fera l&rsquo;affaire (&ldquo;cherche N solutions, et rappels moi quand t&rsquo;as fini !&quot;), mais une solution à peine plus élaborée sera de choisir une limite temporelle (&ldquo;fais ton bazar pendant 5 secondes et zou&rdquo;).</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
 <span class="k">do</span> <span class="p">{</span>
     <span class="c1">//chercher la meilleure feuille
 </span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
@@ -910,7 +910,7 @@ La structure de l&rsquo;arbre est très basique, dans la partie 2 on va discuter
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.83.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

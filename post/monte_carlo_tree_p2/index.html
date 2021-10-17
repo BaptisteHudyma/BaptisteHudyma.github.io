@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -492,7 +492,7 @@ if (!doNotTrack) {
 Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai trouvé pour la méthode de base.</p>
 <p>Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j&rsquo;ai remarqué des points d&rsquo;amélioration.</p>
 <p>On rappelle notre programme principal :</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
 <span class="k">do</span> <span class="p">{</span>
     <span class="c1">//chercher la meilleure feuille
 </span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
@@ -523,7 +523,7 @@ Dans ce cas extrême, on obtiendra des scores et un nombre de visites très gran
 On va donc mettre en place un système de fermeture de Node quand elles ne peuvent plus avoir d&rsquo;enfants.</p>
 <h3 id="fermeture-de-noeuds">Fermeture de noeuds</h3>
 <p>On ajoute la méthode <code>is_fully_explored</code> dans notre classe Node:</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">bool</span> <span class="n">Node</span><span class="o">::</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">bool</span> <span class="n">Node</span><span class="o">::</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="p">{</span>
     <span class="c1">//true if this node is fully explored
 </span><span class="c1"></span>    <span class="k">return</span> <span class="n">_children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">();</span>
 <span class="p">}</span>
@@ -536,7 +536,7 @@ Tout d&rsquo;abord, on ajoute <code>_isClosed = _state.get_move_count() == 0;</c
 Les nodes sans enfants seront les premières a être indiquées comme fermées (Ajoutez également une méthode <code>bool Node::is_closed()</code> pour plus tard).</p>
 <p>On va également ajouter un membre <code>_closedChildrenCount</code> pour garder en mémoire le nombre d&rsquo;enfants fermés de cette node (rajouter <code>_closedChildrenCount = 0</code> dans le constructeur).</p>
 <p>Au moment de la backpropagation, on va remonter l&rsquo;information de fermeture et mettre a jour le parent, qui sera responsable qu&rsquo;il est bien fermé :</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
     <span class="c1">//incremente le nombre de visites et score
 </span><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
     <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
@@ -584,7 +584,7 @@ Notre étape de Rollout (déroulement aléatoire de coups jusqu&rsquo;à un éta
 <p>L&rsquo;idée est d&rsquo;étendre l&rsquo;arbre de recherche en même temps qu&rsquo;on effectue la phase de rollout pour calculer nos coups une seule fois et économiser le maximum de temps de traitement.</p>
 <h3 id="expand">Expand</h3>
 <p>Pour garder une certaine souplesse d&rsquo;utilisation, je vais conserver la fonction existante et en créer une nouvelle :</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout_expand</span> <span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout_expand</span> <span class="p">()</span> <span class="p">{</span>
     <span class="n">Node</span><span class="o">*</span> <span class="n">currentNode</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
     
     <span class="k">while</span><span class="p">(</span><span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_sate</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
@@ -614,7 +614,7 @@ Notre étape de Rollout (déroulement aléatoire de coups jusqu&rsquo;à un éta
 <h3 id="remettre-les-scores-a-leur-place">Remettre les scores a leur place</h3>
 <p>Chaque nouvelle node de la phase de rollout aura un nombre de visites fixé a 0.
 On va simplement modifier notre fonction backpropagate et ajouter une condition sur le score propagé :</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//incrémenter le score, comme avant
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//incrémenter le score, comme avant
 </span><span class="c1"></span><span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
 
 <span class="k">if</span><span class="p">(</span><span class="n">_nombreDeVisites</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
@@ -629,7 +629,7 @@ Il restera toujours un biais cependant : avec ce type de recherche, on n&rsquo;a
 <h3 id="exploration-en-longueur">Exploration en longueur</h3>
 <p>Celle-ci est un peu plus complexe.
 On va commencer par regrouper la recherche d&rsquo;une feuille dans une fonction.</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
     <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
@@ -660,7 +660,7 @@ On va commencer par regrouper la recherche d&rsquo;une feuille dans une fonction
 <span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
 </span></code></pre></div><p>On peut ensuite modifier cette fonction pour y ajouter une possibilité de &ldquo;saut&rdquo; si une node enfant a des enfants non explorés et c&rsquo;est gagné !
 Pour le saut, je fais un jet aléatoire entre 0 et le nombre d&rsquo;enfants non explorés, et saute la node en cours si le tirage est &gt; au nombre d&rsquo;enfants explorés :</p>
-<div class="highlight"><pre class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
     <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
     <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
@@ -786,6 +786,10 @@ Backprop se fait depuis chaque parent, le score augmente donc beaucoup pour chaq
             </li>
           
           
+            <li class="next">
+              <a href="https://BaptisteHudyma.github.io/post/slam_1/" data-toggle="tooltip" data-placement="top" title="SLAM - Parti 1">Post suivant &rarr;</a>
+            </li>
+          
         </ul>
       
 
@@ -868,7 +872,7 @@ Backprop se fait depuis chaque parent, le score augmente donc beaucoup pour chaq
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.83.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

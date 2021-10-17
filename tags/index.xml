@@ -7,13 +7,49 @@
     <generator>Hugo -- gohugo.io</generator>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Tue, 04 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 13 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Cpp</title>
       <link>https://BaptisteHudyma.github.io/tags/cpp/</link>
-      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Levenberg-Marquardt</title>
+      <link>https://BaptisteHudyma.github.io/tags/levenberg-marquardt/</link>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/tags/levenberg-marquardt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RGB-D</title>
+      <link>https://BaptisteHudyma.github.io/tags/rgb-d/</link>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/tags/rgb-d/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Robotics</title>
+      <link>https://BaptisteHudyma.github.io/tags/robotics/</link>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/tags/robotics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SLAM</title>
+      <link>https://BaptisteHudyma.github.io/tags/slam/</link>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
+      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/tags/slam/</guid>
       <description></description>
     </item>
     
@@ -72,38 +108,11 @@
     </item>
     
     <item>
-      <title>RGB-D</title>
-      <link>https://BaptisteHudyma.github.io/tags/rgb-d/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/tags/rgb-d/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>PPC</title>
       <link>https://BaptisteHudyma.github.io/tags/ppc/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
       <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/tags/ppc/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Robotics</title>
-      <link>https://BaptisteHudyma.github.io/tags/robotics/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/tags/robotics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>SLAM</title>
-      <link>https://BaptisteHudyma.github.io/tags/slam/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/tags/slam/</guid>
       <description></description>
     </item>
     

@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="fr" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>SLAM - Parti 2 - B. Hudyma Logs</title>
+  <meta name="description" content="Implémenter mon propre système de localisation &amp; mapping">
+  <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "B. Hudyma Logs",
+    
+    "url": "https:\/\/BaptisteHudyma.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/BaptisteHudyma.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io\/post\/slam_2\/",
+          "name": "Slam parti 2"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Baptiste Hudyma"
+  },
+  "headline": "SLAM - Parti 2",
+  "description" : "Partie 2 : Optimisation de pose\nUne fois nos features détectées et associées, on va chercher a estimer le mouvement effectué entre les deux observations.\n",
+  "inLanguage" : "fr",
+  "wordCount":  1773 ,
+  "datePublished" : "2021-10-13T00:00:00",
+  "dateModified" : "2021-10-13T00:00:00",
+  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+  "keywords" : [ "CPP, Robotics, SLAM, RGB-D, Levenberg-Marquardt" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/slam_2\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/BaptisteHudyma.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="SLAM - Parti 2" />
+<meta property="og:description" content="Implémenter mon propre système de localisation &amp; mapping">
+<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/post/slam_2/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="B. Hudyma Logs" />
+
+  <meta name="twitter:title" content="SLAM - Parti 2" />
+  <meta name="twitter:description" content="Implémenter mon propre système de localisation &amp; mapping">
+  <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.88.1" />
+  <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/syntax.css" />
+  <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-189718074-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://BaptisteHudyma.github.io">B. Hudyma Logs 
+      </a>
+      <a class="navbar-brand">
+      <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+
+
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+</style>
+
+<script>
+    
+    let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    
+    let theme = sessionStorage.getItem('theme');
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+    
+    
+    if (systemInitiatedDark.matches) {
+    }
+    else{
+        switcher.classList.toggle('js-toggle--checked');
+    }
+    
+    
+    function prefersColorTest(systemInitiatedDark) {
+        var switcher = document.getElementsByClassName('js-toggle')[0];
+        switcher.classList.toggle('js-toggle--checked');
+        if (systemInitiatedDark.matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            
+            sessionStorage.setItem('theme', '');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sessionStorage.setItem('theme', '');
+        }
+    }
+    systemInitiatedDark.addListener(prefersColorTest);
+    
+    switcher.addEventListener("click", function () {
+        
+        let theme = sessionStorage.getItem('theme');
+        
+        this.classList.toggle('js-toggle--checked');
+        
+        if (theme === "dark") {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sessionStorage.setItem('theme', 'light');
+            
+        }	else if (theme === "light") {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            sessionStorage.setItem('theme', 'dark');
+            
+        } else if (systemInitiatedDark.matches) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sessionStorage.setItem('theme', 'light');
+            
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            sessionStorage.setItem('theme', 'dark');
+        }
+        
+    });
+    
+    if (theme === "dark") {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        sessionStorage.setItem('theme', 'dark');
+        switcher.classList.add('js-toggle--checked');
+    } else if (theme === "light") {
+        document.documentElement.setAttribute('data-theme', 'light');
+        sessionStorage.setItem('theme', 'light');
+        switcher.classList.add('js-toggle--unchecked');
+    }
+</script>
+
+
+
+
+
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="/post">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About me" href="/page/about">About me</a>
+            </li>
+          
+        
+
+    
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="B. Hudyma Logs" href="https://BaptisteHudyma.github.io">
+            <img class="avatar-img" src="https://BaptisteHudyma.github.io/img/github_profile.jpg" alt="B. Hudyma Logs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>SLAM - Parti 2</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">Implémenter mon propre système de localisation &amp; mapping</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posté le October 13, 2021
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1773&nbsp;mots
+  
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p><em><strong>Partie 2 : Optimisation de pose</strong></em></p>
+<p>Une fois nos features détectées et associées, on va chercher a estimer le mouvement effectué entre les deux observations.</p>
+<p>Après la <a href="https://BaptisteHudyma.github.io/post/slam_1/">Partie 1</a> qui concernait la détection et association de features, on s&rsquo;intéresse ici a l&rsquo;estimation de notre position et orientation dans le temps.</p>
+<h1 id="choisir-le-modèle-de-pose-a-optimiser">Choisir le modèle de pose a optimiser</h1>
+<p>Une pose est la position et l&rsquo;orientation de notre robot dans l&rsquo;espace.
+On peut l&rsquo;exprimer de la manière et dans le repère qui nous arrange le plus (j&rsquo;ai déjà vu du sphérique, ici on préfèrera le cartésien).</p>
+<p>La position de notre observateur sera un vecteur 3, avec l&rsquo;origine centrée sur le point de départ de notre robot.
+L&rsquo;orientation est souvent représentée par une matrice de rotation, ou un quaternion.
+Je préfère utiliser les quaternions, plus faciles a manipuler que les matrices de rotation.</p>
+<p>En vérité, le choix de notre modèle de pose dépendra surtout de la technique de regression qu&rsquo;on souhaite appliquer.</p>
+<p>On remarquera cependant que l&rsquo;utilisation d&rsquo;un quaternion ou d&rsquo;une matrice de rotation &ldquo;surparamétrisée&rdquo; le problèmes: on se retrouve avec \(N \geq 4\) variables pour définir une orientation a 3 degrés de liberté sur l&rsquo;axe \(x\), \(y\) et \(z\) en Cartésien).
+On reviendra sur ce point plus tard, mais il est <strong>fondamental</strong>.</p>
+<details><summary>La représentation</summary>
+<p>En effet cette représentation n&rsquo;est pas suparametrisée, mais a son propre lot de problèmes.
+Ajouter les rotation successives n&rsquo;est pas vraiment trivial, et chaque composante est définie sur un domaine dépendant d&rsquo;un nombre non rationnel (PI).</p>
+<p>Il se trouve qu&rsquo;une matrice de rotation est déjà une représentation de rotation utilisant les angles sur X Y et Z, mais sous une forme bien plus utile: voir <a href="http://www2.ift.ulaval.ca/~pgiguere/cours/IntroRobotique2017/notes/03-VisionIII.pdf">ce lien</a> pour s&rsquo;instruire sur le sujet !</p>
+
+</details>
+
+<h1 id="optimisation-de-pose">Optimisation de pose</h1>
+<p>On va chercher ici a estimer la transformation entre nos deux sets de features associées, c&rsquo;est-à-dire la rotation et transformation a appliquer a chaque features du set 2 pour retrouver le set 1.
+A ma connaissance, les résultats peuvent être obtenus sous la forme d&rsquo;une pose relative au set 1, ou d&rsquo;une pose absolue (par rapport au point 0 du monde).</p>
+<p>Généralement, optimiser une pose absolue possède moins d&rsquo;applications que de récupérer une série de poses relatives, et est plus lourd et moins précis (localement) qu&rsquo;une pose relative.
+On renverra a l&rsquo;utilisateur la pose absolu.</p>
+<p>Idéalement notre map devrait être définie par rapport aux poses relatives, afin d&rsquo;optimiser la position des éléments de notre map quand on effectue une fermeture de boucle.</p>
+<h2 id="méthode-doptimisation">Méthode d&rsquo;optimisation</h2>
+<p>L&rsquo;optimisation va se baser sur la transformation entre deux sets de features associés pour estimer les paramètres du mouvement.
+Dans la littérature, on observe plusieurs techniques, la plupart utilisant des régressions linéaires comme la descente de gradient, Newton-Gauss, le Bundle Adjustment, &hellip;</p>
+<p>Une de mes favorites est la représentation du problème sous forme de graph: On considère la pose de notre observer comme un point d&rsquo;un graph relié a la pose précédente.
+Chaque pose est reliée aux features associées, également reliées entre elles.
+Certains liens sont marqués &ldquo;elastiques&rdquo;, c&rsquo;est a dire optimisables.
+Les liens entre les features sont toujours considérés rigides, les optimiser n&rsquo;a pas vraiment d&rsquo;utilité.
+Si on note tous les liens, a part ceux entre les poses et leurs features, comme étant élastiques, on obtient après optimisation la pose finale.
+On peut aussi noter les liens entre les poses et les features comme étant élastiques: l&rsquo;optimisation sera plus longue mais on en sortira également une erreur associé a chaque feature, ce qui peut être utile en construisant la map.
+Cet algorithme est implémenté dans <a href="https://github.com/RainerKuemmerle/g2o">g2o</a> sous le nom <a href="http://g2o.xuezhisd.top/classg2o_1_1SparseOptimizer.html">SparseOptimizer</a> (voir un exemple d&rsquo;utilisation dans <a href="https://www.researchgate.net/publication/327274388_Lightweight_Visual_Odometry_for_Autonomous_Mobile_Robots">Light Visual Tracking (LVT)</a>, une méthode d&rsquo;odomètre visuelle performante dans les environnement avec beaucoup de features).</p>
+<p>J&rsquo;ai également pu lire un papier proposant une méthode optimisant d&rsquo;abord la rotation de la pose, et utilisant cette rotation comme constante de l&rsquo;optimisation par bundle adjustment de la position (voir <a href="https://arxiv.org/abs/2010.07997">RGB-D SLAM with Structural Regularities (2021)</a>)</p>
+<p>Le bundle adjustment consiste a effectuer une série d&rsquo;optimisations en ajustant entre chaque itérations les paramètres finaux.
+Dans le cas d&rsquo;un SLAM basé sur des surfels (petites surfaces autour d&rsquo;un point feature), les surfels faisant parti du meme &ldquo;objet&rdquo; peuvent être fusionnés entre chaque étapes de l&rsquo;optimisation (voir <a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Schops_BAD_SLAM_Bundle_Adjusted_Direct_RGB-D_SLAM_CVPR_2019_paper.pdf">BAD: Bundle Adjusted DirectRGBD-SLAM (2019)</a> pour la méthode complète).</p>
+<p>Afin d&rsquo;obtenir la pose relative de mon robot, j&rsquo;utilise l'<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Levenberg-Marquardt">algorithme de Levenberg-Marquardt</a>, implémenté avec la librairie <a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen</a>.
+C&rsquo;est un algorithme absolument formidable, basé sur une optimisation de Newton-Gauss pour converger rapidement, suivie d&rsquo;une descente de gradient pour l&rsquo;ajustement final, plus précis.
+Il a cependant ses limites: il est bien meilleur pou optimiser des problèmes linéaires (ce qu&rsquo;une estimation de pose n&rsquo;est pas), et nécessite une estimation de la solution de base pour converger suffisamment vite (a mon goût).</p>
+<p>Fonctionnellement, l&rsquo;algorithme appellera une fonction d&rsquo;optimisation avec des paramètres (ici, position et rotation) variés au fur et a mesure de l&rsquo;optimisation, et nous renverrons un vecteur de taille \(N\), contenant l&rsquo;ensemble des erreur.</p>
+<h3 id="estimation-des-paramètres-initiaux">Estimation des paramètres initiaux</h3>
+<p>Pour fournir une estimation assez proche de la réalité en entrée de l&rsquo;algorithme, j&rsquo;utilise un model a vélocité constante, basée sur les dernières estimations de pose pour estimer la prochaine.
+Ce modèle de vélocité est approximatif mais suffit a se rapprocher de la solution pour économiser quelques itérations.</p>
+<p>Je n&rsquo;ai pas encore trouvé de meilleur méthode.</p>
+<h3 id="linéarisation-du-quaternion">Linéarisation du quaternion</h3>
+<p>Pour la question de la linéarité du problèmes, c&rsquo;est un peu plus complexe.
+On a 7 paramètres a optimiser: les 3 de la position, déjà linéaire, et les 4 paramètres de notre quaternion.
+Ici c&rsquo;est le quaternion qui pose problème: ses paramètres sont entre 0 et 1, et leur transformation n&rsquo;est absolument pas linéaire.</p>
+<p>Il existe plusieurs techniques pour contourner ce problème de linéarisation.
+La plus facile à appliquer est surement celle ci: On va exprimer le paramètre \(w\) du quaternion en fonction des trois autres (\(x\), \(y\), \(z\)).
+Notre problème n&rsquo;est plus surparamètrisé, et la représentation finale est plus facilement optimisable.
+$$
+k_w = \sqrt{1 - \frac{x^2 + y^2 + z^2}{4}},
+k_x = \frac{x}{2},
+k_y = \frac{y}{2},
+k_z = \frac{z}{2}
+$$
+On optimisera les paramètres \(x\), \(y\) et \(z\).</p>
+<p>Cette représentation, même si elle est correctement parametrisée, n&rsquo;est pas encore linéaire.
+J&rsquo;ai lu certaines publications qui avançaient qu&rsquo;elle n&rsquo;était valable que pour les petites variations de rotation, mais je ne peux pas confirmer ni infirmer cette proposition (voir <a href="https://www.semanticscholar.org/paper/Robust-RGB-D-odometry-under-depth-uncertainty-for-Proen%C3%A7a/b15b65ac59b42b24eb669efc2a3c10f62bc9c6e6">Robust RGB-D Odometry Under Depth Uncertainty for Structured Environments</a>)</p>
+<p>On peut aussi citer les transformations exponentielles du quaternion, et bien d&rsquo;autres (voir <a href="https://arxiv.org/abs/1711.02508">Quaternion Kinematics for the Error-State Kalman Filter (2017)</a> qui recense la plupart des transformations que j&rsquo;ai pu voir).</p>
+<p>Pour ma part, je m&rsquo;oriente vers la méthode décrite dans <a href="https://www.prof-schmidt-consulting.de/pdf/jschmidt_vmv_2001.pdf">Using Quaternions for Parametrizing 3D Rotations in Unconstrained Non Linear Optimisation (2001)</a>.
+Cette méthode me semble plus intuitive que celles présentées précédemment:
+Plutôt qu&rsquo;optimiser les paramètres du quaternion pour en trouver un autre, on va optimiser les déplacements a effectuer sur l&rsquo;hyperplan tangent a la sphère unitaire contenant notre quaternion de départ, pour obtenir notre quaternion final.
+Ces déplacements sont donc linéaires, et facilement optimisables.
+J&rsquo;émets tout de mêmes certaines réserves concernant l&rsquo;optimisation de rotations éloignées les unes des autres.
+La distance sur le plan tangent est a mon avis limitant dans le cas d&rsquo;une rotation importante.</p>
+<p><strong>Formulation mathématique simplifié</strong></p>
+<p>Prenons notre quaternion initial \(k_0 = (k_w, k_x, k_y, k_z) \).</p>
+<p>On va calculer une base de l&rsquo;hyperplan \(M\) a partir de \(k_0\):
+$$
+M = \begin{pmatrix}
+- \frac{k_x}{k_w} &amp; -\frac{k_y}{k_w} &amp; -\frac{k_z}{k_w} \\
+1                 &amp; 0                &amp; 0                \\
+0                 &amp; 1                &amp; 0                \\
+0                 &amp; 0                &amp; 1
+\end{pmatrix}
+$$
+Les colonnes de \(M\) représentent une partie des paramètres de l&rsquo;hyperplan.</p>
+<p>On récupère ensuite la matrice \(U\), la matrice de décomposition en valeurs propres de \(M\):
+$$
+M = U \sum{} V^*
+$$</p>
+<p>Nous allons maintenant choisir un vecteur \(v\) a trois dimensions, qui sera l&rsquo;entrée de notre parametrisation.
+\(U\) sera une matrice \(4 * 3\).
+On peut obtenir un quaternion transformé en effectuant l&rsquo;opération
+$$
+v_4 = U v
+$$
+$$
+k_f = \sin{(\lVert v_4 \rVert)} * v_4 + \cos{(\lVert v_4 \rVert)} * k_0
+$$
+On peut remarquer que fixer toutes les composantes de \(v\) a 0 produira le quaternion \(k_0\).</p>
+<p>Durant l&rsquo;optimisation, nous avons simplement a transformer v en quaternion \(k_f\), et utiliser ce quaternion pour notre optimisation.</p>
+<h2 id="scoring">Scoring</h2>
+<p>Pour estimer la qualité de l&rsquo;estimation de notre pose, nous devons mettre en place une série de métriques, appliqué a chaque paire de points associés.
+Notre fonction d&rsquo;optimisation renvoi un vecteur de taille N, avec N le nombre de features associées.
+Pour que l&rsquo;optimisation soit terminée, les valeurs de notre vecteur doivent se rapprocher le plus possible de 0.</p>
+<p>On notera \(P_W\) notre point 3D dans l&rsquo;espace, et \(P_A\) sa feature 2D associée.</p>
+<h3 id="projection-du-point-de-référence-en-repère-caméra">Projection du point de référence en repère caméra</h3>
+<p>On va commencer par transformer notre vecteur \(v\) en quaternion avec la formule vue précédemment.
+On calcule ensuite la matrice de rotation \(R_w\) a partir de notre quaternion \(k_f\), et on transforme cette matrice en matrice de transformation world to screen, a partir de la position \(T_W\):
+$$
+T_s = -R_w^t * T_w
+$$
+$$
+TR_s = (R_w, T_S)
+$$
+On va ensuite projeter notre point de référence sur l&rsquo;écran, en utilisant la matrice de transformation \(RT_s\) (Matrice 4x3), qui transforme les points depuis des coordonnées 3D vers une projection 3D en espace camera \(P_c\).
+$$
+P_c = TR_s * P_W;
+$$
+On notera \(d\) la composante 3 de \(P_c\).
+$$
+P_s = \frac{c_f * P_c}{d} + c_c
+$$
+Ou \(c_f\) et \(c_c\) sont des vecteurs 2D représentants respectivement la distance focale et la distance de ce point focal par rapport au centre de la camera (paramètres intrinsèques a la camera utilisée).</p>
+<p>Notre point 2D \(P_s\) est la projection de notre point initial \(P_W\) dans le repère caméra.</p>
+<h3 id="comparaison-des-deux-features-associées">Comparaison des deux features associées</h3>
+<p>On peut ensuite comparer la distance entre \(P_s\) et \(P_A\), avec un calcul de distance.
+L&rsquo;échelle de notre variables en sortie n&rsquo;a pas vraiment d&rsquo;importance.</p>
+<p>J&rsquo;ai commencé par utiliser la distance de Manhattan, qui fourni des résultats rapides et plus que satisfaisants.
+Certains papiers proposent d&rsquo;utiliser la <a href="https://fr.wikipedia.org/wiki/Distance_de_Mahalanobis">distance de Mahalanobis</a>, bien plus robuste aux distributions variées de points, mais plus lourde a calculer.</p>
+<h3 id="pondération-des-distances">Pondération des distances</h3>
+<p>Notre étape d&rsquo;optimisation pourrait s&rsquo;arrêter la, mais on peut ajouter une pondération pour éliminer encore plus l&rsquo;influence des outliers.
+On pourra utiliser un estimateur comme Huber, Cauchy, SC-DCS, ou un spécial celui comme présenté dans <a href="https://ieeexplore.ieee.org/document/7158322/">At All Costs: A Comparison of Robust Cost Functions for Camera Correspondence Outliers (2015)</a> par exemple.</p>
+<p>On pourra également relancer l&rsquo;optimisation en enlevant les points considérés comme outlier pendant la première optimisation.
+Le traitement sera plus lourd, mais l&rsquo;estimation finale sera bien meilleure.</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://BaptisteHudyma.github.io/tags/cpp/">CPP</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/levenberg-marquardt/">Levenberg-Marquardt</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fslam_2%2f&amp;text=SLAM%20-%20Parti%202&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fslam_2%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fslam_2%2f&amp;title=SLAM%20-%20Parti%202" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fslam_2%2f&amp;title=SLAM%20-%20Parti%202" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fslam_2%2f&amp;title=SLAM%20-%20Parti%202" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fslam_2%2f&amp;description=SLAM%20-%20Parti%202" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Voir également</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/slam_1/">SLAM - Parti 1</a></li>
+                
+                    <li><a href="/post/depth_map_segmentation/">Segmentation de depth map</a></li>
+                
+                    <li><a href="/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
+                
+                    <li><a href="/post/ppc_slam/">PPC SLAM</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://BaptisteHudyma.github.io/post/slam_1/" data-toggle="tooltip" data-placement="top" title="SLAM - Parti 1">&larr; Post précédent</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/BaptisteHudyma" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/BaptHdm" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Baptiste Hudyma
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2021
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://BaptisteHudyma.github.io">B. Hudyma Logs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
+<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

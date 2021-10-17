@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.83.1" />
+  <meta name="generator" content="Hugo 0.88.1" />
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="B. Hudyma Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -497,7 +497,7 @@ Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&r
 <h1 id="réparer-la-depth-map">Réparer la depth map</h1>
 <p>Afin de corriger quelques défauts de la depth map en prévision de son utilisation pour calculer les normales, je lui ai appliqué quelques traitements.</p>
 <p>J&rsquo;ai ici utilisé une fermeture morphologique, un filtrage médian puis un filtrage bilatéral, qui ont pour but dans l&rsquo;ordre, de refermer les petits trous introduits par la warping, lisser ces modifications et effectuer un lissage global favorisant la conservation des surfaces planes.</p>
-<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
 <span class="n">cv</span><span class="o">::</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">depthMap</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">);</span> <span class="c1">// kernel is a 3x3 square
 </span><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 <span class="n">cv</span><span class="o">::</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">depthMap</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
@@ -509,7 +509,7 @@ L&rsquo;effet final est une image en nuances de bleu/vert/rouge en fonction de l
 <p>Une normal map construite à partir de données théoriques est plutôt &ldquo;jolie&rdquo;.
 Elle présente peu de bruit (donc visuellement un gradient de couleurs continue), mais dans nos mesures réelles on va relever beaucoup de bruit.</p>
 <p>On peut calculer la valeur d&rsquo;une normale a un point <code>(x, y)</code> de la depth map avec le code c++ suivant :</p>
-<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="kt">float</span> <span class="n">dzdx</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="kt">float</span> <span class="n">dzdx</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 <span class="kt">float</span> <span class="n">dzdy</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">normalize</span><span class="p">(</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="o">-</span><span class="n">dzdx</span><span class="p">,</span> <span class="o">-</span><span class="n">dzdy</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">));</span>
 </code></pre></div><p>On ignore bien sur les points sans donnée de profondeur.
@@ -522,7 +522,7 @@ Ces erreurs de calcul dans les normals sont dues aux erreurs de mesure dans la d
 <h1 id="détection-de-surfaces-concaves">Détection de surfaces concaves</h1>
 <p>On va ensuite parcourir la normal map pour y détecter les surfaces concaves.
 J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rsquo;un point <code>(x, y)</code> avec ses points voisin <code>(xn, yn)</code> :</p>
-<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&amp;</span> <span class="n">centerNormal</span> <span class="o">=</span> <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="c1">//normal au centre de la zone à analyser
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&amp;</span> <span class="n">centerNormal</span> <span class="o">=</span> <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="c1">//normal au centre de la zone à analyser
 </span><span class="c1"></span><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
 </span><span class="c1"></span><span class="kt">float</span> <span class="n">minConcavity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 <span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
@@ -540,7 +540,7 @@ J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rs
 <h1 id="détection-de-discontinuités-de-surfaces">Détection de discontinuités de surfaces</h1>
 <p>Cette fois ci on cherche les discontinuités de profondeur.
 J&rsquo;ai utilisé le même opérateur que [1], qui compare la distance d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
-<div class="highlight"><pre class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
 </span><span class="c1"></span><span class="kt">float</span> <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 <span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
     <span class="kt">float</span> <span class="n">neightborDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">);</span>
@@ -666,15 +666,15 @@ Elle demande également plus de ressources que CAPE, mais est facilement parall�
                   <ul>
                 
                 
+                    <li><a href="/post/slam_2/">SLAM - Parti 2</a></li>
+                
+                    <li><a href="/post/slam_1/">SLAM - Parti 1</a></li>
+                
                     <li><a href="/post/monte_carlo_tree_p2/">Exploration de possibilités - Partie 2</a></li>
                 
                     <li><a href="/post/monte_carlo_tree_p1/">Exploration de possibilités - Partie 1</a></li>
                 
                     <li><a href="/post/monocular_depth_map/">Monocular Depth Map</a></li>
-                
-                    <li><a href="/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
-                
-                    <li><a href="/post/ppc_slam/">PPC SLAM</a></li>
                 
               </ul>
 
@@ -776,7 +776,7 @@ Elle demande également plus de ressources que CAPE, mais est facilement parall�
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.83.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
