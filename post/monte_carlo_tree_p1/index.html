@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.88.1" />
+  <meta name="generator" content="Hugo 0.120.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -542,19 +542,19 @@ Le but n&rsquo;est pas de donner du code, mais simplement la structure globale e
 <p>Nous allons avoir besoin de coder la logique du jeu.
 Pour cela, libre à vous de faire ce que vous voulez !
 Il y a pour seule contrainte que votre classe de logique hérite de notre interface ci-dessous :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//Interface
-</span><span class="c1"></span><span class="k">class</span> <span class="nc">IGame_State</span> <span class="p">{</span>
-    <span class="c1">//renvoi le score de cet etat
-</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">get_score</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="c1">//renvoi le nombre de coups possible depuis cet etat
-</span><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">get_move_count</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-    <span class="c1">//effectue un mouvement depuis cet etat et le renvoi
-</span><span class="c1"></span>    <span class="k">virtual</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="nf">do_move</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-
-<span class="p">}</span>
-</code></pre></div><p>Notre classe dérivée <code>IGame_State</code> sera utilisée dans notre arbre pour savoir ou on en est dans la partie.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">//Interface
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">IGame_State</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//renvoi le score de cet etat
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">get_score</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//renvoi le nombre de coups possible depuis cet etat
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">get_move_count</span> <span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//effectue un mouvement depuis cet etat et le renvoi
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="nf">do_move</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Notre classe dérivée <code>IGame_State</code> sera utilisée dans notre arbre pour savoir ou on en est dans la partie.
 Elle représente toute la logique du jeu, qui est donc proprement séparé de l&rsquo;exploration de l&rsquo;arbre.</p>
 <h3 id="get_score">get_score</h3>
 <p>Cette méthode nous donne le score de l&rsquo;état de jeux actuel.
@@ -575,34 +575,34 @@ Si cette fonction renvoi 0, cela signifie qu&rsquo;aucun coup n&rsquo;est jouabl
 <p>Enfin la partie intéressante !
 On fait ici une classe Node, qui représente un nœud de l&rsquo;arbre.
 Il est responsable du choix des enfants a crée, de comment explorer le bazar et de remonter les scores, puis nous dire quel est le meilleur combo.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
-    <span class="c1">//creer la node depuis un etat de jeux
-</span><span class="c1"></span>    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
-
-    <span class="c1">//trouve l enfant avec le meilleur score
-</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCB</span> <span class="p">();</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCT</span> <span class="p">();</span>
-
-    <span class="c1">//Ajoute un enfant parmi les coups possibles
-</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">expand_children</span> <span class="p">();</span>
-
-    <span class="c1">//deroule une partie depuis cette node
-</span><span class="c1"></span>    <span class="kt">float</span> <span class="nf">rollout</span> <span class="p">();</span>
-
-    <span class="c1">//remonte le score a la racine
-</span><span class="c1"></span>    <span class="kt">void</span> <span class="nf">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">);</span>
-
-
-    <span class="k">private</span><span class="o">:</span>
-        <span class="n">Node</span><span class="o">*</span> <span class="n">_parent</span><span class="p">;</span>           <span class="c1">//référence au parent
-</span><span class="c1"></span>        <span class="n">list</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span> <span class="n">_children</span><span class="p">;</span>   <span class="c1">//référence aux enfants
-</span><span class="c1"></span>        <span class="n">IGame_State</span><span class="o">*</span> <span class="n">_state</span><span class="p">;</span>      <span class="c1">//référence a l&#39;état de jeu associé a cette node
-</span><span class="c1"></span>
-        <span class="kt">double</span> <span class="n">_score</span><span class="p">;</span>           <span class="c1">//score a cette node
-</span><span class="c1"></span>        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">_nombreDeVisites</span><span class="p">;</span>    <span class="c1">//Nombre de passages par cette node
-</span><span class="c1"></span>
-<span class="p">}</span>
-</code></pre></div><p>Notre class contient une référence a son parent dans un pointeur, pour l&rsquo;étape de backpropagation.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//creer la node depuis un etat de jeux
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//trouve l enfant avec le meilleur score
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCB</span> <span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCT</span> <span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//Ajoute un enfant parmi les coups possibles
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">expand_children</span> <span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//deroule une partie depuis cette node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">float</span> <span class="nf">rollout</span> <span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//remonte le score a la racine
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">Node</span><span class="o">*</span> <span class="n">_parent</span><span class="p">;</span>           <span class="c1">//référence au parent
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">list</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span> <span class="n">_children</span><span class="p">;</span>   <span class="c1">//référence aux enfants
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">IGame_State</span><span class="o">*</span> <span class="n">_state</span><span class="p">;</span>      <span class="c1">//référence a l&#39;état de jeu associé a cette node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">_score</span><span class="p">;</span>           <span class="c1">//score a cette node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">_nombreDeVisites</span><span class="p">;</span>    <span class="c1">//Nombre de passages par cette node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Notre class contient une référence a son parent dans un pointeur, pour l&rsquo;étape de backpropagation.</p>
 <p>J&rsquo;utilise une list pour stocker les enfants, car on ne connais pas leur nombre.
 Utiliser un vecteur est également possible, mais ici je n&rsquo;ai jamais besoin d&rsquo;accéder a un enfant par index, ils seront toujours choisis par itération.
 Utiliser une map ou un tableau a taille variable (comme vector) n&rsquo;est pas intéressant quand une liste simplement chainé suffit.
@@ -645,16 +645,16 @@ Le logarithme permet de diminuer l&rsquo;exploration quand le nombre de visites 
 L&rsquo;adresse de ce nouvel enfant est renvoyé pour pouvoir lancer la phase rollout.</p>
 <p>Pour créer un nouvel enfant, on va utilise la fonction <code>do_move</code> de notre interface <code>IGame_State</code> pour obtenir un nouvel état de jeu correspondant a l&rsquo;état de l&rsquo;enfant.
 On peut ensuite appeler le constructeur de node avec cet état de jeu.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp">    <span class="n">Node</span><span class="o">*</span> <span class="n">Node</span><span class="o">::</span><span class="n">expand_children</span> <span class="p">()</span> <span class="p">{</span>
-        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="c1">//choisir un index non exploré
-</span><span class="c1"></span>
-        <span class="c1">//obtenir le prochain etat
-</span><span class="c1"></span>        <span class="n">IGame_State</span><span class="o">*</span> <span class="n">nextState</span> <span class="o">=</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
-        
-        <span class="c1">//nouvelle node avec celle ci comme parent et le nouveau state
-</span><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="nf">Node</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">nextState</span><span class="p">);</span>
-    <span class="p">}</span>
-</code></pre></div><p>Pour le choix de l&rsquo;index, on est tout a fait libre.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">Node</span><span class="o">::</span><span class="n">expand_children</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="c1">//choisir un index non exploré
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//obtenir le prochain etat
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">IGame_State</span><span class="o">*</span> <span class="n">nextState</span> <span class="o">=</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">//nouvelle node avec celle ci comme parent et le nouveau state
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="nf">Node</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">nextState</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span></code></pre></div><p>Pour le choix de l&rsquo;index, on est tout a fait libre.
 C&rsquo;est un bon endroit pour utiliser un peu d&rsquo;aléatoire (pour commencer) et marquer sur notre CV qu&rsquo;on a utilisé une recherche de Monte Carlo.
 On améliorera ca dans la partie 2.</p>
 <h3 id="rollout">rollout</h3>
@@ -664,63 +664,63 @@ C&rsquo;est la phase &ldquo;joue des coups jusqu&rsquo;à ce que ca ne soit plus
 On récupère alors le score de l&rsquo;état final qu&rsquo;on renvoie.</p>
 <p>J&rsquo;ai vu assez souvent des gens qui oublient la partie <em>Monte Carlo</em> de l&rsquo;exploration d&rsquo;arbre avec Monte Carlo, mais on leur pardonne, après tout on fait ce qu&rsquo;on veut !</p>
 <p>Pour s&rsquo;amuser, on peut changer le choix aléatoire par un choix déterministe, et faire des choix greedy, ou inventer une euristique, liberté absolue de ce côté la.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">IGame_State</span><span class="o">*</span> <span class="n">currentState</span> <span class="o">=</span> <span class="n">_state</span><span class="p">;</span>
-    
-    <span class="k">while</span><span class="p">(</span><span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">currentState</span> <span class="o">=</span> <span class="n">currentState</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span>
-            <span class="c1">//index a choisir
-</span><span class="c1"></span>        <span class="p">)</span> <span class="p">);</span>
-    <span class="p">}</span>
-    <span class="c1">//propager le score de l&#39;état final
-</span><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span>
-        <span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">()</span>
-    <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><p>On n&rsquo;utilise ici que des classes dérivées de <code>IGame_State</code>, aucune node n&rsquo;est créée.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">IGame_State</span><span class="o">*</span> <span class="n">currentState</span> <span class="o">=</span> <span class="n">_state</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">currentState</span> <span class="o">=</span> <span class="n">currentState</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//index a choisir
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//propager le score de l&#39;état final
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>On n&rsquo;utilise ici que des classes dérivées de <code>IGame_State</code>, aucune node n&rsquo;est créée.</p>
 <h3 id="backpropagate">backpropagate</h3>
 <p>Une fois la phase de rollout terminée, on va remonter le score de notre node jusqu&rsquo;à la racine.
 Elle ajoute le score au score de la node actuel, et on incrémente le compteur de visites.</p>
 <p>Cette fonction est récursive : si on a un parent, on appelle <code>_parent-&gt;backpropagate(score)</code> après avoir changé nos scores et le tour est joué !</p>
 <p>Quelque chose comme</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//incremente le nombre de visites et score
-</span><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//propager au parent si il existe
-</span><span class="c1"></span>        <span class="n">_parent</span><span class="p">.</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>J&rsquo;ai utilisé un <code>dynamic_cast</code> pour le test de l&rsquo;existence du parent, ca peut sauver dans un cas ou cette classe est utilisée comme base pour une nouvelle classe Node, crée par un programmeur négligeant qui n&rsquo;aurait pas pensé a faire <code>_parent = nullptr</code> dans le constructeur, ou une si on rencontre une désallocation sauvage du parent entre deux appels (oui oui les smart pointers&hellip;).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//incremente le nombre de visites et score
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//propager au parent si il existe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">_parent</span><span class="p">.</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>J&rsquo;ai utilisé un <code>dynamic_cast</code> pour le test de l&rsquo;existence du parent, ca peut sauver dans un cas ou cette classe est utilisée comme base pour une nouvelle classe Node, crée par un programmeur négligeant qui n&rsquo;aurait pas pensé a faire <code>_parent = nullptr</code> dans le constructeur, ou une si on rencontre une désallocation sauvage du parent entre deux appels (oui oui les smart pointers&hellip;).</p>
 <h2 id="faire-fonctionner-le-tout">Faire fonctionner le tout</h2>
 <p>Il manque une étape, on a toute la logique mais rien pour la lancer.
 Ça n&rsquo;est pas bien compliqué maintenant, le gros du travail est fait.</p>
 <p>Il reste cependant un aspect intéressant non abordé : décider de la limite.
 On ne va pas laisser cet algorithme tourner jusqu&rsquo;à ce que le ciel nous tombe sur la tête, il nous faut décider d&rsquo;une limite au-delà de laquelle on arrête nos itérations.
-Un simple compteur fera l&rsquo;affaire (&ldquo;cherche N solutions, et rappels moi quand t&rsquo;as fini !&quot;), mais une solution à peine plus élaborée sera de choisir une limite temporelle (&ldquo;fais ton bazar pendant 5 secondes et zou&rdquo;).</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
-<span class="k">do</span> <span class="p">{</span>
-    <span class="c1">//chercher la meilleure feuille
-</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
-    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">not</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">is_fully_expanded</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
-            <span class="c1">//all children have not been explored
-</span><span class="c1"></span>            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//can expand
-</span><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
-        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span><span class="p">);</span>
-<span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
-</span></code></pre></div><p>Et voilà !
+Un simple compteur fera l&rsquo;affaire (&ldquo;cherche N solutions, et rappels moi quand t&rsquo;as fini !&rdquo;), mais une solution à peine plus élaborée sera de choisir une limite temporelle (&ldquo;fais ton bazar pendant 5 secondes et zou&rdquo;).</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//chercher la meilleure feuille
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">not</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">is_fully_expanded</span><span class="p">()</span> <span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//all children have not been explored
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//can expand
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
+</span></span></span></code></pre></div><p>Et voilà !
 La structure de l&rsquo;arbre est très basique, dans la partie 2 on va discuter améliorations !</p>
 
         
@@ -900,7 +900,7 @@ La structure de l&rsquo;arbre est très basique, dans la partie 2 on va discuter
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2021
+            2023
           
 
           
@@ -910,7 +910,7 @@ La structure de l&rsquo;arbre est très basique, dans la partie 2 on va discuter
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.120.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

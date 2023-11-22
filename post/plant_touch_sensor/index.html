@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.88.1" />
+  <meta name="generator" content="Hugo 0.120.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -466,7 +466,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1118&nbsp;mots
   
   
-  &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/" lang="en">en</a>
+  &nbsp;&bull;&nbsp;Autres langues : &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/&#34; lang=&#34;en&#34;&gt;en&lt;/a&gt;
 </span>
 
 
@@ -496,14 +496,14 @@ Une plante connectée c&rsquo;est bien, mais une plante connectée qui peut expr
 <p>L&rsquo;équipe, convaincue par mon idée, m&rsquo;a confié la réalisation de cette partie (oups !).</p>
 <h1 id="détection-dimpédance">Détection d&rsquo;impédance</h1>
 <p>On va commencer par afficher les données brutes sur une pin analogique avant et pendant un contact, avec le code suivant (Fichier &gt; Exemples &gt; 01: Basics &gt; AnalogSerialRead) :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span> <span class="n">analogRead</span><span class="p">(</span> <span class="n">A1</span> <span class="p">)</span> <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><p>Les résultats sont affichés a l&rsquo;aide du moniteur série de l&rsquo;éditeur Arduino.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">115200</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span> <span class="n">analogRead</span><span class="p">(</span> <span class="n">A1</span> <span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Les résultats sont affichés a l&rsquo;aide du moniteur série de l&rsquo;éditeur Arduino.</p>
 <p>Ce qu&rsquo;on cherche a faire ici est un simple <a href="https://fr.wikipedia.org/wiki/Diviseur_de_tension">diviseur de tension</a>.</p>
 <h2 id="pin-flottante">Pin flottante</h2>
 <p>J&rsquo;ai simplement mis un fil de la pin A1, et j&rsquo;observe les données pendant quelques temps avant de poser mon doigt dessus.
@@ -527,9 +527,9 @@ Cela indique qu&rsquo;il s&rsquo;agit d&rsquo;un bruit extérieur au système, c
 <p><img src="/static/plant_touch/contact_fil_pullup.png" alt=""></p>
 <p>La valeur de base est cette fois très proche de 1023, et descend vers 980 quand un contact est établit.
 Cette fois on peut simplement ajouter une condition pour allumer la led si on passe en dessous de la valeur 1000 :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//allumer la led si on passe sous le seuil, sinon eteindre
-</span><span class="c1"></span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">sensorValue</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">);</span>
-</code></pre></div><p><img src="/static/plant_touch/touch_pullup.gif" alt="">
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">//allumer la led si on passe sous le seuil, sinon eteindre
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">sensorValue</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">);</span>
+</span></span></code></pre></div><p><img src="/static/plant_touch/touch_pullup.gif" alt="">
 (Les clignotements sont dus au bruit sinusoidal vu précédemment)</p>
 <p>Plus de problèmes de pin chargée maintenant, la forte impédance de la résistance permet également d&rsquo;éliminer la plupart des bruits.</p>
 <p>Cependant, utiliser un simple seuil n&rsquo;est pas une bonne idée, le système devient sensible a toute perturbation.
@@ -540,32 +540,32 @@ Cette implémentation repose uniquement sur la résistance du corps humain, une 
 Ce composant présente une certaine capacité à retenir et libérer des charges, et on va utiliser cette propriété pour détecter un contact avec notre plante.</p>
 <p>On cherche ici à charger le condensateur, puis détecter le temps qu&rsquo;il prend à se décharger complètement (via la valeur <code>cycles</code>).
 Cette valeur est comparée a une baseline <code>cycleThreshold</code> qui représente notre capacitance de base de l&rsquo;environnement, étalonnée quand le système est à vide, ou réglée via un potentiomètre.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="k">const</span> <span class="kt">int</span> <span class="n">plantSensor</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
-<span class="kt">uint8_t</span> <span class="n">cycleThreshold</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
-
-<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-    <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">//empty capacitor
-</span><span class="c1"></span>    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
-    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
-    <span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
-
-    <span class="c1">//count commutation
-</span><span class="c1"></span>    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
-    <span class="kt">uint8_t</span> <span class="n">cycles</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">cycles</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cycles</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">cycles</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">)</span> <span class="o">==</span> <span class="n">HIGH</span><span class="p">)</span>
-            <span class="k">break</span><span class="p">;</span>
-    <span class="p">}</span>
-    
-    <span class="c1">//touch detected
-</span><span class="c1"></span>    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">cycles</span> <span class="o">&gt;</span> <span class="n">cycleThreshold</span><span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><p>Ce système est moins sensible au bruit et la valeur de sortie est bien plus stable.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">plantSensor</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="kt">uint8_t</span> <span class="n">cycleThreshold</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pinMode</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//empty capacitor
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">OUTPUT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">LOW</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">delayMicroseconds</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//count commutation
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">pinMode</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span> <span class="n">cycles</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="p">(</span><span class="n">cycles</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">cycles</span> <span class="o">&lt;</span> <span class="mi">256</span><span class="p">;</span> <span class="n">cycles</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">digitalRead</span><span class="p">(</span><span class="n">plantSensor</span><span class="p">)</span> <span class="o">==</span> <span class="n">HIGH</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">//touch detected
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">cycles</span> <span class="o">&gt;</span> <span class="n">cycleThreshold</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Ce système est moins sensible au bruit et la valeur de sortie est bien plus stable.
 De même, la résistance du corps humain influe beaucoup moins sur le résultat.
 J&rsquo;ai fait des tests avec un fils relié au GND sur ma peau, de plus en plus prêt du fils de détection, sans observer de changements comportementaux (à l&rsquo;opposé de la méthode par impédance).</p>
 <h1 id="résultats-">Résultats !</h1>
@@ -666,6 +666,8 @@ Intéressant pour un petit tour de magie.</p>
                   <ul>
                 
                 
+                    <li><a href="/post/lamp-da/">Construction d&#39;une lanterne compacte</a></li>
+                
                     <li><a href="/post/harpe_laser/">Harpe laser</a></li>
                 
               </ul>
@@ -758,7 +760,7 @@ Intéressant pour un petit tour de magie.</p>
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2021
+            2023
           
 
           
@@ -768,7 +770,7 @@ Intéressant pour un petit tour de magie.</p>
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.120.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

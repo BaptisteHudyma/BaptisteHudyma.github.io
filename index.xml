@@ -5,138 +5,121 @@
     <link>https://BaptisteHudyma.github.io/</link>
     <description>Recent content on HUB Logs</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>fr</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Wed, 13 Oct 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 22 Nov 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://BaptisteHudyma.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Construction d&#39;une lanterne compacte</title>
+      <link>https://BaptisteHudyma.github.io/post/lamp-da/</link>
+      <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/post/lamp-da/</guid>
+      <description>&lt;p&gt;Tuto construction d&amp;rsquo;une lanterne compacte et solide.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>SLAM - Parti 2</title>
       <link>https://BaptisteHudyma.github.io/post/slam_2/</link>
-      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/slam_2/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2 : Optimisation de pose&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Une fois nos features détectées et associées, on va chercher a estimer le mouvement effectué entre les deux observations.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>SLAM - Parti 1</title>
       <link>https://BaptisteHudyma.github.io/post/slam_1/</link>
-      <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/slam_1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 1: Introduction &amp;amp; detection de features&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Certaines personnes racontent qu&amp;rsquo;ils ont un mauvais sens de l&amp;rsquo;orientation. Ils peuvent se comparer à un robot et se sentir bien meilleurs.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Exploration de possibilités - Partie 2</title>
       <link>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</link>
-      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2: Améliorations et encore plus de blabla !&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Nous en étions resté a la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
 Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvé pour la méthode de base.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Exploration de possibilités - Partie 1</title>
       <link>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/</link>
-      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 1: Blabla et implémentation&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Segmentation de depth map</title>
       <link>https://BaptisteHudyma.github.io/post/depth_map_segmentation/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/depth_map_segmentation/</guid>
       <description>&lt;p&gt;Dans ce post, j&amp;rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&amp;rsquo;analyse d&amp;rsquo;une normal map.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Monocular Depth Map</title>
       <link>https://BaptisteHudyma.github.io/post/monocular_depth_map/</link>
-      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monocular_depth_map/</guid>
       <description>&lt;p&gt;Utiliser un flux vidéo issu d&amp;rsquo;une seule caméra pour estimer la profondeur des objets dans l&amp;rsquo;image.
 Un petit plongeon dans le monde de la géométrie épipolaire et de l&amp;rsquo;analyse des points d&amp;rsquo;intérêts.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>De CAPE et d&#39;Opés</title>
       <link>https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/</link>
-      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; est une méthode extrêmement efficace d&amp;rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
 Malgré l&amp;rsquo;efficacité de cette méthode, l&amp;rsquo;implémentation C++ du papier présente de nombreux défauts.&lt;/p&gt;
 &lt;p&gt;Dans ce post, je vais expliquer comment j&amp;rsquo;ai réparé la plupart de ces problèmes.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>PPC SLAM</title>
       <link>https://BaptisteHudyma.github.io/post/ppc_slam/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/ppc_slam/</guid>
       <description>&lt;p&gt;Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Programmation par Contraintes</title>
       <link>https://BaptisteHudyma.github.io/post/ppc_intro/</link>
-      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/ppc_intro/</guid>
       <description>&lt;p&gt;Qu&amp;rsquo;est ce que la programmation par contraintes ?
 Quels en sont les avantages et les limites ?
 Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
 &lt;p&gt;Une de ces réponses est &lt;em&gt;&lt;strong&gt;oui&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Génération de galaxies</title>
       <link>https://BaptisteHudyma.github.io/post/galaxy_generation/</link>
-      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/galaxy_generation/</guid>
       <description>&lt;p&gt;Après m&amp;rsquo;être attaqué a la génération procédurale de systèmes planétaires, j&amp;rsquo;ai décidé de monter un peu dans l&amp;rsquo;échelle de l&amp;rsquo;univers en tentant ma chance sur les galaxies.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Plante tactile</title>
       <link>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</guid>
       <description>&lt;p&gt;Un petit projet d&amp;rsquo;une après-midi pour implémenter une interface tactile a l&amp;rsquo;aide d&amp;rsquo;un microcontrôleur.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Harpe laser</title>
       <link>https://BaptisteHudyma.github.io/post/harpe_laser/</link>
-      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/harpe_laser/</guid>
       <description>&lt;p&gt;Que faire avec 12 lasers, une Arduino, 4 planches et une après-midi ?&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>About me</title>
       <link>https://BaptisteHudyma.github.io/page/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/page/about/</guid>
       <description>Bien le bonjour ! Mon nom est Baptiste Hudyma.
 Je suis un ingénieur en robotique, très curieux de bien trop de sujets différents. De la programmation au bricolage, de la chimie aux jeux vidéos jusqu&amp;rsquo;à l&amp;rsquo;organisation d&amp;rsquo;évènements, je vous propose de vous balader sur ce site pour voir des projets plus ou moins complexes que j&amp;rsquo;ai pu développer au fur et à mesure des années.
 Où êtes-vous ? Dans ce blog/portfolio/patchwork de posts, vous trouverez des descriptions de certains projets dont je pensais intéressant de partager les détails.</description>
     </item>
-    
   </channel>
 </rss>

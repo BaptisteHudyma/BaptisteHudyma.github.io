@@ -2,6 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://BaptisteHudyma.github.io/tags/3d-print/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://BaptisteHudyma.github.io/post/lamp-da/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://BaptisteHudyma.github.io/tags/design/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://BaptisteHudyma.github.io/tags/electronic/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/electronic/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/electronic/"
+                />
+  </url><url>
+    <loc>https://BaptisteHudyma.github.io/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/"
+                />
+  </url><url>
+    <loc>https://BaptisteHudyma.github.io/post/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/"
+                />
+  </url><url>
+    <loc>https://BaptisteHudyma.github.io/tags/</loc>
+    <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/"
+                />
+  </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/cpp/</loc>
     <lastmod>2021-10-13T00:00:00+00:00</lastmod>
     <xhtml:link
@@ -15,34 +76,8 @@
                 href="https://BaptisteHudyma.github.io/tags/cpp/"
                 />
   </url><url>
-    <loc>https://BaptisteHudyma.github.io/</loc>
-    <lastmod>2021-10-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/en/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/"
-                />
-  </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/levenberg-marquardt/</loc>
     <lastmod>2021-10-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://BaptisteHudyma.github.io/post/</loc>
-    <lastmod>2021-10-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/en/post/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/post/"
-                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/rgb-d/</loc>
     <lastmod>2021-10-13T00:00:00+00:00</lastmod>
@@ -85,19 +120,6 @@
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/slam_2/</loc>
     <lastmod>2021-10-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://BaptisteHudyma.github.io/tags/</loc>
-    <lastmod>2021-10-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/tags/"
-                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/slam_1/</loc>
     <lastmod>2021-10-04T00:00:00+00:00</lastmod>
@@ -310,19 +332,6 @@
                 rel="alternate"
                 hreflang="fr"
                 href="https://BaptisteHudyma.github.io/tags/arduino/"
-                />
-  </url><url>
-    <loc>https://BaptisteHudyma.github.io/tags/electronic/</loc>
-    <lastmod>2019-12-13T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://BaptisteHudyma.github.io/en/tags/electronic/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="fr"
-                href="https://BaptisteHudyma.github.io/tags/electronic/"
                 />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/one-day-build/</loc>

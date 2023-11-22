@@ -5,7 +5,9 @@
     <link>https://BaptisteHudyma.github.io/en/categories/</link>
     <description>Recent content in Categories on HUB Logs</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
-    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster><atom:link href="https://BaptisteHudyma.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
+    <atom:link href="https://BaptisteHudyma.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

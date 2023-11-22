@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="fr" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Construction d&#39;une lanterne compacte - HUB Logs</title>
+  <meta name="description" content="Le tuto Lamp-da">
+  <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "HUB Logs",
+    
+    "url": "https:\/\/BaptisteHudyma.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/BaptisteHudyma.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/BaptisteHudyma.github.io\/post\/lamp-da\/",
+          "name": "Construction d\u0027une lanterne compacte"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Baptiste Hudyma"
+  },
+  "headline": "Construction d\u0027une lanterne compacte",
+  "description" : "Tuto construction d\u0026rsquo;une lanterne compacte et solide.\n",
+  "inLanguage" : "fr",
+  "wordCount":  2042 ,
+  "datePublished" : "2023-11-22T00:00:00",
+  "dateModified" : "2023-11-22T00:00:00",
+  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+  "keywords" : [ "Electronic, Design, 3D print" ],
+  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/lamp-da\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/BaptisteHudyma.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Construction d&#39;une lanterne compacte" />
+<meta property="og:description" content="Le tuto Lamp-da">
+<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+<meta property="og:url" content="https://BaptisteHudyma.github.io/post/lamp-da/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="HUB Logs" />
+
+  <meta name="twitter:title" content="Construction d&#39;une lanterne compacte" />
+  <meta name="twitter:description" content="Le tuto Lamp-da">
+  <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.120.1">
+  <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" /><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/syntax.css" />
+  <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-189718074-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://BaptisteHudyma.github.io">HUB Logs 
+      </a>
+      <a class="navbar-brand">
+      <div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+
+
+<style>
+
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+</style>
+
+<script>
+    
+    let systemInitiatedDark = window.matchMedia("(prefers-color-scheme: dark)");
+    
+    
+    let theme = sessionStorage.getItem('theme');
+    var switcher = document.getElementsByClassName('js-toggle')[0];
+    
+    
+    if (systemInitiatedDark.matches) {
+    }
+    else{
+        switcher.classList.toggle('js-toggle--checked');
+    }
+    
+    
+    function prefersColorTest(systemInitiatedDark) {
+        var switcher = document.getElementsByClassName('js-toggle')[0];
+        switcher.classList.toggle('js-toggle--checked');
+        if (systemInitiatedDark.matches) {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            
+            sessionStorage.setItem('theme', '');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sessionStorage.setItem('theme', '');
+        }
+    }
+    systemInitiatedDark.addListener(prefersColorTest);
+    
+    switcher.addEventListener("click", function () {
+        
+        let theme = sessionStorage.getItem('theme');
+        
+        this.classList.toggle('js-toggle--checked');
+        
+        if (theme === "dark") {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sessionStorage.setItem('theme', 'light');
+            
+        }	else if (theme === "light") {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            sessionStorage.setItem('theme', 'dark');
+            
+        } else if (systemInitiatedDark.matches) {
+            document.documentElement.setAttribute('data-theme', 'light');
+            sessionStorage.setItem('theme', 'light');
+            
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            sessionStorage.setItem('theme', 'dark');
+        }
+        
+    });
+    
+    if (theme === "dark") {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        sessionStorage.setItem('theme', 'dark');
+        switcher.classList.add('js-toggle--checked');
+    } else if (theme === "light") {
+        document.documentElement.setAttribute('data-theme', 'light');
+        sessionStorage.setItem('theme', 'light');
+        switcher.classList.add('js-toggle--unchecked');
+    }
+</script>
+
+
+
+
+
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Posts" href="/post">Posts</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About me" href="/page/about">About me</a>
+            </li>
+          
+        
+
+    
+
+        
+          
+            <li>
+              
+                
+                  <a href="/en" lang="en">en</a>
+                
+              
+                
+              
+            </li>
+          
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="HUB Logs" href="https://BaptisteHudyma.github.io">
+            <img class="avatar-img" src="https://BaptisteHudyma.github.io/img/github_profile.jpg" alt="HUB Logs" />
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Construction d&#39;une lanterne compacte</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">Le tuto Lamp-da</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posté le November 22, 2023
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2042&nbsp;mots
+  
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>Tuto construction d&rsquo;une lanterne compacte et solide.</p>
+<details><summary>D&rsquo;ou ca vient cette idée (cliquer pour étendre)</summary>
+<p>Il y a quelques années, alors que je parcourais des couloirs obscures équipé de ma frontale Décathlon a 10 euros, j&rsquo;ai croisé un gars sympa avec une grosse lanterne couleur bougie.
+Fait maison qu&rsquo;il a dit ! (dédicace a mon Michel)</p>
+<p>Bon évidemment il fallait que j&rsquo;en fasse une.
+Avec ses conseils et son aide, j&rsquo;ai donc construit une lanterne au fonctionnement identique : 18 batteries 18650, 3-4 mètres de ruban LED, un controleur PWM (avec interrupteur) pour régler la luminosité, et un BMS, le tout dans un tube PVC de 10cm de diamètre.
+Simple et efficace.</p>
+<p>Également vraiment lourd et peu pratique a trimballer lors de nos (nombreuses !) explorations.</p>
+<p>J&rsquo;ai donc décidé de créer une version compacte, solide et (probablement ?) étanche.</p>
+<p>Le tuto ci dessous explique comment construire la version 0 de la Lamp-da.
+La V0 est le résultat de 6 ou 7 itérations de construction, ou diverses améliorations ont été apportées (internet n&rsquo;est pas d&rsquo;une grande aide parfois&hellip;)</p>
+
+</details>
+
+<h1 id="liste-des-composants-bom">Liste des composants (BOM):</h1>
+<p><img src="/static/lamp_da/materiel.jpg" alt="Image: matériel"></p>
+<h2 id="électonique">Électonique</h2>
+<ul>
+<li>bande de led 12v, couleur 2800k: 2 mètres. Type COB pour un rendu unique et agréable a l&rsquo;oeil</li>
+<li>3 batterie li-ion 18650. Prendre le max de mAH possible (5000mAH pour ce genre de batteries)</li>
+<li>BMS li-ion 3S: prendre format triangle avec au moins 2A de courant de décharge</li>
+<li>chargeur li ion 12v: de préférence utiliser chargeur compatible fast charge, ca n&rsquo;est pas le cas de celui présenté ici</li>
+<li>contrôleur PWM 2A min</li>
+<li>equilibreur li-ion 3S (actif ou passif, peut importe)</li>
+<li>led bicouleur (rouge vert) common anode</li>
+<li>connecteur étanche USB-C</li>
+</ul>
+<h2 id="diverses">Diverses</h2>
+<ul>
+<li>tube diametre 45mm: rare mais trouvable en PVC sur des sites spécialisés en isolation Télécom (commande minimum 6m) : besoin de 125 mm de long. Le tube de 45 permet de mettre exactement 3 batteries 18650 côtes a côtes, avec tres peu de jeux.</li>
+<li>clou de 50mm de long avec tête large (ou clou de 45 avec tete conique).</li>
+<li>gaine thermoretractable transparente, diametre 50mm</li>
+<li>paracorde 2mm de diametre, 30cm</li>
+<li>super glue: a mettre partout ou deux pièces sont sensées ne plus bouger. Il faut en abuser le plus possible.</li>
+<li>isolant pour batteries: matière papier/carton avec coté collant, servant a isoler les batteries l&rsquo;une de l&rsquo;autre.</li>
+<li>scotch: sert a enrouler chaque batterie, et sert d&rsquo;isolant et liant. J&rsquo;utilise du scotch marron classisque (isolant, tres bon pouvoir collant)</li>
+</ul>
+<h2 id="outils">Outils</h2>
+<ul>
+<li>
+<p>Fer a souder: mieux vaut en avoir un bon, il y a une 20aine de soudures a faire sur des petits espaces.</p>
+</li>
+<li>
+<p>Soudeuse par point pour batteries. Il en existe des versions portables, les versions fixes ne se vendent pas en Europe. On peut quand même en acheter a l&rsquo;étranger, a vos risques et périls. Sinon des Fablab prêts de chez vous pourraient avoir cet outil, et des gens formés pour s&rsquo;en servir correctement en plus !</p>
+</li>
+<li>
+<p>Pistolet a chaleur ou sèche cheveux: sert a réduire la gaine thermo.</p>
+</li>
+<li>
+<p>Chargeur de Li-ion: Sert a charger les batteries avant de les souder ensemble.</p>
+</li>
+<li>
+<p>Perceuse: trous pour les fils des LEDs, et pour l&rsquo;attache de corde.</p>
+</li>
+<li>
+<p>petit marteau: pour enfoncer le clou a travers le tuyau</p>
+</li>
+<li>
+<p>cutter: débourrer les bords de coupe</p>
+</li>
+<li>
+<p>Pince a dénudeur: le cutter peut également servir a cette tâche, il y a 15 boûts de fils a dénuder.</p>
+</li>
+<li>
+<p>Imprimante 3D: pour les capuchons. 3 pièces a imprimer (en annexe)</p>
+</li>
+</ul>
+<h1 id="structure-de-la-lampe">Structure de la lampe</h1>
+<p>Couper un morceau de 12.5 cm de notre tuyau 45mm.
+On va ensuite percer un trou à 2mm d un des bords : ça sera le coté bas de la lampe.
+Insérer le clou dans le trou et utiliser un marteau pour l&rsquo;enfoncer à travers le tube, utilisez un guide pour passer le long du diametre du tube.</p>
+<p>Une fois le clou placé, on va enrouler la led autour du tube, en commençant par le côté avec le clou. Il nous servira de repére pour l enroulement.
+Une fois arriver en haut, couper la bande au niveau des connecteurs en cuivre.
+<img src="/static/lamp_da/enroulement_led.jpg" alt="Image: enroulement des leds"></p>
+<p>Percez 2 trous au niveau de la fin des leds (haut de la lampe), et y passer 2 fils : ils serviront à l&rsquo;alimentation du ruban led.
+On peu mettre un point de colle dans chaque trous (clou et fils des leds) pour étanchéifier tout ca.</p>
+<p>Couper une section de 20 cm de gaine thermoretractable, et la passer autour du tube de notre lampe.
+En utilisant un sèche cheveux, on peut chauffer assez cette gaine pour qu&rsquo;elle se rétracte autour du tube, jusqu&rsquo;à faire un genre de papillote.
+Couper l&rsquo;excédent le long du tube à l aide d&rsquo;un cuteur.</p>
+<p><img src="/static/lamp_da/led_et_thermo.jpg" alt="Image: lampe + gaine thermo"></p>
+<p>Une fois la gaine thermo en place, on peut installer la première pièce imprimée en 3d: le fond de batterie.
+Il faut le mettre au fond du tube mais pas collé contre le clou: il doit rester 2mm entre la pièce et le clou. J&rsquo;utilise un guide imprimé en 3d pour contrôler la distance entre les deux.
+Collez le guide de batterie sur le tube avec de la super glue.</p>
+<p><img src="/static/lamp_da/cul_de_lampe.jpg" alt="Image: arrière de lampe nu"></p>
+<p>Utilisez le cul de lampe (imprimé en 3d) pour fixer le bout de corde au clou.
+Une fois le bout de corde installé, mettre généreusement de la colle entre le guide de batteries et le cul de lampe sans toucher la corde.
+Collez les deux parties ensemble en laissant appuyer le temps que ça sèche.</p>
+<p>Tube de lampe terminé !</p>
+<p><img src="/static/lamp_da/cul_de_lampe_corde.jpg" alt="Image: Arrière de lampe avec corde"></p>
+<h1 id="capuchon-supérieur">Capuchon supérieur</h1>
+<p>Utilisez la pièce imprimée comme base.</p>
+<p>On fixe le controleur PWM et le port USB-C étanche dans le capuchon.
+Je conseille de coller l&rsquo;arrière de l&rsquo;USB-C sur le plastique du capuchon.</p>
+<p>On va également coller la led d&rsquo;indication de charge dans le capuchon.</p>
+<p>Il ne faut pas hésiter avec la colle, cette pièce est le point faible de la lampe.</p>
+<p><img src="/static/lamp_da/capuchon_top.jpg" alt="Image: Capuchon supérieur"></p>
+<h1 id="assemblage-des-batteries">Assemblage des batteries</h1>
+<p>Attention en manipulant des batteries Liion, elles sont sensibles a tout (chaleur, humidité, décharge profonde, surcharge, etc) et ont tendance a gonfler/exploser si on les manipules mal.
+Allez c&rsquo;est dit, bonne chance :</p>
+<p>Commencer par charger les 3 batteries avec un chargeur adapté (chargeur Liion 18650).
+Souder les batteries en série en utilisant la configuration triangle suivante :</p>
+<p><img src="/static/lamp_da/batteries_serie_triangle.jpg" alt="Image: batteries en série"></p>
+<p>FAIRE TRES ATTENTION c&rsquo;est l&rsquo;étape vraiment dangereuse.
+Souder des fils au 0v, 4v, 8v et 12v, et les relier à l&rsquo;endroit correspondant sur le BMS. Vérifier 3 fois plutôt que risquer l&rsquo;explosion.
+Ne pas oublier de mettre de l&rsquo;isolant entre le BMS et les batteries !!!</p>
+<p><img src="/static/lamp_da/batteries_BMS.jpg" alt="Image: batteries + BMS"></p>
+<p>Tester la sortie du BMS. Si c&rsquo;est &gt;12v c&rsquo;est OK.
+Si c&rsquo;est 0, reverifier les connexions une à une.
+Si les connexions sont OK, utilisez une alimentation 12v et touchez simultanément le 0 et le 12v de sortie du bms avec respectivement le 0 et 12v de l alimentation pour activer le BMS.</p>
+<p>Si pas de 12v en sortie du BMS, changez de BMS et recommencez.</p>
+<p>Une fois le BMS fixé, la batterie est sécurisée.</p>
+<h2 id="ajout-de-léquilibreur">Ajout de l&rsquo;équilibreur</h2>
+<p>Un equilibreur permet de maintenir les batteries à la même tension. C&rsquo;est très important pour la durée de vie de la lampe et des batteries.
+Sans equilibreur, la tension des batteries va lentement dévier entre chaque charge et decharge, jusqu&rsquo;à ce qu&rsquo;une d&rsquo;entre elle tombe à 2.9v alors qu&rsquo;une autre est chargée à 4.2v, provoquant un blocage du BMS (cause: sous tension) tout en empêchant la recharge via le BMS (cause: surtension). Si on en arrive là, le pack de batterie est foutu, il faut tout démonter et recharger individuellement.
+Un equilibreur utilisera la charge des batteries avec la plus forte tension pour charger celles avec la tension la plus faible. Il permet de toujours garder chaque batterie à la même tension que ses voisines.</p>
+<h3 id="branchement">Branchement:</h3>
+<p>Reliez le 0v à b0, 4v à b1, 8v à b2, 12v à b3.
+Des lumières devrait s&rsquo;allumer sur l equilibreur pour indiquer que la fonction équilibrage est en cours.</p>
+<p><img src="/static/lamp_da/equilibreur_batterie_1.jpg" alt="Image: fils du BMS vers équilibreur">
+<img src="/static/lamp_da/equilibreur_batterie_2.jpg" alt="Image: sécurisation des fils de l&rsquo;équilibreur">
+<img src="/static/lamp_da/equilibreur_batterie_3.jpg" alt="Image: soudage de l&rsquo;équilibreur"></p>
+<p>Laissez reposer jusqu&rsquo;a ce que les leds soient éteintes (attention ça chauffe pendant le premier équilibrage)</p>
+<p>Une fois l&rsquo;équilibreur installé, on peut scotcher la batterie pour éviter tout contact ne passant pas par le BMS.
+Il ne devrait rester que les deux fils GND et 12V en sortie.
+<img src="/static/lamp_da/batterie_finie.jpg" alt="Image: batterie assemblée"></p>
+<p>Et la on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts circuits, et autres mauvaises utilisations.</p>
+<h1 id="controleur-de-luminosité">Controleur de luminosité</h1>
+<p>Relier le - de notre batterie au V- du contrôleur PWM.
+Relier le + de notre BMS au V+ du contrôleur PWM.
+Il peut y avoir une petite étincelle en fonction du type de contrôleur PWM.</p>
+<p>Les fils doivent être sécurisés en vissant le bornier, mais pour ma part je préfère souder les fils directement sur le pcb, ça tient mieux à long terme.</p>
+<p>Tournez le potentiomètre du PWM pour l&rsquo;activer. Une led devrait s allumer sur le controleur pour indiquer que les branchements sont bons.</p>
+<p>Testez la tension de sortie : en tournant le potentiomètre on devrait varier de 9v à 12v.
+Si on ne voit pas de tension de sortie, ou qu&rsquo;elle ne change pas ou très peu, le composant est peut être défectueux.</p>
+<p>Relier les leds:
+Il suffit de visser ou souder le 0 de la bande led au M- du contrôleur PWM, et le 12v au M+. Et voilà c&rsquo;est tout bon.</p>
+<p>On peut maintenant tester le bon fonctionnement de tout le système en mettant du 12V en entrée du controleur.
+La LED devrait être éteinte, puis luminosité devrait passer de 5 a 100% en tournant le potentiomètre.</p>
+<h1 id="ajout-du-chargeur">Ajout du chargeur</h1>
+<p>Il faut commencer par tester le chargeur sans batteries connectées: la tension de sortie devrait être entrée 12v et 14v (pas forcément stable).
+Une LED (bleue ?) devrait s&rsquo;allumer, elle indique que la charge est terminée.</p>
+<p>Dessouder les leds d&rsquo;indication déjà presentes sur le chargeur et souder notre led bicolore à la place, en suivant le code couleur de la photo.</p>
+<p><img src="/static/lamp_da/chargeur_soud%C3%A9.jpg" alt="Image: Chargeur soudé"></p>
+<p>Souder les fils du connecteur USBC a l&rsquo;entrée du chargeur.</p>
+<h1 id="finalisation">Finalisation</h1>
+<p>Souder le GND du chargeur à la borne 0V du BMS, et le BAT+ au 12v du BMS.
+Brancher le chargeur et vérifiez que les batteries rechargent. Les leds d&rsquo;indication sur le chargeur indiqueront le bon fonctionnement de tout ça.</p>
+<p>Vu que les batteries sont déjà chargées, la charge s arrêtera au bout de quelques secondes.</p>
+<p><img src="/static/lamp_da/resultat_desassemble.jpg" alt="Image: Lampe prête a l&rsquo;assemblage"></p>
+<p>Insérez la batterie dans le tube de lampe, et bien là caler dans le guide de batterie.
+Ça peut être difficile de bien l&rsquo;insérer dans le guide. Si il y a blocage, je fais tourner le pack sur lui même avec une pince en faisant très attention de le pas l abîmer.</p>
+<p>Une fois le pack calé, on peut presser le chargeur contre, et fermer le capuchon de lampe.
+Le capuchon a un sens d&rsquo;insertion: les fils du bandeau de led doivent passer dans l&rsquo;encoche du capuchon sinon elle ne fermera pas.</p>
+<p>Dans un premier temps je ne le colle pas, et emmène la lampe faire 2 ou 3 ballades + 2 ou 3 recharges pour être sûr que tout fonctionne comme prévu.
+Quand on est absolument sûrs que tout fonctionne, on peut coller la capuchon, en étalant de la colle tout autour du tube et en maintenant le capuchon le temps que ça sèche.</p>
+<p><img src="/static/lamp_da/resultat.jpg" alt="Image: Lampe finale !"></p>
+<h1 id="personnaliser-son-logo">Personnaliser son logo</h1>
+<p>Créer un logo noir et blanc. pas trop compliqué (l&rsquo;impression 3d à une resolution limitée).
+Le noir sera la partie en profondeur.
+Transformer ce logo en image vectorielle (.svg), pour ça j&rsquo;utilise inkscape.
+Ouvrir le cul de lampe avec blender (file&gt;import&gt;stl (experimental))
+Ouvrir le logo svg dans la même fenêtre blender (file&gt;import&gt;scalable vector graphic (svg))</p>
+<p>Déplacer le logo a la surface de la piece, ajustez l échelle et l orientation.
+Une fois le logo en place, clic droit dessus, convert to, mesh.</p>
+<p><img src="/static/lamp_da/logo_sur_surface.jpg" alt="Image: Logo sur surface"></p>
+<p>Modification: solidify, avec une taille de 10m.</p>
+<ul>
+<li>Si le svg est bien constitué, cet étape fonctionnera directement.</li>
+<li>Si le svg est malformé, on observera des pics verticaux dans le logo.
+Il faudra revenir dans inkscape corriger ça : c&rsquo;est souvent due à des nodes svg sans curseurs de contrôle.</li>
+</ul>
+<p>Une fois le logo correctement transformé en solide, on appliqué une modification boolean sur le cul de lampe. On veut spécifiquement un boolean négation.
+Le logo doit être enfoncé dans le surface de 1mm ou moins, ou risque de dépasser sous la pièce.
+Apply puis supprimer le logo extrudé.</p>
+<p><img src="/static/lamp_da/logo_sur_cul.jpg" alt="Image: Logo sur cul de lampe"></p>
+<p>Exporter le résultat en stl.</p>
+<p>Imprimer avec votre matos !</p>
+
+        
+          <div class="blog-tags">
+            
+              <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+            
+              <a href="https://BaptisteHudyma.github.io/tags/3d-print/">3D print</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2flamp-da%2f&amp;text=Construction%20d%27une%20lanterne%20compacte&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2flamp-da%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2flamp-da%2f&amp;title=Construction%20d%27une%20lanterne%20compacte" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2flamp-da%2f&amp;title=Construction%20d%27une%20lanterne%20compacte" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2flamp-da%2f&amp;title=Construction%20d%27une%20lanterne%20compacte" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2flamp-da%2f&amp;description=Construction%20d%27une%20lanterne%20compacte" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">Voir également</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/plant_touch_sensor/">Plante tactile</a></li>
+                
+                    <li><a href="/post/harpe_laser/">Harpe laser</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://BaptisteHudyma.github.io/post/slam_2/" data-toggle="tooltip" data-placement="top" title="SLAM - Parti 2">&larr; Post précédent</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+        
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/BaptisteHudyma" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/BaptHdm" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+          <li>
+            <a href="" title="RSS">
+              <span class="fa-stack fa-lg">
+                <i class="fas fa-circle fa-stack-2x"></i>
+                <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
+              </span>
+            </a>
+          </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Baptiste Hudyma
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2023
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://BaptisteHudyma.github.io">HUB Logs</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          Carbure avec <a href="https://gohugo.io">Hugo v0.120.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
+<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

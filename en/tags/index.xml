@@ -5,152 +5,122 @@
     <link>https://BaptisteHudyma.github.io/en/tags/</link>
     <description>Recent content in Tags on HUB Logs</description>
     <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://BaptisteHudyma.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://BaptisteHudyma.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Computer vision</title>
       <link>https://BaptisteHudyma.github.io/en/tags/computer-vision/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/computer-vision/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Cpp</title>
       <link>https://BaptisteHudyma.github.io/en/tags/cpp/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/cpp/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Depth Map</title>
       <link>https://BaptisteHudyma.github.io/en/tags/depth-map/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/depth-map/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>OpenCV</title>
       <link>https://BaptisteHudyma.github.io/en/tags/opencv/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/opencv/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Paper</title>
       <link>https://BaptisteHudyma.github.io/en/tags/paper/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/paper/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>RGB-D</title>
       <link>https://BaptisteHudyma.github.io/en/tags/rgb-d/</link>
-      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/rgb-d/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>PPC</title>
       <link>https://BaptisteHudyma.github.io/en/tags/ppc/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/ppc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Robotics</title>
       <link>https://BaptisteHudyma.github.io/en/tags/robotics/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/robotics/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SLAM</title>
       <link>https://BaptisteHudyma.github.io/en/tags/slam/</link>
-      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/slam/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Python</title>
       <link>https://BaptisteHudyma.github.io/en/tags/python/</link>
-      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/python/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Sudoku</title>
       <link>https://BaptisteHudyma.github.io/en/tags/sudoku/</link>
-      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/sudoku/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Octree</title>
       <link>https://BaptisteHudyma.github.io/en/tags/octree/</link>
-      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/octree/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Procedural generation</title>
       <link>https://BaptisteHudyma.github.io/en/tags/procedural-generation/</link>
-      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/procedural-generation/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Arduino</title>
       <link>https://BaptisteHudyma.github.io/en/tags/arduino/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/arduino/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Electronic</title>
       <link>https://BaptisteHudyma.github.io/en/tags/electronic/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/electronic/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>One Day Build</title>
       <link>https://BaptisteHudyma.github.io/en/tags/one-day-build/</link>
-      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate>
-      <author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/tags/one-day-build/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

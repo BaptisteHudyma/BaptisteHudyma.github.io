@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.88.1" />
+  <meta name="generator" content="Hugo 0.120.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -492,28 +492,28 @@ if (!doNotTrack) {
 Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai trouvé pour la méthode de base.</p>
 <p>Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j&rsquo;ai remarqué des points d&rsquo;amélioration.</p>
 <p>On rappelle notre programme principal :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
-<span class="k">do</span> <span class="p">{</span>
-    <span class="c1">//chercher la meilleure feuille
-</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
-    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
-            <span class="c1">//node peut encore être développée
-</span><span class="c1"></span>            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
-            <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//can expand
-</span><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
-        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span><span class="p">);</span>
-
-<span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
-</span></code></pre></div><h1 id="fermeture-de-branches">Fermeture de branches</h1>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//chercher la meilleure feuille
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//node peut encore être développée
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//can expand
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
+</span></span></span></code></pre></div><h1 id="fermeture-de-branches">Fermeture de branches</h1>
 <p>Pour commencer, on n&rsquo;élimine jamais de branche quand elles sont complètement explorées.</p>
 <p>Imaginez qu&rsquo;on utilise notre petit programme pour un TicTacToe: 9 cases donc 9 coups en tout (profondeur maximum de l&rsquo;arbre&hellip; 9, Bravo !).
 Si on laisse une seconde a notre petit programme, on va rapidement faire le tour des possibilités, l&rsquo;arbre sera complètement exploré en une fraction du temps et on va alors faire des tours dans le vide, en descendant au fond de l&rsquo;arbre (<code>if(child-&gt;get_move_count() != 0)</code> sera toujours <code>false</code>, on a épuisé les possibilités).</p>
@@ -523,11 +523,11 @@ Dans ce cas extrême, on obtiendra des scores et un nombre de visites très gran
 On va donc mettre en place un système de fermeture de Node quand elles ne peuvent plus avoir d&rsquo;enfants.</p>
 <h3 id="fermeture-de-noeuds">Fermeture de noeuds</h3>
 <p>On ajoute la méthode <code>is_fully_explored</code> dans notre classe Node:</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">bool</span> <span class="n">Node</span><span class="o">::</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="p">{</span>
-    <span class="c1">//true if this node is fully explored
-</span><span class="c1"></span>    <span class="k">return</span> <span class="n">_children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">();</span>
-<span class="p">}</span>
-</code></pre></div><p>Cette méthode nous dira simplement que toutes les possibilités de cette Node ont été explorées.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">Node</span><span class="o">::</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//true if this node is fully explored
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="n">_children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">==</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Cette méthode nous dira simplement que toutes les possibilités de cette Node ont été explorées.
 Cependant, elle n&rsquo;indique rien concernant les enfants de notre Node, qui pourrait bien n&rsquo;être pas du tout explorés.</p>
 <p>La solution évidente est de vérifier chaque enfant récursivement, mais ça ne serait pas très efficace.
 On va plutôt sacrifier un peu de mémoire et ajouter un membre <code>_isClosed</code> a notre class Node.</p>
@@ -536,40 +536,40 @@ Tout d&rsquo;abord, on ajoute <code>_isClosed = _state.get_move_count() == 0;</c
 Les nodes sans enfants seront les premières a être indiquées comme fermées (Ajoutez également une méthode <code>bool Node::is_closed()</code> pour plus tard).</p>
 <p>On va également ajouter un membre <code>_closedChildrenCount</code> pour garder en mémoire le nombre d&rsquo;enfants fermés de cette node (rajouter <code>_closedChildrenCount = 0</code> dans le constructeur).</p>
 <p>Au moment de la backpropagation, on va remonter l&rsquo;information de fermeture et mettre a jour le parent, qui sera responsable qu&rsquo;il est bien fermé :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//incremente le nombre de visites et score
-</span><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
-
-    <span class="c1">//Verifier si on a encore des enfants ouverts
-</span><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">_isClosed</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">_closedChildrenCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//un de nos enfants s&#39;est déclaré fermé
-</span><span class="c1"></span>
-        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="n">and</span> <span class="n">_closedChildrenCount</span> <span class="o">==</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">())</span> <span class="p">{</span>
-            <span class="c1">//Tous les enfants explorés et fermés
-</span><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-                <span class="c1">//Forcer le parent a vérifier si il doit fermer
-</span><span class="c1"></span>                <span class="n">_parent</span><span class="o">-&gt;</span><span class="n">_isClosed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>  
-
-                <span class="c1">//propager au parent si il existe
-</span><span class="c1"></span>                <span class="n">_parent</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
-            <span class="p">}</span>
-
-            <span class="k">return</span><span class="p">;</span> <span class="c1">//prevent a recheck of parent validity
-</span><span class="c1"></span>        <span class="p">}</span>
-        <span class="k">else</span> <span class="p">{</span>
-            <span class="c1">//a child is closed but some remain open for exploration
-</span><span class="c1"></span>            <span class="n">_isClosed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
-        <span class="p">}</span>
-
-    <span class="p">}</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//propager au parent si il existe
-</span><span class="c1"></span>        <span class="n">_parent</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</code></pre></div><p>On cherche ici à remonter l&rsquo;information de fermeture en mettant la variable <code>_isClosed</code> du parent a <code>true</code> quand on ferme une node.
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//incremente le nombre de visites et score
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//Verifier si on a encore des enfants ouverts
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">if</span><span class="p">(</span><span class="n">_isClosed</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="n">_closedChildrenCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>  <span class="c1">//un de nos enfants s&#39;est déclaré fermé
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="k">this</span><span class="o">-&gt;</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="n">and</span> <span class="n">_closedChildrenCount</span> <span class="o">==</span> <span class="k">this</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//Tous les enfants explorés et fermés
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">if</span><span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">//Forcer le parent a vérifier si il doit fermer
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">_parent</span><span class="o">-&gt;</span><span class="n">_isClosed</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>  
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">                <span class="c1">//propager au parent si il existe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="n">_parent</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">            <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">            <span class="k">return</span><span class="p">;</span> <span class="c1">//prevent a recheck of parent validity
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="k">else</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//a child is closed but some remain open for exploration
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">_isClosed</span> <span class="o">=</span> <span class="nb">false</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//propager au parent si il existe
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">_parent</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>On cherche ici à remonter l&rsquo;information de fermeture en mettant la variable <code>_isClosed</code> du parent a <code>true</code> quand on ferme une node.
 Le parent se chargera lui-même de repasser <code>_isClosed</code> a <code>false</code> s&rsquo;il a encore des enfants non fermés.</p>
 <p>Il ne nous reste plus qu&rsquo;a rajouter une condition en plus du temps écoulé pour quitter la boucle de recherche de solutions quand on a exploré toutes les possibilités.
 C&rsquo;est assez simple, il suffit de tester si le membre <code>_isClosed</code> de la Node root est <code>true</code> (<code>} while (on a du temps and not root-&gt;is_closed());</code> ).</p>
@@ -584,28 +584,28 @@ Notre étape de Rollout (déroulement aléatoire de coups jusqu&rsquo;à un éta
 <p>L&rsquo;idée est d&rsquo;étendre l&rsquo;arbre de recherche en même temps qu&rsquo;on effectue la phase de rollout pour calculer nos coups une seule fois et économiser le maximum de temps de traitement.</p>
 <h3 id="expand">Expand</h3>
 <p>Pour garder une certaine souplesse d&rsquo;utilisation, je vais conserver la fonction existante et en créer une nouvelle :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout_expand</span> <span class="p">()</span> <span class="p">{</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">currentNode</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
-    
-    <span class="k">while</span><span class="p">(</span><span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_sate</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//Créer une nouvelle node
-</span><span class="c1"></span>        <span class="n">Node</span><span class="o">*</span> <span class="n">nextNode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">(</span><span class="n">currentNode</span><span class="p">,</span> <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_state</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span>
-            <span class="c1">//index a choisir
-</span><span class="c1"></span>        <span class="p">)</span> <span class="p">);</span>
-
-        <span class="c1">//ajouter node comme enfant de celle ci
-</span><span class="c1"></span>        <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_children</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">nextNode</span><span class="p">);</span>
-
-        <span class="c1">//recommencer !
-</span><span class="c1"></span>        <span class="n">currentNode</span> <span class="o">=</span> <span class="n">nextNode</span><span class="p">;</span>
-    <span class="p">}</span>
-
-    <span class="c1">//propager le score de l&#39;état final
-</span><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span>
-        <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">()</span>
-    <span class="p">);</span>
-<span class="p">}</span>
-</code></pre></div><p>Une fonction pas bien différente donc, mais qui nous économise pas mal de temps de calcul.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout_expand</span> <span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">currentNode</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_sate</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//Créer une nouvelle node
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">Node</span><span class="o">*</span> <span class="n">nextNode</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Node</span><span class="p">(</span><span class="n">currentNode</span><span class="p">,</span> <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_state</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//index a choisir
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">)</span> <span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//ajouter node comme enfant de celle ci
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_children</span><span class="p">.</span><span class="n">push_back</span><span class="p">(</span><span class="n">nextNode</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">//recommencer !
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">currentNode</span> <span class="o">=</span> <span class="n">nextNode</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="c1">//propager le score de l&#39;état final
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span>
+</span></span><span class="line"><span class="cl">        <span class="n">currentNode</span><span class="o">-&gt;</span><span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">()</span>
+</span></span><span class="line"><span class="cl">    <span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span></code></pre></div><p>Une fonction pas bien différente donc, mais qui nous économise pas mal de temps de calcul.</p>
 <p>Quelques problèmes cependant :</p>
 <ul>
 <li>Le score backpropagé sera le même pour chaque node ajoutée pendant l&rsquo;étape de rollout.</li>
@@ -614,68 +614,68 @@ Notre étape de Rollout (déroulement aléatoire de coups jusqu&rsquo;à un éta
 <h3 id="remettre-les-scores-a-leur-place">Remettre les scores a leur place</h3>
 <p>Chaque nouvelle node de la phase de rollout aura un nombre de visites fixé a 0.
 On va simplement modifier notre fonction backpropagate et ajouter une condition sur le score propagé :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="c1">//incrémenter le score, comme avant
-</span><span class="c1"></span><span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
-
-<span class="k">if</span><span class="p">(</span><span class="n">_nombreDeVisites</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-    <span class="c1">//ajouter le score de cette node au score total a backpropager
-</span><span class="c1"></span>    <span class="n">score</span> <span class="o">+=</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">();</span>
-<span class="p">}</span>
-
-<span class="c1">//incrémenter les visites
-</span><span class="c1"></span><span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
-</code></pre></div><p>On obtient des scores assez proches de notre situation pre rollout-expand..
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">//incrémenter le score, comme avant
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span><span class="p">(</span><span class="n">_nombreDeVisites</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//ajouter le score de cette node au score total a backpropager
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">score</span> <span class="o">+=</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">//incrémenter les visites
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span></code></pre></div><p>On obtient des scores assez proches de notre situation pre rollout-expand..
 Il restera toujours un biais cependant : avec ce type de recherche, on n&rsquo;arrive pas aux mêmes scores car les nodes créées sont éliminées de l&rsquo;exploration durant la phase de rollout, et leur score ne remonte forcément qu&rsquo;une seule fois.</p>
 <h3 id="exploration-en-longueur">Exploration en longueur</h3>
 <p>Celle-ci est un peu plus complexe.
 On va commencer par regrouper la recherche d&rsquo;une feuille dans une fonction.</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
-    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
-            <span class="c1">//node peut encore être développée
-</span><span class="c1"></span>            <span class="k">return</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
-        <span class="p">}</span>
-        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">//atteint le bout de l&#39;arbre sans avoir trouvé de feuille a étendre, ca ne devrait pas arriver avec notre élimination de branches.
-</span><span class="c1"></span><span class="p">}</span>
-
-<span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
-
-<span class="k">do</span> <span class="p">{</span>
-    <span class="c1">//chercher la meilleure feuille
-</span><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">find_leaf</span><span class="p">();</span>
-
-    <span class="k">if</span><span class="p">(</span><span class="n">child</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
-        <span class="k">break</span><span class="p">;</span>  <span class="c1">//erreur: sortie de boucle
-</span><span class="c1"></span>
-    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">//can expand
-</span><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
-        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span> <span class="n">and</span> <span class="n">not</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">is_closed</span><span class="p">());</span>
-
-<span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
-</span></code></pre></div><p>On peut ensuite modifier cette fonction pour y ajouter une possibilité de &ldquo;saut&rdquo; si une node enfant a des enfants non explorés et c&rsquo;est gagné !
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//node peut encore être développée
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="k">return</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">//atteint le bout de l&#39;arbre sans avoir trouvé de feuille a étendre, ca ne devrait pas arriver avec notre élimination de branches.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">//chercher la meilleure feuille
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">find_leaf</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">child</span> <span class="o">==</span> <span class="k">nullptr</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">break</span><span class="p">;</span>  <span class="c1">//erreur: sortie de boucle
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="c1">//can expand
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">on</span> <span class="n">a</span> <span class="n">du</span> <span class="n">temps</span> <span class="n">and</span> <span class="n">not</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">is_closed</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
+</span></span></span></code></pre></div><p>On peut ensuite modifier cette fonction pour y ajouter une possibilité de &ldquo;saut&rdquo; si une node enfant a des enfants non explorés et c&rsquo;est gagné !
 Pour le saut, je fais un jet aléatoire entre 0 et le nombre d&rsquo;enfants non explorés, et saute la node en cours si le tirage est &gt; au nombre d&rsquo;enfants explorés :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
-    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
-    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
-            <span class="c1">//node peut encore être développée
-</span><span class="c1"></span>            <span class="n">var</span> <span class="n">tirage</span> <span class="o">=</span> <span class="n">randInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">());</span>
-            
-            <span class="k">if</span><span class="p">(</span><span class="n">tirage</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">())</span>
-                <span class="k">return</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
-            <span class="c1">//continue to search
-</span><span class="c1"></span>        <span class="p">}</span>
-        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">//atteint le bout de l&#39;arbre sans avoir trouvé de feuille a étendre, ca ne devrait pas arriver avec notre élimination de branches.
-</span><span class="c1"></span><span class="p">}</span>
-</code></pre></div><p>On obtient une métrique assez naturelle qui favorise le saut de nodes quand on a déjà bien exploré l&rsquo;arbre.</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span><span class="o">*</span> <span class="nf">find_leaf</span><span class="p">()</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">while</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span><span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">())</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">            <span class="c1">//node peut encore être développée
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">var</span> <span class="n">tirage</span> <span class="o">=</span> <span class="n">randInt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">_state</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">());</span>
+</span></span><span class="line"><span class="cl">            
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="p">(</span><span class="n">tirage</span> <span class="o">&lt;</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">children</span><span class="p">.</span><span class="n">size</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">                <span class="k">return</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span> 
+</span></span><span class="line"><span class="cl">            <span class="c1">//continue to search
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">}</span>
+</span></span><span class="line"><span class="cl">        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">nullptr</span><span class="p">;</span> <span class="c1">//atteint le bout de l&#39;arbre sans avoir trouvé de feuille a étendre, ca ne devrait pas arriver avec notre élimination de branches.
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="p">}</span>
+</span></span></code></pre></div><p>On obtient une métrique assez naturelle qui favorise le saut de nodes quand on a déjà bien exploré l&rsquo;arbre.</p>
 <h1 id="graph-">Graph ?</h1>
 <p>//todo !</p>
 <p>-&gt; hash</p>
@@ -862,7 +862,7 @@ Backprop se fait depuis chaque parent, le score augmente donc beaucoup pour chaq
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2021
+            2023
           
 
           
@@ -872,7 +872,7 @@ Backprop se fait depuis chaque parent, le score augmente donc beaucoup pour chaq
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.120.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

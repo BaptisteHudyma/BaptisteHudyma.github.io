@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.88.1" />
+  <meta name="generator" content="Hugo 0.120.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -462,7 +462,7 @@ if (!doNotTrack) {
     &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1063&nbsp;mots
   
   
-  &nbsp;&bull;&nbsp;Autres langues : <a href="https://BaptisteHudyma.github.io/en/post/galaxy_generation/" lang="en">en</a>
+  &nbsp;&bull;&nbsp;Autres langues : &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/galaxy_generation/&#34; lang=&#34;en&#34;&gt;en&lt;/a&gt;
 </span>
 
 
@@ -522,11 +522,11 @@ d_{arms}(r) = I_0 e^{-K Br^{0.25} - 1} * e^{-\frac{r - Br}{R_5} }
 $$</p>
 <p>Avec Br le rayon normalisé du bulbe central (entre 0 et 1), et R5 la distance à partir de laquelle la densité passe sous 0.5.</p>
 <p>On switch de l&rsquo;équation 1 a l&rsquo;équation 2 en fonction de notre distance au bulbe :</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback">    if (r &lt; Br)
-        //use bulge density
-    else
-        //use arms density
-</code></pre></div><p>Résultat de la loi de densité pour les paramètres I0 = 2, Br = 0.1, K = 0.2, R5 = 0.2, en fonction du rayon normalisé :</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">    if (r &lt; Br)
+</span></span><span class="line"><span class="cl">        //use bulge density
+</span></span><span class="line"><span class="cl">    else
+</span></span><span class="line"><span class="cl">        //use arms density
+</span></span></code></pre></div><p>Résultat de la loi de densité pour les paramètres I0 = 2, Br = 0.1, K = 0.2, R5 = 0.2, en fonction du rayon normalisé :</p>
 <p><img src="/static/galaxies/galaxy_density.png" alt="Densité galactique"></p>
 <p>Cette équation peut décrire la densité d&rsquo;étoiles dans une galaxie de n&rsquo;importe quel forme, et il nous faut donc ajouter une formule de densité pour les bras .</p>
 <h2 id="bras">Bras</h2>
@@ -716,7 +716,7 @@ Je cherche en ce moment une méthode pour rendre les coefficients d&rsquo;appari
 
           &nbsp;&bull;&nbsp;&copy;
           
-            2021
+            2023
           
 
           
@@ -726,7 +726,7 @@ Je cherche en ce moment une méthode pour rendre les coefficients d&rsquo;appari
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.88.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.120.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
