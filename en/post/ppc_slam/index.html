@@ -59,7 +59,7 @@
   "headline": "CP SLAM",
   "description" : "Localize a mobile robot in a virtual environment with constraint programming.\n",
   "inLanguage" : "en",
-  "wordCount":  681 ,
+  "wordCount":  680 ,
   "datePublished" : "2020-12-28T00:00:00",
   "dateModified" : "2020-12-28T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;681&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;680&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/ppc_slam/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -488,17 +488,17 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p>Localize a mobile robot in a virtual environment with constraint programming.</p>
-<p>In the <a href="https://BaptisteHudyma.github.io/en/post/ppc_intro/">last post</a>, I presented quickly constraint programming, with a lot of text and a single real exemple.
+<p>In the <a href="https://BaptisteHudyma.github.io/en/post/ppc_intro/">last post</a>, I presented quickly constraint programming, with a lot of text and a single real example.
 In this one I will show a SLAM (Simultaneous Localization And Mapping), able to localize a mobile robot in an unknown virtual environment.</p>
-<p>In this exemple, we consider that the robot position at t0 is known, as well as it&rsquo;s sensors informations (velocity and orientation).
+<p>Here, we consider that the robot position at t0 is known, as well as it&rsquo;s sensors information (velocity and orientation).
 During his journey in the virtual world, our robot will use simulated LIDAR data which will allow him to detect distance and orientation of this world&rsquo;s markers (with an unknown position).
 We also consider that we know which marker as been spotted.</p>
-<p>All those measures obviously have a margin of erreur that we know (in the real world, those informations are obtained with the sensor documentation).
+<p>All those measures obviously have a margin of error that we know (in the real world, this information are obtained with the sensor documentation).
 However, our small virtual world cannot have outliers in the measured data.</p>
 <p><strong>This system cannot work in the real world of real life</strong>.</p>
-<p>For this projet, I used <a href="http://simon-rohou.fr/research/tubex-lib/">Tubex</a>, a constraint programming library for C++ and Python, allowing us to use tools to work on constraint trajectories.
+<p>For this project, I used <a href="http://simon-rohou.fr/research/tubex-lib/">Tubex</a>, a constraint programming library for C++ and Python, allowing us to use tools to work on constraint trajectories.
 My implementation is an improvement of the last tutorial example (<a href="http://simon-rohou.fr/research/tubex-lib/doc/tutorial/08-rangeonly-slam/">Range Only SLAM</a>).</p>
-<p>To estimate the performances of our SLAM, we will define an initial point of comparaison: the trajectory estimation with dead reckoning.
+<p>To estimate the performances of our SLAM, we will define an initial point of comparison : the trajectory estimation with dead reckoning.
 Dead reckoning estimates the position with a direct sensor integration of the sensors values, a bit like estimating your position after closing your eyes and just counting your steps as someone walks you somewhere.
 It&rsquo;s a simple solution to robot positioning problems, but it accumulates quickly errors.</p>
 <p>Tubex represents uncertainty on trajectories by using tubes, displayed with a gradient of color.</p>
@@ -513,14 +513,14 @@ Contraint programming allows us to get the final dead reckoning trajectory inclu
 <p>Lets jump right into it and see the result:</p>
 <p><img src="/static/img_ppc_slam/ppc_slam_refined.png" alt="Image: SLAMED!"></p>
 <p>Well what can we see on this image ?
-The gray part is the dead reckoning trajectory, which cas reduced to the blue part.
+The gray part is the dead reckoning trajectory, which was reduced to the blue part.
 We can notice right away that the estimated position for the robot is much better than before: we are in a final interval of 2x1 meter, an improvement of 99.38%.</p>
 <p>We can also see rectangles around the markers, which are the interval of the estimated positions of each marker at the end of the mapping process.
-As for the robot, their final position are in an interval.</p>
+As for the robot, their final positions are in an interval.</p>
 <h1 id="a-v2-">A V2 !</h1>
-<p>Well, the result of V1 is good and all, but a bit useless: our robot is already at it&rsquo;s destination when we estimate it&rsquo;s position through time.
+<p>Well, the result of V1 is good and all, but a bit useless: our robot is already at its destination when we estimate its position through time.
 A more useful information would be to obtain the robot position at each <em>t</em>, and that&rsquo;s what I&rsquo;ll do now.</p>
-<p>Our code does not need a lot of modification: we only need to obtain the position (and reduce the variables) more regularly than just once at the and.</p>
+<p>Our code does not need a lot of modification: we only need to obtain the position (and reduce the variables) more regularly than just once at the end.</p>
 <p><img src="/static/img_ppc_slam/ppc_slam_rt.png" alt="Image: SLAMED V2!"></p>
 <p>This time the dead reckoning trajectory is not contracted, and is just displayed as a comparison.
 The robot position at each <em>t</em> is displayed as a black interval.</p>

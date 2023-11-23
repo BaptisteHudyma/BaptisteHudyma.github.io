@@ -59,7 +59,7 @@
   "headline": "SLAM - Parti 1",
   "description" : "Partie 1: Introduction \u0026amp; detection de features\nCertaines personnes racontent qu\u0026rsquo;ils ont un mauvais sens de l\u0026rsquo;orientation. Ils peuvent se comparer à un robot et se sentir bien meilleurs.\n",
   "inLanguage" : "fr",
-  "wordCount":  1903 ,
+  "wordCount":  1907 ,
   "datePublished" : "2021-10-04T00:00:00",
   "dateModified" : "2021-10-04T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1903&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1907&nbsp;mots
   
   
   
@@ -489,41 +489,41 @@ if (!doNotTrack) {
       <article role="main" class="blog-post">
         <p><em><strong>Partie 1: Introduction &amp; detection de features</strong></em></p>
 <p>Certaines personnes racontent qu&rsquo;ils ont un mauvais sens de l&rsquo;orientation. Ils peuvent se comparer à un robot et se sentir bien meilleurs.</p>
-<p>Ca fait un petit moment que je n&rsquo;ai rien publié ici ! Je n&rsquo;ai pas été inactif pour autant rassurez vous.</p>
+<p>Ça fait un petit moment que je n&rsquo;ai rien publié ici ! Je n&rsquo;ai pas été inactif pour autant, rassurez-vous.</p>
 <p>Je travaille depuis septembre 2020 sur la réalisation de mon propre système SLAM, un classique de la robotique.
 Ce projet a commencé avec une longue phase de recherche, documentation &amp; planing, puis plus récemment par les premières implémentations, suivies des premiers résultats.</p>
 <p>Dans cette série d&rsquo;articles, je vais remonter un peu le temps et décrire le fonctionnement précis de mon approche.</p>
-<p>Pour celles et ceux qui sont déjà familiers avec le concept du SLAM, et en particulier la détection de features, les descripteurs et l&rsquo;association des features en question, sautez directement a la Partie 2.</p>
-<h1 id="quest-ce-quun-slam">Qu&rsquo;est ce qu&rsquo;un SLAM</h1>
-<p>Simultaneous Localization And Mapping (ou Cartographie Et Localisation Simultanée en bon Francois) concerne la capacité d&rsquo;un système a cartographier et se repérer dans un environnement inconnu.
+<p>Pour celles et ceux qui sont déjà familiers avec le concept du SLAM, et en particulier la détection de features, les descripteurs et l&rsquo;association des features en question, sautez directement à la Partie 2.</p>
+<h1 id="quest-ce-quun-slam">Qu&rsquo;est-ce qu&rsquo;un SLAM</h1>
+<p>Simultaneous Localization And Mapping (ou Cartographie Et Localisation Simultanée en bon Francois) concerne la capacité d&rsquo;un système à cartographier et se repérer dans un environnement inconnu.
 La plupart du temps, on pense à des systèmes robotiques en environnement inconnu, mais de très nombreuses applications sont également concernées, comme la numérisation d&rsquo;objets par exemple (voir: structure from motion).</p>
 <details><summary>Une fermeture de boucle ? (cliquer pour étendre)</summary>
 <p>Imaginez sortir de chez vous et faire un tour du quartier, avant de revenir chez vous.
-Comment savez vous que vous êtes revenus chez vous ?</p>
+Comment savez-vous que vous êtes revenus chez vous ?</p>
 <p>Regardez une carte postale d&rsquo;un endroit connu.
-Qu&rsquo;est ce qui vous permet visuellement de savoir que c&rsquo;est un endroit connu ?
-Pourriez vous le reconnaitre si il était par exemple sous la neige, ou en noir et blanc ?
-Il y a de bonne chances pour que ce soit le cas.</p>
+Qu&rsquo;est-ce qui vous permet visuellement de savoir que c&rsquo;est un endroit connu ?
+Pourriez vous le reconnaitre s&rsquo;il était par exemple sous la neige, ou en noir et blanc ?
+Il y a de bonnes chances pour que ce soit le cas.</p>
 <p>Ce problème de reconnaitre un endroit visité précédemment est celui qu&rsquo;on appelle le problème de la fermeture de boucles (loop closing).
 Notre système SLAM va accumuler les erreurs de positions, qui même si elles sont minimes, finiront par créer une erreur de position globale importante.
-La fermeture de boucle permet de supprimer cette erreur, en reconnaissant une zone déjà observée dans le passé (avec une erreur inférieur donc) et d&rsquo;ajuster notre position et celle de notre environnement en fonction de la position connue.
-On réduit ainsi l&rsquo;erreur accumulée pur revenir a une pose et une map plus proche du réel.</p>
+La fermeture de boucle permet de supprimer cette erreur, en reconnaissant une zone déjà observée dans le passé (avec une erreur inférieure donc) et d&rsquo;ajuster notre position et celle de notre environnement en fonction de la position connue.
+On réduit ainsi l&rsquo;erreur accumulée pour revenir à une pose et une map plus proche du réel.</p>
 
 </details>
 
 <p>Le problème du SLAM n&rsquo;est pas encore un problème fermé, de nombreuses limitations existent encore.
 On citera notamment la localisation longue durée (life long mapping), les fermetures de boucle en temps réel et la gestion d&rsquo;environnements dynamiques, qui sont les problèmes majeurs qui n&rsquo;ont pas encore de solution arrêtée.</p>
 <p><strong>On va ici se limiter aux SLAM visuels, basés sur les images issues d&rsquo;une ou deux caméras.</strong></p>
-<p>On peut diviser les approches de SLAM en deux catégories majeures:</p>
+<p>On peut diviser les approches de SLAM en deux catégories majeures :</p>
 <ul>
-<li>Dense: Basé sur le traitement de l&rsquo;ensemble des pixels de l&rsquo;image. Toutes les informations sont exploitées ! Le traitement associé est en général lourd et non favorable aux utilisations temps réel.</li>
-<li>Sparse: Basé sur des features (point, lignes, plans, &hellip;), en général plus rapide.</li>
+<li>Dense : Basé sur le traitement de l&rsquo;ensemble des pixels de l&rsquo;image. Toutes les informations sont exploitées ! Le traitement associé est en général lourd et non favorable aux utilisations temps réel.</li>
+<li>Sparse : Basé sur des features (point, lignes, plans, &hellip;), en général plus rapide.</li>
 </ul>
 <p>J&rsquo;ai décidé de m&rsquo;orienter vers un SLAM sparse, basé sur des points, lignes, plans et formes superquadriques.
 Je garde un objectif temps réel (&gt; 30 FPS), et j&rsquo;utiliserai les images issues d&rsquo;une caméra RGB-D.</p>
-<p>Mon système se basera sur l&rsquo;extraction de features de chaque images, suivie d&rsquo;une phase de matching des features d&rsquo;une image sur les features stockées dans une map locale, puis une optimisation de pose.
+<p>Mon système se basera sur l&rsquo;extraction de features de chaque image, suivie d&rsquo;une phase de matching des features d&rsquo;une image sur les features stockées dans une map locale, puis une optimisation de pose.
 La fermeture de boucles et le mapping en mémoire sera réalisé ultérieurement.</p>
-<p>Plusieurs itérations auront lieux:</p>
+<p>Plusieurs itérations auront lieux :</p>
 <ul>
 <li>V0:
 <ul>
@@ -545,31 +545,31 @@ La fermeture de boucles et le mapping en mémoire sera réalisé ultérieurement
 </li>
 </ul>
 <p>Au début octobre 2021, j&rsquo;achève la réalisation des fonctions de base de la V0 (détection de feature, optimisation de pose).</p>
-<h1 id="première-étape-détection-des-features">Première étape: détection des features</h1>
-<p>La détection de points caractéristiques est a ma connaissance un des plus vieux sujets de computer vision.
+<h1 id="première-étape--détection-des-features">Première étape : détection des features</h1>
+<p>La détection de points caractéristiques est, à ma connaissance, un des plus vieux sujets de computer vision.
 En conséquence, c&rsquo;est un domaine très développé, avec de nombreuses méthodes, implémentations et documentation.
 Une large palette de choix donc !</p>
 <h2 id="détection">Détection</h2>
 <p>Tout d&rsquo;abord, même si le problème de détection de points caractéristiques est &ldquo;maitrisé&rdquo;, le processus reste assez lent pour être un facteur limitant pour le temps réel.</p>
-<p>On peut considérer une approche plus efficace que simplement re détecter les points à chaque image: une fois que les points on été détectés pour la première image, on va utiliser une méthode dite de <em>optical flow</em>.
+<p>On peut considérer une approche plus efficace que simplement re détecter les points à chaque image : une fois que les points ont été détectés pour la première image, on va utiliser une méthode dite de <em>optical flow</em>.
 Cette méthode est plus rapide et permet d&rsquo;obtenir directement les matchs de features entre les images en se basant sur le mouvement associé des features d&rsquo;une image a l&rsquo;autre.</p>
 <p>// TODO IMAGE OPTICAL FLOW</p>
 <p>Afin de ne pas perdre tous les points quand on se déplace trop, une détection de points est lancée sur la nouvelle image en masquant les zones autour des points existants (voir <a href="https://hal.archives-ouvertes.fr/hal-01349025">Keypoint detection in RGBD images based on an Efficient Viewpoint-Covariant Multiscale Representation (2016)</a>)</p>
-<p>Dans notre SLAM, on va également chercher a détecter les features de haut niveau, comme des lignes, des plans et des cylindres.
-Pour les lignes j&rsquo;utiliserais LSD (Line Segment Detector).
+<p>Dans notre SLAM, on va également chercher à détecter les features de haut niveau, comme des lignes, des plans et des cylindres.
+Pour les lignes, j&rsquo;utiliserais LSD (Line Segment Detector).
 La détection des plans et cylindres sera effectuée par CAPE, présenté dans un article précédent (<a href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/">De CAPE et d&rsquo;opes</a>).</p>
-<p>On pourra également détecter des lignes formées par deux plans, qui sont une feature avec une contrainte &ldquo;forte&rdquo; au moment de l&rsquo;optimisation de pose.
-Certaines publication proposent d&rsquo;utiliser des plans et lignes &ldquo;supposées&rdquo; (voir <a href="https://www.mdpi.com/1424-8220/19/17/3795">Point-Plane SLAM Using Supposed Planes for Indoor Environments (2019)</a>), mais leurs résultats ne sont évalués qu&rsquo;en environnement orthogonal, ou les angles entre deux plans proches de 90° seront supposés perpendiculaires.
+<p>On pourra aussi détecter des lignes formées par deux plans, qui sont une feature avec une contrainte &ldquo;forte&rdquo; au moment de l&rsquo;optimisation de pose.
+Certaines publications proposent d&rsquo;utiliser des plans et lignes &ldquo;supposées&rdquo; (voir <a href="https://www.mdpi.com/1424-8220/19/17/3795">Point-Plane SLAM Using Supposed Planes for Indoor Environments (2019)</a>), mais leurs résultats ne sont évalués qu&rsquo;en environnement orthogonal, ou les angles entre deux plans proches de 90° seront supposés perpendiculaires.
 Cette hypothèse fonctionne idéalement dans le cas d&rsquo;un environnement orthogonal (intérieur d&rsquo;un bâtiment par exemple), mais ses résultats sont réduits dans les environnements non orthogonaux (la majorité de la planète !).</p>
 <h2 id="descripteurs">Descripteurs</h2>
 <p>Afin d&rsquo;associer un point a un autre, il nous faut être capables de comparer les différents points et chiffrer leur proximité.
 On utilise pour cela des descripteurs, qui représentent un point et son espace proche.
-Ce descriptor permet de comparer les points de façon consistante.</p>
+Ce descripteur permet de comparer les points de façon consistante.</p>
 <p>Il existe beaucoup de types de descriptors, avec différentes caractéristiques, vitesse de calcul et comparaison, &hellip;
-Ce qui m&rsquo;intéresse ici est un descripteur rapide a calculer, et rapide a comparer.
-Ses caractéristiques d&rsquo;invariance en rotation et en échelle ne sont pas vraiment les caractéristiques principales dans notre cas : avec nos 30 images par secondes, nos descripteurs seront mis a jour régulièrement et leur précision est donc secondaire.</p>
-<p>Beaucoup de ces descripteurs ne se basent que sur l&rsquo;information 2D du point et ses alentours, la ou on pourrait utiliser également la mesure de profondeur donnée par notre camera.
-Pour quelques exemples de descripteurs de points un peu plus avancés, jetez un oeil a :</p>
+Ce qui m&rsquo;intéresse ici est un descripteur rapide à calculer, et rapide à comparer.
+Ses caractéristiques d&rsquo;invariance en rotation et en échelle ne sont pas vraiment les caractéristiques principales dans notre cas : avec nos 30 images par secondes, nos descripteurs seront mis à jour régulièrement et leur précision sont donc secondaires.</p>
+<p>Beaucoup de ces descripteurs ne se basent que sur l&rsquo;information 2D du point et ses alentours, là ou on pourrait utiliser également la mesure de profondeur donnée par notre caméra.
+Pour quelques exemples de descripteurs de points un peu plus avancés, jetez un œil a :</p>
 <ul>
 <li><a href="">Binary RGBD descriptor based on a pattern projection</a></li>
 <li><a href="https://arxiv.org/pdf/1603.09114.pdf">LIFT: Learned Invariant Feature Transform (2016)</a></li>
@@ -577,41 +577,41 @@ Pour quelques exemples de descripteurs de points un peu plus avancés, jetez un 
 <li><a href="https://tel.archives-ouvertes.fr/tel-01483314/file/doc.pdf">Local Features for RGB-D image matching under Viewpoint Changes - Chapitre 4 (2016)</a>: proposition d&rsquo;un descripteur pour features RGBD</li>
 <li><a href="https://hal.archives-ouvertes.fr/hal-01349025">Keypoint Detection in RGBD Images Based on Efficient Viewpoint-Covariant Multiscale Representation (2016)</a> qui décrit une procédure de lissage d&rsquo;images pour améliorer la qualité des features.</li>
 </ul>
-<p>Bien sur dans notre cas, nous avons d&rsquo;autre features que des points (pour le moment, des plans et lignes).
+<p>Bien sûr dans notre cas, nous avons d&rsquo;autre features que des points (pour le moment, des plans et lignes).
 Il existe des descripteurs pour les lignes et les plans, mais ce domaine est moins développé que celui des descripteurs de points.
-Dans notre cas temps réel, utiliser des descripteurs de plans et lignes n&rsquo;est pas nécessaire: on peut être assez confident en affirmant qu&rsquo;une feature détectée dans une image reviendra au moins en partie dans la prochaine image.
+Dans notre cas temps réel, utiliser des descripteurs de plans et lignes n&rsquo;est pas nécessaire : on peut être assez confident en affirmant qu&rsquo;une feature détectée dans une image reviendra au moins en partie dans la prochaine image.
 L&rsquo;association peut donc se faire de façon fiable en comparant les caractéristiques &ldquo;fortes&rdquo; de nos features :
-Pour les plans, on peut par exemple comparer les vecteurs normaux a la surface du plan, calculer l&rsquo;IoU (Inter Over Union) de deux surfaces, &hellip;
-Pour les lignes on se limitera a la comparaison des points de départ/arrivé, l&rsquo;orientation, le placement dans l&rsquo;images, &hellip;</p>
-<p>Et pourtant même si cette association est fonctionnelle, il manque tout de même un descripteur a notre objet, afin de le retrouver au moment d&rsquo;une fermeture de boucle.
+Pour les plans, on peut par exemple comparer les vecteurs normaux à la surface du plan, calculer l&rsquo;IoU (Inter Over Union) de deux surfaces, &hellip;
+Pour les lignes, on se limitera à la comparaison des points de départ/arrivé, l&rsquo;orientation, le placement dans l&rsquo;image, &hellip;</p>
+<p>Et pourtant même si cette association est fonctionnelle, il manque tout de même un descripteur à notre objet, afin de le retrouver au moment d&rsquo;une fermeture de boucle.
 Dans ce cas, les normales ne seront surement pas les mêmes, l&rsquo;IoU ne fait plus vraiment de sens, les points de départ et d&rsquo;arrivé non plus.
 Nous utiliserons dont tout de même des descripteurs pour ces features &ldquo;haut niveau&rdquo;.</p>
-<p>Pour les plans, une technique remarquablement efficace utilises un autoencodeur pour créer un descripteur de plan tres robuste (voir <a href="http://www.yifeishi.net/files/shi_eccv18_planematch.pdf">PlaneMatch: Patch Coplanarity Prediction for Robust RGB-D Reconstruction (2018)</a>).
+<p>Pour les plans, une technique remarquablement efficace utilises un autoencodeur pour créer un descripteur de plan très robuste (voir <a href="http://www.yifeishi.net/files/shi_eccv18_planematch.pdf">PlaneMatch: Patch Coplanarity Prediction for Robust RGB-D Reconstruction (2018)</a>).
 Pour les lignes, il existe des méthodes communes (comme LSD Line Segment Descriptor, a ne pas confondre avec LSD Line Segment Detector), mais je pense m&rsquo;orienter également vers une approche basée sur le machine learning.
 Le ML a démontré depuis longtemps son efficacité contre les features &ldquo;hand crafted&rdquo;.</p>
-<h1 id="deuxième-étape-association-des-features">Deuxième étape: Association des features</h1>
+<h1 id="deuxième-étape--association-des-features">Deuxième étape : Association des features</h1>
 <p>On attaque la partie intéressante.
 Il nous faut maintenant associer les features détectées dans nos images.
 Cette étape est très importante, car la moindre erreur provoquera au mieux des ralentissements dans l&rsquo;optimisation de pose, et au pire faussera le résultat.</p>
-<p>On a déjà mentionné dans la section précédente plusieurs manière d&rsquo;associer les features de &ldquo;haut niveau&rdquo;, comme les lignes et plans.
-Malgré leur simplicité, ces méthodes sont fiables car on retrouve généralement très peu de features haut niveau dans les images.
+<p>On a déjà mentionné dans la section précédente plusieurs manières d&rsquo;associer les features de &ldquo;haut niveau&rdquo;, comme les lignes et plans.
+Malgré leur simplicité, ces méthodes sont fiables, parce qu&rsquo;on retrouve généralement très peu de features haut niveau dans les images.
 Il y a moins de plans qu&rsquo;il n&rsquo;y a de lignes, et de lignes qu&rsquo;il n&rsquo;y a de points.</p>
 <p>Pour les points, j&rsquo;utilise RANSAC, déjà mentionné dans un post différent (<a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/">Monocular Depth Map</a>).
 Utiliser cette méthode pour l&rsquo;association de points est rapide et efficace, mais se base sur les descripteurs calculés plus tôt.
-Ces descripteurs ne sont pas toujours fiables, et j&rsquo;ai donc ajouté une zone maximum de détection autour de chaque point a matcher, pour exclure les points les plus éloignés.
+Ces descripteurs ne sont pas toujours fiables, et j&rsquo;ai donc ajouté une zone maximum de détection autour de chaque point à matcher, pour exclure les points les plus éloignés.
 Cette approximation ne marchera qu&rsquo;en application temps réel, ou les points se déplacent peu entre les images.</p>
 <h2 id="environnement-dynamique">Environnement dynamique</h2>
-<p>Avant de passer a la suite, nous devons mentionner un point important: Les environnements dynamiques.
+<p>Avant de passer à la suite, nous devons mentionner un point important : Les environnements dynamiques.
 Jusque ici, on a supposé que notre environnement était statique (ie chaque feature est invariante d&rsquo;une image sur l&rsquo;autre).
 Cette supposition n&rsquo;est pas vraie dans 99% des cas réels.</p>
 <p>Pour estimer notre position, nous nous baserons sur une optimisation rigide, qui sera perturbée par des features mobiles.
 Éliminer ces features mobiles n&rsquo;est pas facile en temps réel, car leur mouvement est en général assez lent par rapport au rafraichissement d&rsquo;image.</p>
 <p>Des approches se basent sur la détection d&rsquo;objets dynamiques connus (humain, voitures, animaux, &hellip;) pour les exclure de l&rsquo;optimisation (voir <a href="https://arxiv.org/abs/2104.01316">Toward Real-time Semantic RGBD-SLAM in Dynamic environments (2021)</a>).
 La limite de cette approche est évidemment que tous les objets mobiles ne sont pas dans la base d&rsquo;entrainement.
-Les chercheurs ajoutent un critère de détection que je trouve particulièrement intéressant: En supposant qu&rsquo;un élément dynamique a toujours une surface, ils segmentent l&rsquo;image en zone de détections et déterminent au fur et mesure du temps quels sont les zones contenant des objets dynamiques.
+Les chercheurs ajoutent un critère de détection que je trouve particulièrement intéressant : En supposant qu&rsquo;un élément dynamique à toujours une surface, ils segmentent l&rsquo;image en zone de détections et déterminent au fur et mesure du temps quels sont les zones contenant des objets dynamiques.
 Ces zones sont ensuite éliminées totalement de l&rsquo;optimisation de pose et du mapping.</p>
 <p>Je suis encore trop &ldquo;neuf&rdquo; dans ce projet pour essayer autre chose que de supposer que l&rsquo;environnement est statique, ce traitement sera réalisé pour la V1.</p>
-<p>Rendez vous la Partie 2 pour discuter optimisation de pose !</p>
+<p>Rendez-vous la Partie 2 pour discuter optimisation de pose !</p>
 
         
           <div class="blog-tags">

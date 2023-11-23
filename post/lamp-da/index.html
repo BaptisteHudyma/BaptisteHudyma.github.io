@@ -59,7 +59,7 @@
   "headline": "Construction d\u0027une lanterne compacte",
   "description" : "Tuto construction d\u0026rsquo;une lanterne compacte et solide.\n",
   "inLanguage" : "fr",
-  "wordCount":  2042 ,
+  "wordCount":  2658 ,
   "datePublished" : "2023-11-22T00:00:00",
   "dateModified" : "2023-11-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2042&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2658&nbsp;mots
   
   
   
@@ -488,87 +488,122 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p>Tuto construction d&rsquo;une lanterne compacte et solide.</p>
-<details><summary>D&rsquo;ou ca vient cette idée (cliquer pour étendre)</summary>
-<p>Il y a quelques années, alors que je parcourais des couloirs obscures équipé de ma frontale Décathlon a 10 euros, j&rsquo;ai croisé un gars sympa avec une grosse lanterne couleur bougie.
-Fait maison qu&rsquo;il a dit ! (dédicace a mon Michel)</p>
+<p><img src="/static/lamp_da/lampes.jpg" alt="Image: Lampe en utilisation"></p>
+<details><summary>D&rsquo;où ça vient cette idée (cliquer pour étendre)</summary>
+<p>Il y a quelques années, alors que je parcourais des couloirs obscurs, équipé de ma frontale Décathlon à 10 euros, j&rsquo;ai croisé un gars sympa avec une grosse lanterne couleur bougie.
+Fait maison qu&rsquo;il a dit ! (dédicace à mon Michel)</p>
 <p>Bon évidemment il fallait que j&rsquo;en fasse une.
-Avec ses conseils et son aide, j&rsquo;ai donc construit une lanterne au fonctionnement identique : 18 batteries 18650, 3-4 mètres de ruban LED, un controleur PWM (avec interrupteur) pour régler la luminosité, et un BMS, le tout dans un tube PVC de 10cm de diamètre.
+Avec ses conseils et son aide, j&rsquo;ai donc construit une lanterne au fonctionnement identique : 18 batteries 18650, 3-4 mètres de ruban LED, un contrôleur PWM (avec interrupteur) pour régler la luminosité, et un BMS, le tout dans un tube PVC de 10cm de diamètre.
 Simple et efficace.</p>
-<p>Également vraiment lourd et peu pratique a trimballer lors de nos (nombreuses !) explorations.</p>
+<p>Également vraiment lourd et peu pratique à trimballer lors de nos (nombreuses !) explorations.</p>
 <p>J&rsquo;ai donc décidé de créer une version compacte, solide et (probablement ?) étanche.</p>
-<p>Le tuto ci dessous explique comment construire la version 0 de la Lamp-da.
+<p>Le tuto ci-dessous explique comment construire la version 0 de la Lamp-da.
 La V0 est le résultat de 6 ou 7 itérations de construction, ou diverses améliorations ont été apportées (internet n&rsquo;est pas d&rsquo;une grande aide parfois&hellip;)</p>
 
 </details>
 
 <h1 id="liste-des-composants-bom">Liste des composants (BOM):</h1>
 <p><img src="/static/lamp_da/materiel.jpg" alt="Image: matériel"></p>
-<h2 id="électonique">Électonique</h2>
+<h2 id="électronique">Électronique</h2>
 <ul>
-<li>bande de led 12v, couleur 2800k: 2 mètres. Type COB pour un rendu unique et agréable a l&rsquo;oeil</li>
-<li>3 batterie li-ion 18650. Prendre le max de mAH possible (5000mAH pour ce genre de batteries)</li>
-<li>BMS li-ion 3S: prendre format triangle avec au moins 2A de courant de décharge</li>
-<li>chargeur li ion 12v: de préférence utiliser chargeur compatible fast charge, ca n&rsquo;est pas le cas de celui présenté ici</li>
-<li>contrôleur PWM 2A min</li>
-<li>equilibreur li-ion 3S (actif ou passif, peut importe)</li>
-<li>led bicouleur (rouge vert) common anode</li>
-<li>connecteur étanche USB-C</li>
+<li>bande de LED 12v, couleur 2800k: 2 mètres. Type COB pour un rendu unique et agréable à l&rsquo;œil.</li>
+<li>3 batteries li-ion 18650. Prendre le max de mAH possible (5000mAH pour ce genre de batteries). J&rsquo;utilise des 3500mAh</li>
+<li>BMS li-ion 3S: prendre format triangle, au moins 2A de courant de décharge</li>
+<li>chargeur li ion 3S 12v: de préférence, utiliser chargeur compatible fast charge, ça n&rsquo;est pas le cas de celui présenté ici. Ici, j&rsquo;utilise un chargeur Li-ion 3S 4 ampères.</li>
+<li>Contrôleur PWM. Courant de sortie 2A minimum.</li>
+<li>Équilibreur li-ion 3S (actif ou passif, peu importe) : sert à égaliser la tension entre les batteries.</li>
+<li>LED bicouleur (rouge/vert) common anode.</li>
+<li>Connecteur étanche USB-C</li>
+<li>fils électriques. Le fil que j&rsquo;utilise supporte aux caractéristiques suivantes : 60 V, Courant max 4.3 A. Il faut choisir du fil qui peut résister à plus que le maximum de courant que consomment le maximum des rubans LED et le chargeur (ici, 2A).</li>
 </ul>
-<h2 id="diverses">Diverses</h2>
+<details><summary>Calculer comment choisir les composants (cliquer pour étendre)</summary>
+<p>Aller un peu de maths pour savoir ce qu&rsquo;on fait :</p>
+<p>On utilise trois batteries en série.
+Pour obtenir la puissance totale stockée dans la batterie, on peut multiplier par 3 la puissance d&rsquo;une batterie.
+3500mAh * 3 =&gt; 10500mAh =&gt; 10.5Ah</p>
+<p>(A titre de comparaison, la batterie de l&rsquo;iPhone 15 est à peu près 3000mAh. Ma petite lampe contient 3.5x plus de puissance)</p>
+<p>Les batteries ont également un courant de décharge maximum, indiqué lors de l&rsquo;achat.
+Ce courant doit être supérieur à la consommation maximum du système !
+Ici, j&rsquo;ai des batteries 2A, donc en sortie ma batterie peut sortir 3*2A = 6A de puissance max.
+Il faut alors prendre un BMS qui protège de tensions plus élevées (8A annoncés dans mon cas, mais c&rsquo;est du AliExpress, rien n&rsquo;est sûr).
+On peut aussi choisir un BMS adapté à la puissance de sortie maximum de notre système (2A comme calculé juste après).</p>
+<p>On peut aussi calculer la consommation du système. Il nous faut pour ça la consommation des LED.
+Elle est souvent donnée en Watt/mètres (12W/m pour les miennes)
+Nos LED consomment 12V, on peut donc calculer la consommation instantanée du ruban (à pleine puissance) :
+12W / 12V =&gt; 1A/m.</p>
+<p>On utilise 2 mètres de LED, on va en conséquence consommer 1A/m * 2m =&gt; 2A pour notre ruban entier.</p>
+<p>Ok, on a maintenant la conso max et la puissance des batteries, on peut calculer la durée d&rsquo;utilisation max :
+10.5Ah / 2A =&gt; 5h d&rsquo;utilisation à fond.</p>
+<p>À noter que la tension des batteries descend lentement de 12V à 9V</p>
+<p>On peut également calculer le temps de charge.
+En utilisant un chargeur 5V 4A, la sortie (si on ne considère aucunes pertes, ce qui est une très très faux) sera a :
+5V * 4A =&gt; 12W
+12W / 12V =&gt; 1A</p>
+<p>Donc 12V 1A en sortie.</p>
+<p>Pour charger nos batteries complément vides, on prendra alors :
+10.5Ah / 1A =&gt; 10.5h</p>
+<p>10.5 heures de charges ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe, souvent moins long)</p>
+
+</details>
+
+<h2 id="divers">Divers</h2>
 <ul>
-<li>tube diametre 45mm: rare mais trouvable en PVC sur des sites spécialisés en isolation Télécom (commande minimum 6m) : besoin de 125 mm de long. Le tube de 45 permet de mettre exactement 3 batteries 18650 côtes a côtes, avec tres peu de jeux.</li>
-<li>clou de 50mm de long avec tête large (ou clou de 45 avec tete conique).</li>
-<li>gaine thermoretractable transparente, diametre 50mm</li>
-<li>paracorde 2mm de diametre, 30cm</li>
-<li>super glue: a mettre partout ou deux pièces sont sensées ne plus bouger. Il faut en abuser le plus possible.</li>
-<li>isolant pour batteries: matière papier/carton avec coté collant, servant a isoler les batteries l&rsquo;une de l&rsquo;autre.</li>
-<li>scotch: sert a enrouler chaque batterie, et sert d&rsquo;isolant et liant. J&rsquo;utilise du scotch marron classisque (isolant, tres bon pouvoir collant)</li>
+<li>Tube diamètre 45mm: rare, mais trouvable en PVC sur des sites spécialisés en isolation Télécom (commande minimum 6m) : besoin de 125 mm de long. Le tube de 45 permet de mettre exactement 3 batteries 18650 côtes à côtes, avec très peu de jeux.</li>
+<li>Clou de 50mm de long avec tête large (ou clou de 45 avec tête conique).</li>
+<li>Gaine thermoretractable transparente, diamètre 50mm, au moins 15cm.</li>
+<li>Paracorde 2mm de diamètre, 30cm</li>
+<li>Super glue : à mettre partout ou deux pièces sont censées ne plus bouger. Il faut en abuser le plus possible.</li>
+<li>Isolant pour batteries : matière papier/carton avec coté collant, servant à isoler les batteries l&rsquo;une de l&rsquo;autre.</li>
+<li>Scotch : sert à enrouler chaque batterie, et sert d&rsquo;isolant et liant. J&rsquo;utilise du scotch marron classique (isolant, très bon pouvoir collant)</li>
 </ul>
 <h2 id="outils">Outils</h2>
 <ul>
 <li>
-<p>Fer a souder: mieux vaut en avoir un bon, il y a une 20aine de soudures a faire sur des petits espaces.</p>
+<p>Fer à souder : Il vaut mieux en avoir un bon, il y a une 20 aines de soudures à faire sur des petits espaces.</p>
 </li>
 <li>
-<p>Soudeuse par point pour batteries. Il en existe des versions portables, les versions fixes ne se vendent pas en Europe. On peut quand même en acheter a l&rsquo;étranger, a vos risques et périls. Sinon des Fablab prêts de chez vous pourraient avoir cet outil, et des gens formés pour s&rsquo;en servir correctement en plus !</p>
+<p>Soudeuse par point pour batteries. Il en existe des versions portables, les versions fixes ne se vendent pas en Europe. On peut quand même en acheter à l&rsquo;étranger, à vos risques et périls. Sinon des Fablab prêts de chez vous pourraient avoir cet outil, et des gens formés pour s&rsquo;en servir correctement en plus !</p>
 </li>
 <li>
-<p>Pistolet a chaleur ou sèche cheveux: sert a réduire la gaine thermo.</p>
+<p>Pistolet à chaleur ou sèche-cheveux : sert à réduire la gaine thermo.</p>
 </li>
 <li>
-<p>Chargeur de Li-ion: Sert a charger les batteries avant de les souder ensemble.</p>
+<p>Chargeur de Li-ion : Sert à charger les batteries avant de les souder ensemble.</p>
 </li>
 <li>
-<p>Perceuse: trous pour les fils des LEDs, et pour l&rsquo;attache de corde.</p>
+<p>Perceuse : trous pour les fils des LEDs, et pour l&rsquo;attache de corde.</p>
 </li>
 <li>
-<p>petit marteau: pour enfoncer le clou a travers le tuyau</p>
+<p>Petit marteau : pour enfoncer le clou à travers le tuyau</p>
 </li>
 <li>
-<p>cutter: débourrer les bords de coupe</p>
+<p>Cutter : déburrer les bords de coupe, couper la gaine thermo</p>
 </li>
 <li>
-<p>Pince a dénudeur: le cutter peut également servir a cette tâche, il y a 15 boûts de fils a dénuder.</p>
+<p>Pince à dénuder : le cutter peut également servir à cette tâche, il y a 15 bouts de fils à dénuder.</p>
 </li>
 <li>
-<p>Imprimante 3D: pour les capuchons. 3 pièces a imprimer (en annexe)</p>
+<p>Imprimante 3D: pour les capuchons. 3 pièces à imprimer (en annexe)</p>
 </li>
 </ul>
 <h1 id="structure-de-la-lampe">Structure de la lampe</h1>
 <p>Couper un morceau de 12.5 cm de notre tuyau 45mm.
-On va ensuite percer un trou à 2mm d un des bords : ça sera le coté bas de la lampe.
-Insérer le clou dans le trou et utiliser un marteau pour l&rsquo;enfoncer à travers le tube, utilisez un guide pour passer le long du diametre du tube.</p>
-<p>Une fois le clou placé, on va enrouler la led autour du tube, en commençant par le côté avec le clou. Il nous servira de repére pour l enroulement.
-Une fois arriver en haut, couper la bande au niveau des connecteurs en cuivre.
+On va ensuite percer un trou à 2mm d&rsquo;un des bords : ça sera le côté bas de la lampe.
+Insérer le clou dans le trou et utiliser un marteau pour l&rsquo;enfoncer à travers le tube, utilisez un guide pour passer le long du diamètre du tube.</p>
+<p>Une fois le clou placé, on va enrouler la LED autour du tube, en commençant par le côté avec le clou. Il nous servira de repère pour l&rsquo;enroulement.
+Une fois arrivé en haut, couper la bande au niveau des connecteurs en cuivre.
 <img src="/static/lamp_da/enroulement_led.jpg" alt="Image: enroulement des leds"></p>
-<p>Percez 2 trous au niveau de la fin des leds (haut de la lampe), et y passer 2 fils : ils serviront à l&rsquo;alimentation du ruban led.
-On peu mettre un point de colle dans chaque trous (clou et fils des leds) pour étanchéifier tout ca.</p>
-<p>Couper une section de 20 cm de gaine thermoretractable, et la passer autour du tube de notre lampe.
-En utilisant un sèche cheveux, on peut chauffer assez cette gaine pour qu&rsquo;elle se rétracte autour du tube, jusqu&rsquo;à faire un genre de papillote.
-Couper l&rsquo;excédent le long du tube à l aide d&rsquo;un cuteur.</p>
+<p>Percez 2 trous au niveau de la fin des LEDs (haut de la lampe), et y passer 2 fils électriques : ils serviront à l&rsquo;alimentation du ruban LED.
+En souder un sur le +12V, et un sur le -.
+On peut mettre un point de colle dans chaque trou (clou et fils des LEDs) pour étanchéifier tout ça.</p>
+<p><img src="/static/lamp_da/alignement_led.jpg" alt="Image: aligment des leds">
+<img src="/static/lamp_da/led_fils.jpg" alt="Image: branchement des leds"></p>
+<p>Couper une section de 15 cm de gaine thermorétractable, et la passer autour du tube de notre lampe.
+En utilisant un sèche-cheveux, on peut chauffer assez cette gaine pour qu&rsquo;elle se rétracte autour du tube, jusqu&rsquo;à faire un genre de papillote.
+Couper l&rsquo;excédent le long du tube à l&rsquo;aide d&rsquo;un cutteur.</p>
 <p><img src="/static/lamp_da/led_et_thermo.jpg" alt="Image: lampe + gaine thermo"></p>
 <p>Une fois la gaine thermo en place, on peut installer la première pièce imprimée en 3d: le fond de batterie.
-Il faut le mettre au fond du tube mais pas collé contre le clou: il doit rester 2mm entre la pièce et le clou. J&rsquo;utilise un guide imprimé en 3d pour contrôler la distance entre les deux.
+Il faut le mettre au fond du tube, mais pas collé contre le clou : il doit rester 2mm entre la pièce et le clou. J&rsquo;utilise un guide imprimé en 3d pour contrôler la distance entre les deux.
 Collez le guide de batterie sur le tube avec de la super glue.</p>
 <p><img src="/static/lamp_da/cul_de_lampe.jpg" alt="Image: arrière de lampe nu"></p>
 <p>Utilisez le cul de lampe (imprimé en 3d) pour fixer le bout de corde au clou.
@@ -578,92 +613,107 @@ Collez les deux parties ensemble en laissant appuyer le temps que ça sèche.</p
 <p><img src="/static/lamp_da/cul_de_lampe_corde.jpg" alt="Image: Arrière de lampe avec corde"></p>
 <h1 id="capuchon-supérieur">Capuchon supérieur</h1>
 <p>Utilisez la pièce imprimée comme base.</p>
-<p>On fixe le controleur PWM et le port USB-C étanche dans le capuchon.
+<p>On fixe le contrôleur PWM et le port USB-C étanche dans le capuchon.
 Je conseille de coller l&rsquo;arrière de l&rsquo;USB-C sur le plastique du capuchon.</p>
-<p>On va également coller la led d&rsquo;indication de charge dans le capuchon.</p>
+<p>On va également coller la LED d&rsquo;indication de charge dans le capuchon.</p>
 <p>Il ne faut pas hésiter avec la colle, cette pièce est le point faible de la lampe.</p>
 <p><img src="/static/lamp_da/capuchon_top.jpg" alt="Image: Capuchon supérieur"></p>
 <h1 id="assemblage-des-batteries">Assemblage des batteries</h1>
-<p>Attention en manipulant des batteries Liion, elles sont sensibles a tout (chaleur, humidité, décharge profonde, surcharge, etc) et ont tendance a gonfler/exploser si on les manipules mal.
-Allez c&rsquo;est dit, bonne chance :</p>
-<p>Commencer par charger les 3 batteries avec un chargeur adapté (chargeur Liion 18650).
+<p>Attention en manipulant des batteries Li-ion, elles sont sensibles à tout (chaleur, humidité, décharge profonde, surcharge, etc) et ont tendance à gonfler/exploser si on les manipule mal. <a href="https://www.nfpa.org/education-and-research/home-fire-safety/lithium-ion-batteries">Voir le site de la protection des risques des incendies</a>
+Allez, c&rsquo;est dit, bonne chance :</p>
+<p>On commence par vérifier les batteries :</p>
+<p>Les batteries Li-ion sont à 4.2V en tension maximum, et 2.9V en tension minimum.
+Si vos batteries sont en dehors de ces tensions, il y a un grooooooos problème, ne pas les utiliser.
+Entourer chaque batterie d&rsquo;isolant (le scotch est suffisant), et ajouter un cercle isolant sur le positif.</p>
+<p><img src="/static/lamp_da/batteries_isol%C3%A9es.jpg" alt="Images: batteries isolées"></p>
+<p>Commencer par charger les 3 batteries avec un chargeur adapté (chargeur Li-ion 18650).
 Souder les batteries en série en utilisant la configuration triangle suivante :</p>
 <p><img src="/static/lamp_da/batteries_serie_triangle.jpg" alt="Image: batteries en série"></p>
-<p>FAIRE TRES ATTENTION c&rsquo;est l&rsquo;étape vraiment dangereuse.
+<p>FAIRE TRÈS ATTENTION c&rsquo;est l&rsquo;étape vraiment dangereuse.
 Souder des fils au 0v, 4v, 8v et 12v, et les relier à l&rsquo;endroit correspondant sur le BMS. Vérifier 3 fois plutôt que risquer l&rsquo;explosion.
 Ne pas oublier de mettre de l&rsquo;isolant entre le BMS et les batteries !!!</p>
 <p><img src="/static/lamp_da/batteries_BMS.jpg" alt="Image: batteries + BMS"></p>
 <p>Tester la sortie du BMS. Si c&rsquo;est &gt;12v c&rsquo;est OK.
-Si c&rsquo;est 0, reverifier les connexions une à une.
-Si les connexions sont OK, utilisez une alimentation 12v et touchez simultanément le 0 et le 12v de sortie du bms avec respectivement le 0 et 12v de l alimentation pour activer le BMS.</p>
+Si c&rsquo;est 0, revérifier les connexions une à une.
+Si les connexions sont OK, utilisez une alimentation 12v et touchez simultanément le 0 et le 12v de sortie du BMS avec respectivement le 0 et 12v de l&rsquo;alimentation pour activer le BMS.</p>
 <p>Si pas de 12v en sortie du BMS, changez de BMS et recommencez.</p>
 <p>Une fois le BMS fixé, la batterie est sécurisée.</p>
 <h2 id="ajout-de-léquilibreur">Ajout de l&rsquo;équilibreur</h2>
-<p>Un equilibreur permet de maintenir les batteries à la même tension. C&rsquo;est très important pour la durée de vie de la lampe et des batteries.
-Sans equilibreur, la tension des batteries va lentement dévier entre chaque charge et decharge, jusqu&rsquo;à ce qu&rsquo;une d&rsquo;entre elle tombe à 2.9v alors qu&rsquo;une autre est chargée à 4.2v, provoquant un blocage du BMS (cause: sous tension) tout en empêchant la recharge via le BMS (cause: surtension). Si on en arrive là, le pack de batterie est foutu, il faut tout démonter et recharger individuellement.
-Un equilibreur utilisera la charge des batteries avec la plus forte tension pour charger celles avec la tension la plus faible. Il permet de toujours garder chaque batterie à la même tension que ses voisines.</p>
-<h3 id="branchement">Branchement:</h3>
+<p>Un équilibreur permet de maintenir les batteries à la même tension. C&rsquo;est très important pour la durée de vie de la lampe et des batteries.
+Sans équilibreur, la tension des batteries va lentement dévier entre chaque charge et décharge, jusqu&rsquo;à ce qu&rsquo;une d&rsquo;entre elle tombe à 2.9v alors qu&rsquo;une autre est chargée à 4.2v, provoquant un blocage du BMS (cause : sous tension) tout en empêchant la recharge via le BMS (cause : surtension). Si on en arrive là, le pack de batterie est foutu, il faut tout démonter et recharger individuellement.
+Un équilibreur utilisera la charge des batteries avec la plus forte tension pour charger celles avec la tension la plus faible. Il permet de toujours garder chaque batterie à la même tension que ses voisines.</p>
+<h3 id="branchement">Branchement</h3>
 <p>Reliez le 0v à b0, 4v à b1, 8v à b2, 12v à b3.
-Des lumières devrait s&rsquo;allumer sur l equilibreur pour indiquer que la fonction équilibrage est en cours.</p>
+Des lumières devraient s&rsquo;allumer sur l&rsquo;équilibreur pour indiquer que la fonction équilibrage est en cours.</p>
 <p><img src="/static/lamp_da/equilibreur_batterie_1.jpg" alt="Image: fils du BMS vers équilibreur">
 <img src="/static/lamp_da/equilibreur_batterie_2.jpg" alt="Image: sécurisation des fils de l&rsquo;équilibreur">
 <img src="/static/lamp_da/equilibreur_batterie_3.jpg" alt="Image: soudage de l&rsquo;équilibreur"></p>
-<p>Laissez reposer jusqu&rsquo;a ce que les leds soient éteintes (attention ça chauffe pendant le premier équilibrage)</p>
+<p>Laissez reposer jusqu&rsquo;à ce que les LEDs soient éteintes (attention ça chauffe pendant le premier équilibrage)</p>
 <p>Une fois l&rsquo;équilibreur installé, on peut scotcher la batterie pour éviter tout contact ne passant pas par le BMS.
 Il ne devrait rester que les deux fils GND et 12V en sortie.
 <img src="/static/lamp_da/batterie_finie.jpg" alt="Image: batterie assemblée"></p>
-<p>Et la on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts circuits, et autres mauvaises utilisations.</p>
-<h1 id="controleur-de-luminosité">Controleur de luminosité</h1>
+<p>Et la, on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts-circuits, et autres mauvaises utilisations.</p>
+<h1 id="contrôleur-de-luminosité">Contrôleur de luminosité</h1>
 <p>Relier le - de notre batterie au V- du contrôleur PWM.
 Relier le + de notre BMS au V+ du contrôleur PWM.
 Il peut y avoir une petite étincelle en fonction du type de contrôleur PWM.</p>
-<p>Les fils doivent être sécurisés en vissant le bornier, mais pour ma part je préfère souder les fils directement sur le pcb, ça tient mieux à long terme.</p>
-<p>Tournez le potentiomètre du PWM pour l&rsquo;activer. Une led devrait s allumer sur le controleur pour indiquer que les branchements sont bons.</p>
-<p>Testez la tension de sortie : en tournant le potentiomètre on devrait varier de 9v à 12v.
-Si on ne voit pas de tension de sortie, ou qu&rsquo;elle ne change pas ou très peu, le composant est peut être défectueux.</p>
-<p>Relier les leds:
-Il suffit de visser ou souder le 0 de la bande led au M- du contrôleur PWM, et le 12v au M+. Et voilà c&rsquo;est tout bon.</p>
-<p>On peut maintenant tester le bon fonctionnement de tout le système en mettant du 12V en entrée du controleur.
-La LED devrait être éteinte, puis luminosité devrait passer de 5 a 100% en tournant le potentiomètre.</p>
+<p>Les fils doivent être sécurisés en vissant le bornier, mais pour ma part, je préfère souder les fils directement sur le pcb, ça tient mieux à long terme.</p>
+<p>Tournez le potentiomètre du PWM pour l&rsquo;activer. Une LED devrait s&rsquo;allumer sur le contrôleur pour indiquer que les branchements sont bons.</p>
+<p>Testez la tension de sortie : en tournant le potentiomètre, on devrait varier de 9v à 12v.
+Si on ne voit pas de tension de sortie, ou qu&rsquo;elle ne change pas ou très peu, le composant est peut-être défectueux.</p>
+<p>Relier les LEDs:
+Il suffit de visser ou souder le 0 de la bande LED au M- du contrôleur PWM, et le 12v au M+. Et voilà, c&rsquo;est tout bon.</p>
+<p>On peut maintenant tester le bon fonctionnement de tout le système en mettant du 12V en entrée du contrôleur.
+La LED devrait être éteinte, puis luminosité devrait passer de 5 à 100% en tournant le potentiomètre.</p>
 <h1 id="ajout-du-chargeur">Ajout du chargeur</h1>
-<p>Il faut commencer par tester le chargeur sans batteries connectées: la tension de sortie devrait être entrée 12v et 14v (pas forcément stable).
+<p>Il faut commencer par tester le chargeur sans batteries connectées : la tension de sortie devrait être entrée 12v et 14v (pas forcément stable).
 Une LED (bleue ?) devrait s&rsquo;allumer, elle indique que la charge est terminée.</p>
-<p>Dessouder les leds d&rsquo;indication déjà presentes sur le chargeur et souder notre led bicolore à la place, en suivant le code couleur de la photo.</p>
+<p>Dessouder les LEDs d&rsquo;indication déjà présente sur le chargeur et souder notre LED bicolore à la place, en suivant le code couleur de la photo.</p>
 <p><img src="/static/lamp_da/chargeur_soud%C3%A9.jpg" alt="Image: Chargeur soudé"></p>
-<p>Souder les fils du connecteur USBC a l&rsquo;entrée du chargeur.</p>
+<p>Souder les fils du connecteur USB-C a l&rsquo;entrée du chargeur.</p>
 <h1 id="finalisation">Finalisation</h1>
 <p>Souder le GND du chargeur à la borne 0V du BMS, et le BAT+ au 12v du BMS.
-Brancher le chargeur et vérifiez que les batteries rechargent. Les leds d&rsquo;indication sur le chargeur indiqueront le bon fonctionnement de tout ça.</p>
-<p>Vu que les batteries sont déjà chargées, la charge s arrêtera au bout de quelques secondes.</p>
+Brancher le chargeur et vérifiez que les batteries rechargent. Les LEDs d&rsquo;indication sur le chargeur indiqueront le bon fonctionnement de tout ça.</p>
+<p>Vu que les batteries sont déjà chargées, la charge s&rsquo;arrêtera au bout de quelques secondes.</p>
 <p><img src="/static/lamp_da/resultat_desassemble.jpg" alt="Image: Lampe prête a l&rsquo;assemblage"></p>
-<p>Insérez la batterie dans le tube de lampe, et bien là caler dans le guide de batterie.
-Ça peut être difficile de bien l&rsquo;insérer dans le guide. Si il y a blocage, je fais tourner le pack sur lui même avec une pince en faisant très attention de le pas l abîmer.</p>
+<p>Insérez la batterie dans le tube de lampe, et bien la caler dans le guide de batterie.
+Ça peut être difficile de l&rsquo;insérer dans le guide. S&rsquo;il y a blocage, je fais tourner le pack sur lui-même sans utiliser l&rsquo;outil qui puisse endommager la batterie.
+J&rsquo;ai déjà fait l&rsquo;erreur et le PVC ça brûle très bien.</p>
 <p>Une fois le pack calé, on peut presser le chargeur contre, et fermer le capuchon de lampe.
-Le capuchon a un sens d&rsquo;insertion: les fils du bandeau de led doivent passer dans l&rsquo;encoche du capuchon sinon elle ne fermera pas.</p>
-<p>Dans un premier temps je ne le colle pas, et emmène la lampe faire 2 ou 3 ballades + 2 ou 3 recharges pour être sûr que tout fonctionne comme prévu.
-Quand on est absolument sûrs que tout fonctionne, on peut coller la capuchon, en étalant de la colle tout autour du tube et en maintenant le capuchon le temps que ça sèche.</p>
+Le capuchon a un sens d&rsquo;insertion : les fils du bandeau de LED doivent passer dans l&rsquo;encoche du capuchon sinon elle ne fermera pas.</p>
+<p>Dans un premier temps, je ne le colle pas, et emmène la lampe faire 2 ou 3 balades + 2 ou 3 recharges pour être sûr que tout fonctionne comme prévu.
+Quand on est absolument certains que tout fonctionne, on peut coller le capuchon, en étalant de la colle tout autour du tube et en maintenant le capuchon le temps que ça sèche.</p>
 <p><img src="/static/lamp_da/resultat.jpg" alt="Image: Lampe finale !"></p>
 <h1 id="personnaliser-son-logo">Personnaliser son logo</h1>
-<p>Créer un logo noir et blanc. pas trop compliqué (l&rsquo;impression 3d à une resolution limitée).
+<p>Créer un logo noir et blanc. pas trop compliqué (l&rsquo;impression 3d à une résolution limitée).
 Le noir sera la partie en profondeur.
 Transformer ce logo en image vectorielle (.svg), pour ça j&rsquo;utilise inkscape.
-Ouvrir le cul de lampe avec blender (file&gt;import&gt;stl (experimental))
+Ouvrir le fichier lampv0_bottom_logo avec blender (file&gt;import&gt;stl (experimental))
 Ouvrir le logo svg dans la même fenêtre blender (file&gt;import&gt;scalable vector graphic (svg))</p>
-<p>Déplacer le logo a la surface de la piece, ajustez l échelle et l orientation.
+<p>Déplacer le logo à la surface de la pièce, ajustez l&rsquo;échelle et l&rsquo;orientation.
 Une fois le logo en place, clic droit dessus, convert to, mesh.</p>
 <p><img src="/static/lamp_da/logo_sur_surface.jpg" alt="Image: Logo sur surface"></p>
-<p>Modification: solidify, avec une taille de 10m.</p>
+<p>Modification : solidify, avec une taille de 10m.</p>
 <ul>
-<li>Si le svg est bien constitué, cet étape fonctionnera directement.</li>
+<li>Si le svg est bien constitué, cette étape fonctionnera directement.</li>
 <li>Si le svg est malformé, on observera des pics verticaux dans le logo.
 Il faudra revenir dans inkscape corriger ça : c&rsquo;est souvent due à des nodes svg sans curseurs de contrôle.</li>
 </ul>
-<p>Une fois le logo correctement transformé en solide, on appliqué une modification boolean sur le cul de lampe. On veut spécifiquement un boolean négation.
-Le logo doit être enfoncé dans le surface de 1mm ou moins, ou risque de dépasser sous la pièce.
+<p>Une fois le logo correctement transformé en solide, on applique une modification boolean sur le cul de lampe. On veut spécifiquement un boolean négation.
+Le logo doit être enfoncé dans la surface de 1mm ou moins, ou risque de dépasser sous la pièce.
 Apply puis supprimer le logo extrudé.</p>
 <p><img src="/static/lamp_da/logo_sur_cul.jpg" alt="Image: Logo sur cul de lampe"></p>
 <p>Exporter le résultat en stl.</p>
 <p>Imprimer avec votre matos !</p>
+<h1 id="points-faibles">Points faibles</h1>
+<p>Le seul gros point faible de ce système est son chargeur.
+J&rsquo;ai choisi d&rsquo;utiliser un chargeur 5V plutôt qu&rsquo;un compatible fast charge afin de rendre le tout étanche, mais on se retrouve avec quelques problèmes :</p>
+<ul>
+<li>Le chargeur n&rsquo;accepte que du 5V, donc pas de chargeur de téléphone classique</li>
+<li>Lors de la charge, le composant de charge devient brûlant au touché. Et il est très proche des batteries.</li>
+</ul>
+<p>Les Li-ion ne sont pas fan de chaleur, surtout pendant la durée du temps de charge.
+Il est très facile d&rsquo;adapter le système pour utiliser un chargeur compatible fast charge, au détriment de l&rsquo;étanchéité, bonne chance !</p>
 
         
           <div class="blog-tags">

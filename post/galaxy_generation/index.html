@@ -484,27 +484,27 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p>Après m&rsquo;être attaqué a la génération procédurale de systèmes planétaires, j&rsquo;ai décidé de monter un peu dans l&rsquo;échelle de l&rsquo;univers en tentant ma chance sur les galaxies.</p>
-<p>On cherche a respecter plusieurs conditions essentielles pour un observateur qui peut se trouver n&rsquo;importe ou dans la galaxie :</p>
+<p>On cherche à respecter plusieurs conditions essentielles pour un observateur qui peut se trouver n&rsquo;importe où dans la galaxie :</p>
 <ul>
 <li>Les étoiles brillantes doivent être vues de très loin.</li>
 <li>Les étoiles proches doivent être générée indépendamment de leur luminosité.</li>
 <li>Le modèle galactique doit exister pour chaque point de l&rsquo;espace (x, y, z)</li>
 </ul>
 <h1 id="définir-la-forme">Définir la forme</h1>
-<p>Quand on dit &ldquo;galaxie&rdquo;, on pense généralement a une structure en spirale aplatie sur un plan, avec un noyau a son centre.</p>
-<p>Dans notre univers, on repère bien sur des formes plus diverses, parfois avec des spirales, spirales barrées, disque plein, boules, ou même des formes arbitraires (galaxies irrégulières).
-On va s&rsquo;intéresser ici a la génération de galaxies spirales, qui sont a mon avis les plus jolies et celles dont la forme est la plus difficile à définir algorithmiquement.
+<p>Quand on dit &ldquo;galaxie&rdquo;, on pense généralement à une structure en spirale aplatie sur un plan, avec un noyau à son centre.</p>
+<p>Dans notre univers, on repère bien sûr des formes plus diverses, parfois avec des spirales, spirales barrées, disque plein, boules, ou même des formes arbitraires (galaxies irrégulières).
+On va s&rsquo;intéresser ici a la génération de galaxies spirales, qui sont à mon avis les plus jolies et celles dont la forme est la plus difficile à définir algorithmiquement.
 Plus particulièrement, je vais ici décrire le processus de génération des galaxies en spiral régulières.</p>
 <p>J&rsquo;ai choisi de me baser sur le papier <a href="https://arxiv.org/pdf/0908.0892.pdf">A New Formula Describing the Scaffold Structure of Spiral Galaxies</a>, qui présente une formule facilement paramétrable, qui décrit suffisamment bien les comportements qu&rsquo;on retrouve dans la nature.</p>
-<p>Elle est définie en coordonnées polaire par l&rsquo;équation suivante :
+<p>Elle est définie en coordonnées polaires par l&rsquo;équation suivante :
 $$
 r(\phi) = \frac{A}{ log(B \tan\frac{\phi}{2N}) }
 $$
 Avec A un paramètre d&rsquo;échelle, B et N des paramètres pour contrôler le degré de pente de la spirale.</p>
-<p>Quelques exemples avec A fixé a 1 :
+<p>Quelques exemples avec A fixé à 1 :
 <img src="/static/galaxies/parameters.png" alt="Results of shapes"></p>
-<p>J&rsquo;ai implémenté cette équation de façon a pouvoir l&rsquo;utiliser par la suite comme une fonction de densité de l&rsquo;espace : On prend un point (x, y, z) dans l&rsquo;espace, on obtient la densité d&rsquo;étoile en ce point.</p>
-<p>Voilà une petite galaxie a deux bras :
+<p>J&rsquo;ai implémenté cette équation de façon à pouvoir l&rsquo;utiliser par la suite comme une fonction de densité de l&rsquo;espace : On prend un point (x, y, z) dans l&rsquo;espace, on obtient la densité d&rsquo;étoile en ce point.</p>
+<p>Voilà une petite galaxie à deux bras :
 <img src="/static/galaxies/full_galaxy.png" alt="Bras de galaxies"></p>
 <h1 id="définir-des-densités">Définir des densités</h1>
 <p>Une fois la forme de la galaxie définie, j&rsquo;ai posé un algorithme général pour obtenir en chaque point de l&rsquo;espace la probabilité d&rsquo;y trouver une étoile :</p>
@@ -536,27 +536,27 @@ $$</p>
 <p>Avec Da la distance au bras le plus proche et Ra le rayon (normalisé) d&rsquo;un bras.</p>
 <p>Et voilà les bras peuplés selon la loi de densité par 4000 étoiles.
 <img src="/static/galaxies/galaxy_with_stars.png" alt="petites etoiles"></p>
-<p>On observe que la densité est plus forte vers le centre de la galaxie  ainsi qu&rsquo;au centre des bras (le centre  et la barre ne sont pas représentés).</p>
+<p>On observe que la densité est plus forte vers le centre de la galaxie ainsi qu&rsquo;au centre des bras (le centre et la barre ne sont pas représentés).</p>
 <h1 id="400-milliards-détoiles-sans-bruler-la-ram">400 milliards d&rsquo;étoiles sans bruler la RAM</h1>
-<p>Dans notre chère Voie Lactée, on estime qu&rsquo;on peut y trouver de 200 a 400 milliards d&rsquo;étoiles.
-Les étoiles visibles (a l&rsquo;œil nue) depuis la terre le sont surtout en fonction de leur luminosité et proximité.
-On peut en effet s&rsquo;attendre a ce que des étoiles très lumineuses soient visibles de très loin, et que des étoiles très proches soient également visibles malgré leur faible luminosité</p>
+<p>Dans notre chère Voie Lactée, on estime qu&rsquo;on peut y trouver de 200 à 400 milliards d&rsquo;étoiles.
+Les étoiles visibles (a l&rsquo;œil nu) depuis la terre le sont surtout en fonction de leur luminosité et proximité.
+On peut en effet s&rsquo;attendre à ce que des étoiles très lumineuses soient visibles de très loin, et que des étoiles très proches soient également visibles malgré leur faible luminosité</p>
 <p>Cependant, les étoiles les plus lumineuses sont également les plus rares (classe O et B), tandis que les plus nombreuses et également les plus proches sont les moins lumineuses (classe M, K).
-Afin de ne pas générer les milliard d&rsquo;étoiles de notre galaxie en mémoire et faire exploser mon ordinateur, il serait plus intelligent de ne générer que les étoiles visibles depuis notre point d&rsquo;observation.</p>
+Afin de ne pas générer les milliards d&rsquo;étoiles de notre galaxie en mémoire et faire exploser mon ordinateur, il serait plus intelligent de ne générer que les étoiles visibles depuis notre point d&rsquo;observation.</p>
 <p>En m&rsquo;inspirant du <a href="https://www.youtube.com/watch?v=Vz3nhCykZNw">développement d&rsquo;Elite Dangerous</a> et du <a href="https://www.gamedev.net/blog/73/entry-1952708-galaxy-generation/">Journal de Ysaneya</a>, j&rsquo;ai décidé de mettre en place un octree (en gros la structure 3D d&rsquo;un arbre binaire), séparant ma galaxie en 8 cubes principaux, également subdivisibles jusqu&rsquo;à une certaine échelle.
 Les cubes les plus grands sont placés au &ldquo;niveau 0&rdquo;, jusqu&rsquo;aux plus petits au &ldquo;niveau 12&rdquo; (Elite Dangerous utilise 8 niveaux).</p>
 <p>L&rsquo;observateur se situe dans un cube de niveau 12, c&rsquo;est-à-dire dans un cube occupant 1/4096 ème de la galaxie.
-Pour la voie lactée, ca représenterait un cube de 126.9 x 126.9 x 126.9 années lumière, assez pour contenir le soleil et son voisinage proche, ce qui représente un nombre considérable d&rsquo;étoiles (voir un exemple du <a href="http://atunivers.free.fr/250lys.html">voisinage a 250 années lumières du soleil</a>).</p>
+Pour la voie lactée, ça représenterait un cube de 126.9 x 126.9 x 126.9 années-lumière, assez pour contenir le soleil et son voisinage proche, ce qui représente un nombre considérable d&rsquo;étoiles (voir un exemple du <a href="http://atunivers.free.fr/250lys.html">voisinage à 250 années lumières du soleil</a>).</p>
 <p>Image de l&rsquo;octree subdivisé jusqu&rsquo;au niveau 12, avec quelques étoiles réparties avec une loi de densité uniforme.
 <img src="/static/galaxies/octree.png" alt="subdivided octree">
 On peut voir que même avec une répartition uniforme, les étoiles sont affichées en plus grand nombre autour de l&rsquo;observateur.</p>
 <p>Chaque niveau de cet octree possède une probabilité d&rsquo;apparition des étoiles : les niveaux les plus bas (0-3) favorisent l&rsquo;apparition des étoiles très lumineuses, visibles de très loin mais dont l&rsquo;apparition dans l&rsquo;univers est assez rare (1-2%).
 Les niveaux intermédiaires (4-9) gèrent l&rsquo;apparition d&rsquo;étoiles intermédiaires, moins lumineuses que les O et B, mais également bien plus nombreuses.
-Les derniers niveaux s&rsquo;occupent des étoiles peu lumineuses mais très courantes, comme les naines jaunes, oranges et rouges.
-Le tout dernier niveau peut également s&rsquo;occuper des cas particuliers, comme les naines blanches et les étoiles ratées (classe K, J, &hellip;).</p>
-<p>On génère donc les étoiles lumineuses très éloignées de l&rsquo;observateur, tout en garantissant que les étoiles proches mais peu lumineuses soient visibles.</p>
-<p>Je n&rsquo;ai pas encore envisagé de solution fiable pour l&rsquo;apparition des trous noirs et nébuleuses.
-Je cherche en ce moment une méthode pour rendre les coefficients d&rsquo;apparition des étoiles par niveau de l&rsquo;octree plus &ldquo;procéduraux&rdquo; que de les rentrer a la main, afin de faire apparaitre des résultats plus diversifiés et intéressants.</p>
+Les derniers niveaux s&rsquo;occupent des étoiles peu lumineuses, mais très courantes, comme les naines jaunes, oranges et rouges.
+Le tout dernier niveau peut aussi s&rsquo;occuper des cas particuliers, comme les naines blanches et les étoiles ratées (classe K, J, &hellip;).</p>
+<p>On génère donc les étoiles lumineuses très éloignées de l&rsquo;observateur, tout en garantissant que les étoiles proches, mais peu lumineuses soient visibles.</p>
+<p>Je n&rsquo;ai pas encore envisagé de solution fiable pour l&rsquo;apparition des trous noirs et des nébuleuses.
+Je cherche en ce moment une méthode pour rendre les coefficients d&rsquo;apparition des étoiles par niveau de l&rsquo;octree plus &ldquo;procéduraux&rdquo; que de les rentrer à la main, afin de faire apparaitre des résultats plus diversifiés et intéressants.</p>
 
         
           <div class="blog-tags">

@@ -59,7 +59,7 @@
   "headline": "Galaxis Generation",
   "description" : "After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies\n",
   "inLanguage" : "en",
-  "wordCount":  1042 ,
+  "wordCount":  1041 ,
   "datePublished" : "2020-06-15T00:00:00",
   "dateModified" : "2020-06-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -459,7 +459,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1042&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1041&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/galaxy_generation/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -493,7 +493,7 @@ Those conditions are basics for an observer, placed anywhere in the galaxy:</p>
 </ul>
 <h1 id="define-the-shape">Define the shape</h1>
 <p>When we say &ldquo;Galaxy&rdquo;, we usually think about a sort of planar spiral structure with a bulge in the center.</p>
-<p>In our universe, we can see various (an infinity of) other shapes, from spirales to sombrero, from barred spirals to shapeless (irregular galaxies).
+<p>In our universe, we can see various (an infinity of) other shapes, from spirals to sombrero, from barred spirals to shapeless (irregular galaxies).
 Here, we only care about spiral galaxy generation, in my opinion the nicest and those with the most difficult shape to define with an algorithm.</p>
 <p>For the spiral shape, I decided to go with <a href="https://arxiv.org/pdf/0908.0892.pdf">A New Formula Describing the Scaffold Structure of Spiral Galaxies</a>, describing a formula easy enough to parametrize, and with a good approximation of what we can find in nature.
 It is based on a log spiral, with variations allowing to link naturally the arms to the central bar.</p>
@@ -505,10 +505,10 @@ With A a scale parameter, B and N to control the degree and slope of the spiral.
 <p>Some exemples with A = 1:
 <img src="/static/galaxies/parameters.png" alt="Results of shapes"></p>
 <p>I implemented this equation in a way allowing me to use it as a density function of space : We take a point (x, y, z) in space and the function returns the star density of our galaxy at this point.</p>
-<p>Here is a little two armes galaxy:
+<p>Here is a little two armed galaxy:
 <img src="/static/galaxies/full_galaxy.png" alt="Bras de galaxies"></p>
 <h1 id="define-densities">Define densities</h1>
-<p>Once the shape defined, I layed out a general algorithm to obtain the density at each point depending on where we are:</p>
+<p>Once the shape defined, I laid out a general algorithm to obtain the density at each point depending on where we are:</p>
 <h2 id="bulge">Bulge</h2>
 <p>The heart of our galaxy is a simple inverse exponential equation.
 I decided to use <strong>de Vancouleurs law</strong>.</p>
@@ -539,25 +539,25 @@ $$</p>
 <p>And here is our arms, with 4000 stars.
 <img src="/static/galaxies/galaxy_with_stars.png" alt="petites etoiles"></p>
 <p>We can observe that density is higher when we get closer to the center of the galaxy, and center of the arms (Bulge and arm not displayed).</p>
-<h1 id="400-billon-stars-without-burning-ram">400 billon stars without burning RAM</h1>
+<h1 id="400-billion-stars-without-burning-ram">400 billion stars without burning RAM</h1>
 <p>In our dear Milky Way, we have an estimate of around 200 to 400 billion stars.
 Stars from Earth are visible (with a naked eye) because they emit light, and they are close to us.
 In fact, we can expect that very bright stars are visible from afar, and close stars can also be seen even if they emit dimly.</p>
 <p>However, the brightest stars are also the rarest (B and O class), while the most numerous and also closest from Earth are very dim in comparison (M and K class).
-To avoid generating in memory the billion of stars in our galaxy and make my computer explode, it would be wiser to only generate only the visible stars from our observing point.</p>
+To avoid generating in memory the billion of stars in our galaxy and make my computer explode, it would be wiser to generate only the visible stars from our observing point.</p>
 <p>Inspired by the <a href="https://www.gamedev.net/blog/73/entry-1952708-galaxy-generation/">Journal de Ysaneya</a>, I decided to use an octree (briefly explained, the 3D struct of a 2D binary tree), splitting my galaxy in 8 principal cubes, which can also be divided in 8, and on and on until we reach a certain scale.
 The biggest cubes are placed at &ldquo;level 0&rdquo;, until the smaller ones at &ldquo;level 12&rdquo;.</p>
 <p>The observer is in a cube of level 12, that mean in a cube taking 1/4096 of the all galaxy.
 For the Milky Way, it should represent a cube 126.9 x 126.9 x 126.9 light years, enough to contain the Sun and it&rsquo;s close neighbors, and that represent already a big amount of stars (take a look at <a href="http://atunivers.free.fr/250lys.html">the Sun neighborhood at 250 LY</a>).</p>
 <p>An ilage of the subdivided octree to level 12, with a few stars generated with uniform density.
 <img src="/static/galaxies/octree.png" alt="subdivided octree">
-We can se that even with an uniform density, the stars are much more present around the observer.</p>
+We can see that even with a uniform density, the stars are much more present around the observer.</p>
 <p>Each level of the octree posses a spawning probability of star: the lower levels (0-3) favor the very bright stars, visible from afar, but rare in our galaxy (&lt;1-2% of all stars).
 Intermediate level (4-9) are used for stars dimmer than O and B, but also much more frequent.
 The following levels are handling the very dim stars, which are also the most numerous, like yellow, orange and red dwarfs.
 The last level can also handle the special stars, like white dwarfs, failed stars (K, J, &hellip;) and maybe black holes.</p>
-<p>In conclusion, using the structure of the octree, we garanti that the far bright stars will be generated as well as the close dim stars, without generating all stars.</p>
-<p>I did not yet thing about a reliable solution to handle black hole and nebulas.
+<p>In conclusion, using the structure of the octree, we guarantee that the far bright stars will be generated as well as the close dim stars, without generating all stars.</p>
+<p>I did not yet think about a reliable solution to handle black hole and nebulas.
 I also currently search for a method to make the octree stars probabilities much more procedural than entering them by hand, to obtain more diverse and interesting results.</p>
 
         

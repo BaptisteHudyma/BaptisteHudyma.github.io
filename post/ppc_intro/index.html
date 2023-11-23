@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Programmation par Contraintes",
-  "description" : "Qu\u0026rsquo;est ce que la programmation par contraintes ? Quels en sont les avantages et les limites ? Peut on faire en une heure un algorithme qui résout les Sudoku ?\nUne de ces réponses est oui.\n",
+  "description" : "Qu\u0026rsquo;est-ce que la programmation par contraintes ? Quels en sont les avantages et les limites ? Peut-on faire en une heure un algorithme qui résout les Sudoku ?\nUne de ces réponses est oui.\n",
   "inLanguage" : "fr",
-  "wordCount":  841 ,
+  "wordCount":  837 ,
   "datePublished" : "2020-11-26T00:00:00",
   "dateModified" : "2020-11-26T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;841&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;837&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/ppc_intro/&#34; lang=&#34;en&#34;&gt;en&lt;/a&gt;
@@ -487,16 +487,16 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Qu&rsquo;est ce que la programmation par contraintes ?
+        <p>Qu&rsquo;est-ce que la programmation par contraintes ?
 Quels en sont les avantages et les limites ?
-Peut on faire en une heure un algorithme qui résout les Sudoku ?</p>
+Peut-on faire en une heure un algorithme qui résout les Sudoku ?</p>
 <p>Une de ces réponses est <em><strong>oui</strong></em>.</p>
 <h1 id="introduction">Introduction</h1>
-<p>Commençons par le commencement : Qu&rsquo;est ce que la programmation par contraintes ?</p>
-<p>La PPC est un paradigme de programmation déclaratif, qui consiste a résoudre un problème en définissant les propriétés de sa solution plutôt que le problème lui même.
-De tous les paradigmes de programmation, c&rsquo;est a mon avis le plus élégant.
+<p>Commençons par le commencement : Qu&rsquo;est-ce que la programmation par contraintes ?</p>
+<p>La PPC est un paradigme de programmation déclaratif, qui consiste à résoudre un problème en définissant les propriétés de sa solution plutôt que le problème lui-même.
+De tous les paradigmes de programmation, c&rsquo;est à mon avis le plus élégant.
 Contrairement aux approches &ldquo;classiques&rdquo; basés sur une suite de blocs d&rsquo;executions, on va ici se concentrer sur la déclaration de variables du problème et les contraintes qu&rsquo;elles entretiennent entre elles.
-On se concentre sur <strong>qu&rsquo;est ce qui défini</strong> le problème plutôt que <strong>comment</strong> le résoudre.</p>
+On se concentre sûr <strong>qu&rsquo;est-ce qui défini</strong> le problème plutôt que <strong>comment</strong> le résoudre.</p>
 <p>Ces contraintes sont ensuite satisfaites par un moteur de propagation de contraintes, qui nous dissimule la complexité de l&rsquo;algorithme et nous redonne directement nos variables, réduites par les contraintes.</p>
 <p>Un des avantages à travailler sur les contraintes de la solution plutôt que la façon de résoudre le problème est un des aspects le plus pratique de la PPC: Il est possible de prouver l&rsquo;inexistence d&rsquo;une solution, et ce très rapidement.
 La propagation des contraintes est un processus assez lourd, mais dans le cas d&rsquo;un problème avec un ensemble de contraintes incompatibles, un état contradictoire est atteint très rapidement.</p>
@@ -504,27 +504,27 @@ La propagation des contraintes est un processus assez lourd, mais dans le cas d&
 <ul>
 <li>Prouver l&rsquo;existence d&rsquo;une solution</li>
 <li>Prouver l&rsquo;inexistence d&rsquo;une solution</li>
-<li>Résoudre des problème non linéaires facilement (en robotique par exemple)</li>
+<li>Résoudre des problèmes non linéaires facilement (en robotique par exemple)</li>
 </ul>
 <h3 id="avantages">Avantages</h3>
-<p>Si le problème a résoudre s&rsquo;y prête, programmer avec cette méthode est bien plus rapide que d&rsquo;implémenter soit même un algorithme.
-L&rsquo;exemple de résolution de Sudoku a la fin de ce post est assez parlant: Il m&rsquo;a fallut une soirée, soit quelques heures de travail pour faire l&rsquo;ensemble du programme de chargement d&rsquo;un sudoku via OpenCV et sa résolution.</p>
+<p>Si le problème à résoudre s&rsquo;y prête, programmer avec cette méthode est bien plus rapide que d&rsquo;implémenter soit même un algorithme.
+L&rsquo;exemple de résolution de Sudoku a la fin de ce post est assez parlant : Il m&rsquo;a fallu une soirée, soit quelques heures de travail pour faire l&rsquo;ensemble du programme de chargement d&rsquo;un sudoku via OpenCV et sa résolution.</p>
 <p>Le fait de pouvoir prouver qu&rsquo;une solution n&rsquo;existe pas sans calculer l&rsquo;ensemble des solutions est également un avantage majeur de la PPC.
 Pour l&rsquo;exemple du Sudoku, le programme peut déterminer très rapidement si l&rsquo;utilisateur a rentré une grille impossible.</p>
-<p>L&rsquo;utilisation de <em>contraintes différentielles</em> permet de résoudre facilement des problèmes complexes en robotique, notamment des problèmes d&rsquo;estimation d&rsquo;état non linéaires, qui sont assez difficiles a résoudre avec les méthodes &ldquo;classiques&rdquo;.
-La PPC permet de traiter facilement les problèmes du &ldquo;robot kidnappé&rdquo;, de délais entre les données ou d&rsquo;estimation de position.</p>
+<p>L&rsquo;utilisation de <em>contraintes différentielles</em> permet de résoudre facilement des problèmes complexes en robotique, notamment des problèmes d&rsquo;estimation d&rsquo;état non linéaires, qui sont assez difficiles à résoudre avec les méthodes &ldquo;classiques&rdquo;.
+La PPC permet de traiter simplement les problèmes du &ldquo;robot kidnappé&rdquo;, de délais entre les données ou d&rsquo;estimation de position.</p>
 <h3 id="inconvénients">Inconvénients</h3>
 <p>Évidemment et comme toujours dans la vie, rien n&rsquo;est parfait et la PPC vient (ironiquement) avec son lot de contraintes.</p>
 <p>Premièrement, la propagation des contraintes est un processus lourd en mémoire et CPU pour un ordinateur.
-Selon les méthodes, la propagation s&rsquo;effectue a ma connaissance sur des graphs ou des matrices.
+Selon les méthodes, la propagation s&rsquo;effectue à ma connaissance sur des graphs ou des matrices.
 Ce n&rsquo;est donc pas vraiment une méthode portable, et une implémentation microcontrôleur efficace est pour le moment inexistante.</p>
 <p>De plus, la PPC nous donne en sortie les variables d&rsquo;entrée réduites au maximum.
-Même dans le cas ou les variables sont réduites au maximum, elles restent comprises dans un interval de solutions.
+Même dans le cas où les variables sont réduites au maximum, elles restent comprises dans un interval de solutions.
 Eeeet oui, comme précisé dans l&rsquo;introduction, la PPC donne l&rsquo;ensemble des solutions possibles, sans distinctions.
 Si cet interval est grand, dans un contexte non discret comme l&rsquo;estimation de la position d&rsquo;un robot mobile, la PPC pourrait ne pas suffire.</p>
-<p>A mon avis, la PPC ne devrait pas être utilisée seule, et nécessite d&rsquo;autres algorithmes pour affiner les résultats.</p>
+<p>À mon avis, la PPC ne devrait pas être utilisée seule, et nécessite d&rsquo;autres algorithmes pour affiner les résultats.</p>
 <p>Deuxièmement, la PPC est extrêmement sensible aux données aberrantes (outliers).
-ces données sont normalement extrêmement rares, mais peuvent tout de même survenir et entrer dans notre système.
+Ces données sont normalement extrêmement rares, mais peuvent tout de même survenir et entrer dans notre système.
 Un outlier peut produire une contrainte incompatible, ce qui empêchera notre système de trouver une solution.</p>
 <h1 id="exemple-du-sudoku">Exemple du Sudoku</h1>
 <p>Un petit exemple ? Essayez de visualiser un algorithme pour résoudre un Sudoku&hellip;</p>
@@ -534,9 +534,9 @@ De plus une approche rapide et naïve serait assez difficile à adapter a des ca
 <p>En utilisant la programmation par contraintes, il nous suffit de faire la liste des variables du problème (ici, l&rsquo;ensemble des cases du Sudoku) et d&rsquo;écrire les contraintes qui lient ces variables entre elles.</p>
 <p>Il se trouve que j&rsquo;ai déjà réalisé un <a href="https://github.com/BaptisteHudyma/Sudoku-Solver">petit projet en Python</a> utilisant la PPC pour résoudre ce problème.
 Dans le fichier &ldquo;SudokuSolver.py&rdquo;, la fonction <code>set_constraints</code> est responsable de la déclaration des variables (81 pour une grille de 9 * 9 cases) puis des contraintes.
-Le coeur de l&rsquo;algorithme final se résume en 81 + 27 contraintes :</p>
+Le cœur de l&rsquo;algorithme final se résume en 81 + 27 contraintes :</p>
 <ul>
-<li>Chaque case peut prendre une valeur de 1 a 9, sauf les cases déjà remplies qui sont fixe</li>
+<li>Chaque case peut prendre une valeur de 1 à 9, sauf les cases déjà remplies qui sont fixes</li>
 <li>9 lignes dont chaque case doit avoir une valeur différente</li>
 <li>9 colonnes dont chaque case doit avoir une valeur différente</li>
 <li>9 carrés dont chaque case doit avoir une valeur différente</li>

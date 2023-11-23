@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Harpe laser",
-  "description" : "Que faire avec 12 lasers, une Arduino, 4 planches et une après-midi ?\n",
+  "description" : "Que faire avec 12 lasers, une carte Arduino, 4 planches et une après-midi ?\n",
   "inLanguage" : "fr",
-  "wordCount":  756 ,
+  "wordCount":  754 ,
   "datePublished" : "2018-12-20T00:00:00",
   "dateModified" : "2018-12-20T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;756&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;754&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/harpe_laser/&#34; lang=&#34;en&#34;&gt;en&lt;/a&gt;
@@ -487,44 +487,44 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Que faire avec 12 lasers, une Arduino, 4 planches et une après-midi ?</p>
+        <p>Que faire avec 12 lasers, une carte Arduino, 4 planches et une après-midi ?</p>
 <p>Quand j&rsquo;étais encore a la DTRE (association robotique du groupe ESIEA), il m&rsquo;arrivait d&rsquo;avoir assez de temps libre et de matériel pour réaliser un petit projet sur un coup de tête.</p>
 <p>En cette belle journée du mercredi 12 décembre 2018, l&rsquo;école nous annonce qu&rsquo;un TP de découverte d&rsquo;électronique organisé par la DTRE ne sera plus réalisé.
-Notre TP consistait a mettre a disposition d&rsquo;étudiants un laser, une photorésistance, un buzzer et une Arduino pour réaliser une simple porte laser (un &ldquo;système d&rsquo;alarme&rdquo;) en introduisant les notions de programmation microcontroller et d&rsquo;électronique basique.
+Notre TP consistait à mettre à disposition d&rsquo;étudiants un laser, une photorésistance, un buzzer et une Arduino pour réaliser une simple porte laser (un &ldquo;système d&rsquo;alarme&rdquo;) en introduisant les notions de programmation microcontrôleur et d&rsquo;électronique basique.
 Ayant écrit puis organisé ce TP pendant 1 an, je me retrouve avec ma déception et une vingtaine de lasers sur les bras.</p>
 <p>Très bien, faisons en quelque chose !</p>
 <h1 id="concept-technique">Concept technique</h1>
-<p>A ma connaissance, il existe deux type de harpe laser:</p>
+<p>A ma connaissance, il existe deux types de harpe laser:</p>
 <ul>
-<li>La harpe a rayons infinis</li>
-<li>La harpe a rayons&hellip;. finis !</li>
+<li>La harpe à rayons infinis</li>
+<li>La harpe à rayons&hellip;. finis !</li>
 </ul>
 <p>Les rayons infinis sont de bien bel effet, mais la détection du contact avec une &ldquo;corde&rdquo; de la harpe est assez complexe.
 De plus elle ne nécessite pas de cadre, ce qui pour moi est un élément important pour une harpe.</p>
-<p>Les harpes a rayon fini utilise une barre de récepteurs photo sensibles, permettant une réalisation plus simple mais réduisant les possibilités et liberté d&rsquo;utilisation.</p>
-<p>En fonction du matériel et de ma volonté, j&rsquo;ai décidé de partir sur la harpe a rayons finis.</p>
+<p>Les harpes à rayon fini utilisent une barre de récepteurs photo sensibles, permettant une réalisation plus simple, mais réduisant les possibilités et liberté d&rsquo;utilisation.</p>
+<p>En fonction du matériel et de ma volonté, j&rsquo;ai décidé de partir sur la harpe à rayons finis.</p>
 <p>La plupart des modèles de harpe laser que j&rsquo;ai pu observer utilisent un seul laser projeté sur un miroir rotatif, ce qui donne l&rsquo;impression de plusieurs cordes.
-Le système final est plus souple, on peut décider a la volée du nombre de cordes et autres paramètres.
+Le système final est plus souple, on peut décider à la volée du nombre de cordes et autres paramètres.
 Utiliser un moteur assez précis et un miroir attaché dessus ne me tentait pas pour cette fois, mais qui sait pour la prochaine.</p>
 <h1 id="réalisation-physique">Réalisation physique</h1>
-<p>Et bien ca n&rsquo;est pas bien compliqué, il faut simplement construire un cadre en bois (facile), avec 12 trous bien alignés (facile ?) de chaque cotés pour faire passer les lasers et leurs récepteurs.</p>
-<p>Un petit passage vers notre mini perceuse a colonne et on constate immédiatement que les trous alignés, c&rsquo;est pas si facile (sigh).</p>
-<p>Pour éviter une consommation trop importante, les lasers sont allumés un par un plus rapidement que l&rsquo;oeil ne peut le distinguer, avec l&rsquo;aide d&rsquo;un démultiplexeur.
+<p>Et bien ça n&rsquo;est pas bien compliqué, il faut simplement construire un cadre en bois (facile), avec 12 trous bien alignés (facile ?) de chaque cotés pour faire passer les lasers et leurs récepteurs.</p>
+<p>Un petit passage vers notre mini perceuse à colonne et on constate immédiatement que les trous alignés, ça n&rsquo;est pas si facile (sigh).</p>
+<p>Pour éviter une consommation trop importante, les lasers sont allumés un par un plus rapidement que l&rsquo;œil ne peut le distinguer, avec l&rsquo;aide d&rsquo;un démultiplexeur.
 De même, les pins analogiques sont une ressource rare, et un démultiplexeur n&rsquo;est pas non plus exclu.
 Les capteurs utilisés seront de simples photorésistances, issues du même projet.</p>
-<p>Notre émetteur de son sera un joli haut parleur, récupèré par mes soins dans un vieux radio réveil.</p>
-<p>La construction à duré en tout un peu plus de deux heures, soudure et colle chaude inclues.</p>
+<p>Notre émetteur de son sera un joli haut-parleur, récupèré par mes soins dans un vieux radio réveil.</p>
+<p>La construction a duré en tout un peu plus de deux heures, soudure et colle chaude incluse.</p>
 <h1 id="le-code">Le code</h1>
 <p>J&rsquo;écris ce post en 2021, le code de 2018 à disparu dans les limbes informatiques.
 Seule la mémoire humaine persiste !</p>
 <p>Comme précisé précédemment, les lasers et photorésistances sont activés par paires, une paire a la fois.
 La vitesse de balayage est tellement élevée qu&rsquo;on ne remarque pas la différence avec des lasers toujours allumés, et on économise en énergie le coût (non négligeable !) de tous les lasers éteints.</p>
-<p>J&rsquo;ai communiqué avec mes collègues musiciens de l&rsquo;époque, qui m&rsquo;ont tous conseillé de coder un MIDI (pour <em>Musical Instrument Digital Interface</em>), que j&rsquo;ai bien sur écouté en ne faisant pas du tout ça, et en réalisant plutôt une table de fréquences musicales en dur (la raison étant que ce genre d&rsquo;interface est compliquée a mettre en place, et ici j&rsquo;ai déjà un haut parleur de sortie qui ne nécessite pas d&rsquo;interface).
-Il suffit d&rsquo;associer chaque fréquence a une corde de la harpe, et envoyer la fréquence activée en PWM sur la pin de sortie.</p>
-<p>L&rsquo;Arduino ne peux pas gérer plusieurs sorties PWM simultanées, limitant donc la sortie audio a un seul haut parleur.
-Quel est le problème ? Les harmoniques des sons de plusieurs cordes simultanées, la polyphonie, impossible de faire ca proprement.
-La méthode la moins désagréable a l&rsquo;oreille (je ne suis pas musicien fort heureusement) est une simple interpolation linéaire de fréquences.
-Est ce que l&rsquo;utilisation d&rsquo;un MIDI aurait contourné ce problème ? Assurément.</p>
+<p>J&rsquo;ai communiqué avec mes collègues musiciens de l&rsquo;époque, qui m&rsquo;ont tous conseillé de coder un MIDI (pour <em>Musical Instrument Digital Interface</em>), que j&rsquo;ai bien sûr écouté en ne faisant pas du tout ça, et en réalisant plutôt une table de fréquences musicales en dur (la raison étant que ce genre d&rsquo;interface est compliquée à mettre en place, et ici, j&rsquo;ai déjà un haut-parleur de sortie qui ne nécessite pas d&rsquo;interface).
+Il suffit d&rsquo;associer chaque fréquence à une corde de la harpe, et envoyer la fréquence activée en PWM sur la pin de sortie.</p>
+<p>L&rsquo;Arduino ne peut pas gérer plusieurs sorties PWM simultanées, limitant donc la sortie audio à un seul haut-parleur.
+Quel est le problème ? Les harmoniques des sons de plusieurs cordes simultanées, la polyphonie, impossible de faire ça proprement.
+La méthode la moins désagréable à l&rsquo;oreille (je ne suis pas musicien fort heureusement) est une simple interpolation linéaire de fréquences.
+Est-ce que l&rsquo;utilisation d&rsquo;un MIDI aurait contourné ce problème ? Assurément.</p>
 <h1 id="le-résultat-">Le Résultat !</h1>
 <p>Une photo du prototype avant le passage de la breadboard a la plaque définitive (observez l&rsquo;alignement irréprochable des trous !) :
 <img src="/static/harpe_laser/harpe_laser.png" alt=""></p>

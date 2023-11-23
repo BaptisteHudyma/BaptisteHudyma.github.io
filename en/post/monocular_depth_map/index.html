@@ -59,7 +59,7 @@
   "headline": "Monocular Depth Map",
   "description" : "Use a video taken by a single camera to estimate the depth of objects in an image. A small dip in the world of epipolar geometry and key points analysis.\n",
   "inLanguage" : "en",
-  "wordCount":  1336 ,
+  "wordCount":  1333 ,
   "datePublished" : "2021-01-24T00:00:00",
   "dateModified" : "2021-01-24T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1336&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1333&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/monocular_depth_map/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -504,7 +504,7 @@ The estimated depth is disturbed by a few factors, including (but not limited to
 <li>Dark surfaces</li>
 <li>Reflective surfaces</li>
 <li>Small textures (ie: Carpet)</li>
-<li>Sun light</li>
+<li>Sunlight</li>
 <li>Occlusion</li>
 <li>Distance (4-5 meters)</li>
 </ul>
@@ -512,51 +512,51 @@ The estimated depth is disturbed by a few factors, including (but not limited to
 <img src="/static/depthmap/rgb_depth_holes.png" alt="depth Holes Holes Holes"></p>
 <p>You can observe holes from depth discontinuity/occlusion (left of the cylinder), and holes from transformation at the top and right of the depth image.
 The <em>lines</em> of holes in the ground are due to the discrete nature of the depth measurement.</p>
-<p>There is a good number of methods to fill those holes (<a href="https://github.com/pedropro/OMG_Depth_Fusion">Gaussian fusion</a>, Machine learning, &hellip;), but I wanted to take my shot at it with a simple idea : What about merging the informations of the depth map with another depth map, less accurate but more reliable ?</p>
-<p>Well I have a RGB cam tied to my depth camera (has the name &ldquo;RGB-D&rdquo; implies), lets try to get a depth estimation from the RGB cam.</p>
+<p>There is a good number of methods to fill those holes (<a href="https://github.com/pedropro/OMG_Depth_Fusion">Gaussian fusion</a>, Machine learning, &hellip;), but I wanted to take my shot at it with a simple idea : What about merging the information of the depth map with another depth map, less accurate but more reliable ?</p>
+<p>Well I have a RGB cam tied to my depth camera (has the name &ldquo;RGB-D&rdquo; implies), let&rsquo;s try to get a depth estimation from the RGB cam.</p>
 <p>The first step is to get the monocular depth map.
 <strong>Let&rsquo;s get into it.</strong></p>
 <h1 id="monocular-depth-map">Monocular depth map</h1>
 <p>Well, how do you make a depth estimation from a single image ?
-There is not a lot of answers, most of them will scream &ldquo;neural networks&rdquo; !</p>
+There are not a lot of answers, most of them will scream &ldquo;neural networks&rdquo; !</p>
 <p>But as our Mentor Master Yoda said,
 <img src="/static/rand/yoda.png" alt="There is another">
 Thanks Yoda !</p>
 <p>We can try to use two following images in a video as two images taken from a stereo system, while not knowing the transformation between the two images.
 And you know what ? We can deduce this transformation pretty easily.</p>
 <p>The key to this whole story as a name : <strong>Epipolar geometry</strong>.
-I wont get into the details and try to approximate the whole operation in one sentence: epipolar geometry estimates a transformation of one image into the other one.</p>
+I won&rsquo;t get into the details and try to approximate the whole operation in one sentence: epipolar geometry estimates a transformation of one image into the other one.</p>
 <p>The logic behind this operation is pretty simple:</p>
 <ul>
 <li>get the key points of the two images</li>
-<li>Match the key points, remove outliers</li>
+<li>match the key points, remove outliers</li>
 <li>Estimate the transformation of the points from the first image to get the points of the other one.</li>
 <li>Estimate the disparity map (sort of depth map)</li>
 </ul>
 <p>All of those operations can be done with OpenCV.</p>
 <h3 id="key-points">Key points</h3>
 <p>To find the key points, I used the OpenCV SURF feature detector.
-Those key points can than be matched using the OpenCV DescriptorMatcher, using FLANN.</p>
+Those key points can then be matched using the OpenCV DescriptorMatcher, using FLANN.</p>
 <p><img src="/static/depthmap/matched_keypoints.png" alt="Matched keypoints"></p>
 <p>We than get matched pairs, that we can prune based on their distances to the target point, and obtain a clean list of matched points.</p>
 <p>In the above image, we can see at least two outliers (key points wrongly matched).
 Those outliers will be eliminated by the distance check mentioned earlier, or will be removed by the next step.</p>
 <details><summary>Details on epipolar projection</summary>
 <strong>A quick note</strong>: Epipolar projection of the two images will deform them so two matched keypoints will be placed on the same straight line on the two images.
-Here, it almost look like it&rsquo;s already the case: it&rsquo;s due to the proximity of the two images in time.
+Here, it almost looks like it&rsquo;s already the case: it&rsquo;s due to the proximity of the two images in time.
 A better visualization (and in depth explanations !) can be seen on the <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">OpenCV page</a>.
 </details>
 
 <h3 id="fundamental-matrix">Fundamental Matrix</h3>
 <p>OpenCV will also help use with the &ldquo;Estimate the transformation&rdquo; step.
-Calling the function <code>cv::findHomography</code> with the matched points pairs will return a fundamental matrice, that we can use to warp the second image with (<code>cv::warpPerspective</code>).
+Calling the function <code>cv::findHomography</code> with the matched points pairs will return a fundamental matrix, that we can use to warp the second image with (<code>cv::warpPerspective</code>).
 I used <code>findHomography</code> with a <code>cv::FM_RANSAC</code> parameter.
 We can also get back the in/outliers list (as a vector) to further prune the points of interest (We don&rsquo;t really need them here).</p>
 <details><summary>Details on RANSAC</summary>
-<p>RANSAC (RANdom SAmple Consensus) is a great method (unfortunately non deterministic), that I advise you to take a look at.
-It is able to detect outliers in datas.
+<p>RANSAC (RANdom SAmple Consensus) is a great method (unfortunately non-deterministic), that I advise you to take a look at.
+It is able to detect outliers in data.
 In our case, we use it to find the optimal transformation matrix without being affected by outliers.</p>
-<p>Ransac can be use for a lot more use cases of course !
+<p>Ransac can be used for a lot more use cases of course !
 I also used it to extract cylinders from a plane graph, like CAPE did.</p>
 
 </details>
@@ -564,7 +564,7 @@ I also used it to extract cylinders from a plane graph, like CAPE did.</p>
 <h3 id="stereo-matching">Stereo matching</h3>
 <p>The last trick to obtain the depth map is as simple as the previous one.
 We call once more to our glorious OpenCV, with the class <code>StereoSGBM</code>.
-This class should be use with a stereo setup, but now that our two images are projected correctly, nobody will stop us from pretending they are from a stereo setup.</p>
+This class should be used with a stereo setup, but now that our two images are projected correctly, nobody will stop us from pretending they are from a stereo setup.</p>
 <p>Well, the result is not too bad (after a lot of parameters tuning)</p>
 <p><img src="/static/depthmap/rgb_monodepth.png" alt="Simulated depth map"></p>
 <p>There are a few holes, some discontinuities in the depth estimations and some aberrations in the estimations at the top of the cylinder, but overall it&rsquo;s pretty good.</p>
@@ -581,20 +581,20 @@ For this purpose, I use a <code>DisparityWLSDFilter</code> from <code>cv::ximgpr
 <p>Overall, the final result is pretty good !
 Better than expected at least.</p>
 <p>Compared to the raw depth map, the monocular shows less holes and errors (they are supposed to be exactly the same).
-Some points needs to be addressed :</p>
+Some points need to be addressed :</p>
 <ul>
 <li>The final monocular depth map does not have any units (meters, mm, &hellip;) and thus as no use for me in this state</li>
-<li>The filtering process &ldquo;leaked&rdquo; some depth informations on the side of the cylinder (darker background)</li>
+<li>The filtering process &ldquo;leaked&rdquo; some depth information on the side of the cylinder (darker background)</li>
 <li>The texture of the QR codes can still be seen on the ground, and create a depth error.</li>
-<li>the top of the cylinder is displayed has being closer to the observer than the ground under it, and we can see that it is wrong (from the true depth image).</li>
+<li>The top of the cylinder is displayed has being closer to the observer than the ground under it, and we can see that it is wrong (from the true depth image).</li>
 </ul>
 <p>Another important point, and I did not mention it at all for this entire process: Monocular depth map cannot be as good as a stereo depth map.
 Stereo generated depth map are much more reliable and precise.
 They also give us a real measurable depth, as the distance between the two cameras is precisely known.</p>
 <p>The quality of depth estimation depends a lot on this distance: basic trigonometry indicates that the depth estimation will be OK only in a comparable scale as this distance.
-Here, my &ldquo;two&rdquo; cameras are each separated by a very small time/distance, has they are two following frames of a video.
+Here, my &ldquo;two&rdquo; cameras are each separated by a very small-time/distance, has they are two following frames of a video.
 The quality of the depth estimation will only be valuable for short distances, experimentally at 2 meters in my case.</p>
-<p>But even with those imperfections, this monocular depth map can be use to extract useful informations, and that&rsquo;s what I will do in the next part : Depth map Merging.</p>
+<p>But even with those imperfections, this monocular depth map can be used to extract useful information, and that&rsquo;s what I will do in the next part : Depth map Merging.</p>
 <h1 id="little-bonus">Little Bonus</h1>
 <p>Here is the result of the error map, straight out of the filter.
 As expected, errors are for the most part located at the depth discontinuity points.</p>

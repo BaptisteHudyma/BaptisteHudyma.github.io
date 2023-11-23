@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Tactile Plant",
-  "description" : "A small afternoon projet to make a tactile interface with a microcontroller.\n",
+  "description" : "A small afternoon project to make a tactile interface with a microcontroller.\n",
   "inLanguage" : "en",
-  "wordCount":  1055 ,
+  "wordCount":  1037 ,
   "datePublished" : "2019-12-13T00:00:00",
   "dateModified" : "2019-12-13T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1055&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1037&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/plant_touch_sensor/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -487,11 +487,11 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>A small afternoon projet to make a tactile interface with a microcontroller.</p>
+        <p>A small afternoon project to make a tactile interface with a microcontroller.</p>
 <p>A bit of context: we are in 2019, I&rsquo;m currently in 5th year of engineering school, in IoT class.
-With a group of five, we have to make a 4 day projet on the subject &quot; a desirable useless connected object&quot; (Well, a subject of society).
-Our team decided to go with a connected plant called <em>Super Spinach 3000</em>, but for me something was missing to make our projet really desirable.</p>
-<p>I recalled the projet <a href="https://www.youtube.com/watch?v=EcRSKEIucjk">&ldquo;Botanicus interacticus&rdquo; from Disney Research Hub</a>, allowing the user to visualize precisely enough the tactile interactions with the plant.
+With a group of five, we have to make a 4 day project on the subject &ldquo;a desirable useless connected object&rdquo; (Well, a subject of society).
+Our team decided to go with a connected plant called <em>Super Spinach 3000</em>, but for me something was missing to make our project really desirable.</p>
+<p>I recalled the project <a href="https://www.youtube.com/watch?v=EcRSKEIucjk">&ldquo;Botanicus interacticus&rdquo; from Disney Research Hub</a>, allowing the user to visualize precisely enough the tactile interactions with the plant.
 A connected plant is good, but a connected plant that can it&rsquo;s joy to be cuddled is much better !</p>
 <p>The tram, convinced by my idea, told me to handle this part (damn).</p>
 <h1 id="impedance-detection">Impedance Detection</h1>
@@ -509,35 +509,35 @@ A connected plant is good, but a connected plant that can it&rsquo;s joy to be c
 <p>First, I simply plugged a wire in pin A1, and I watch the raw data for a while, before putting my finger of the wire.
 Here is an example of the raw data, at the instant of contact with the wire:
 <img src="/static/plant_touch/contact_fil.png" alt=""></p>
-<p>The signal looks like a sinusoid, oscillating around 512 (1024/2) with no load, and saturated between 0 and 1023
+<p>The signal looks like a sinusoidal, oscillating around 512 (1024/2) with no load, and saturated between 0 and 1023
 when I touch the wire.</p>
-<details><summary>What is this sinusoid ? (click to expand)</summary>
+<details><summary>What is this sinusoidal ? (click to expand)</summary>
 <p>The Analog to Digital Converter (ADC) of the Arduino uses 1à bits, so the output values are between 0 and 1023.</p>
 <p>Here we observe a sinusoidal noise with a low amplitude before I establish contact, and with a high amplitude after.
 This points toward an external noise to the system, received by the &ldquo;antenna&rdquo; created by the wire on A1 and my body.</p>
 <p>This noise shows 5 periods over 100 milliseconds, which is 50Hz (and here you should see where this is going).</p>
 <p>Yes, a 50Hz sinusoidal signal is from the (French) electric network !
-And we can difficulty not intercept it with an antenna like installation (like we have here).</p>
+And we can not avoid to intercept it with an antenna like installation (like we have here).</p>
 
 </details>
 
-<p>Here is the gif:
+<p>Here is the GIF :
 <img src="/static/plant_touch/simple_touch.gif" alt=""></p>
-<p>Even if the contact with the pin is detected (the red led is lighting up), the pin stays &ldquo;loaded&rdquo; for a few seconds after I take out my hand.
+<p>Even if the contact with the pin is detected (the red LED is lighting up), the pin stays &ldquo;loaded&rdquo; for a few seconds after I take out my hand.
 This is not the desired behavior.</p>
 <h2 id="pull-up-2-m-ohms">Pull up 2 M Ohms</h2>
 <p>By adding a 2 Mega Ohms resistor between our A1 pin and the Vcc (Here, 5 volts), we constrain the value at A1 and the pin reinitialisation.</p>
 <p><img src="/static/plant_touch/contact_fil_pullup.png" alt=""></p>
 <p>The no load value is here close to 1023, and goes down to 980 when a contact is made.
-This time we can simply add a condition to light the led if we go under 1000 :</p>
+This time we can simply add a condition to light the LED if we go under 1000 :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">//light up led when we go under 1000
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">sensorValue</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">);</span>
 </span></span></code></pre></div><p><img src="/static/plant_touch/touch_pullup.gif" alt="">
 (Blinks are a consequence of the sinusoidal noise and camera refresh rate)</p>
-<p>No more loaded pin problems now, the strong impedance of the resistor also allows to remove quite a bit of noise.</p>
+<p>No more loaded pin problems now, the strong impedance of the resistor also allows removing quite a bit of noise.</p>
 <p>However, by using a simple threshold, our system becomes sensible to any kind of perturbations.
 This system only works because of the natural human impedance, which is a value sensible to a lot of factors (humidity and thickness of the skin, isolation from ground, &hellip;).
-Moreover this system can not work reliably with a plant or another object.</p>
+Moreover, this system can not work reliably with a plant or another object.</p>
 <p>To detect this kind of contact, we will keep the same circuit and add a capacitive detection.</p>
 <h1 id="capacitive-detection">Capacitive Detection</h1>
 <p>A capacitor is a layer of insulator between two layers of conductive materials.
@@ -571,17 +571,16 @@ This value is compared to a baseline <code>cycleThreshold</code> which represent
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>This system is less sensible to noise and the output value is much more stable.
 Furthermore, the body natural impedance have a lot less influence on the results.
-Ce système est moins sensible au bruit et la valeur de sortie est bien plus stable.
 I&rsquo;ve made some tests with a grounded wire placed on my skin, closer and closer to the detection wire, without observing output changes (unlike the impedance detection).</p>
 <h1 id="results-">Results !</h1>
 <p>Many materials can now be use as interfaces !</p>
 <p>A banana:
 <img src="/static/plant_touch/banana_touch.gif" alt="Banana gif"></p>
-<p>Une plant:
+<p>A plant:
 <img src="/static/plant_touch/plant_touch.gif" alt="Banana gif"></p>
-<p>Our projet <em>Super Spinach 3000</em> and it&rsquo;s tactile interface gave us a nice 18/20, everybody wanted to pet our plant (see <a href="https://gitlab.com/TheWindWalker/connected_plant_iot_2019">the code of the whole projet</a>).
+<p>Our project <em>Super Spinach 3000</em> and its tactile interface gave us a nice 18/20, everybody wanted to pet our plant (see <a href="https://gitlab.com/TheWindWalker/connected_plant_iot_2019">the code of the whole projet</a>).
 I also handled the EPaper screen to display the plant happiness (the general code quality is not my responsibility&hellip;)</p>
-<p>On the plant gif, we can see the led lighting up just before my hand touches it.
+<p>On the plant GIF, we can see the LED lighting up just before my hand touches it.
 This is because the value of <code>cycleThreshold</code> is too low: the proximity of my hand is sufficient to change the capacity of our system (with a capacitor formed by my hand | the air | the plant).
 Interesting for a magic effect.</p>
 <h3 id="notes">Notes</h3>
@@ -590,7 +589,7 @@ Interesting for a magic effect.</p>
 <li>No idea of the long term effects of loading and unloading the plant (do not risk it: probably not good)</li>
 <li>The wire connected in the plant will act as a cathode, and chemically attack the plant (certainly not good)</li>
 <li>The wire is made of metal (copper ?), and metals are in bad end of the specter of friends of plants.
-In any case, piercing a hole in a plant for the wire is not a good idée from a contamination point of vue (definitely not good)</li>
+In any case, piercing a hole in a plant for the wire is not a good idea from a contamination point-of-vue (definitely not good)</li>
 </ul>
 
         

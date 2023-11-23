@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Exploration de possibilités - Partie 2",
-  "description" : "Partie 2: Améliorations et encore plus de blabla !\nNous en étions resté a la construction d\u0026rsquo;une structure d\u0026rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l\u0026rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search). Dans cette deuxième partie, je vais montrer les améliorations que j\u0026rsquo;ai trouvé pour la méthode de base.\n",
+  "description" : "Partie 2: Améliorations et encore plus de blabla !\nNous en étions restés à la construction d\u0026rsquo;une structure d\u0026rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l\u0026rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search). Dans cette deuxième partie, je vais montrer les améliorations que j\u0026rsquo;ai trouvées pour la méthode de base.\n",
   "inLanguage" : "fr",
-  "wordCount":  1458 ,
+  "wordCount":  1457 ,
   "datePublished" : "2021-05-04T00:00:00",
   "dateModified" : "2021-05-04T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1458&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1457&nbsp;mots
   
   
   
@@ -488,9 +488,9 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p><em><strong>Partie 2: Améliorations et encore plus de blabla !</strong></em></p>
-<p>Nous en étions resté a la construction d&rsquo;une structure d&rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
-Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai trouvé pour la méthode de base.</p>
-<p>Notre petit programme fonctionne tout a fait tel quel, mais en le programmant la première fois j&rsquo;ai remarqué des points d&rsquo;amélioration.</p>
+<p>Nous en étions restés à la construction d&rsquo;une structure d&rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
+Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai trouvées pour la méthode de base.</p>
+<p>Notre petit programme fonctionne tout à fait tel quel, mais en le programmant la première fois, j&rsquo;ai remarqué des points d&rsquo;amélioration.</p>
 <p>On rappelle notre programme principal :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
@@ -516,12 +516,12 @@ Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai t
 </span></span></span></code></pre></div><h1 id="fermeture-de-branches">Fermeture de branches</h1>
 <p>Pour commencer, on n&rsquo;élimine jamais de branche quand elles sont complètement explorées.</p>
 <p>Imaginez qu&rsquo;on utilise notre petit programme pour un TicTacToe: 9 cases donc 9 coups en tout (profondeur maximum de l&rsquo;arbre&hellip; 9, Bravo !).
-Si on laisse une seconde a notre petit programme, on va rapidement faire le tour des possibilités, l&rsquo;arbre sera complètement exploré en une fraction du temps et on va alors faire des tours dans le vide, en descendant au fond de l&rsquo;arbre (<code>if(child-&gt;get_move_count() != 0)</code> sera toujours <code>false</code>, on a épuisé les possibilités).</p>
-<p>Si on a une seconde à tuer, pourquoi pas. Tant qu&rsquo;on y est on limite le temps de recherche a 15 minutes pour la pause café et on en parle plus.
+Si on laisse une seconde à notre petit programme, on va rapidement faire le tour des possibilités, l&rsquo;arbre sera entièrement exploré en une fraction du temps et on va alors faire des tours dans le vide, en descendant au fond de l&rsquo;arbre (<code>if(child-&gt;get_move_count() != 0)</code> sera toujours <code>false</code>, on a épuisé les possibilités).</p>
+<p>Si on a une seconde à tuer, pourquoi pas. Tant qu&rsquo;on y est on limite le temps de recherche à 15 minutes pour la pause café et on en parle plus.
 Dans ce cas extrême, on obtiendra des scores et un nombre de visites très grand, tous vers le même chemin (au moins le choix du chemin est clair !).</p>
-<p>De mon côté je préfèrerais profiter du temps restant pour faire autre chose.
+<p>De mon côté, je préfèrerais profiter du temps restant pour faire autre chose.
 On va donc mettre en place un système de fermeture de Node quand elles ne peuvent plus avoir d&rsquo;enfants.</p>
-<h3 id="fermeture-de-noeuds">Fermeture de noeuds</h3>
+<h3 id="fermeture-de-nœuds">Fermeture de nœuds</h3>
 <p>On ajoute la méthode <code>is_fully_explored</code> dans notre classe Node:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">bool</span> <span class="n">Node</span><span class="o">::</span><span class="n">is_fully_explored</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//true if this node is fully explored
@@ -533,9 +533,9 @@ Cependant, elle n&rsquo;indique rien concernant les enfants de notre Node, qui p
 On va plutôt sacrifier un peu de mémoire et ajouter un membre <code>_isClosed</code> a notre class Node.</p>
 <p><code>_isClosed</code> sera mis a jour dans l&rsquo;étape de backpropagation (c&rsquo;est là qu&rsquo;on va fermer les nodes, on doit remonter l&rsquo;arbre de toutes manières, autant en profiter).
 Tout d&rsquo;abord, on ajoute <code>_isClosed = _state.get_move_count() == 0;</code> dans le constructeur de Node.
-Les nodes sans enfants seront les premières a être indiquées comme fermées (Ajoutez également une méthode <code>bool Node::is_closed()</code> pour plus tard).</p>
-<p>On va également ajouter un membre <code>_closedChildrenCount</code> pour garder en mémoire le nombre d&rsquo;enfants fermés de cette node (rajouter <code>_closedChildrenCount = 0</code> dans le constructeur).</p>
-<p>Au moment de la backpropagation, on va remonter l&rsquo;information de fermeture et mettre a jour le parent, qui sera responsable qu&rsquo;il est bien fermé :</p>
+Les nodes sans enfants seront les premières à être indiquées comme fermées (Ajoutez également une méthode <code>bool Node::is_closed()</code> pour plus tard).</p>
+<p>On va aussi ajouter un membre <code>_closedChildrenCount</code> pour garder en mémoire le nombre d&rsquo;enfants fermés de cette node (rajouter <code>_closedChildrenCount = 0</code> dans le constructeur).</p>
+<p>Au moment de la backpropagation, on va remonter l&rsquo;information de fermeture et mettre à jour le parent, qui sera responsable qu&rsquo;il est bien fermé :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span> <span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//incremente le nombre de visites et score
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
@@ -571,14 +571,14 @@ Les nodes sans enfants seront les premières a être indiquées comme fermées (
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>On cherche ici à remonter l&rsquo;information de fermeture en mettant la variable <code>_isClosed</code> du parent a <code>true</code> quand on ferme une node.
 Le parent se chargera lui-même de repasser <code>_isClosed</code> a <code>false</code> s&rsquo;il a encore des enfants non fermés.</p>
-<p>Il ne nous reste plus qu&rsquo;a rajouter une condition en plus du temps écoulé pour quitter la boucle de recherche de solutions quand on a exploré toutes les possibilités.
+<p>Il ne nous reste plus qu&rsquo;à rajouter une condition en plus du temps écoulé pour quitter la boucle de recherche de solutions quand on a exploré toutes les possibilités.
 C&rsquo;est assez simple, il suffit de tester si le membre <code>_isClosed</code> de la Node root est <code>true</code> (<code>} while (on a du temps and not root-&gt;is_closed());</code> ).</p>
 <p>Cette simple modification permet un usage plus sensé des ressources, et gagner du temps de traitement pour autre chose (ou faire plus de café).</p>
 <h3 id="élimination-des-nodes-fermées">élimination des nodes fermées</h3>
 <p>Il ne faut pas oublier d&rsquo;éliminer les Nodes marquées comme fermée dans la fonction <code>get_best_child_UCT</code>, sinon notre fermeture de branches ne sert à rien.</p>
 <h1 id="rollout---expand">Rollout - Expand</h1>
 <p>Lors de mes tests, j&rsquo;ai remarqué qu&rsquo;une des étapes qui nous consomme le plus de temps est la partie état de jeux gérée par une classe dérivant de <code>IGame_State</code>.
-En soit on ne peut rien y a faire, un état de jeu peut être très lourd à calculer, et leur optimisation n&rsquo;est pas vraiment dans le cadre de ce billet de blog.</p>
+En soi, on ne peut rien y faire, un état de jeu peut être très lourd à calculer, et leur optimisation n&rsquo;est pas vraiment dans le cadre de ce billet de blog.</p>
 <p>On va ici essayer d&rsquo;appeler cette fonction moins souvent.
 Notre étape de Rollout (déroulement aléatoire de coups jusqu&rsquo;à un état final) réalise la plupart de ces appels, et on n&rsquo;en fait pratiquement rien.</p>
 <p>L&rsquo;idée est d&rsquo;étendre l&rsquo;arbre de recherche en même temps qu&rsquo;on effectue la phase de rollout pour calculer nos coups une seule fois et économiser le maximum de temps de traitement.</p>
@@ -612,7 +612,7 @@ Notre étape de Rollout (déroulement aléatoire de coups jusqu&rsquo;à un éta
 <li>On obtient un arbre avec des branches très longues, dont la base se développe au fur et à mesure.</li>
 </ul>
 <h3 id="remettre-les-scores-a-leur-place">Remettre les scores a leur place</h3>
-<p>Chaque nouvelle node de la phase de rollout aura un nombre de visites fixé a 0.
+<p>Chaque nouvelle node de la phase de rollout aura un nombre de visites fixé à 0.
 On va simplement modifier notre fonction backpropagate et ajouter une condition sur le score propagé :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">//incrémenter le score, comme avant
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
@@ -625,7 +625,7 @@ On va simplement modifier notre fonction backpropagate et ajouter une condition 
 </span></span><span class="line"><span class="cl"><span class="c1">//incrémenter les visites
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">_nombreDeVisites</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span></code></pre></div><p>On obtient des scores assez proches de notre situation pre rollout-expand..
-Il restera toujours un biais cependant : avec ce type de recherche, on n&rsquo;arrive pas aux mêmes scores car les nodes créées sont éliminées de l&rsquo;exploration durant la phase de rollout, et leur score ne remonte forcément qu&rsquo;une seule fois.</p>
+Il restera toujours un biais cependant : avec ce type de recherche, on n&rsquo;arrive pas aux mêmes scores, car les nodes créées sont éliminées de l&rsquo;exploration durant la phase de rollout, et leur score ne remonte forcément qu&rsquo;une seule fois.</p>
 <h3 id="exploration-en-longueur">Exploration en longueur</h3>
 <p>Celle-ci est un peu plus complexe.
 On va commencer par regrouper la recherche d&rsquo;une feuille dans une fonction.</p>

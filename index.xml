@@ -15,7 +15,8 @@
       <link>https://BaptisteHudyma.github.io/post/lamp-da/</link>
       <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/lamp-da/</guid>
-      <description>&lt;p&gt;Tuto construction d&amp;rsquo;une lanterne compacte et solide.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Tuto construction d&amp;rsquo;une lanterne compacte et solide.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://BaptisteHudyma.github.io/static/lamp_da/lampes.jpg&#34; alt=&#34;Image: Lampe en utilisation&#34;&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 2</title>
@@ -23,7 +24,7 @@
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/slam_2/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2 : Optimisation de pose&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Une fois nos features détectées et associées, on va chercher a estimer le mouvement effectué entre les deux observations.&lt;/p&gt;</description>
+&lt;p&gt;Une fois nos features détectées et associées, on va chercher à estimer le mouvement effectué entre les deux observations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 1</title>
@@ -39,8 +40,8 @@
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2: Améliorations et encore plus de blabla !&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Nous en étions resté a la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
-Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvé pour la méthode de base.&lt;/p&gt;</description>
+&lt;p&gt;Nous en étions restés à la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
+Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvées pour la méthode de base.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exploration de possibilités - Partie 1</title>
@@ -48,7 +49,7 @@ Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 1: Blabla et implémentation&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.&lt;/p&gt;</description>
+&lt;p&gt;Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre, je me débrouille pas mal en programmation.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Segmentation de depth map</title>
@@ -86,9 +87,9 @@ Malgré l&amp;rsquo;efficacité de cette méthode, l&amp;rsquo;implémentation C
       <link>https://BaptisteHudyma.github.io/post/ppc_intro/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/ppc_intro/</guid>
-      <description>&lt;p&gt;Qu&amp;rsquo;est ce que la programmation par contraintes ?
+      <description>&lt;p&gt;Qu&amp;rsquo;est-ce que la programmation par contraintes ?
 Quels en sont les avantages et les limites ?
-Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
+Peut-on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
 &lt;p&gt;Une de ces réponses est &lt;em&gt;&lt;strong&gt;oui&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     <item>
@@ -103,14 +104,14 @@ Peut on faire en une heure un algorithme qui résout les Sudoku ?&lt;/p&gt;
       <link>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/plant_touch_sensor/</guid>
-      <description>&lt;p&gt;Un petit projet d&amp;rsquo;une après-midi pour implémenter une interface tactile a l&amp;rsquo;aide d&amp;rsquo;un microcontrôleur.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Un petit projet d&amp;rsquo;une après-midi pour implémenter une interface tactile à l&amp;rsquo;aide d&amp;rsquo;un microcontrôleur.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Harpe laser</title>
       <link>https://BaptisteHudyma.github.io/post/harpe_laser/</link>
       <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/harpe_laser/</guid>
-      <description>&lt;p&gt;Que faire avec 12 lasers, une Arduino, 4 planches et une après-midi ?&lt;/p&gt;</description>
+      <description>&lt;p&gt;Que faire avec 12 lasers, une carte Arduino, 4 planches et une après-midi ?&lt;/p&gt;</description>
     </item>
     <item>
       <title>About me</title>

@@ -59,7 +59,7 @@
   "headline": "De CAPE et d\u0027Opés",
   "description" : "CAPE (Cylinder And Plane Extraction) est une méthode extrêmement efficace d\u0026rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC. Malgré l\u0026rsquo;efficacité de cette méthode, l\u0026rsquo;implémentation C\u002b\u002b du papier présente de nombreux défauts.\nDans ce post, je vais expliquer comment j\u0026rsquo;ai réparé la plupart de ces problèmes.\n",
   "inLanguage" : "fr",
-  "wordCount":  1203 ,
+  "wordCount":  1202 ,
   "datePublished" : "2021-01-11T00:00:00",
   "dateModified" : "2021-01-11T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1203&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1202&nbsp;mots
   
   
   
@@ -494,10 +494,10 @@ Malgré l&rsquo;efficacité de cette méthode, l&rsquo;implémentation C++ du pa
 CAPE améliore la méthode PEAC en accélérant la détection de plans, et en ajoutant une détection de cylindres par un algorithme RANSAC.
 Si la méthode présentée dans le papier est très impressionnante, son <a href="https://github.com/pedropro/CAPE">implémentation</a> présente de nombreux défauts, notamment au niveau de la gestion de mémoire.</p>
 <h1 id="petite-présentation-de-lahc">Petite présentation de l&rsquo;AHC</h1>
-<p>AHC (Agglomerative hierarchical clustering) est une méthode introduite par PEAC en 2014, qui consiste a analyser les images RGB-D en les découpant en une grille de NxM rectangles.
+<p>AHC (Agglomerative hierarchical clustering) est une méthode introduite par PEAC en 2014, qui consiste à analyser les images RGB-D en les découpant en une grille de NxM rectangles.
 Les pixels dans ces rectangles sont ensuite analysés individuellement pour déterminer s&rsquo;ils font partie d&rsquo;un plan 3D, et si c&rsquo;est le cas, utiliser la position relative de ces rectangles dans l&rsquo;image pour fusionner les plans proches et construire un graph de l&rsquo;ensemble des plans.</p>
 <p>Cette méthode présente l&rsquo;avantage de traiter une image 3D comme une image 2D, et est donc bien plus rapide qu&rsquo;une analyse d&rsquo;un nuage de points.
-Elle est cependant limitée en l&rsquo;état a l&rsquo;analyse d&rsquo;images RGB-D.</p>
+Elle est cependant limitée en l&rsquo;état à l&rsquo;analyse d&rsquo;images RGB-D.</p>
 <p>Lors de sa publication, PEAC était la méthode de détection de plan 3D la plus rapide (de loin), et présentant des performances équivalentes a l&rsquo;état de l&rsquo;art des algorithmes de détection de plans 3D.</p>
 <h1 id="corriger-cape">Corriger CAPE</h1>
 <p>L&rsquo;implémentation de CAPE, fournie par les auteurs, propose des performances impressionnantes de rapidité et fiabilité.
@@ -508,46 +508,46 @@ Corriger ces erreurs améliore légèrement les performances de cette méthode.<
 <h2 id="classe-cape">Classe <code>CAPE</code></h2>
 <p><strong>Allocations inutiles</strong></p>
 <p>Dans le constructeur, le <code>vector</code> Grid, contenant une liste de N pointeurs vers une classe (<code>PlaneSegment*</code>), est initialisé par une boucle qui le rempli de <code>nullptr</code> (utiliser la méthode <code>reserve</code> aurait été plus adapté).
-Les pointeurs de <code>Grid</code> sont enduite réaffectés dans la fonction <code>process</code>, appelée pour chaque nouvelle image RGBD, via la ligne <code>Grid[id] = new PlaneSeg(....);</code>.
+Les pointeurs de <code>Grid</code> sont ensuite réaffectés dans la fonction <code>process</code>, appelée pour chaque nouvelle image RGBD, via la ligne <code>Grid[id] = new PlaneSeg(....);</code>.
 Utiliser <code>new</code> pour remplacer un <code>nullptr</code> est ok, mais au deuxième appel a la fonction <code>process</code>, on va surtout allouer une nouvelle zone mémoire sans désallouer l&rsquo;ancienne.
 Une petite fuite de mémoire potentielle donc.</p>
 <p>Mais une petite minute&hellip; <code>Grid</code> utilise la classe <code>vector</code> avec un nombre constant d&rsquo;éléments, mais n&rsquo;utilise jamais les propriétés de <code>vector</code>. Pourquoi utiliser un <code>vector</code> ?</p>
-<p>Je l&rsquo;ai donc remplacé par un tableau de <code>unique_ptr</code> initialisé via un <code>new unique_ptr&lt;PlaneSegment&gt;[N]</code>, puis ajouté un constructeur basique a la classe <code>PlaneSegment</code>, appelée dans le constructeur, ainsi qu&rsquo;une fonction <code>init</code> pour éviter N allocations a chaque appel de la fonction <code>process</code>.
-J&rsquo;ai également ajouté un destructeur a la classe <code>CAPE</code> pour libérer <code>Grid</code>.</p>
+<p>Je l&rsquo;ai donc remplacé par un tableau de <code>unique_ptr</code> initialisé via un <code>new unique_ptr&lt;PlaneSegment&gt;[N]</code>, puis ajouté un constructeur basique a la classe <code>PlaneSegment</code>, appelée dans le constructeur, ainsi qu&rsquo;une fonction <code>init</code> pour éviter N allocations à chaque appel de la fonction <code>process</code>.
+J&rsquo;ai également ajouté un destructeur à la classe <code>CAPE</code> pour libérer <code>Grid</code>.</p>
 <p>Une fuite bouchée, une amélioration (minime) des performances en évitant N allocations par appel.</p>
 <p><strong>Une réinitialisation évitable</strong></p>
-<p>Dans la fonction <code>process</code>, appelée a chaque analyse d&rsquo;image, une variable <code>H</code> de la classe <code>Histogram</code> est alloué, contenant deux <code>vector</code> avec chacun une taille constante de 20 éléments.
-Le fait de le déclarer dans le bloc de la fonction évite les fuites mémoires, mais nécessite de rajouter 40 allocations par appel a la fonction <code>process</code>.
-J&rsquo;ai donc fait de <code>H</code> une variable membre de la classe <code>CAPE</code>, remplacé les <code>vector</code> de <code>Histogram</code> par des tableaux, puis ajouté a la fonction <code>initHistogram</code> un appel a <code>fill_n</code> pour initialiser les éléments de ces tableaux a 0.
-Sans oublier bien sur un petit Destructeur pour désallouer ces tableaux.</p>
+<p>Dans la fonction <code>process</code>, appelée à chaque analyse d&rsquo;image, une variable <code>H</code> de la classe <code>Histogram</code> est alloué, contenant deux <code>vector</code> avec chacun une taille constante de 20 éléments.
+Le fait de le déclarer dans le bloc de la fonction évite les fuites mémoires, mais nécessite de rajouter 40 allocations par appel à la fonction <code>process</code>.
+J&rsquo;ai donc fait de <code>H</code> une variable membre de la classe <code>CAPE</code>, remplacé les <code>vector</code> de <code>Histogram</code> par des tableaux, puis ajouté à la fonction <code>initHistogram</code> un appel a <code>fill_n</code> pour initialiser les éléments de ces tableaux a 0.
+Sans oublier bien sûr un petit Destructeur pour désallouer ces tableaux.</p>
 <p><strong>Une erreur d&rsquo;index</strong></p>
 <p>La boucle <code>for</code> ligne 126 a pour but de chercher l&rsquo;index de la cellule avec l&rsquo;erreur minimum.
-La valeur de <code>minMSE</code> est comparée a <code>Grid[seed_candidate]-&gt;MSE</code>, et si elle est supérieure, on lui affecte <code>min_MSE = Grid[i]-&gt;MSE;</code>.
+La valeur de <code>minMSE</code> est comparée à <code>Grid[seed_candidate]-&gt;MSE</code>, et si elle est supérieure, on lui affecte <code>min_MSE = Grid[i]-&gt;MSE;</code>.
 J&rsquo;ai donc corrigé la sélection d&rsquo;index par <code>min_MSE = Grid[seed_candidate]-&gt;MSE;</code>.</p>
 <p>J&rsquo;ai également modifié toutes les classes pour que les membres soient <code>private</code> et ajouté des fonctions get.</p>
 <p><strong>Une copie en arrière-plan</strong></p>
 <p><code>PlaneSeg new_ps = *Grid[seed_id];</code>.
 À première vue, c&rsquo;est assez innocent.
-Ce qui se passe en arrière-plan est un peu moins Innocent: c&rsquo;est un appel a un constructeur par copie.
+Ce qui se passe en arrière-plan est un peu moins Innocent: c&rsquo;est un appel à un constructeur par copie.
 Si on n&rsquo;a pas de constructeur par copie déclaré dans notre classe, le compilateur va en créer un par défaut, dont le comportement n&rsquo;est peut-être pas celui désiré.</p>
 <p>Une bonne pratique pour éviter ce genre de copies par défaut est de déclarer le constructeur par défaut ainsi que l&rsquo;opérateur = en privé dans notre classe.
 Le compilateur nous préviendra des copies à l&rsquo;avenir, avec une bonne erreur des familles.
-Ajouter ces méthodes fait également sortir un autre message d&rsquo;erreur que je n&rsquo;avais pas vu venir : <code>vector.push_back(class)</code> appelle le constructeur par copie de la classe.</p>
+Ajouter ces méthodes fait aussi sortir un autre message d&rsquo;erreur que je n&rsquo;avais pas vu venir : <code>vector.push_back(class)</code> appelle le constructeur par copie de la classe.</p>
 <p>À mon avis, la meilleure manière de contourner ce comportement est d&rsquo;utiliser des vecteurs de pointeurs, notamment de <code>shared_ptr</code> dans ce cas précis.</p>
 <p><strong>Une autre erreur d&rsquo;index</strong></p>
 <p>Ligne 238, la distance au plan est calculée par le produit scalaire de la normale d&rsquo;un plan par la valeur <code>mean</code> d&rsquo;un autre plan.
 Cependant, le premier terme <code>plane_segments[r].normal[0]</code> devrait être <code>plane_segments[plane_id].normal[0]</code>.</p>
-<p>Pour éviter les erreurs de copier coller, j&rsquo;ai remplacé les tableaux <code>normal</code> et <code>mean</code> de la classe <code>PlaneSegment</code> par des <code>Eigen::Vector3d</code> afin d&rsquo;utiliser directement la fonction <code>Vector3d.dot(Vector3d)</code>.
+<p>Pour éviter les erreurs de copier-coller, j&rsquo;ai remplacé les tableaux <code>normal</code> et <code>mean</code> de la classe <code>PlaneSegment</code> par des <code>Eigen::Vector3d</code> afin d&rsquo;utiliser directement la fonction <code>Vector3d.dot(Vector3d)</code>.
 Une autre méthode pour continuer d&rsquo;utiliser des tableaux de double aurait été de définir une fonction <code>double dot(const double&amp; vecA[3], const double&amp; vecB[3])</code> pour éviter le code redondant, ou encore de définir une fonction membre <code>getDistance</code> dans la classe <code>PlaneSegment</code>, qui a l&rsquo;avantage de ne pas utiliser de getter.</p>
-<p><strong>Boucles redondante</strong></p>
-<p>La boucle ligne 434 a 445 sert à copier le résultat de l&rsquo;analyse des cylindres dans le <code>vector</code> avec les cylindres finaux.
+<p><strong>Boucles redondantes</strong></p>
+<p>La boucle ligne 434 à 445 sert à copier le résultat de l&rsquo;analyse des cylindres dans le <code>vector</code> avec les cylindres finaux.
 Son existence est justifiée pour une certaine clarté du code, mais une petite optimisation peut être réalisée en faisant la copie des résultats finaux dans la boucle précédente (vers la ligne 348).</p>
-<p>De même, maintenant que nous avons remplacé <code>Grid</code> par un tableau fixe non réalloué a chaque appel de fonction, la boucle de 449 a 455 est également à éliminer.</p>
+<p>De même, maintenant que nous avons remplacé <code>Grid</code> par un tableau fixe non réalloué à chaque appel de fonction, la boucle de 449 à 455 est également à éliminer.</p>
 <p>Dans la fonction <code>getConnectedComponents</code>, une autre boucle peut être supprimée.
-Il s&rsquo;agit de la double boucle de la ligne 476 a 480, qui rend la matrice <code>planes_association_matrix</code> symétrique.
+Il s&rsquo;agit de la double boucle de la ligne 476 à 480, qui rend la matrice <code>planes_association_matrix</code> symétrique.
 Il suffit de copier directement les valeurs symétriques au niveau des lignes 471 et 472.</p>
 <h2 id="résultat-des-courses">Résultat des courses</h2>
-<p>j&rsquo;ai vérifié mon travail a l&rsquo;aide de <em>valgrind</em>, et j&rsquo;ai pu confirmer le rebouchage des fuites mémoire, avec une amélioration négligeable (de l&rsquo;ordre de la demi milliseconde) des performances sans incidence sur la sortie.
+<p>J&rsquo;ai vérifié mon travail à l&rsquo;aide de <em>valgrind</em>, et j&rsquo;ai pu confirmer le rebouchage des fuites mémoire, avec une amélioration négligeable (de l&rsquo;ordre de la demi milliseconde) des performances sans incidence sur la sortie.
 La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de performances générales de l&rsquo;algo.</p>
 <p>J&rsquo;ai profité de mes modifications pour ajouter des métriques d&rsquo;évaluation, inspirée de PEAC, a la place de certaines constantes.</p>
 

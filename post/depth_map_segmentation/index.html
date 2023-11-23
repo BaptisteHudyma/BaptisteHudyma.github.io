@@ -59,7 +59,7 @@
   "headline": "Segmentation de depth map",
   "description" : "Dans ce post, j\u0026rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l\u0026rsquo;analyse d\u0026rsquo;une normal map.\n",
   "inLanguage" : "fr",
-  "wordCount":  1267 ,
+  "wordCount":  1264 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -459,7 +459,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1267&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1264&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/&#34; lang=&#34;en&#34;&gt;en&lt;/a&gt;
@@ -486,7 +486,7 @@ if (!doNotTrack) {
         <p>Dans ce post, j&rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&rsquo;analyse d&rsquo;une normal map.</p>
 <p>L&rsquo;analyse d&rsquo;une depth map (obtenue par une caméra RGB-D par exemple) n&rsquo;est pas une tâche particulièrement facile ou rapide.
 Le but de ce post est d&rsquo;implémenter une méthode pour en segmenter les éléments, comme les objets, plans, n&rsquo;importe quelle surface 3D en fait.</p>
-<p>Comme toujours, j&rsquo;ai une certaine aversion (méfiance ?) envers les réseaux de neurone donc je fais en sorte d&rsquo;en utiliser le moins possible, et toujours dans un contexte ou leur bon fonctionnement est garanti.
+<p>Comme toujours, j&rsquo;ai une certaine aversion (méfiance ?) envers les réseaux de neurone donc je fais en sorte d&rsquo;en utiliser le moins possible, et toujours dans un contexte où leur bon fonctionnement est garanti.
 L&rsquo;état de l&rsquo;art de la segmentation de depth map en temps réel ([4]) utilise à la fois une méthode de segmentation par normales, comme [1], [2] et [3], en y ajoutant un réseau de neurone pour une proposition de classes.
 Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&rsquo;une séparation par normales.</p>
 <p>Pour rappel sur les depth map:</p>
@@ -501,21 +501,21 @@ Comme je n&rsquo;ai absolument pas besoin de classes ici, je me contenterais d&r
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">depthMap</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">);</span> <span class="c1">// kernel is a 3x3 square
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">depthMap</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
-</span></span></code></pre></div><p>Les papiers que j&rsquo;ai utilisé comme référence utilisent tous une vertex map, qui est une depth map convertie en unités &ldquo;réelles&rdquo;.</p>
+</span></span></code></pre></div><p>Les papiers que j&rsquo;ai utilisés comme référence utilisent tous une vertex map, qui est une depth map convertie en unités &ldquo;réelles&rdquo;.</p>
 <h1 id="calculer-la-normal-map">Calculer la Normal Map</h1>
 <p>Une normal map est une image RGB représentant les vecteurs normaux a chaque plan au niveau de chaque pixel de l&rsquo;image de départ (voir <a href="https://fr.wikipedia.org/wiki/Normale_%C3%A0_une_surface">Wikipedia: Normale a une surface</a> pour plus de détails, je n&rsquo;irais pas plus loin ici).</p>
 <p>Cette structure est composée de NxM vecteurs 3D pour une image de taille NxM, et est intelligemment représentée par une image RGB dont chaque channel stocke une composante du vecteur.
-L&rsquo;effet final est une image en nuances de bleu/vert/rouge en fonction de la direction dominante de chaque normales (voir <a href="https://blog.developpez.com/bouye/p12696/langage/java/javafx-8-x/bump">Blog de Fabrice Bouyé</a> pour de belles images).</p>
+L&rsquo;effet final est une image en nuances de bleu/vert/rouge en fonction de la direction dominante de chaque normale (voir <a href="https://blog.developpez.com/bouye/p12696/langage/java/javafx-8-x/bump">Blog de Fabrice Bouyé</a> pour de belles images).</p>
 <p>Une normal map construite à partir de données théoriques est plutôt &ldquo;jolie&rdquo;.
-Elle présente peu de bruit (donc visuellement un gradient de couleurs continue), mais dans nos mesures réelles on va relever beaucoup de bruit.</p>
+Elle présente peu de bruit (donc visuellement un gradient de couleurs continu), mais dans nos mesures réelles, on va relever beaucoup de bruit.</p>
 <p>On peut calculer la valeur d&rsquo;une normale a un point <code>(x, y)</code> de la depth map avec le code c++ suivant :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">dzdx</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">dzdy</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">cv</span><span class="o">::</span><span class="n">normalize</span><span class="p">(</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="o">-</span><span class="n">dzdx</span><span class="p">,</span> <span class="o">-</span><span class="n">dzdy</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">));</span>
 </span></span></code></pre></div><p>On ignore bien sur les points sans donnée de profondeur.
 <img src="/static/depthMapSegm/normalMap.png" alt="Image: Depth map et normals">
-Dans l&rsquo;ordre: image RGB, depth map, normal map.</p>
-<p>Sur la normal map, on peut voir des artefacts (lignes verticales de couleur cyan), probablement dues au traitement effectués sur la depth map précédemment.
+Dans l&rsquo;ordre : image RGB, depth map, normal map.</p>
+<p>Sur la normal map, on peut voir des artefacts (lignes verticales de couleur cyan), probablement dues au traitement effectué sur la depth map précédemment.
 On remarque surtout que même les surfaces planes (comme le sol et la porte du rangement) présentent un bruit important (sans parler des éléments en arrière-plan, complètement méconnaissables).
 Ces erreurs de calcul dans les normals sont dues aux erreurs de mesure dans la depth map (voir [6] pour une modélisation de ces erreurs).</p>
 <p>J&rsquo;ai également ajouté un filtrage median 3 x 3 sur la normal map finale, afin de diminuer le bruit.</p>
@@ -533,12 +533,12 @@ J&rsquo;ai utilisé un opérateur adapté de [1], qui compare la convexité d&rs
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">thresholdedConcavity</span> <span class="o">=</span> <span class="n">minConcavity</span> <span class="o">&gt;</span> <span class="mf">0.94</span><span class="p">;</span>
-</span></span></code></pre></div><p>J&rsquo;ai également ajouté a cela une méthode permettant de diminuer grandement le bruit des mesures, observée dans [2] et [5], non présentée dans le code ici.</p>
+</span></span></code></pre></div><p>J&rsquo;ai aussi ajouté une méthode permettant de réduire grandement le bruit des mesures, observée dans [2] et [5], non présentée dans le code ici.</p>
 <p>Le résultat de la map de concavité est montré ici :
 <img src="/static/depthMapSegm/concavityMap.png" alt="Image: Concavity map"></p>
 <p>Cette image est seuillée avec une valeur de 0.94 (comme dans [1]) afin de récupérer les bords.</p>
 <h1 id="détection-de-discontinuités-de-surfaces">Détection de discontinuités de surfaces</h1>
-<p>Cette fois ci on cherche les discontinuités de profondeur.
+<p>Cette fois-ci, on cherche les discontinuités de profondeur.
 J&rsquo;ai utilisé le même opérateur que [1], qui compare la distance d&rsquo;un point <code>(x, y)</code> avec un point voisin <code>(xn, yn)</code> :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//Valeur de la depth map au centre
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">float</span> <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
@@ -548,25 +548,25 @@ J&rsquo;ai utilisé le même opérateur que [1], qui compare la distance d&rsquo
 </span></span><span class="line"><span class="cl">    <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">max</span><span class="p">(</span> <span class="n">maxDiscontinuity</span><span class="p">,</span> <span class="n">abs</span><span class="p">(</span><span class="n">vertexDot</span><span class="p">)</span> <span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="n">thresholdedDiscontinuity</span> <span class="o">=</span> <span class="n">maxDiscontinuity</span> <span class="o">&lt;</span> <span class="p">(</span><span class="mf">0.12</span> <span class="o">+</span> <span class="mf">0.19</span> <span class="o">*</span> <span class="n">pow</span><span class="p">(</span><span class="n">centerDepth</span> <span class="o">-</span> <span class="mi">40</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">));</span>  <span class="c1">//noise model from [6]
-</span></span></span></code></pre></div><p>La dernière ligne montre le seuillage de la valeur de discontinuité par le modèle du bruit d&rsquo;une camera RGB-D (ici, une Kinect).
+</span></span></span></code></pre></div><p>La dernière ligne montre le seuillage de la valeur de discontinuité par le modèle du bruit d&rsquo;une caméra RGB-D (ici, une Kinect).
 <img src="/static/depthMapSegm/discontinuityMap.png" alt="Image: disontinuity map"></p>
 <p>On va alors combiner les informations de concavité et discontinuité pour obtenir la map de contours.</p>
 <h1 id="map-de-contours">Map de contours</h1>
-<p>Les maps de concavité et de discontinuité sont fusionnées a l&rsquo;aide d&rsquo;un opérateur AND binaire <code>&amp;</code> afin de récupérer une map de contours :</p>
+<p>Les maps de concavité et de discontinuité sont fusionnées à l&rsquo;aide d&rsquo;un opérateur AND binaire <code>&amp;</code> afin de récupérer une map de contours :</p>
 <p><img src="/static/depthMapSegm/contourMap.png" alt="Image: contours map"></p>
-<p>Cette map de contours peut ensuite être lissée avec une fermeture géodésique suivie d&rsquo;une ouverture morphologique pour filtrer les plus petits éléments.</p>
+<p>Cette map de contours peut être lissé avec une fermeture géodésique suivie d&rsquo;une ouverture morphologique pour filtrer les plus petits éléments.</p>
 <h1 id="segmentation-de-composants">Segmentation de composants</h1>
 <p>Il suffit maintenant d&rsquo;appliquer une simple détection de composants connectés pour récupérer une première depth map segmentée.
 J&rsquo;ai également filtré les composants avec une aire sous un certain seuil afin de finir le nettoyage des données.</p>
 <p>Pour optimiser le résultat final, j&rsquo;ai implémenté tout ce système avec un paramètre permettant de régler l&rsquo;échelle de traitement.
 Effectuer le traitement sur la depth map totale (640x480 pixels) serait trop lourd, et elle est donc réduite par un facteur d&rsquo;échelle (0.45 pour un rapport de performance/précision optimale selon mes tests).</p>
-<p>Voila le résultat de segmentation final a coté de l&rsquo;image RGB originelle.
+<p>Voilà le résultat de segmentation final à côté de l&rsquo;image RGB originelle.
 <img src="/static/depthMapSegm/segmentedDepthMap.png" alt="Image: segmented rgb"></p>
 <h2 id="comparaison-qualitative">Comparaison qualitative</h2>
 <p>A titre d&rsquo;indication, voici une comparaison de la segmentation obtenue avec CAPE, un système capable de détecter uniquement les plans et cylindres.</p>
 <p><img src="/static/depthMapSegm/segmentedRGB.png" alt="Image: segmented rgb comparaison">
-A gauche, segmentation avec CAPE, a droite la méthode de segmentation présentée ici (scale=1).</p>
-<p>Ici, CAPE donne de meilleurs résultats car la scène est composée majoritairement de plans et cylindres, mais on peut s&rsquo;attendre a ce que la segmentation présentée dans ce blog soit plus apte à gérer des objets de forme quelconques.
+A gauche, segmentation avec CAPE, à droite la méthode de segmentation présentée ici (scale=1).</p>
+<p>Ici, CAPE donne de meilleurs résultats, car la scène est composée majoritairement de plans et cylindres, mais on peut s&rsquo;attendre à ce que la segmentation présentée dans ce blog soit plus apte à gérer des objets de forme quelconques.
 Cette méthode de segmentation permet ici de récupérer des surfaces non segmentées par CAPE, notamment dans le background.
 Elle demande également plus de ressources que CAPE, mais est facilement parallélisable.</p>
 <p>En somme, ces deux méthodes peuvent être fusionnées pour tirer parti des avantages de chacune.</p>

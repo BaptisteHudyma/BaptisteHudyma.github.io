@@ -59,7 +59,7 @@
   "headline": "Constraint Programming",
   "description" : "What is Constraint Programming ? What are the advantages\/limits ? Can we make a sudoku solver in less than thirty minutes ?\nOne of those answers is yes.\n",
   "inLanguage" : "en",
-  "wordCount":  751 ,
+  "wordCount":  748 ,
   "datePublished" : "2020-11-26T00:00:00",
   "dateModified" : "2020-11-26T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;751&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;748&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/ppc_intro/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -495,7 +495,7 @@ Can we make a sudoku solver in less than thirty minutes ?</p>
 <p>Lets start easy: What is constraint programming ?</p>
 <p>CP is a declarative programming paradigm, which consist of solving a problem by defining the properties of the answer instead of the problem itself.
 Of all the programming paradigm, I think it&rsquo;s the most elegant.
-In contrary of the &ldquo;classical&rdquo; approches, based on a structure of following blocs of execution, we will focus on the analysis of the variables of our problem, and the constraint between those variables.
+In contrary of the &ldquo;classical&rdquo; approaches, based on a structure of following blocs of execution, we will focus on the analysis of the variables of our problem, and the constraint between those variables.
 We focus on <strong>what defines the problem</strong> instead of <strong>how</strong> to solve it.</p>
 <p>Those constraints are then solved by a constraint propagation engine, which is an abstraction layer for us, and returns the variables, with their values constraints.</p>
 <p>One of the advantages of working on constraints instead of the way to solve the problem by hand is the most convenient aspect of CP: it is possible to efficiently prove that a solution is (not) possible.
@@ -504,38 +504,38 @@ Constraint programming is a heavy process for our computers, but in the case of 
 <ul>
 <li>Prove that a solution exists</li>
 <li>Prove that a solution does not exist</li>
-<li>Solve easily non linear problems (eg: in robotics applications)</li>
+<li>Solve easily non-linear problems (e.g.: in robotics applications)</li>
 </ul>
 <h3 id="advantages">Advantages</h3>
 <p>If the conditions are correct, using this method is much faster than usual programming.
 The &ldquo;solving a sudoku&rdquo; example at the end of this post is a good demonstration: It took only one evening, a few hours of work, to make the all program, from loading the grid from an image with OpenCV to resolving the grid.</p>
 <p>The fact that CP finds easily if a solution exists allows us to find instantly if the user gave us an impossible grid.
 No need to check all possibilities.</p>
-<p>Using <em>differential constraints</em> allows us to resolve easily complex problems in robotics application, in particular non linear state estimation problems, which are usually difficult to solve.
+<p>Using <em>differential constraints</em> allows us to resolve easily complex problems in robotics application, in particular non-linear state estimation problems, which are usually difficult to solve.
 CP solves the &ldquo;kidnapped robot&rdquo; problem, data delay and position estimation.</p>
 <h3 id="limits">Limits</h3>
 <p>Obviously and as always, nothing is true and perfect and CP comes with (ironically) its own constraints.</p>
 <p>First, constraint programming is a memory and CPU intensive process for a computer.
 Depending on methods and my own comprehension, constraint propagation is made with a graph or matrices.
-Thus this process is not truly &ldquo;embedded friendly&rdquo;, and a microcontroler implementation do not exist for now.</p>
+Thus, this process is not truly &ldquo;embedded friendly&rdquo;, and a microcontroller implementation do not exist for now.</p>
 <p>Furthermore, because CP returns the reduces input variables, we can only obtain so much precision.
 The final solutions are almost always contained in an interval.
-If this interval is big, in a non discrete context (like estimating a mobile robot position), CCP could be insufficient.</p>
+If this interval is big, in a non-discrete context (like estimating a mobile robot position), CCP could be insufficient.</p>
 <p>In my opinion, CP should not be use alone, and needs other algorithms to further strengthen the results.</p>
 <p>Secondly, CP is really <strong>really</strong> sensible to outliers in the input data.
 Those outliers are rare (hence their name), but can still occur, and get in our system.
 A single outlier can produce an outlier constraint, which will prevent CP to find a single solution.</p>
 <h1 id="solving-a-sudoku">Solving a Sudoku</h1>
-<p>What about an example ? Try to make in your head a program hable to solve a sudoku&hellip;</p>
+<p>What about an example ? Try to make in your head a program able to solve a sudoku&hellip;</p>
 <p>How do we handle the existence of several solutions ? Add movement constraints, like horseman movements (as in chess), a magic square for the middle square, a layout change, &hellip;
-We can find quickly complex solving procedures, but this king of algorithm will take some time to write and test.
+We can find quickly complex solving procedures, but this kind of algorithm will take some time to write and test.
 Furthermore, a quick and naive approach would be pretty hard to modify to take on more complex cases like those mentioned earlier.</p>
 <p>By using constraint programming, we only have to make a list of all the variables in our problem (here, the cells of the sudoku) and write the constraints that link those variables.</p>
 <p>I already made a <a href="https://github.com/BaptisteHudyma/Sudoku-Solver">small project with Python</a>, which uses CP to solve this problem.
 In the file &ldquo;SudokuSolver.py&rdquo;, the function <code>set_constraints</code> handles the variable (at most 81 for a classical 9 x 9 grid) and the constraints.
 The heart of the algorithm goes with 81 + 27 constraints:</p>
 <ul>
-<li>Each cell can take the value 1 to 9, excluding those already set at the start)</li>
+<li>Each cell can take the value 1 to 9, excluding those already set at the start</li>
 <li>9 lines in which each cell must have a different value</li>
 <li>9 columns in which each cell must have a different value</li>
 <li>9 squares in which each cell must have a different value</li>

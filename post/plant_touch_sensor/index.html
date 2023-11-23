@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Plante tactile",
-  "description" : "Un petit projet d\u0026rsquo;une après-midi pour implémenter une interface tactile a l\u0026rsquo;aide d\u0026rsquo;un microcontrôleur.\n",
+  "description" : "Un petit projet d\u0026rsquo;une après-midi pour implémenter une interface tactile à l\u0026rsquo;aide d\u0026rsquo;un microcontrôleur.\n",
   "inLanguage" : "fr",
-  "wordCount":  1118 ,
+  "wordCount":  1120 ,
   "datePublished" : "2019-12-13T00:00:00",
   "dateModified" : "2019-12-13T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1118&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1120&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Autres langues : &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/&#34; lang=&#34;en&#34;&gt;en&lt;/a&gt;
@@ -487,12 +487,12 @@ if (!doNotTrack) {
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
-        <p>Un petit projet d&rsquo;une après-midi pour implémenter une interface tactile a l&rsquo;aide d&rsquo;un microcontrôleur.</p>
-<p>Un peu de contexte : Nous sommes en 2019, je suis en 5e année d&rsquo;école d&rsquo;ingénieur, en cours d&rsquo;IoT (Internet of Things, objet connectés).
-Par groupe de 5, nous devons réaliser un projet sur 4 jours, sur le thème &ldquo;un objet connecté inutile mais désirable&rdquo; (un sujet de société finalement).
+        <p>Un petit projet d&rsquo;une après-midi pour implémenter une interface tactile à l&rsquo;aide d&rsquo;un microcontrôleur.</p>
+<p>Un peu de contexte : nous sommes en 2019, je suis en 5e année d&rsquo;école d&rsquo;ingénieur, en cours d&rsquo;IoT (Internet of Things, objet connectés).
+Par groupe de 5, nous devons réaliser un projet sur 4 jours, sur le thème &ldquo;un objet connecté inutile, mais désirable&rdquo; (un sujet de société finalement).
 Notre équipe décide de s&rsquo;orienter vers une plante connectée appelée <em>Super Spinach 3000</em>, mais pour moi, il manque quelque chose pour que l&rsquo;ensemble soit plus désirable.</p>
 <p>Je me rappelle alors du projet <a href="https://www.youtube.com/watch?v=EcRSKEIucjk">&ldquo;Botanicus interacticus&rdquo; de Disney Research Hub</a>, permettant de brancher une interface sur une plante pour visualiser les interactions tactiles avec un utilisateur.
-Une plante connectée c&rsquo;est bien, mais une plante connectée qui peut exprimer sa joie d&rsquo;être caressée ou permet d&rsquo;allumer la lumière/musique, c&rsquo;est bien mieux !</p>
+Une plante connectée, c&rsquo;est bien, mais une plante connectée qui peut exprimer sa joie d&rsquo;être caressée ou permet d&rsquo;allumer la lumière/musique, c&rsquo;est bien mieux !</p>
 <p>L&rsquo;équipe, convaincue par mon idée, m&rsquo;a confié la réalisation de cette partie (oups !).</p>
 <h1 id="détection-dimpédance">Détection d&rsquo;impédance</h1>
 <p>On va commencer par afficher les données brutes sur une pin analogique avant et pendant un contact, avec le code suivant (Fichier &gt; Exemples &gt; 01: Basics &gt; AnalogSerialRead) :</p>
@@ -503,43 +503,43 @@ Une plante connectée c&rsquo;est bien, mais une plante connectée qui peut expr
 </span></span><span class="line"><span class="cl"><span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span> <span class="n">analogRead</span><span class="p">(</span> <span class="n">A1</span> <span class="p">)</span> <span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Les résultats sont affichés a l&rsquo;aide du moniteur série de l&rsquo;éditeur Arduino.</p>
-<p>Ce qu&rsquo;on cherche a faire ici est un simple <a href="https://fr.wikipedia.org/wiki/Diviseur_de_tension">diviseur de tension</a>.</p>
+</span></span></code></pre></div><p>Les résultats sont affichés à l&rsquo;aide du moniteur série de l&rsquo;éditeur Arduino.</p>
+<p>Ce qu&rsquo;on cherche à faire ici est un simple <a href="https://fr.wikipedia.org/wiki/Diviseur_de_tension">diviseur de tension</a>.</p>
 <h2 id="pin-flottante">Pin flottante</h2>
-<p>J&rsquo;ai simplement mis un fil de la pin A1, et j&rsquo;observe les données pendant quelques temps avant de poser mon doigt dessus.
-Voilà un exemple des données bruts, au moment où je touche le fil :
+<p>J&rsquo;ai simplement mis un fil de la pin A1, et j&rsquo;observe les données pendant quelque temps avant de poser mon doigt dessus.
+Voilà un exemple des données brutes, au moment où je touche le fil :
 <img src="/static/plant_touch/contact_fil.png" alt=""></p>
-<p>Le signal ressemble a une sinusoïdal oscillant autour de 512 (1024/2) a vide, saturée entre 0 et 1023 quand un contact est établi.</p>
-<details><summary>Qu&rsquo;est-ce que c&rsquo;est que cette sinusoïdal ? (cliquer pour étendre)</summary>
+<p>Le signal ressemble à une sinusoïdale oscillant autour de 512 (1024/2) à vide, saturée entre 0 et 1023 quand un contact est établi.</p>
+<details><summary>Qu&rsquo;est-ce que c&rsquo;est que cette sinusoïdale ? (cliquer pour étendre)</summary>
 <p>Le convertisseur analogique vers digital (ADC) de l&rsquo;Arduino utilise 10 bits, ce qui nous donne des valeurs de 0 a 1023.</p>
 <p>Ici, observe un bruit sinusoïdal, assez faible avant que j&rsquo;établisse le contact, puis fortement amplifié.
 Cela indique qu&rsquo;il s&rsquo;agit d&rsquo;un bruit extérieur au système, capté par &ldquo;l&rsquo;antenne&rdquo; formée par le fils sur la pin A1 et mon corps.</p>
-<p>Ce bruit présente 5 périodes toutes les 100 millisecondes, ce qui représente donc 50Hz (et la si vous êtes attentifs vous voyez ou je veux en venir).</p>
-<p>Et oui, un signal sinusoïdal de 50Hz c&rsquo;est bien celui du réseau électrique Français ! On peut difficilement ne pas le capter dans des mesures avec un fils servant d&rsquo;antenne comme nous avons maintenant.</p>
+<p>Ce bruit est caractérisé par 5 périodes toutes les 100 millisecondes, ce qui représente donc 50Hz (et là si vous êtes attentifs, vous voyez où je veux en venir).</p>
+<p>Et oui, un signal sinusoïdal de 50Hz c&rsquo;est bien celui du réseau électrique français ! On peut difficilement ne pas le capter dans des mesures avec un fils servant d&rsquo;antenne comme nous avons maintenant.</p>
 
 </details>
 
-<p>Et le gif associé :
+<p>Et le GIF associé :
 <img src="/static/plant_touch/simple_touch.gif" alt=""></p>
-<p>Quand bien même le contact est détecté (la led rouge s&rsquo;allume), la pin reste parfois &ldquo;chargée&rdquo; pendant quelques secondes quand j&rsquo;enlève la main, ce qui n&rsquo;est pas un comportement désiré.</p>
+<p>Quand bien même le contact est détecté (la LED rouge s&rsquo;allume), la pin reste parfois &ldquo;chargée&rdquo; pendant quelques secondes quand j&rsquo;enlève la main, ce qui n&rsquo;est pas un comportement désiré.</p>
 <h2 id="pull-up-2-m-ohms">Pull up 2 M Ohms</h2>
 <p>En ajoutant une résistance de 2 Mega Ohms entre notre pin et l&rsquo;alimentation Vcc (ici, 5 Volts), on &ldquo;force&rdquo; la lecture et la reinitialisation de la pin.</p>
 <p><img src="/static/plant_touch/contact_fil_pullup.png" alt=""></p>
-<p>La valeur de base est cette fois très proche de 1023, et descend vers 980 quand un contact est établit.
-Cette fois on peut simplement ajouter une condition pour allumer la led si on passe en dessous de la valeur 1000 :</p>
+<p>La valeur de base est cette fois très proche de 1023, et descend vers 980 quand un contact est établi.
+Cette fois, on peut simplement ajouter une condition pour allumer la LED si on passe en dessous de la valeur 1000 :</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">//allumer la led si on passe sous le seuil, sinon eteindre
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">digitalWrite</span><span class="p">(</span><span class="n">LED_BUILTIN</span><span class="p">,</span> <span class="n">sensorValue</span> <span class="o">&lt;</span> <span class="mi">1000</span><span class="p">);</span>
 </span></span></code></pre></div><p><img src="/static/plant_touch/touch_pullup.gif" alt="">
-(Les clignotements sont dus au bruit sinusoidal vu précédemment)</p>
+(Les clignotements sont dus au bruit sinusoïdale vu précédemment)</p>
 <p>Plus de problèmes de pin chargée maintenant, la forte impédance de la résistance permet également d&rsquo;éliminer la plupart des bruits.</p>
-<p>Cependant, utiliser un simple seuil n&rsquo;est pas une bonne idée, le système devient sensible a toute perturbation.
+<p>Cependant, utiliser un simple seuil n&rsquo;est pas une bonne idée, le système devient sensible à toute perturbation.
 Cette implémentation repose uniquement sur la résistance du corps humain, une valeur assez variable en fonction des conditions (humidité et épaisseur de la peau, isolation du sol, &hellip;), mais surtout cette méthode ne fonctionne pas très bien si on veut détecter le contact avec un autre objet, comme une plante dans notre cas.</p>
 <p>Pour détecter un contact avec une plante, on va garder le même circuit et y ajouter une détection capacitive.</p>
 <h1 id="détection-capacitive">Détection capacitive</h1>
 <p>Un condensateur est une couche d&rsquo;isolant entre deux couches de matériaux conducteurs.
 Ce composant présente une certaine capacité à retenir et libérer des charges, et on va utiliser cette propriété pour détecter un contact avec notre plante.</p>
 <p>On cherche ici à charger le condensateur, puis détecter le temps qu&rsquo;il prend à se décharger complètement (via la valeur <code>cycles</code>).
-Cette valeur est comparée a une baseline <code>cycleThreshold</code> qui représente notre capacitance de base de l&rsquo;environnement, étalonnée quand le système est à vide, ou réglée via un potentiomètre.</p>
+Cette valeur est comparée à une baseline <code>cycleThreshold</code> qui représente notre capacitance de base de l&rsquo;environnement, étalonnée quand le système est à vide ou réglée via un potentiomètre.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">int</span> <span class="n">plantSensor</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">uint8_t</span> <span class="n">cycleThreshold</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
@@ -576,15 +576,15 @@ J&rsquo;ai fait des tests avec un fils relié au GND sur ma peau, de plus en plu
 <img src="/static/plant_touch/plant_touch.gif" alt="Banana gif"></p>
 <p>Notre projet <em>Super Spinach 3000</em> et son interface tactile nous a offert un petit 18/20, tout le monde voulait caresser notre plante (voir <a href="https://gitlab.com/TheWindWalker/connected_plant_iot_2019">le code du projet final</a>).
 Je me suis également occupé de l&rsquo;affichage de l&rsquo;état de contentement de la plante via l&rsquo;écran E-paper (la qualité du code général n&rsquo;est pas de mon ressort&hellip;).</p>
-<p>Sur le gif de la plante, on peut voir que la led s&rsquo;allume avant que j&rsquo;établisse le contact.
-Cela est dû a une valeur de <em>cycleThreshold</em> trop basse : la proximité de ma main a la plante est suffisante pour que la capacité change (avec un condensateur crée par ma main | l&rsquo;air comme isolant | la plante).
+<p>Sur le GIF de la plante, on peut voir que la LED s&rsquo;allume avant que j&rsquo;établisse le contact.
+Cela est dû à une valeur de <em>cycleThreshold</em> trop basse : la proximité de ma main à la plante est suffisante pour que la capacité change (avec un condensateur créé par ma main | l&rsquo;air comme isolant | la plante).
 Intéressant pour un petit tour de magie.</p>
 <h3 id="notes">Notes</h3>
-<p>Je ne suis pas sur de l&rsquo;effet a long terme de ce type d&rsquo;interface capacitive sur un organisme vivant, mais on peut faire quelques observation/déductions:</p>
+<p>Je ne suis pas sûr de l&rsquo;effet à long terme de ce type d&rsquo;interface capacitive sur un organisme vivant, mais on peut faire quelques observations/déductions:</p>
 <ul>
 <li>Aucune idée de ce que peut avoir comme effet de charger et décharger en permanence la plante (ne le risquez pas : probablement pas bon)</li>
 <li>Le fil connecté dans la plante va agir comme une cathode, et attaquer le milieu (surement pas bon)</li>
-<li>Le fil est composé de métal (cuivre ?), qui est plutôt du coté &ldquo;mauvais&rdquo; sur le spectre de la santé des plantes. En tous cas, percer un trou dans la plante pour y passer le fil n&rsquo;est certainement pas bon d&rsquo;un point de vue contamination (certainement pas bon)</li>
+<li>Le fil est composé de métal (cuivre ?), qui est plutôt du côté &ldquo;mauvais&rdquo; sur le spectre de la santé des plantes. En tout cas, percer un trou dans la plante pour y passer le fil n&rsquo;est certainement pas bon d&rsquo;un point de vue contamination (certainement pas bon)</li>
 </ul>
 
         

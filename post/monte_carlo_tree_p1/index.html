@@ -57,9 +57,9 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "Exploration de possibilités - Partie 1",
-  "description" : "Partie 1: Blabla et implémentation\nJe suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.\n",
+  "description" : "Partie 1: Blabla et implémentation\nJe suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre, je me débrouille pas mal en programmation.\n",
   "inLanguage" : "fr",
-  "wordCount":  2750 ,
+  "wordCount":  2748 ,
   "datePublished" : "2021-04-22T00:00:00",
   "dateModified" : "2021-04-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2750&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2748&nbsp;mots
   
   
   
@@ -488,8 +488,8 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p><em><strong>Partie 1: Blabla et implémentation</strong></em></p>
-<p>Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre je me débrouille pas mal en programmation.</p>
-<p>Petite précision : à partir d&rsquo;ici quand je dis &ldquo;suite de coups&rdquo; je parle d&rsquo;un ordre de jeux : je joue, puis mon adversaire puis moi etc</p>
+<p>Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre, je me débrouille pas mal en programmation.</p>
+<p>Petite précision : à partir d&rsquo;ici quand je dis &ldquo;suite de coups&rdquo; je parle d&rsquo;un ordre de jeux : je joue, puis mon adversaire, puis moi etc</p>
 <!-- raw HTML omitted -->
 <p>Faire un petit saut au-dessus du blabla jusqu&rsquo;à la partie intéressante.</p>
 <h1 id="imaginez-vous-en-train-de-jouer-aux-échecs">Imaginez-vous en train de jouer aux échecs</h1>
@@ -505,30 +505,30 @@ Cette approche est déjà meilleure que les deux précédentes, car on explore m
 Son désavantage est de tomber facilement dans les minimums locaux, comme se jeter sur un cavalier avec votre dame pour se la faire piquer par un pion.
 De même, elle ne sacrifiera jamais un pion pour en manger un autre plus dangereux, et sa stratégie est donc très prévisible.
 On va appeler celle-ci &ldquo;méthode greedy&rdquo;.</p>
-<p>Ce qu&rsquo;il nous faut c&rsquo;est une méthode capable de rassembler les forces de ses copines, une espèce de Captain Planet des jeux de société !
-Heureusement, ce problème a été beaucoup retourné par des gens intelligents (et/ou payez pour ça), qui nous on trouvé un ensemble de solutions toutes plus originales les une que les autres.
-Mais ici on ne fait pas dans l&rsquo;originalité et on ne va parler que d&rsquo;arbres, na !</p>
+<p>Ce qu&rsquo;il nous faut, c&rsquo;est une méthode capable de rassembler les forces de ses copines, une espèce de Captain Planet des jeux de société !
+Heureusement, ce problème a été beaucoup retourné par des gens intelligents (et/ou payez pour ça), qui nous ont trouvé un ensemble de solutions toutes plus originales les une que les autres.
+Mais ici, on ne fait pas dans l&rsquo;originalité et on ne va parler que d&rsquo;arbres, na !</p>
 <h1 id="construire-un-arbre">Construire un arbre</h1>
-<p>Si vous avez déjà touché a l&rsquo;orienté objet un jour, il est probable que ce genre d&rsquo;exercice vous soit déjà tombé dessus.
-Un arbre est une structure de donnée assez basique, ou on a un ensemble de nœuds qui appartiennent a un parent, et ont eu même des enfants qui ont des enfants etc.
-C&rsquo;est une représentation assez intuitive pour nous, pauvre singes, et on la retrouve partout, dans tous les domaines d&rsquo;application (voir mon petit post sur <a href="https://BaptisteHudyma.github.io/post/galaxy_generation/">la génération de galaxies procédurales</a>, ou la galaxie est créé dans un arbre).</p>
-<p>Ici, notre racine va être la position de base du plateau, sans aucuns mouvements si je joue commence, ou avec un mouvement de l&rsquo;adversaire s&rsquo;il commence (moins de coups à calculer yes !).
+<p>Si vous avez déjà touché à l&rsquo;orienté objet un jour, il est probable que ce genre d&rsquo;exercice vous soit déjà tombé dessus.
+Un arbre est une structure de donnée assez basique, ou on a un ensemble de nœuds qui appartiennent à un parent, et ont eu même des enfants qui ont des enfants, etc.
+C&rsquo;est une représentation assez intuitive pour nous, pauvre singes, et on la retrouve partout, dans tous les domaines d&rsquo;application (voir mon petit post sur <a href="https://BaptisteHudyma.github.io/post/galaxy_generation/">la génération de galaxies procédurales</a>, ou la galaxie est créée dans un arbre).</p>
+<p>Ici, notre racine va être la position de base du plateau, sans aucuns mouvements si je commence, ou avec un mouvement de l&rsquo;adversaire s&rsquo;il commence (moins de coups à calculer yes !).
 Chaque possibilité de jeux depuis la situation initiale va représenter un nouvel enfant pour notre racine.
-Puis une fois qu&rsquo;on à explorer tous nos mouvements, c&rsquo;est le tour de l&rsquo;adversaire.
+Puis une fois qu&rsquo;on a exploré tous nos mouvements, c&rsquo;est le tour de l&rsquo;adversaire.
 On génère ses mouvements possibles depuis chacun de nos mouvements, puis c&rsquo;est mon tour, et ainsi de suite jusqu&rsquo;à ce qu&rsquo;on atteigne la fin de la partie (gagné, perdu, égalité, que sais-je).</p>
 <p>Petit exemple avec le TicTacToe :
 <img src="/static/monteCarloTree/tree_tictactoe.gif" alt="">
 (Emprunté au site <a href="http://turing.cs.pub.ro/auf2/html/chapters/chapter3/chapter_3_4_2.html">turing.cs</a>, à visiter pour des explications d&rsquo;algorithmes plus variés)</p>
-<p>Bien on a un arbre maintenant.</p>
+<p>Bien, on a un arbre maintenant.</p>
 <h1 id="exploration-avec-monte-carlo">Exploration avec Monte Carlo</h1>
 <p>L&rsquo;arbre qu&rsquo;on vient de construire est de taille raisonnable pour un tictactoe, ou le nombre de possibilités est réduite.
 Pour un Puissance 4 ça pourrait encore fonctionner, mais pour les échecs (ou le Go) ça n&rsquo;est pas viable.
 Il existe plusieurs techniques pour améliorer tout ça, celle qui nous intéresse s&rsquo;appelle <em>MCTS</em> &ldquo;Recherche Arborescente Monte-Carlo&rdquo; (voir la <a href="https://fr.wikipedia.org/wiki/Recherche_arborescente_Monte-Carlo">page Wikipedia</a>, qui bavarde moins que moi).</p>
 <p>Cette technique a été utilisée comme la base pour l&rsquo;algorithme AlphaGo, champion du monde du jeu de Go en 2015 (ptit coup de vieux).
-Elle se base sur quelques euristiques pour trouver une balance entre exploration de nouvelles possibilités et recherche autour des meilleurs suites d&rsquo;action déjà trouvées.
+Elle se base sur quelques euristiques pour trouver une balance entre exploration de nouvelles possibilités et recherche autour des meilleures suites d&rsquo;action déjà trouvées.
 Cela permet de n&rsquo;explorer qu&rsquo;une fraction des possibilités tout en trouvant des coups intéressants.</p>
 <p>Le but de ce billet de blog n&rsquo;est pas de faire un historique ou d&rsquo;expliquer une énième fois cette méthode sur internet, mais proposer quelques modifications</p>
-<p>Un petit résumé vite fait, pour être sur la même page : le dur de la technique est constitué de 4 étapes :</p>
+<p>Un petit résumé vite fait pour être sur la même page : le dur de la technique est constitué de 4 étapes :</p>
 <ul>
 <li>Se balader dans l&rsquo;arbre avec des euristiques jusqu&rsquo;à atteindre une feuille (un nœud sans enfants).</li>
 <li>Lui créer des enfants : en gros lui ajouter en enfant tous les coups possibles à partir de ce nœud</li>
@@ -554,13 +554,13 @@ Il y a pour seule contrainte que votre classe de logique hérite de notre interf
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="nf">do_move</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Notre classe dérivée <code>IGame_State</code> sera utilisée dans notre arbre pour savoir ou on en est dans la partie.
+</span></span></code></pre></div><p>Notre classe dérivée <code>IGame_State</code> sera utilisée dans notre arbre pour savoir où on en est dans la partie.
 Elle représente toute la logique du jeu, qui est donc proprement séparé de l&rsquo;exploration de l&rsquo;arbre.</p>
 <h3 id="get_score">get_score</h3>
 <p>Cette méthode nous donne le score de l&rsquo;état de jeux actuel.
-On peut donc donner un gros score si on gagne, un score négatif si l&rsquo;on perd, etc</p>
-<p>C&rsquo;est ici qu&rsquo;on peut devenir un peu créatif : Pour AlphaGo, Google a utilisé des réseaux de neurones pour évaluer une situation, de mon côté j&rsquo;ai fait une simple grille d&rsquo;occupation, mais on peut aussi se contenter de la somme des scores des pièces en jeu, ce que vous voulez vraiment !</p>
-<p>Si notre jeu se joue a plusieurs, contre des adversaires, n&rsquo;oubliez pas de renvoyer le score <code>* -1.0</code> ou autre pour que notre arbre comprenne qu&rsquo;un bon coup joué par un adversaire est un mauvais coup pour nous !
+On peut ainsi donner un gros score si on gagne, un score négatif si l&rsquo;on perd, etc</p>
+<p>C&rsquo;est ici qu&rsquo;on peut devenir un peu créatif : Pour AlphaGo, Google a utilisé des réseaux de neurones pour évaluer une situation, de mon côté, j&rsquo;ai fait une simple grille d&rsquo;occupation, mais on peut aussi se contenter de la somme des scores des pièces en jeu, ce que vous voulez vraiment !</p>
+<p>Si notre jeu se joue à plusieurs, contre des adversaires, n&rsquo;oubliez pas de renvoyer le score <code>* -1.0</code> ou autre pour que notre arbre comprenne qu&rsquo;un bon coup joué par un adversaire est un mauvais coup pour nous !
 À vous de garder l&rsquo;ordre de jeux en tête dans cette classe, notre arbre ne verra que des scores.</p>
 <h3 id="get_move_count">get_move_count</h3>
 <p>On renvoie le nombre de coups possibles après celui-ci (de 0 a l&rsquo;infini).
@@ -569,12 +569,12 @@ Si cette fonction renvoi 0, cela signifie qu&rsquo;aucun coup n&rsquo;est jouabl
 <p>Pour cette fonction, je vous conseille de garder en mémoire (dans un <code>vector</code> par exemple) les coups possibles, pour ne les calculer qu&rsquo;une seule fois.</p>
 <p>Calculer les coups possibles dépend du jeu que vous avez choisi d&rsquo;implémenter, bon courage donc.</p>
 <h3 id="do_move">do_move</h3>
-<p>Cette méthode est la plus importante : elle prend en entré l&rsquo;index d&rsquo;un coup possible (entre 0 et <code>get_move_count() - 1</code>) et nous renvoie un nouveau game state qui correspond a l&rsquo;état du jeu une fois ce coup joué.</p>
+<p>Cette méthode est la plus importante : elle prend en entrée l&rsquo;index d&rsquo;un coup possible (entre 0 et <code>get_move_count() - 1</code>) et nous renvoie un nouveau game state qui correspond à l&rsquo;état du jeu une fois ce coup joué.</p>
 <p>Pas de soucis de désallocation, notre classe Node s&rsquo;en occupera (même si l&rsquo;utilisation d&rsquo;un smart pointer aurait été à préférer)</p>
 <h2 id="notre-arbre">Notre arbre</h2>
 <p>Enfin la partie intéressante !
 On fait ici une classe Node, qui représente un nœud de l&rsquo;arbre.
-Il est responsable du choix des enfants a crée, de comment explorer le bazar et de remonter les scores, puis nous dire quel est le meilleur combo.</p>
+Il est responsable du choix des enfants à créer, de comment explorer le bazar et de remonter les scores, puis nous dire quel est le meilleur combo.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//creer la node depuis un etat de jeux
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
@@ -602,26 +602,26 @@ Il est responsable du choix des enfants a crée, de comment explorer le bazar et
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">_nombreDeVisites</span><span class="p">;</span>    <span class="c1">//Nombre de passages par cette node
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>Notre class contient une référence a son parent dans un pointeur, pour l&rsquo;étape de backpropagation.</p>
-<p>J&rsquo;utilise une list pour stocker les enfants, car on ne connais pas leur nombre.
-Utiliser un vecteur est également possible, mais ici je n&rsquo;ai jamais besoin d&rsquo;accéder a un enfant par index, ils seront toujours choisis par itération.
-Utiliser une map ou un tableau a taille variable (comme vector) n&rsquo;est pas intéressant quand une liste simplement chainé suffit.
-Et oui, ce ne sont pas des smart pointers pour une raison de lisibilité (pas tant de place que ca sur un billet de blog).</p>
-<p>Nous avons également un membre <code>_state</code> contenant l&rsquo;état du jeux correspondant a cette node.
+</span></span></code></pre></div><p>Notre class contient une référence à son parent dans un pointeur, pour l&rsquo;étape de backpropagation.</p>
+<p>J&rsquo;utilise une list pour stocker les enfants, car on ne connait pas leur nombre.
+Utiliser un vecteur est également possible, mais ici, je n&rsquo;ai jamais besoin d&rsquo;accéder à un enfant par index, ils seront toujours choisis par itération.
+Utiliser une map où un tableau à taille variable (comme vector) n&rsquo;est pas intéressant quand une liste simplement chainée suffit.
+Et oui, ce ne sont pas des smart pointers pour une raison de lisibilité (pas tant de place que ça sur un billet de blog).</p>
+<p>Nous avons aussi un membre <code>_state</code> contenant l&rsquo;état du jeu correspondant à cette node.
 Elle ne peut contenir que des références vers une classe dérivée de notre interface <code>IGame_State</code>, dont nous utilisons les fonctions dans notre recherche.</p>
 <p>Les membres <code>_nombreDeVisites</code> et <code>_score</code> contiennent respectivement le nombre de passages par cette node (uniquement en backpropagation) et le score associé a l&rsquo;état de jeux <code>_state</code> et les scores de tous les enfants.</p>
-<p>Du coté des méthode, on a besoin de 4 méthodes de base pour MCTS.
+<p>Du côté des méthodes, on a besoin de 4 méthodes de base pour MCTS.
 Élaborons un peu tout ça.</p>
 <h3 id="constructeur">Constructeur</h3>
-<p>Notre constructeur prend une classe dérivée de notre interface <code>IGame_State</code>, qui correspond a l&rsquo;état de jeu de cette node.
+<p>Notre constructeur prend une classe dérivée de notre interface <code>IGame_State</code>, qui correspond à l&rsquo;état de jeu de cette node.
 Il récupère aussi son parent pour l&rsquo;étape de backpropagation.</p>
-<p>Il va alors vérifier si on à atteins le bout de l&rsquo;arbre, en appelant la méthode <code>get_move_count ()</code> de notre game state, et vérifier s&rsquo;il est égal a 0.</p>
+<p>Il va alors vérifier si on a atteins le bout de l&rsquo;arbre, en appelant la méthode <code>get_move_count ()</code> de notre game state, et vérifier s&rsquo;il est égal à 0.</p>
 <p>Si c&rsquo;est le cas, la recherche dans cette branche est terminée, on peut appeler <code>backpropagate ()</code> et faire un petit café pour fêter ça : une suite de coups terminée, une !</p>
 <h3 id="get_best_child">get_best_child</h3>
 <p>On appelle cette méthode lors de l&rsquo;exploration, seulement quand notre node à des enfants.</p>
 <p>Ça parait simple : trouver le meilleur des enfants et le renvoyer.</p>
 <p>Mais comment on sélectionne le meilleur enfant ?
-Si on utilise la fonction <code>get_score</code>, on va faire une recherche greedy sans exploration, on ne veut pas de ca.
+Si on utilise la fonction <code>get_score</code>, on va faire une recherche greedy sans exploration, on ne veut pas de ça.
 Ça n&rsquo;est pas non plus le moment de créer une euristique d&rsquo;évaluation (quoi que si ça vous amuse&hellip;)</p>
 <p>J&rsquo;ai beaucoup vu sortir la formule UCB1 (Upper Confidence Bound 1), qui renvoi la somme des scores sur la somme des visites, qui permet de balancer l&rsquo;exploration et les performances.
 $$
@@ -632,7 +632,7 @@ $$
 UCT(visits, score, parentVisits) = UCB1(visits, score) + c \sqrt{ \frac{ln(parentVisits)}{visits}  }
 $$
 Avec c un paramètre permettant de régler le &ldquo;taux&rdquo; d&rsquo;exploration désiré (&gt; 0).</p>
-<p>Le principe est encore une fois assez simple : on additionne a l&rsquo;UCB1 un nombre qui favorise l&rsquo;exploration.</p>
+<p>Le principe est encore une fois assez simple : on additionne à l&rsquo;UCB1 un nombre qui favorise l&rsquo;exploration.</p>
 <p>Le logarithme utilisé ici sur le nombre de visites du parent permet ici d&rsquo;explorer en priorité les enfants les moins explorés (nombre de visites petit par rapport aux visites du parent).
 Le logarithme permet de diminuer l&rsquo;exploration quand le nombre de visites augmente (ie: on converge vers une solution).</p>
 <p>Ici, on voudra utiliser les deux métriques, on aura besoin :</p>
@@ -642,8 +642,8 @@ Le logarithme permet de diminuer l&rsquo;exploration quand le nombre de visites 
 </ul>
 <h3 id="expand_children">expand_children</h3>
 <p>Cette méthode choisie un coup à jouer parmi ceux proposés par le game state, et ajoute une node en enfant de notre node.
-L&rsquo;adresse de ce nouvel enfant est renvoyé pour pouvoir lancer la phase rollout.</p>
-<p>Pour créer un nouvel enfant, on va utilise la fonction <code>do_move</code> de notre interface <code>IGame_State</code> pour obtenir un nouvel état de jeu correspondant a l&rsquo;état de l&rsquo;enfant.
+L&rsquo;adresse de ce nouvel enfant est renvoyée pour pouvoir lancer la phase rollout.</p>
+<p>Pour créer un nouvel enfant, on va utilise la fonction <code>do_move</code> de notre interface <code>IGame_State</code> pour obtenir un nouvel état de jeu correspondant à l&rsquo;état de l&rsquo;enfant.
 On peut ensuite appeler le constructeur de node avec cet état de jeu.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">Node</span><span class="o">::</span><span class="n">expand_children</span> <span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="c1">//choisir un index non exploré
@@ -654,16 +654,16 @@ On peut ensuite appeler le constructeur de node avec cet état de jeu.</p>
 </span></span><span class="line"><span class="cl">        <span class="c1">//nouvelle node avec celle ci comme parent et le nouveau state
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="k">return</span> <span class="k">new</span> <span class="nf">Node</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">nextState</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
-</span></span></code></pre></div><p>Pour le choix de l&rsquo;index, on est tout a fait libre.
+</span></span></code></pre></div><p>Pour le choix de l&rsquo;index, on est tout à fait libre.
 C&rsquo;est un bon endroit pour utiliser un peu d&rsquo;aléatoire (pour commencer) et marquer sur notre CV qu&rsquo;on a utilisé une recherche de Monte Carlo.
-On améliorera ca dans la partie 2.</p>
+On améliorera ça dans la partie 2.</p>
 <h3 id="rollout">rollout</h3>
 <p>Une de mes préférées !
-C&rsquo;est la phase &ldquo;joue des coups jusqu&rsquo;à ce que ca ne soit plus possible&rdquo; de notre exploration.</p>
-<p>L&rsquo;appellation <em>Monte Carlo</em> désigne un choix aléatoire quelque part dans notre programme, et c&rsquo;est généralement a cet endroit : On va choisir un coup possible au hasard depuis notre état actuel, et faire un coup possible depuis ce nouvel état et ainsi de suite.
+C&rsquo;est la phase &ldquo;joue des coups jusqu&rsquo;à ce que ça ne soit plus possible&rdquo; de notre exploration.</p>
+<p>L&rsquo;appellation <em>Monte Carlo</em> désigne un choix aléatoire quelque part dans notre programme, et c&rsquo;est généralement à cet endroit : On va choisir un coup possible au hasard depuis notre état actuel, et faire un coup possible depuis ce nouvel état et ainsi de suite.
 On récupère alors le score de l&rsquo;état final qu&rsquo;on renvoie.</p>
-<p>J&rsquo;ai vu assez souvent des gens qui oublient la partie <em>Monte Carlo</em> de l&rsquo;exploration d&rsquo;arbre avec Monte Carlo, mais on leur pardonne, après tout on fait ce qu&rsquo;on veut !</p>
-<p>Pour s&rsquo;amuser, on peut changer le choix aléatoire par un choix déterministe, et faire des choix greedy, ou inventer une euristique, liberté absolue de ce côté la.</p>
+<p>J&rsquo;ai vu assez souvent des gens qui oublient la partie <em>Monte Carlo</em> de l&rsquo;exploration d&rsquo;arbre avec Monte Carlo, mais on leur pardonne, après tout, on fait ce qu&rsquo;on veut !</p>
+<p>Pour s&rsquo;amuser, on peut changer le choix aléatoire par un choix déterministe, et faire des choix greedy, ou inventer une euristique, liberté absolue de ce côté-là.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">rollout</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="n">IGame_State</span><span class="o">*</span> <span class="n">currentState</span> <span class="o">=</span> <span class="n">_state</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    
@@ -693,9 +693,9 @@ Elle ajoute le score au score de la node actuel, et on incrémente le compteur d
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">_parent</span><span class="p">.</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
-</span></span></code></pre></div><p>J&rsquo;ai utilisé un <code>dynamic_cast</code> pour le test de l&rsquo;existence du parent, ca peut sauver dans un cas ou cette classe est utilisée comme base pour une nouvelle classe Node, crée par un programmeur négligeant qui n&rsquo;aurait pas pensé a faire <code>_parent = nullptr</code> dans le constructeur, ou une si on rencontre une désallocation sauvage du parent entre deux appels (oui oui les smart pointers&hellip;).</p>
+</span></span></code></pre></div><p>J&rsquo;ai utilisé un <code>dynamic_cast</code> pour le test de l&rsquo;existence du parent, ça peut sauver dans un cas où cette classe est utilisée comme base pour une nouvelle classe Node, crée par un programmeur négligent qui n&rsquo;aurait pas pensé à faire <code>_parent = nullptr</code> dans le constructeur, ou une si on rencontre une désallocation sauvage du parent entre deux appels (oui oui les smart pointers&hellip;).</p>
 <h2 id="faire-fonctionner-le-tout">Faire fonctionner le tout</h2>
-<p>Il manque une étape, on a toute la logique mais rien pour la lancer.
+<p>Il manque une étape, on a toute la logique, mais rien pour la lancer.
 Ça n&rsquo;est pas bien compliqué maintenant, le gros du travail est fait.</p>
 <p>Il reste cependant un aspect intéressant non abordé : décider de la limite.
 On ne va pas laisser cet algorithme tourner jusqu&rsquo;à ce que le ciel nous tombe sur la tête, il nous faut décider d&rsquo;une limite au-delà de laquelle on arrête nos itérations.

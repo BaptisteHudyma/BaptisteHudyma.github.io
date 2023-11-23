@@ -59,7 +59,7 @@
   "headline": "Depth Map Segmentation",
   "description" : "In this post, I implement a real time depth map segmentation system, based on normal map analysis.\n",
   "inLanguage" : "en",
-  "wordCount":  1158 ,
+  "wordCount":  1155 ,
   "datePublished" : "2021-02-15T00:00:00",
   "dateModified" : "2021-02-15T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -459,7 +459,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1158&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1155&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/depth_map_segmentation/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -486,8 +486,8 @@ if (!doNotTrack) {
         <p>In this post, I implement a real time depth map segmentation system, based on normal map analysis.</p>
 <p>Depth map analysis (as obtained by a RGB-D camera for example) is not an easy or fast task.
 The target of this post is simply to implement a method to segment elements from a depth map, like objects, planes, any closed 3D surface in fact.</p>
-<p>As always, I have a certain aversion (mistrust ?) toward neural networks, so I&rsquo;m trying my best without them an try to use them when the condition of failure for them are minimal.
-The state of the art real time depth map segmentation method ([4]) uses a normal map segmentation (as in [1], [2] ans [3]) in addition to a simple neural network for class proposition.
+<p>As always, I have a certain aversion (mistrust ?) toward neural networks, so I&rsquo;m trying my best without them a try to use them when the condition of failure for them are minimal.
+The state-of-the-art real time depth map segmentation method ([4]) uses a normal map segmentation (as in [1], [2] ans [3]) in addition to a simple neural network for class proposition.
 As I have absolutely no use for classes here, I will only use normal separation.</p>
 <p>A little reminder in depth maps:</p>
 <ul>
@@ -496,19 +496,19 @@ As I have absolutely no use for classes here, I will only use normal separation.
 </ul>
 <h1 id="fix-the-depth-map">Fix the depth map</h1>
 <p>To fix some defaults in the depth map in prevision to it&rsquo;s use in normal calculation, I applied some treatments to it.</p>
-<p>Here I used a morphologic closing, a median filtering and a bilateral filtering, which aim (in order) at closing the little holes, smooth those modifications and smooth the whole image while keeping the edges.</p>
+<p>Here I used a morphological closing, a median filtering and a bilateral filtering, which aim (in order) at closing the little holes, smooth those modifications and smooth the whole image while keeping the edges.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">depthMap</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">);</span> <span class="c1">// kernel is a 3x3 square
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">depthMap</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 </span></span></code></pre></div><p>The papers I used as references are all using a vertex map, which is a depth map converted as &ldquo;real&rdquo; units.
-I will consider in this post that my depth map is a vertex map (that&rsquo;s true, I juste call it a depth map).</p>
+I will consider in this post that my depth map is a vertex map (that&rsquo;s true, I just call it a depth map).</p>
 <h1 id="compute-normal-map">Compute Normal Map</h1>
-<p>A normal map is a RGB image which represents the normal vectors of each pixel to it&rsquo;s neighbors (see <a href="https://en.wikipedia.org/wiki/Normal_(geometry)">Wikipedia: Normal (Geometry)</a> for more details as I wont go further here).</p>
+<p>A normal map is a RGB image which represents the normal vectors of each pixel to its neighbors (see <a href="https://en.wikipedia.org/wiki/Normal_(geometry)">Wikipedia: Normal (Geometry)</a> for more details as I wwon&rsquo;t go further here).</p>
 <p>This structure is made of NxM 3D vectors for a NxM sized image, and is stored as an RGB image with each channel as a vector component (smart !).
 The final effect is a blue/green/red nuanced image, depending on the direction of the prevailing normal direction (see <a href="https://blog.developpez.com/bouye/p12696/langage/java/javafx-8-x/bump">Blog de Fabrice Bouyé (French)</a> for nice and clear pictures)</p>
 <p>A normal map from simulated data is rather &ldquo;nice&rdquo;.
-It displays clear color gradients (low noise), but that wont be the case in our real measures.</p>
+It displays clear color gradients (low noise), but that won&rsquo;t be the case in our real measures.</p>
 <p>We can get the normal to a depth point <code>(x, y)</code> with the following C++ code:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">dzdx</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">dzdy</span> <span class="o">=</span> <span class="p">(</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="p">)</span> <span class="o">/</span> <span class="mf">2.0</span><span class="p">;</span>
@@ -516,13 +516,13 @@ It displays clear color gradients (low noise), but that wont be the case in our 
 </span></span></code></pre></div><p>Of course, the holes in the depth map are ignored.
 <img src="/static/depthMapSegm/normalMap.png" alt="Image: Depth map and normals">
 RGB image, depth map, normal map.</p>
-<p>On the normal map, we can see artefacts (vertical cyan colored lignes), probably from the depth map smoothing.
+<p>On the normal map, we can see artifacts (vertical cyan colored lines), probably from the depth map smoothing.
 We also see that planar surfaces (the floor and drawer doors) have significant noise (not even mentioning background features).
-Those errors in the normales come from the depth map measurement error (see [6] for a noise modelization).</p>
+Those errors in the normal come from the depth map measurement error (see [6] for a noise modelization).</p>
 <p>I also added a 3x3 median filtering to the final normal map to reduce noise.</p>
 <h1 id="concave-surface-detection">Concave Surface Detection</h1>
 <p>We then parse the normal map to detect concave features.
-I used an operator adapted from [1] which compares a point <code>(x, y)</code> convexity with it&rsquo;s neighboring points <code>(xn, yn)</code>:</p>
+I used an operator adapted from [1] which compares a point <code>(x, y)</code> convexity with its neighboring points <code>(xn, yn)</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&amp;</span> <span class="n">centerNormal</span> <span class="o">=</span> <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="c1">//normal in the center of the zone to consider
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//depth map value at the centre
 </span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">float</span> <span class="n">minConcavity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
@@ -555,22 +555,22 @@ I used the same operator as [1], which compared a point <code>(x, y)</code> dist
 <h1 id="edge-map">Edge Map</h1>
 <p>Concavity and discontinuity map are merged with a binary AND operator <code>&amp;</code> to obtain the edge map:</p>
 <p><img src="/static/depthMapSegm/contourMap.png" alt="Image: contours map"></p>
-<p>This edge map can than be smoothed with a geodesic closing followed by a morphologic opening to filter smaller elements.</p>
+<p>This edge map can than be smoothed with a geodesic closing followed by a morphological opening to filter smaller elements.</p>
 <h1 id="components-segmentation">Components segmentation</h1>
 <p>Now, a simple 4 neighbors connected component extraction to get back a segmented depth map.
 I also filtered the components with a small area to remove small outliers.</p>
 <p>To optimize the final result treatment time, I implemented the whole system with a scale parameter to reduce the depth map size.
-The whole treatment on the 640x480 pixel depth map is pretty CPU intensive, and the depth map is reduce by a scale parameter (0.45 for optimal performances/precision).</p>
+The whole treatment on the 640x480 pixel depth map is pretty CPU intensive, and the depth map is reduced by a scale parameter (0.45 for optimal performances/precision).</p>
 <p>Here is the final segmentation result next to the original RGB image.
 <img src="/static/depthMapSegm/segmentedDepthMap.png" alt="Image: segmented rgb"></p>
 <h2 id="qualitative-comparison">Qualitative Comparison</h2>
 <p>As an indication, here is a comparison with the segmented map obtained by CAPE, a system able to detect only (but reliably !) planes and cylinders.</p>
 <p><img src="/static/depthMapSegm/segmentedRGB.png" alt="Image: segmented rgb comparison">
 Left is the CAPE segmentation, right is this method (scale=1).</p>
-<p>here CAPE gives us better results, because this scene is made mainly of planes and cylinders, but we can except that the presented method can handle objects of any shapes.
-This method also detect surfaces not picked up by CAPE in the background.
+<p>Here CAPE gives us better results, because this scene is made mainly of planes and cylinders, but we can expect that the presented method can handle objects of any shapes.
+This method also detects surfaces not picked up by CAPE in the background.
 It is also more heavy to run than CAPE, but is highly parallelizable.</p>
-<p>In conclusion, those two methods can be merge to take advantages their strength.</p>
+<p>In conclusion, those two methods can be merged to take advantages their strength.</p>
 <p>For better mask reconstruction, this system misses a map constructed in memory, which transforms the system in a SLAM (like in [1]).</p>
 <h1 id="bibliography">Bibliography:</h1>
 <ul>

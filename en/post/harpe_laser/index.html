@@ -59,7 +59,7 @@
   "headline": "Laser Harp",
   "description" : "What to do with 12 lasers, an Arduino, 4 planks and an afternoon ?\n",
   "inLanguage" : "en",
-  "wordCount":  754 ,
+  "wordCount":  752 ,
   "datePublished" : "2018-12-20T00:00:00",
   "dateModified" : "2018-12-20T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;754&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;752&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: &lt;a href=&#34;https://BaptisteHudyma.github.io/post/harpe_laser/&#34; lang=&#34;fr&#34;&gt;fr&lt;/a&gt;
@@ -491,27 +491,27 @@ if (!doNotTrack) {
 <p>When I was in Association DTRE (ESIEA&rsquo;s Robotic association), I sometime had just enough free time and materials to make an improvised small projet.</p>
 <p>In the beautiful day of Wednesday the 12 of December 2018, ESIEA told us that one of our electronic discovery workshop would be replaced by another one.
 Our workshop was about making laser gates (or &ldquo;alarm systems&rdquo;) with a laser, a photoresistor, a buzzer and an Arduino, which was a nice and entertaining way to introduce electronics and microcontroller programming to beginners.
-Has I had written and organized those workshops for a full year, I was left with my disappointment and a whole lot of lasers.</p>
+I had written and organized those workshops for a full year, so I was left with my disappointment and a whole lot of lasers.</p>
 <p>Okay fine let&rsquo;s build something with those !</p>
 <h1 id="technique-concepts">Technique concepts</h1>
-<p>My knowledge at the time was that there is two types of laser harp:</p>
+<p>My knowledge at the time was that there are two types of laser harp:</p>
 <ul>
 <li>The infinite ray harp</li>
 <li>The very finite ray harp (that&rsquo;s complex)</li>
 </ul>
-<p>The infinite rays are of the uttermost beautiful effect, but the detection of the contact with one of the harp &ldquo;string&rdquo;  is pretty complex.
-Furthermore it does not need a wooden frame, and what is a harp without a frame ?? For me, not much (or I&rsquo;m just lazy).</p>
-<p>The finite ray harps uses a bar with photo sensible sensors to detect interactions, allowing a simpler production at the cost of a reduced freedom of use.
+<p>The infinite rays are of the uttermost beautiful effect, but the detection of the contact with one of the harp &ldquo;string&rdquo; is pretty complex.
+Furthermore, it does not need a wooden frame, and what is a harp without a frame ?? For me, not much (or I&rsquo;m just lazy).</p>
+<p>The finite ray harps use a bar with photo sensible sensors to detect interactions, allowing a simpler production at the cost of reduced freedom of use.
 Depending on the available materials and my own will, I decided to go with the finite ray harp.</p>
 <p>Most of the laser harp models I saw use only one laser on a rotating mirror, giving the impression of many strings.
 The final system is easier to modify, as one can change the number of strings with the push of a button.
 Using a fast and precise enough motor and a mirror strapped to it was not something I was going to try for the first try, but I&rsquo;ll keep it in mind for later.</p>
-<h1 id="physical-realisation">Physical realisation</h1>
-<p>Well it&rsquo;s not too bad, I only need to build a wooden frame (easy), with 12 lines holes (easy ?) on each sides to pass the lasers and sensors.</p>
-<p>A small trip to the mini drill press and we see bitterly the making 12 inline holes is not THAT easy (sigh).</p>
-<p>To avoid a massive energy consumption, the lasers are powered one by one with a demultiplexor, fast enough so the eye can see all of the laser powered on at the same time.
-Likewise, the analog pins are a scarce ressource, and a demultiplexor should also be use.
-The sensors are simply photoresistors, from the same laser gate projet.</p>
+<h1 id="physical-realization">Physical realization</h1>
+<p>Well it&rsquo;s not too bad, I only need to build a wooden frame (easy), with 12 lines holes (easy ?) on each side to pass the lasers and sensors.</p>
+<p>A small trip to the mini drill press, and we see bitterly that making 12 inline holes is not THAT easy (sigh).</p>
+<p>To avoid a massive energy consumption, the lasers are powered one by one with a demultiplexer, fast enough so the eye can see all the laser powered on at the same time.
+Likewise, the analog pins are a scarce resource, and a demultiplexer should also be use.
+The sensors are simply photoresistors, from the same laser gate project.</p>
 <p>Our sound emitting device will be a nice speaker, scraped from an old alarm clock.</p>
 <p>The all construction took a little bit more the two hours, soldering and hot glue included.</p>
 <h1 id="the-code">The code</h1>
@@ -521,13 +521,13 @@ Only human memory persists !</p>
 The sweeping speed is so high that we can not see any difference with always activated lasers, and we save the (high) energy cost of all the powered off laser.</p>
 <p>I called my musician colleagues for advises, and they all told me to use a MIDI (for <em>Musical Instrument Digital Interface</em>).
 Of course I listen to them by making absolutely not that, and making a hard coded table of musical frequencies (Implementing MIDI is pretty complicated, and I already have a speaker with no need of interface, why bother ?).
-I could juste associate each frequency of the table with a laser pin, and send the string frequency as a PWM signal to the speaker.</p>
+I could just associate each frequency of the table with a laser pin, and send the string frequency as a PWM signal to the speaker.</p>
 <p>Well, Arduino cannot handle multiple PWM output at the same time, so the audio output can only produce one frequency.
 What is the problem ? Musical harmonics from simultaneous activated strings, polyphony, I could not do it.
 The least ear annoying solution (as I do not have a musically trained ear) was a simple linear interpolation of frequencies.
 Does the use of a MIDI would have prevented those problems ? Absolutely.</p>
 <h1 id="the-result-">The result !</h1>
-<p>A photo of the prototype before the transision from breadboard to final electrical plate (Observe the precise lining of the holes !):
+<p>A photo of the prototype before the transition from breadboard to final electrical plate (Observe the precise lining of the holes !):
 <img src="/static/harpe_laser/harpe_laser.png" alt=""></p>
 <p><a href="https://www.facebook.com/156840394346427/videos/374831526420058">To see the performances of our most talented musician (on Facebook)</a></p>
 <p>Once again, an extremely simple construction, which attracts curiosity, encourages manipulation and motivates to discover electronics.

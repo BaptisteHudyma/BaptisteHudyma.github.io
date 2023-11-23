@@ -490,7 +490,7 @@ if (!doNotTrack) {
         <p>Utiliser un flux vidéo issu d&rsquo;une seule caméra pour estimer la profondeur des objets dans l&rsquo;image.
 Un petit plongeon dans le monde de la géométrie épipolaire et de l&rsquo;analyse des points d&rsquo;intérêts.</p>
 <h1 id="depth-maps-">Depth maps ?</h1>
-<p>Si vous voulez donner a votre système de vision une notion de distance, il n&rsquo;existe pas (encore !) 36 solutions :</p>
+<p>Si vous voulez donner à votre système de vision une notion de distance, il n&rsquo;existe pas (encore !) 36 solutions :</p>
 <ul>
 <li>Vision stéréo : Utiliser deux caméras et un peu d&rsquo;ingéniosité</li>
 <li>Vision monoculaire : utiliser une caméra et <strong>beaucoup plus</strong> d&rsquo;ingéniosité.</li>
@@ -498,29 +498,29 @@ Un petit plongeon dans le monde de la géométrie épipolaire et de l&rsquo;anal
 </ul>
 <p>Chacune de ces options a ses propres qualités et défauts.
 La vision stéréo donne des estimations correctes a une distance convenable, mais demande une puissance de calcul non négligeable.
-Un système monoculaire peut fonctionner avec du <a href="https://paperswithcode.com/sota/monocular-depth-estimation-on-kitti-eigen">machine learning</a>, ou en exploitant la suite d&rsquo;image comme un système stéréo (Plus a ce sujet un peu plus tard), avec les mêmes limitations que celui-ci.
-La camera RGB-D est très fiable et donne des mesures précises, mais ne fonctionne qu&rsquo;a courte distance.</p>
-<p>Eh bien je n&rsquo;ai pas de quoi faire un système stéréo, mais je possède la meilleure des caméras : une RGB-D (Oui j&rsquo;adore les RGB-D).
-Cette caméra est fantastique mais son estimation de profondeur dépend exclusivement d&rsquo;une projection infrarouge, ce qui amène son lot de problèmes.
+Un système monoculaire peut fonctionner avec du <a href="https://paperswithcode.com/sota/monocular-depth-estimation-on-kitti-eigen">machine learning</a>, ou en exploitant la suite d&rsquo;image comme un système stéréo (Plus à ce sujet un peu plus tard), avec les mêmes limitations que celui-ci.
+La caméra RGB-D est très fiable et donne des mesures précises, mais ne fonctionne qu&rsquo;à courte distance.</p>
+<p>Eh bien, je n&rsquo;ai pas de quoi faire un système stéréo, mais je possède la meilleure des caméras : une RGB-D (Oui, j&rsquo;adore les RGB-D).
+Cette caméra est fantastique, mais son estimation de profondeur dépend exclusivement d&rsquo;une projection infrarouge, ce qui amène son lot de problèmes.
 L&rsquo;estimation de profondeur est dérangée par plusieurs facteurs :</p>
 <ul>
 <li>Les surfaces sombres, ou très peu réfléchissantes</li>
 <li>Les surfaces très réfléchissantes (miroirs)</li>
 <li>les surfaces très texturées (comme les tapis)</li>
-<li>La lumière du soleil, qui ajoute sa dose d&rsquo;infrarouge a nos mesures</li>
-<li>La distance, limitée généralement a 4 ou 5 mètres.</li>
+<li>La lumière du soleil, qui ajoute sa dose d&rsquo;infrarouge à nos mesures</li>
+<li>La distance, limitée généralement à 4 ou 5 mètres.</li>
 </ul>
 <p>Un petit exemple d&rsquo;une depth map incomplète (dataset: <em>yoga_mat</em>, de CAPE) :
 <img src="/static/depthmap/rgb_depth_holes.png" alt="depth Holes Holes Holes"></p>
-<p>On observe des trous dans la mesure de profondeur, dues a des discontinuités de profondeur/une occlusion (à gauche du cylindre), et des trous qui découlent de la transformation géométrique de l&rsquo;image pour correspondre a l&rsquo;image RGB (en haut et à droite de l&rsquo;image).
-Les trous <em>alignés</em> sur le sol sont dues (a mon avis) a la nature discrète de la mesure de profondeur, qui ressort ici à cause de la transformation géométrique.</p>
-<p>Il y a un bon nombre de méthodes pour remplir ces discontinuités (<a href="https://github.com/pedropro/OMG_Depth_Fusion">Gaussian fusion</a>, Machine learning, &hellip;) mais j&rsquo;ai voulu tenter ma chance avec une idée assez simple : Pourquoi ne pas fusionner l&rsquo;estimation de profondeur avec une autre estimation, moins précise mais plus fiable ?</p>
-<p>Eh bien j&rsquo;ai une caméra RGB-D sur mon bureau (et donc des mesures de profondeur), reste plus qu&rsquo;à trouver une autre estimation de profondeur avec les données RGB.</p>
+<p>On observe des trous dans la mesure de profondeur, dues à des discontinuités de profondeur/une occlusion (à gauche du cylindre), et des trous qui découlent de la transformation géométrique de l&rsquo;image pour correspondre à l&rsquo;image RGB (en haut et à droite de l&rsquo;image).
+Les trous <em>alignés</em> sur le sol sont dues (à mon avis) à la nature discrète de la mesure de profondeur, qui ressort ici à cause de la transformation géométrique.</p>
+<p>Il y a un bon nombre de méthodes pour remplir ces discontinuités (<a href="https://github.com/pedropro/OMG_Depth_Fusion">Gaussian fusion</a>, Machine learning, &hellip;) mais j&rsquo;ai voulu tenter ma chance avec une idée assez simple : Pourquoi ne pas fusionner l&rsquo;estimation de profondeur avec une autre estimation, moins précise, mais plus fiable ?</p>
+<p>Eh bien, j&rsquo;ai une caméra RGB-D sur mon bureau (et donc des mesures de profondeur), reste plus qu&rsquo;à trouver une autre estimation de profondeur avec les données RGB.</p>
 <p>La première étape, pas des plus simples, est d&rsquo;obtenir l&rsquo;image de profondeur monoculaire.
 <strong>C&rsquo;est parti.</strong></p>
 <h1 id="map-de-profondeur-monoculaire">Map de profondeur monoculaire</h1>
-<p>Bon, comment on obtenir une estimation de profondeur depuis une seule image ?
-Il n&rsquo;y a pas un foule de réponses, la plupart d&rsquo;entre elles sont &ldquo;réseaux de neurones&rdquo;.</p>
+<p>Bon, comment on obtient une estimation de profondeur depuis une seule image ?
+Il n&rsquo;y a pas une foule de réponses, la plupart d&rsquo;entre elles sont &ldquo;réseaux de neurones&rdquo;.</p>
 <p>Mais comme l&rsquo;a évoqué notre mentor Maitre Yoda,
 <img src="/static/rand/yoda.png" alt="There is another">
 Merci Yoda !</p>
@@ -539,14 +539,14 @@ Je n&rsquo;entrerais pas dans les détails ici, mais voici une explication appro
 <p>Toutes ces opérations peuvent être réalisées à l&rsquo;aide d&rsquo;OpenCV.</p>
 <h3 id="points-dintérêt">Points d&rsquo;intérêt</h3>
 <p>Pour trouver les points d&rsquo;intérêt, j&rsquo;ai utilisé le détecteur SURF.
-Ces points peuvent ensuite être associés a l&rsquo;aide du <code>DescriptorMatcher</code> en utilisant FLANN.</p>
+Ces points peuvent ensuite être associés à l&rsquo;aide du <code>DescriptorMatcher</code> en utilisant FLANN.</p>
 <p><img src="/static/depthmap/matched_keypoints.png" alt="Matched keypoints"></p>
 <p>On obtient les points d&rsquo;intérêts associés entre les deux images.
 On peut ensuite en éliminer certains en fonction de leur distance au point d&rsquo;origine, et obtenir une liste de points nettoyés.</p>
-<p>Dans l&rsquo;image ci-dessus, on peut voir au moins deux <em>outliers</em>, c&rsquo;est-à-dire dans ce contexte, des points reliés a un autre point qui ne leur correspondent pas.
+<p>Dans l&rsquo;image ci-dessus, on peut voir au moins deux <em>outliers</em>, c&rsquo;est-à-dire dans ce contexte, des points reliés a un autre point qui ne leur correspond pas.
 Ces outliers seront éliminés par notre test de distance évoqué précédemment, où seront supprimés par la prochaine étape.</p>
 <details><summary>Détails sur la représentation épipolaire</summary>
-<strong>Une note rapide</strong>: La projection épipolaire des deux images les déforme de façon a ce que deux points d&rsquo;intérêts associés se retrouvent sur la même ligne.
+<strong>Une note rapide</strong>: La projection épipolaire des deux images les déforme de façon à ce que deux points d&rsquo;intérêts associés se retrouvent sur la même ligne.
 Ici, on dirait que c&rsquo;est déjà le cas : C&rsquo;est à cause de la proximité temporelle des deux images (issues d&rsquo;une vidéo).
 Pour une meilleure visualisation (et explications en profondeur), consultez la <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">page OpenCV</a>.
 </details>
@@ -555,11 +555,11 @@ Pour une meilleure visualisation (et explications en profondeur), consultez la <
 <p>OpenCV va également nous aider pour trouver la matrice de transformation entre les deux images.
 Appeler la fonction <code>cv::findHomography</code> sur nos pairs de points d&rsquo;intérêts nous renverra une matrice fondamentale, que nous pouvons utiliser pour déformer notre deuxième image (avec la fonction <code>cv::warpPerspective</code>).
 J&rsquo;ai utilisé <code>findHomography</code> avec le paramètre <code>cv::FM_RANSAC</code>, qui permet d&rsquo;utiliser la méthode RANSAC.
-Nous pouvons en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici nous n&rsquo;en aurons pas besoin.</p>
+Nous pouvons en obtenir une liste d&rsquo;in/outliers pour nettoyer encore nos données, mais ici, nous n&rsquo;en aurons pas besoin.</p>
 <details><summary>Détails sur RANSAC</summary>
 <p>RANSAC (RANdom SAmples Consensus) est une méthode fantastique (mais non déterministe, personne n&rsquo;est parfait) qui permet entre autre de détecter les outlier dans un set de données.
-Ici on l&rsquo;utilise pour associer les paires de points caractéristiques pour trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.</p>
-<p>RANSAC a bien d&rsquo;autres cas d&rsquo;applications bien sur, je l&rsquo;ai également utilisé pour détecter les cylindres dans un graph de plans, comme CAPE l&rsquo;a fait.</p>
+Ici, on l&rsquo;utilise pour associer les paires de points caractéristiques pour trouver la matrice fondamentale idéale malgré la présence d&rsquo;outliers.</p>
+<p>RANSAC a bien d&rsquo;autres cas d&rsquo;applications bien sûr, je l&rsquo;ai également utilisé pour détecter les cylindres dans un graph de plans, comme CAPE l&rsquo;a fait.</p>
 
 </details>
 
@@ -569,10 +569,10 @@ Nous pouvons utiliser une fois de plus le glorieux OpenCV, avec sa classe <code>
 Cette classe est censée être utilisée sur des images issues d&rsquo;un setup d&rsquo;acquisition stéréo, mais maintenant que nos deux images sont projetées correctement, personne ne nous empêchera de faire semblant qu&rsquo;elles viennent d&rsquo;un setup stéréo !</p>
 <p>Eh bien le résultat n&rsquo;est pas si mal (après une bonne dose de réglages de paramètres) :</p>
 <p><img src="/static/depthmap/rgb_monodepth.png" alt="Simulated depth map"></p>
-<p>il y a quelques trous, quelques discontinuités dans la profondeur, et quelques aberrations au niveau du sommet du cylindre, mais c&rsquo;est globalement pas mal.</p>
+<p>Il y a quelques trous, quelques discontinuités dans la profondeur et quelques aberrations au niveau du sommet du cylindre, mais c&rsquo;est globalement pas mal.</p>
 <p>Pour la comparaison, voici la version brute (avec les paramètres par défaut) :</p>
 <p><img src="/static/depthmap/rgb_monodepth_default.png" alt="Ugly mess map"></p>
-<p>On peut y voir assez clairement que des textures censées êtres plates sont affichées avec du relief (une différence de couleur), notamment la feuille de QR codes.
+<p>On peut y voir assez clairement que des textures sensées êtres plates sont affichées avec du relief (une différence de couleur), notamment la feuille de QR codes.
 C&rsquo;est également le cas en haut de l&rsquo;image, mais la différence est moins visible.</p>
 <h3 id="filtrage">Filtrage</h3>
 <p>La dernière étape (non obligatoire) est de filtrer un peu notre estimation, pour obtenir une depth map plus propre.
@@ -581,22 +581,22 @@ Pour cela, j&rsquo;utilise <code>DisparityWLSDFilter</code> de <code>cv::ximproc
 <p><img src="/static/depthmap/depth_monodepth.png" alt="Filtered result"></p>
 <p>Globalement, le résultat final est plutôt bon !
 Mieux qu&rsquo;attendu, dans mon cas.</p>
-<p>Comparé a la depth map brut de la RGB-D, la depth map monoculaire a moins de trous de discontinuités (ces deux images devraient être exactement les mêmes dans un monde idéal).
+<p>Comparé à la depth map brut de la RGB-D, la depth map monoculaire a moins de trous de discontinuités (ces deux images devraient être exactement les mêmes dans un monde idéal).
 Quelques remarques tout de même :</p>
 <ul>
 <li>La depth map monoculaire n&rsquo;a pas d&rsquo;unités (mètres, mm, &hellip;) et ne peux pas être utilisée tel quel.</li>
 <li>Le processus de filtrage à créer des &ldquo;fuites&rdquo; de profondeur au niveau des côtés du cylindre (fond plus sombre)</li>
 <li>La texture des QR codes est encore visible sur le sol, ce qui est une erreur d&rsquo;estimation</li>
-<li>Le haut du cylindre est montré plus proche de l&rsquo;observateur que le sol en bas du l&rsquo;image, et nous pouvons voir que c&rsquo;est faux (voir image de profondeur brut pour comparaison)</li>
+<li>Le haut du cylindre est montré plus proche de l&rsquo;observateur que le sol en bas de l&rsquo;image, et nous pouvons voir que c&rsquo;est faux (voir image de profondeur brut pour comparaison)</li>
 <li>Plus il y a de mouvement, meilleure est l&rsquo;estimation.
 En cas de mouvement trop faible, on obtient une map aberrante.</li>
 </ul>
 <p>Un autre point très important que je n&rsquo;ai pas mentionné avant : L&rsquo;estimation de profondeur monoculaire ne peut pas être aussi bonne que l&rsquo;estimation stéréo.
 Les depth map stéréo sont bien plus précises et fiables.
-Elles fournissent également une vraie mesure de profondeur (avec des unités), car la distance/rotation entre les deux caméras est connue précisément, ou du moins elle est fixe.</p>
+Elles fournissent également une vraie mesure de profondeur (avec des unités), car la distance/rotation entre les deux caméras est connue précisément, ou du moins, elle est fixe.</p>
 <p>La qualité de la depth map dépend beaucoup de la distance : un exercice de trigonométrie basique indique que l&rsquo;estimation de profondeur sera OK seulement pour des points dans la même échelle que cette distance.
 Ici, mes &ldquo;deux&rdquo; caméras se trouvent à un temps/distance proches l&rsquo;une de l&rsquo;autre, leur prise se suivant uniquement de quelques centièmes de secondes.
-La qualité d&rsquo;estimation de profondeur sera seulement bonne pour des distances courtes, de l&rsquo;ordre du mètre.</p>
+La qualité d&rsquo;estimation de profondeur sera néanmoins bonne pour des courtes distances, de l&rsquo;ordre du mètre.</p>
 <p>Mais malgré ces imperfections, je suis satisfait du résultat initial.
 Cette depth map monoculaire relève des informations utiles de l&rsquo;environnement qui sont exactement ce qu&rsquo;il me faut pour la prochaine étape : la fusion des depth map.</p>
 <h1 id="un-petit-bonus">Un petit bonus</h1>

@@ -57,7 +57,7 @@
     "name" : "Baptiste Hudyma"
   },
   "headline": "SLAM - Parti 2",
-  "description" : "Partie 2 : Optimisation de pose\nUne fois nos features détectées et associées, on va chercher a estimer le mouvement effectué entre les deux observations.\n",
+  "description" : "Partie 2 : Optimisation de pose\nUne fois nos features détectées et associées, on va chercher à estimer le mouvement effectué entre les deux observations.\n",
   "inLanguage" : "fr",
   "wordCount":  1773 ,
   "datePublished" : "2021-10-13T00:00:00",
@@ -488,57 +488,57 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p><em><strong>Partie 2 : Optimisation de pose</strong></em></p>
-<p>Une fois nos features détectées et associées, on va chercher a estimer le mouvement effectué entre les deux observations.</p>
-<p>Après la <a href="https://BaptisteHudyma.github.io/post/slam_1/">Partie 1</a> qui concernait la détection et association de features, on s&rsquo;intéresse ici a l&rsquo;estimation de notre position et orientation dans le temps.</p>
-<h1 id="choisir-le-modèle-de-pose-a-optimiser">Choisir le modèle de pose a optimiser</h1>
+<p>Une fois nos features détectées et associées, on va chercher à estimer le mouvement effectué entre les deux observations.</p>
+<p>Après la <a href="https://BaptisteHudyma.github.io/post/slam_1/">Partie 1</a> qui concernait la détection et association de features, on s&rsquo;intéresse ici à l&rsquo;estimation de notre position et orientation dans le temps.</p>
+<h1 id="choisir-le-modèle-de-pose-à-optimiser">Choisir le modèle de pose à optimiser</h1>
 <p>Une pose est la position et l&rsquo;orientation de notre robot dans l&rsquo;espace.
-On peut l&rsquo;exprimer de la manière et dans le repère qui nous arrange le plus (j&rsquo;ai déjà vu du sphérique, ici on préfèrera le cartésien).</p>
+On peut l&rsquo;exprimer de la manière et dans le repère qui nous arrange le plus (j&rsquo;ai déjà vu du sphérique, ici, on préfèrera le cartésien).</p>
 <p>La position de notre observateur sera un vecteur 3, avec l&rsquo;origine centrée sur le point de départ de notre robot.
 L&rsquo;orientation est souvent représentée par une matrice de rotation, ou un quaternion.
-Je préfère utiliser les quaternions, plus faciles a manipuler que les matrices de rotation.</p>
-<p>En vérité, le choix de notre modèle de pose dépendra surtout de la technique de regression qu&rsquo;on souhaite appliquer.</p>
-<p>On remarquera cependant que l&rsquo;utilisation d&rsquo;un quaternion ou d&rsquo;une matrice de rotation &ldquo;surparamétrisée&rdquo; le problèmes: on se retrouve avec \(N \geq 4\) variables pour définir une orientation a 3 degrés de liberté sur l&rsquo;axe \(x\), \(y\) et \(z\) en Cartésien).
+Je préfère utiliser les quaternions, plus faciles à manipuler que les matrices de rotation.</p>
+<p>En vérité, le choix de notre modèle de pose dépendra surtout de la technique de régression qu&rsquo;on souhaite appliquer.</p>
+<p>On remarquera cependant que l&rsquo;utilisation d&rsquo;un quaternion ou d&rsquo;une matrice de rotation &ldquo;surparamétrisée&rdquo; le problème : on se retrouve avec \(N \geq 4\) variables pour définir une orientation a 3 degrés de liberté sur l&rsquo;axe \(x\), \(y\) et \(z\) en Cartésien).
 On reviendra sur ce point plus tard, mais il est <strong>fondamental</strong>.</p>
 <details><summary>La représentation</summary>
-<p>En effet cette représentation n&rsquo;est pas suparametrisée, mais a son propre lot de problèmes.
-Ajouter les rotation successives n&rsquo;est pas vraiment trivial, et chaque composante est définie sur un domaine dépendant d&rsquo;un nombre non rationnel (PI).</p>
-<p>Il se trouve qu&rsquo;une matrice de rotation est déjà une représentation de rotation utilisant les angles sur X Y et Z, mais sous une forme bien plus utile: voir <a href="http://www2.ift.ulaval.ca/~pgiguere/cours/IntroRobotique2017/notes/03-VisionIII.pdf">ce lien</a> pour s&rsquo;instruire sur le sujet !</p>
+<p>En effet cette représentation n&rsquo;est pas surparamétrisée, mais a son propre lot de problèmes.
+Ajouter les rotations successives n&rsquo;est pas vraiment trivial, et chaque composante est définie sur un domaine dépendant d&rsquo;un nombre non rationnel (PI).</p>
+<p>Il se trouve qu&rsquo;une matrice de rotation est déjà une représentation de rotation utilisant les angles sur X Y et Z, mais sous une forme bien plus utile : voir <a href="http://www2.ift.ulaval.ca/~pgiguere/cours/IntroRobotique2017/notes/03-VisionIII.pdf">ce lien</a> pour s&rsquo;instruire sur le sujet !</p>
 
 </details>
 
 <h1 id="optimisation-de-pose">Optimisation de pose</h1>
-<p>On va chercher ici a estimer la transformation entre nos deux sets de features associées, c&rsquo;est-à-dire la rotation et transformation a appliquer a chaque features du set 2 pour retrouver le set 1.
-A ma connaissance, les résultats peuvent être obtenus sous la forme d&rsquo;une pose relative au set 1, ou d&rsquo;une pose absolue (par rapport au point 0 du monde).</p>
+<p>On va chercher ici à estimer la transformation entre nos deux sets de features associées, c&rsquo;est-à-dire la rotation et transformation à appliquer à chaque features du set 2 pour retrouver le set 1.
+À ma connaissance, les résultats peuvent être obtenus sous la forme d&rsquo;une pose relative au set 1, ou d&rsquo;une pose absolue (par rapport au point 0 du monde).</p>
 <p>Généralement, optimiser une pose absolue possède moins d&rsquo;applications que de récupérer une série de poses relatives, et est plus lourd et moins précis (localement) qu&rsquo;une pose relative.
-On renverra a l&rsquo;utilisateur la pose absolu.</p>
+On renverra à l&rsquo;utilisateur la pose absolu.</p>
 <p>Idéalement notre map devrait être définie par rapport aux poses relatives, afin d&rsquo;optimiser la position des éléments de notre map quand on effectue une fermeture de boucle.</p>
 <h2 id="méthode-doptimisation">Méthode d&rsquo;optimisation</h2>
 <p>L&rsquo;optimisation va se baser sur la transformation entre deux sets de features associés pour estimer les paramètres du mouvement.
 Dans la littérature, on observe plusieurs techniques, la plupart utilisant des régressions linéaires comme la descente de gradient, Newton-Gauss, le Bundle Adjustment, &hellip;</p>
-<p>Une de mes favorites est la représentation du problème sous forme de graph: On considère la pose de notre observer comme un point d&rsquo;un graph relié a la pose précédente.
+<p>Une de mes favorites est la représentation du problème sous forme de graph: On considère la pose de notre observer comme un point d&rsquo;un graph relié à la pose précédente.
 Chaque pose est reliée aux features associées, également reliées entre elles.
-Certains liens sont marqués &ldquo;elastiques&rdquo;, c&rsquo;est a dire optimisables.
+Certains liens sont marqués &ldquo;elastiques&rdquo;, c&rsquo;est-à-dire optimisables.
 Les liens entre les features sont toujours considérés rigides, les optimiser n&rsquo;a pas vraiment d&rsquo;utilité.
-Si on note tous les liens, a part ceux entre les poses et leurs features, comme étant élastiques, on obtient après optimisation la pose finale.
-On peut aussi noter les liens entre les poses et les features comme étant élastiques: l&rsquo;optimisation sera plus longue mais on en sortira également une erreur associé a chaque feature, ce qui peut être utile en construisant la map.
-Cet algorithme est implémenté dans <a href="https://github.com/RainerKuemmerle/g2o">g2o</a> sous le nom <a href="http://g2o.xuezhisd.top/classg2o_1_1SparseOptimizer.html">SparseOptimizer</a> (voir un exemple d&rsquo;utilisation dans <a href="https://www.researchgate.net/publication/327274388_Lightweight_Visual_Odometry_for_Autonomous_Mobile_Robots">Light Visual Tracking (LVT)</a>, une méthode d&rsquo;odomètre visuelle performante dans les environnement avec beaucoup de features).</p>
+Si on note tous les liens, à part ceux entre les poses et leurs features, comme étant élastiques, on obtient après optimisation la pose finale.
+On peut aussi noter les liens entre les poses et les features comme étant élastiques: l&rsquo;optimisation sera plus longue, mais on en sortira aussi une erreur associée à chaque feature, ce qui peut être utile en construisant la map.
+Cet algorithme est implémenté dans <a href="https://github.com/RainerKuemmerle/g2o">g2o</a> sous le nom <a href="http://g2o.xuezhisd.top/classg2o_1_1SparseOptimizer.html">SparseOptimizer</a> (voir un exemple d&rsquo;utilisation dans <a href="https://www.researchgate.net/publication/327274388_Lightweight_Visual_Odometry_for_Autonomous_Mobile_Robots">Light Visual Tracking (LVT)</a>, une méthode d&rsquo;odomètre visuelle performante dans les environnements avec beaucoup de features).</p>
 <p>J&rsquo;ai également pu lire un papier proposant une méthode optimisant d&rsquo;abord la rotation de la pose, et utilisant cette rotation comme constante de l&rsquo;optimisation par bundle adjustment de la position (voir <a href="https://arxiv.org/abs/2010.07997">RGB-D SLAM with Structural Regularities (2021)</a>)</p>
-<p>Le bundle adjustment consiste a effectuer une série d&rsquo;optimisations en ajustant entre chaque itérations les paramètres finaux.
-Dans le cas d&rsquo;un SLAM basé sur des surfels (petites surfaces autour d&rsquo;un point feature), les surfels faisant parti du meme &ldquo;objet&rdquo; peuvent être fusionnés entre chaque étapes de l&rsquo;optimisation (voir <a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Schops_BAD_SLAM_Bundle_Adjusted_Direct_RGB-D_SLAM_CVPR_2019_paper.pdf">BAD: Bundle Adjusted DirectRGBD-SLAM (2019)</a> pour la méthode complète).</p>
+<p>Le bundle adjustment consiste à effectuer une série d&rsquo;optimisations en ajustant entre chaque itération les paramètres finaux.
+Dans le cas d&rsquo;un SLAM basé sur des surfels (petites surfaces autour d&rsquo;un point feature), les surfels faisant partie du même &ldquo;objet&rdquo; peuvent être fusionnés entre chaque étape de l&rsquo;optimisation (voir <a href="https://openaccess.thecvf.com/content_CVPR_2019/papers/Schops_BAD_SLAM_Bundle_Adjusted_Direct_RGB-D_SLAM_CVPR_2019_paper.pdf">BAD: Bundle Adjusted DirectRGBD-SLAM (2019)</a> pour la méthode complète).</p>
 <p>Afin d&rsquo;obtenir la pose relative de mon robot, j&rsquo;utilise l&rsquo;<a href="https://fr.wikipedia.org/wiki/Algorithme_de_Levenberg-Marquardt">algorithme de Levenberg-Marquardt</a>, implémenté avec la librairie <a href="https://eigen.tuxfamily.org/index.php?title=Main_Page">Eigen</a>.
 C&rsquo;est un algorithme absolument formidable, basé sur une optimisation de Newton-Gauss pour converger rapidement, suivie d&rsquo;une descente de gradient pour l&rsquo;ajustement final, plus précis.
-Il a cependant ses limites: il est bien meilleur pou optimiser des problèmes linéaires (ce qu&rsquo;une estimation de pose n&rsquo;est pas), et nécessite une estimation de la solution de base pour converger suffisamment vite (a mon goût).</p>
-<p>Fonctionnellement, l&rsquo;algorithme appellera une fonction d&rsquo;optimisation avec des paramètres (ici, position et rotation) variés au fur et a mesure de l&rsquo;optimisation, et nous renverrons un vecteur de taille \(N\), contenant l&rsquo;ensemble des erreur.</p>
+Il a cependant ses limites : il est bien meilleur pou optimiser des problèmes linéaires (ce qu&rsquo;une estimation de pose n&rsquo;est pas), et nécessite une estimation de la solution de base pour converger suffisamment vite (à mon goût).</p>
+<p>Fonctionnellement, l&rsquo;algorithme appellera une fonction d&rsquo;optimisation avec des paramètres (ici, position et rotation) variés au fur et à mesure de l&rsquo;optimisation, et nous renverrons un vecteur de taille \(N\), contenant l&rsquo;ensemble des erreurs.</p>
 <h3 id="estimation-des-paramètres-initiaux">Estimation des paramètres initiaux</h3>
-<p>Pour fournir une estimation assez proche de la réalité en entrée de l&rsquo;algorithme, j&rsquo;utilise un model a vélocité constante, basée sur les dernières estimations de pose pour estimer la prochaine.
-Ce modèle de vélocité est approximatif mais suffit a se rapprocher de la solution pour économiser quelques itérations.</p>
-<p>Je n&rsquo;ai pas encore trouvé de meilleur méthode.</p>
+<p>Pour fournir une estimation assez proche de la réalité en entrée de l&rsquo;algorithme, j&rsquo;utilise un modèle à vélocité constante, basée sur les dernières estimations de pose pour estimer la prochaine.
+Ce modèle de vélocité est approximatif, mais suffit à se rapprocher de la solution pour économiser quelques itérations.</p>
+<p>Je n&rsquo;ai pas encore trouvé de meilleure méthode.</p>
 <h3 id="linéarisation-du-quaternion">Linéarisation du quaternion</h3>
-<p>Pour la question de la linéarité du problèmes, c&rsquo;est un peu plus complexe.
-On a 7 paramètres a optimiser: les 3 de la position, déjà linéaire, et les 4 paramètres de notre quaternion.
-Ici c&rsquo;est le quaternion qui pose problème: ses paramètres sont entre 0 et 1, et leur transformation n&rsquo;est absolument pas linéaire.</p>
+<p>Pour la question de la linéarité du problème, c&rsquo;est un peu plus complexe.
+On a 7 paramètres à optimiser: les 3 de la position, déjà linéaire, et les 4 paramètres de notre quaternion.
+Ici, c&rsquo;est le quaternion qui pose problème: ses paramètres sont entre 0 et 1, et leur transformation n&rsquo;est absolument pas linéaire.</p>
 <p>Il existe plusieurs techniques pour contourner ce problème de linéarisation.
-La plus facile à appliquer est surement celle ci: On va exprimer le paramètre \(w\) du quaternion en fonction des trois autres (\(x\), \(y\), \(z\)).
+La plus facile à appliquer est surement celle-ci: On va exprimer le paramètre \(w\) du quaternion en fonction des trois autres (\(x\), \(y\), \(z\)).
 Notre problème n&rsquo;est plus surparamètrisé, et la représentation finale est plus facilement optimisable.
 $$
 k_w = \sqrt{1 - \frac{x^2 + y^2 + z^2}{4}},
@@ -547,15 +547,15 @@ k_y = \frac{y}{2},
 k_z = \frac{z}{2}
 $$
 On optimisera les paramètres \(x\), \(y\) et \(z\).</p>
-<p>Cette représentation, même si elle est correctement parametrisée, n&rsquo;est pas encore linéaire.
+<p>Cette représentation, même si elle est correctement paramétrisée, n&rsquo;est pas encore linéaire.
 J&rsquo;ai lu certaines publications qui avançaient qu&rsquo;elle n&rsquo;était valable que pour les petites variations de rotation, mais je ne peux pas confirmer ni infirmer cette proposition (voir <a href="https://www.semanticscholar.org/paper/Robust-RGB-D-odometry-under-depth-uncertainty-for-Proen%C3%A7a/b15b65ac59b42b24eb669efc2a3c10f62bc9c6e6">Robust RGB-D Odometry Under Depth Uncertainty for Structured Environments</a>)</p>
 <p>On peut aussi citer les transformations exponentielles du quaternion, et bien d&rsquo;autres (voir <a href="https://arxiv.org/abs/1711.02508">Quaternion Kinematics for the Error-State Kalman Filter (2017)</a> qui recense la plupart des transformations que j&rsquo;ai pu voir).</p>
 <p>Pour ma part, je m&rsquo;oriente vers la méthode décrite dans <a href="https://www.prof-schmidt-consulting.de/pdf/jschmidt_vmv_2001.pdf">Using Quaternions for Parametrizing 3D Rotations in Unconstrained Non Linear Optimisation (2001)</a>.
 Cette méthode me semble plus intuitive que celles présentées précédemment:
-Plutôt qu&rsquo;optimiser les paramètres du quaternion pour en trouver un autre, on va optimiser les déplacements a effectuer sur l&rsquo;hyperplan tangent a la sphère unitaire contenant notre quaternion de départ, pour obtenir notre quaternion final.
+Plutôt qu&rsquo;optimiser les paramètres du quaternion pour en trouver un autre, on va optimiser les déplacements à effectuer sur l&rsquo;hyperplan tangent à la sphère unitaire contenant notre quaternion de départ, pour obtenir notre quaternion final.
 Ces déplacements sont donc linéaires, et facilement optimisables.
-J&rsquo;émets tout de mêmes certaines réserves concernant l&rsquo;optimisation de rotations éloignées les unes des autres.
-La distance sur le plan tangent est a mon avis limitant dans le cas d&rsquo;une rotation importante.</p>
+J&rsquo;émets tout de même certaines réserves concernant l&rsquo;optimisation de rotations éloignées les unes des autres.
+La distance sur le plan tangent est à mon avis limitant dans le cas d&rsquo;une rotation importante.</p>
 <p><strong>Formulation mathématique simplifié</strong></p>
 <p>Prenons notre quaternion initial \(k_0 = (k_w, k_x, k_y, k_z) \).</p>
 <p>On va calculer une base de l&rsquo;hyperplan \(M\) a partir de \(k_0\):
@@ -572,7 +572,7 @@ Les colonnes de \(M\) représentent une partie des paramètres de l&rsquo;hyperp
 $$
 M = U \sum{} V^*
 $$</p>
-<p>Nous allons maintenant choisir un vecteur \(v\) a trois dimensions, qui sera l&rsquo;entrée de notre parametrisation.
+<p>Nous allons maintenant choisir un vecteur \(v\) a trois dimensions, qui sera l&rsquo;entrée de notre paramétrisation.
 \(U\) sera une matrice \(4 * 3\).
 On peut obtenir un quaternion transformé en effectuant l&rsquo;opération
 $$
@@ -582,22 +582,22 @@ $$
 k_f = \sin{(\lVert v_4 \rVert)} * v_4 + \cos{(\lVert v_4 \rVert)} * k_0
 $$
 On peut remarquer que fixer toutes les composantes de \(v\) a 0 produira le quaternion \(k_0\).</p>
-<p>Durant l&rsquo;optimisation, nous avons simplement a transformer v en quaternion \(k_f\), et utiliser ce quaternion pour notre optimisation.</p>
+<p>Durant l&rsquo;optimisation, nous avons simplement à transformer v en quaternion \(k_f\), et utiliser ce quaternion pour notre optimisation.</p>
 <h2 id="scoring">Scoring</h2>
-<p>Pour estimer la qualité de l&rsquo;estimation de notre pose, nous devons mettre en place une série de métriques, appliqué a chaque paire de points associés.
+<p>Pour estimer la qualité de l&rsquo;estimation de notre pose, nous devons mettre en place une série de métriques, appliqué à chaque paire de points associés.
 Notre fonction d&rsquo;optimisation renvoi un vecteur de taille N, avec N le nombre de features associées.
 Pour que l&rsquo;optimisation soit terminée, les valeurs de notre vecteur doivent se rapprocher le plus possible de 0.</p>
 <p>On notera \(P_W\) notre point 3D dans l&rsquo;espace, et \(P_A\) sa feature 2D associée.</p>
 <h3 id="projection-du-point-de-référence-en-repère-caméra">Projection du point de référence en repère caméra</h3>
 <p>On va commencer par transformer notre vecteur \(v\) en quaternion avec la formule vue précédemment.
-On calcule ensuite la matrice de rotation \(R_w\) a partir de notre quaternion \(k_f\), et on transforme cette matrice en matrice de transformation world to screen, a partir de la position \(T_W\):
+On calcule ensuite la matrice de rotation \(R_w\) à partir de notre quaternion \(k_f\), et on transforme cette matrice en matrice de transformation world to screen, à partir de la position \(T_W\):
 $$
 T_s = -R_w^t * T_w
 $$
 $$
 TR_s = (R_w, T_S)
 $$
-On va ensuite projeter notre point de référence sur l&rsquo;écran, en utilisant la matrice de transformation \(RT_s\) (Matrice 4x3), qui transforme les points depuis des coordonnées 3D vers une projection 3D en espace camera \(P_c\).
+On va ensuite projeter notre point de référence sur l&rsquo;écran, en utilisant la matrice de transformation \(RT_s\) (Matrice 4x3), qui transforme les points depuis des coordonnées 3D vers une projection 3D en espace caméra \(P_c\).
 $$
 P_c = TR_s * P_W;
 $$
@@ -605,15 +605,15 @@ On notera \(d\) la composante 3 de \(P_c\).
 $$
 P_s = \frac{c_f * P_c}{d} + c_c
 $$
-Ou \(c_f\) et \(c_c\) sont des vecteurs 2D représentants respectivement la distance focale et la distance de ce point focal par rapport au centre de la camera (paramètres intrinsèques a la camera utilisée).</p>
+Ou \(c_f\) et \(c_c\) sont des vecteurs 2D représentants respectivement la distance focale et la distance de ce point focal par rapport au centre de la caméra (paramètres intrinsèques à la caméra utilisée).</p>
 <p>Notre point 2D \(P_s\) est la projection de notre point initial \(P_W\) dans le repère caméra.</p>
 <h3 id="comparaison-des-deux-features-associées">Comparaison des deux features associées</h3>
 <p>On peut ensuite comparer la distance entre \(P_s\) et \(P_A\), avec un calcul de distance.
-L&rsquo;échelle de notre variables en sortie n&rsquo;a pas vraiment d&rsquo;importance.</p>
+L&rsquo;échelle de notre variable en sortie n&rsquo;a pas vraiment d&rsquo;importance.</p>
 <p>J&rsquo;ai commencé par utiliser la distance de Manhattan, qui fourni des résultats rapides et plus que satisfaisants.
-Certains papiers proposent d&rsquo;utiliser la <a href="https://fr.wikipedia.org/wiki/Distance_de_Mahalanobis">distance de Mahalanobis</a>, bien plus robuste aux distributions variées de points, mais plus lourde a calculer.</p>
+Certains papiers proposent d&rsquo;utiliser la <a href="https://fr.wikipedia.org/wiki/Distance_de_Mahalanobis">distance de Mahalanobis</a>, bien plus robuste aux distributions variées de points, mais plus lourde à calculer.</p>
 <h3 id="pondération-des-distances">Pondération des distances</h3>
-<p>Notre étape d&rsquo;optimisation pourrait s&rsquo;arrêter la, mais on peut ajouter une pondération pour éliminer encore plus l&rsquo;influence des outliers.
+<p>Notre étape d&rsquo;optimisation pourrait s&rsquo;arrêter là, mais on peut ajouter une pondération pour éliminer encore plus l&rsquo;influence des outliers.
 On pourra utiliser un estimateur comme Huber, Cauchy, SC-DCS, ou un spécial celui comme présenté dans <a href="https://ieeexplore.ieee.org/document/7158322/">At All Costs: A Comparison of Robust Cost Functions for Camera Correspondence Outliers (2015)</a> par exemple.</p>
 <p>On pourra également relancer l&rsquo;optimisation en enlevant les points considérés comme outlier pendant la première optimisation.
 Le traitement sera plus lourd, mais l&rsquo;estimation finale sera bien meilleure.</p>
