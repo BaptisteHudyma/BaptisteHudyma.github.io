@@ -59,7 +59,7 @@
   "headline": "Construction d\u0027une lanterne compacte",
   "description" : "Tuto construction d\u0026rsquo;une lanterne compacte et solide.\n",
   "inLanguage" : "fr",
-  "wordCount":  2658 ,
+  "wordCount":  2904 ,
   "datePublished" : "2023-11-22T00:00:00",
   "dateModified" : "2023-11-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2658&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2904&nbsp;mots
   
   
   
@@ -583,9 +583,11 @@ En utilisant un chargeur 5V 4A, la sortie (si on ne considère aucunes pertes, c
 <p>Pince à dénuder : le cutter peut également servir à cette tâche, il y a 15 bouts de fils à dénuder.</p>
 </li>
 <li>
-<p>Imprimante 3D: pour les capuchons. 3 pièces à imprimer (en annexe)</p>
+<p>Imprimante 3D: pour les capuchons. 3 pièces à imprimer.</p>
 </li>
 </ul>
+<p><img src="/static/lamp_da/capuchons.jpg" alt="&ldquo;Image: capuchons à imprimer&rdquo;">
+À gauche, le guide de batteries, au centre le capuchon logo, à droite le capuchon du dessus.</p>
 <h1 id="structure-de-la-lampe">Structure de la lampe</h1>
 <p>Couper un morceau de 12.5 cm de notre tuyau 45mm.
 On va ensuite percer un trou à 2mm d&rsquo;un des bords : ça sera le côté bas de la lampe.
@@ -596,8 +598,7 @@ Une fois arrivé en haut, couper la bande au niveau des connecteurs en cuivre.
 <p>Percez 2 trous au niveau de la fin des LEDs (haut de la lampe), et y passer 2 fils électriques : ils serviront à l&rsquo;alimentation du ruban LED.
 En souder un sur le +12V, et un sur le -.
 On peut mettre un point de colle dans chaque trou (clou et fils des LEDs) pour étanchéifier tout ça.</p>
-<p><img src="/static/lamp_da/alignement_led.jpg" alt="Image: aligment des leds">
-<img src="/static/lamp_da/led_fils.jpg" alt="Image: branchement des leds"></p>
+<p><img src="/static/lamp_da/led_alignement.jpg" alt="Image: aligment des leds"></p>
 <p>Couper une section de 15 cm de gaine thermorétractable, et la passer autour du tube de notre lampe.
 En utilisant un sèche-cheveux, on peut chauffer assez cette gaine pour qu&rsquo;elle se rétracte autour du tube, jusqu&rsquo;à faire un genre de papillote.
 Couper l&rsquo;excédent le long du tube à l&rsquo;aide d&rsquo;un cutteur.</p>
@@ -645,14 +646,14 @@ Un équilibreur utilisera la charge des batteries avec la plus forte tension pou
 <h3 id="branchement">Branchement</h3>
 <p>Reliez le 0v à b0, 4v à b1, 8v à b2, 12v à b3.
 Des lumières devraient s&rsquo;allumer sur l&rsquo;équilibreur pour indiquer que la fonction équilibrage est en cours.</p>
-<p><img src="/static/lamp_da/equilibreur_batterie_1.jpg" alt="Image: fils du BMS vers équilibreur">
-<img src="/static/lamp_da/equilibreur_batterie_2.jpg" alt="Image: sécurisation des fils de l&rsquo;équilibreur">
-<img src="/static/lamp_da/equilibreur_batterie_3.jpg" alt="Image: soudage de l&rsquo;équilibreur"></p>
-<p>Laissez reposer jusqu&rsquo;à ce que les LEDs soient éteintes (attention ça chauffe pendant le premier équilibrage)</p>
+<p><img src="/static/lamp_da/equilibreur.jpg" alt="Image: branchements de l&rsquo;équilibreur"></p>
+<p>Laissez reposer jusqu&rsquo;à ce que les LEDs soient éteintes (attention ça chauffe pendant le premier équilibrage). Normalement, si les batteries ont bien été chargées, il ne devrait pas y avoir d&rsquo;équilibrage à faire.</p>
+<p>J&rsquo;ai évidemment ajouté de l&rsquo;isolant entre le BMS et les fils, et j&rsquo;ai évité de croiser les fils au-dessus du BMS.
+En cas de chauffe importante, on préfère éviter que le plastique d&rsquo;un fil fonde et aille provoquer un court-circuit !</p>
 <p>Une fois l&rsquo;équilibreur installé, on peut scotcher la batterie pour éviter tout contact ne passant pas par le BMS.
 Il ne devrait rester que les deux fils GND et 12V en sortie.
 <img src="/static/lamp_da/batterie_finie.jpg" alt="Image: batterie assemblée"></p>
-<p>Et la, on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts-circuits, et autres mauvaises utilisations.</p>
+<p>Et là, on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts-circuits, et autres mauvaises utilisations.</p>
 <h1 id="contrôleur-de-luminosité">Contrôleur de luminosité</h1>
 <p>Relier le - de notre batterie au V- du contrôleur PWM.
 Relier le + de notre BMS au V+ du contrôleur PWM.
@@ -670,9 +671,26 @@ La LED devrait être éteinte, puis luminosité devrait passer de 5 à 100% en t
 Une LED (bleue ?) devrait s&rsquo;allumer, elle indique que la charge est terminée.</p>
 <p>Dessouder les LEDs d&rsquo;indication déjà présente sur le chargeur et souder notre LED bicolore à la place, en suivant le code couleur de la photo.</p>
 <p><img src="/static/lamp_da/chargeur_soud%C3%A9.jpg" alt="Image: Chargeur soudé"></p>
-<p>Souder les fils du connecteur USB-C a l&rsquo;entrée du chargeur.</p>
+<ul>
+<li>
+<p>Le fil blanc est le - du système, plus tard branché à la batterie et au contrôleur PWM. Il sert aussi de - à la LED bicouleur.</p>
+</li>
+<li>
+<p>Le fil orange est le 12V+, branché aux batteries et au contrôleur PWM.</p>
+</li>
+<li>
+<p>Le fil vert est branché au côté vert de la LED bicouleur.</p>
+</li>
+<li>
+<p>Le fil vert est branché au côté rouge de la LED bicouleur.</p>
+</li>
+<li>
+<p>Le fil rouge du connecteur USB-C se branche sur le Vin du chargeur et le fil noir sur le GND.</p>
+</li>
+</ul>
+<p>LES BATTERIES DOIVENT ÊTRE SOUDÉES EN DERNIER.</p>
 <h1 id="finalisation">Finalisation</h1>
-<p>Souder le GND du chargeur à la borne 0V du BMS, et le BAT+ au 12v du BMS.
+<p>Souder le GND du chargeur à la borne 0V du BMS, et le BAT au 12v du BMS.
 Brancher le chargeur et vérifiez que les batteries rechargent. Les LEDs d&rsquo;indication sur le chargeur indiqueront le bon fonctionnement de tout ça.</p>
 <p>Vu que les batteries sont déjà chargées, la charge s&rsquo;arrêtera au bout de quelques secondes.</p>
 <p><img src="/static/lamp_da/resultat_desassemble.jpg" alt="Image: Lampe prête a l&rsquo;assemblage"></p>
@@ -712,8 +730,12 @@ J&rsquo;ai choisi d&rsquo;utiliser un chargeur 5V plutôt qu&rsquo;un compatible
 <li>Le chargeur n&rsquo;accepte que du 5V, donc pas de chargeur de téléphone classique</li>
 <li>Lors de la charge, le composant de charge devient brûlant au touché. Et il est très proche des batteries.</li>
 </ul>
-<p>Les Li-ion ne sont pas fan de chaleur, surtout pendant la durée du temps de charge.
-Il est très facile d&rsquo;adapter le système pour utiliser un chargeur compatible fast charge, au détriment de l&rsquo;étanchéité, bonne chance !</p>
+<p>Les Li-ion ne sont pas fan de chaleur, surtout pendant la durée du temps de charge.</p>
+<p>Lors de la charge, la LED verte s&rsquo;allume, puis elle fait place à la rouge quand la charge est terminée.
+Si la LED verte ou rouge clignote, c&rsquo;est que le chargeur utilisé n&rsquo;a pas le réglage 5V, ou la puissance nécessaire.
+Lors de la charge, le corps de la lampe doit être chaud au touché, si ça n&rsquo;est pas le cas, c&rsquo;est que le chargeur ne fonctionne pas correctement.
+Ca peut être un problème de câble de charge, ou de chargeur, ou dans le pire des cas de composant de la lampe.</p>
+<p>Il est très facile d&rsquo;adapter le système pour utiliser un chargeur compatible fast charge, au détriment de l&rsquo;étanchéité, bonne chance !</p>
 
         
           <div class="blog-tags">
