@@ -59,7 +59,7 @@
   "headline": "Construction d\u0027une lanterne compacte",
   "description" : "Tuto construction d\u0026rsquo;une lanterne compacte et solide.\n",
   "inLanguage" : "fr",
-  "wordCount":  2904 ,
+  "wordCount":  3187 ,
   "datePublished" : "2023-11-22T00:00:00",
   "dateModified" : "2023-11-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2904&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3187&nbsp;mots
   
   
   
@@ -488,7 +488,7 @@ if (!doNotTrack) {
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
       <article role="main" class="blog-post">
         <p>Tuto construction d&rsquo;une lanterne compacte et solide.</p>
-<p><img src="/static/lamp_da/lampes.jpg" alt="Image: Lampe en utilisation"></p>
+<p><img src="/static/lamp_da/lampe_demo.jpg" alt="Image: Lampe en utilisation"></p>
 <details><summary>D&rsquo;où ça vient cette idée (cliquer pour étendre)</summary>
 <p>Il y a quelques années, alors que je parcourais des couloirs obscurs, équipé de ma frontale Décathlon à 10 euros, j&rsquo;ai croisé un gars sympa avec une grosse lanterne couleur bougie.
 Fait maison qu&rsquo;il a dit ! (dédicace à mon Michel)</p>
@@ -536,13 +536,14 @@ Nos LED consomment 12V, on peut donc calculer la consommation instantanée du ru
 10.5Ah / 2A =&gt; 5h d&rsquo;utilisation à fond.</p>
 <p>À noter que la tension des batteries descend lentement de 12V à 9V</p>
 <p>On peut également calculer le temps de charge.
-En utilisant un chargeur 5V 4A, la sortie (si on ne considère aucunes pertes, ce qui est une très très faux) sera a :
-5V * 4A =&gt; 12W
-12W / 12V =&gt; 1A</p>
-<p>Donc 12V 1A en sortie.</p>
+J&rsquo;utilise un module chargeur 5V 4A, la sortie (si on ne considère aucunes pertes, ce qui est une très très faux) sera a :
+5V * 4A =&gt; 20W
+20W / 12V =&gt; 1.66A</p>
+<p>Donc 12V 1.66A en sortie.</p>
+<p>A noter que ce calcul est pour le chargeur dans la lampe, le chargeur USB-C que vous utiliserez aura certainement une puissance différente.</p>
 <p>Pour charger nos batteries complément vides, on prendra alors :
-10.5Ah / 1A =&gt; 10.5h</p>
-<p>10.5 heures de charges ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe, souvent moins long)</p>
+10.5Ah / 1.66A =&gt; 6.3h</p>
+<p>6.3 heures de charges ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe, souvent moins long)</p>
 
 </details>
 
@@ -655,6 +656,22 @@ Il ne devrait rester que les deux fils GND et 12V en sortie.
 <img src="/static/lamp_da/batterie_finie.jpg" alt="Image: batterie assemblée"></p>
 <p>Et là, on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts-circuits, et autres mauvaises utilisations.</p>
 <h1 id="contrôleur-de-luminosité">Contrôleur de luminosité</h1>
+<p><img src="/static/lamp_da/pwm.jpg" alt="Image: choisir son controller">
+Sur l&rsquo;image ci-dessus, les deux contrôleurs PWM que j&rsquo;ai testé.
+Celui de gauche est celui que j&rsquo;ai fini par utiliser sur toutes les lampes avec le chargeur présenté sur cette page, celui de droite est celui que j&rsquo;utilise avec les chargeurs fast charge.</p>
+<p>À gauche :</p>
+<ul>
+<li>12V 5A max</li>
+<li>Sur les 35 que j&rsquo;ai commandé, 5 d&rsquo;entre eux ne fonctionnaient simplement pas et un a explosé. Le reste fonctionne parfaitement.</li>
+<li>Le gros condensateur vert sert à démarrer une charge qui a un pic de consommation au démarrage. A cause de lui, certains chargeurs se mettent en mode erreur au moment de charger les batteries. Les LEDs ont un petit pic de consommation, il devrait être possible de changer ce composant par un plus petit.</li>
+</ul>
+<p>À droite :</p>
+<ul>
+<li>12V 2A max</li>
+<li>Produit un très bref (10-100ms) flash lumineux à 100% de puissance quand on l&rsquo;allume. Je trouve ça désagréable</li>
+<li>Fonctionne sans faille avec tous les chargeurs que j&rsquo;ai pu tester.</li>
+</ul>
+<p><strong>Le capuchon est designé pour le contrôleur de gauche</strong>.</p>
 <p>Relier le - de notre batterie au V- du contrôleur PWM.
 Relier le + de notre BMS au V+ du contrôleur PWM.
 Il peut y avoir une petite étincelle en fonction du type de contrôleur PWM.</p>
@@ -691,7 +708,7 @@ Une LED (bleue ?) devrait s&rsquo;allumer, elle indique que la charge est termin
 <p>LES BATTERIES DOIVENT ÊTRE SOUDÉES EN DERNIER.</p>
 <h1 id="finalisation">Finalisation</h1>
 <p>Souder le GND du chargeur à la borne 0V du BMS, et le BAT au 12v du BMS.
-Brancher le chargeur et vérifiez que les batteries rechargent. Les LEDs d&rsquo;indication sur le chargeur indiqueront le bon fonctionnement de tout ça.</p>
+Brancher le chargeur et vérifiez que les batteries rechargent. La LED d&rsquo;indication sur le chargeur indique le bon fonctionnement de tout ça.</p>
 <p>Vu que les batteries sont déjà chargées, la charge s&rsquo;arrêtera au bout de quelques secondes.</p>
 <p><img src="/static/lamp_da/resultat_desassemble.jpg" alt="Image: Lampe prête a l&rsquo;assemblage"></p>
 <p>Insérez la batterie dans le tube de lampe, et bien la caler dans le guide de batterie.
@@ -699,6 +716,7 @@ Brancher le chargeur et vérifiez que les batteries rechargent. Les LEDs d&rsquo
 J&rsquo;ai déjà fait l&rsquo;erreur et le PVC ça brûle très bien.</p>
 <p>Une fois le pack calé, on peut presser le chargeur contre, et fermer le capuchon de lampe.
 Le capuchon a un sens d&rsquo;insertion : les fils du bandeau de LED doivent passer dans l&rsquo;encoche du capuchon sinon elle ne fermera pas.</p>
+<p><img src="/static/lamp_da/alignement_capuchon.jpg" alt="Image: sens d&rsquo;insertion du capuchon supérieur"></p>
 <p>Dans un premier temps, je ne le colle pas, et emmène la lampe faire 2 ou 3 balades + 2 ou 3 recharges pour être sûr que tout fonctionne comme prévu.
 Quand on est absolument certains que tout fonctionne, on peut coller le capuchon, en étalant de la colle tout autour du tube et en maintenant le capuchon le temps que ça sèche.</p>
 <p><img src="/static/lamp_da/resultat.jpg" alt="Image: Lampe finale !"></p>
@@ -720,9 +738,10 @@ Il faudra revenir dans inkscape corriger ça : c&rsquo;est souvent due à des no
 <p>Une fois le logo correctement transformé en solide, on applique une modification boolean sur le cul de lampe. On veut spécifiquement un boolean négation.
 Le logo doit être enfoncé dans la surface de 1mm ou moins, ou risque de dépasser sous la pièce.
 Apply puis supprimer le logo extrudé.</p>
-<p><img src="/static/lamp_da/logo_sur_cul.jpg" alt="Image: Logo sur cul de lampe"></p>
 <p>Exporter le résultat en stl.</p>
 <p>Imprimer avec votre matos !</p>
+<p><img src="/static/lamp_da/logo_sur_cul.jpg" alt="Image: Logo sur cul de lampe">
+(Oui, elle a pas mal servi cette lampe)</p>
 <h1 id="points-faibles">Points faibles</h1>
 <p>Le seul gros point faible de ce système est son chargeur.
 J&rsquo;ai choisi d&rsquo;utiliser un chargeur 5V plutôt qu&rsquo;un compatible fast charge afin de rendre le tout étanche, mais on se retrouve avec quelques problèmes :</p>
@@ -734,8 +753,13 @@ J&rsquo;ai choisi d&rsquo;utiliser un chargeur 5V plutôt qu&rsquo;un compatible
 <p>Lors de la charge, la LED verte s&rsquo;allume, puis elle fait place à la rouge quand la charge est terminée.
 Si la LED verte ou rouge clignote, c&rsquo;est que le chargeur utilisé n&rsquo;a pas le réglage 5V, ou la puissance nécessaire.
 Lors de la charge, le corps de la lampe doit être chaud au touché, si ça n&rsquo;est pas le cas, c&rsquo;est que le chargeur ne fonctionne pas correctement.
-Ca peut être un problème de câble de charge, ou de chargeur, ou dans le pire des cas de composant de la lampe.</p>
+Ça peut être un problème de câble de charge, ou de chargeur, ou dans le pire des cas de composant de la lampe.</p>
 <p>Il est très facile d&rsquo;adapter le système pour utiliser un chargeur compatible fast charge, au détriment de l&rsquo;étanchéité, bonne chance !</p>
+<p>La lampe a également une faiblesse (vu une fois), ou lors d&rsquo;une chute, elle tombe verticalement sur le potentiomètre du contrôleur PWM, et casse l&rsquo;axe.
+La lampe fonctionne toujours, mais il n&rsquo;y a plus de régulation de luminosité (on passe d&rsquo;éteinte à 100% de luminosité).</p>
+<p>Lors de l&rsquo;utilisation, la luminosité maximum descend progressivement avec le niveau de batterie, jusqu&rsquo;au minimum.
+Les utilisateurs m&rsquo;ont dit que c&rsquo;était plutôt positif, car ça permet de vérifier le niveau de batterie.
+Ça reste un défaut à mon avis.</p>
 
         
           <div class="blog-tags">
