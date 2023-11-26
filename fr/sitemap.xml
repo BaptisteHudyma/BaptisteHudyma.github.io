@@ -4,12 +4,42 @@
   <url>
     <loc>https://BaptisteHudyma.github.io/tags/3d-print/</loc>
     <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/3d-print/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/3d-print/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/lamp-da/</loc>
     <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/lamp-da/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/lamp-da/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/design/</loc>
     <lastmod>2023-11-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/design/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/design/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/electronic/</loc>
     <lastmod>2023-11-22T00:00:00+00:00</lastmod>
@@ -120,21 +150,81 @@
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/slam_2/</loc>
     <lastmod>2021-10-13T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/slam_2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/slam_2/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/slam_1/</loc>
     <lastmod>2021-10-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/slam_1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/slam_1/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/ia/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/ia/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/ia/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/optimisation/</loc>
     <lastmod>2021-05-04T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/tags/optimisation/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/tags/optimisation/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/</loc>
     <lastmod>2021-04-22T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/computer-vision/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
@@ -216,6 +306,16 @@
   </url><url>
     <loc>https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/</loc>
     <lastmod>2021-01-11T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="fr"
+                href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/"
+                />
   </url><url>
     <loc>https://BaptisteHudyma.github.io/tags/ppc/</loc>
     <lastmod>2020-12-28T00:00:00+00:00</lastmod>

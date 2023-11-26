@@ -17,5 +17,14 @@
       <guid>https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/</guid>
       <description>&lt;p&gt;In this post, I implement a real time depth map segmentation system, based on normal map analysis.&lt;/p&gt;</description>
     </item>
+    <item>
+      <title>De CAPE et d&#39;Opés</title>
+      <link>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</link>
+      <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</guid>
+      <description>&lt;p&gt;Certainly! Here is the translation:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; is an extremely efficient method for extracting planes and cylinders in RGB-D images, based on an AHC (Agglomerative Hierarchical Clustering) method. Despite the effectiveness of this method, the C++ implementation of the paper has many flaws.&lt;/p&gt;
+&lt;p&gt;In this post, I will explain how I fixed most of these issues.&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

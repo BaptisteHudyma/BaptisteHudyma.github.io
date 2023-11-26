@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IA on HUB Logs</title>
+    <link>https://BaptisteHudyma.github.io/en/tags/ia/</link>
+    <description>Recent content in IA on HUB Logs</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
+    <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
+    <lastBuildDate>Tue, 04 May 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://BaptisteHudyma.github.io/en/tags/ia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploration of Possibilities - Part 2</title>
+      <link>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/</link>
+      <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/</guid>
+      <description>&lt;h3 id=&#34;part-2-improvements-and-more-blabla&#34;&gt;Part 2: Improvements and More Blabla!&lt;/h3&gt;
+&lt;p&gt;We left off with the construction of a basic search tree structure using a possibility-based search with a balance of exploration, score, and chance (MCTS: Monte Carlo Tree Search). In this second part, I will introduce the improvements I found for the basic method.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/</link>
+      <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
+      <guid>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/</guid>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Part 1: Blabla and Implementation&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m terrible at chess, checkers, get rolled over in Connect 4 – in short, board games are not my strong suit. However, I do fairly well in programming.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
