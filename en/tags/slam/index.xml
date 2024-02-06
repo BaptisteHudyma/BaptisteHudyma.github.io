@@ -15,17 +15,14 @@
       <link>https://BaptisteHudyma.github.io/en/post/slam_1/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/post/slam_1/</guid>
-      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Part 1: Introduction &amp;amp; Feature Detection&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Some people claim to have a poor sense of direction. They might compare themselves to a robot and feel much better.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Part 1: Introduction &amp;amp; Feature Detection&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Some people claim to have a poor sense of direction. They might compare themselves to a robot and feel much better.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 2</title>
       <link>https://BaptisteHudyma.github.io/en/post/slam_2/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/post/slam_2/</guid>
-      <description>Part 2: Pose Optimization Once our features are detected and associated, we aim to estimate the movement between the two observations.
-After Part 1, which focused on feature detection and association, we now delve into estimating our position and orientation over time.
-Choosing the Pose Model to Optimize A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).</description>
+      <description>Part 2: Pose Optimization Once our features are detected and associated, we aim to estimate the movement between the two observations.&#xA;After Part 1, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&#xA;Choosing the Pose Model to Optimize A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).</description>
     </item>
     <item>
       <title>CP SLAM</title>

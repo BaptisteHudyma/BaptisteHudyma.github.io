@@ -15,17 +15,14 @@
       <link>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/</link>
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/</guid>
-      <description>&lt;h3 id=&#34;part-2-improvements-and-more-blabla&#34;&gt;Part 2: Improvements and More Blabla!&lt;/h3&gt;
-&lt;p&gt;We left off with the construction of a basic search tree structure using a possibility-based search with a balance of exploration, score, and chance (MCTS: Monte Carlo Tree Search). In this second part, I will introduce the improvements I found for the basic method.&lt;/p&gt;</description>
+      <description>&lt;h3 id=&#34;part-2-improvements-and-more-blabla&#34;&gt;Part 2: Improvements and More Blabla!&lt;/h3&gt;&#xA;&lt;p&gt;We left off with the construction of a basic search tree structure using a possibility-based search with a balance of exploration, score, and chance (MCTS: Monte Carlo Tree Search). In this second part, I will introduce the improvements I found for the basic method.&lt;/p&gt;</description>
     </item>
     <item>
       <title>De CAPE et d&#39;Opés</title>
       <link>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</guid>
-      <description>&lt;p&gt;Certainly! Here is the translation:&lt;/p&gt;
-&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; is an extremely efficient method for extracting planes and cylinders in RGB-D images, based on an AHC (Agglomerative Hierarchical Clustering) method. Despite the effectiveness of this method, the C++ implementation of the paper has many flaws.&lt;/p&gt;
-&lt;p&gt;In this post, I will explain how I fixed most of these issues.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Certainly! Here is the translation:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; is an extremely efficient method for extracting planes and cylinders in RGB-D images, based on an AHC (Agglomerative Hierarchical Clustering) method. Despite the effectiveness of this method, the C++ implementation of the paper has many flaws.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will explain how I fixed most of these issues.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

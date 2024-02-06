@@ -22,8 +22,7 @@
       <link>https://BaptisteHudyma.github.io/post/monocular_depth_map/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monocular_depth_map/</guid>
-      <description>&lt;p&gt;Utiliser un flux vidéo issu d&amp;rsquo;une seule caméra pour estimer la profondeur des objets dans l&amp;rsquo;image.
-Un petit plongeon dans le monde de la géométrie épipolaire et de l&amp;rsquo;analyse des points d&amp;rsquo;intérêts.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Utiliser un flux vidéo issu d&amp;rsquo;une seule caméra pour estimer la profondeur des objets dans l&amp;rsquo;image.&#xA;Un petit plongeon dans le monde de la géométrie épipolaire et de l&amp;rsquo;analyse des points d&amp;rsquo;intérêts.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

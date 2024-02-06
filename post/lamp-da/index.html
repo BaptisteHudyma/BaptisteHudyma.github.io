@@ -59,7 +59,7 @@
   "headline": "Construction d\u0027une lanterne compacte",
   "description" : "Tuto construction d\u0026rsquo;une lanterne compacte et solide.\n",
   "inLanguage" : "fr",
-  "wordCount":  3216 ,
+  "wordCount":  3614 ,
   "datePublished" : "2023-11-22T00:00:00",
   "dateModified" : "2023-11-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.120.1">
+  <meta name="generator" content="Hugo 0.121.2">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -99,7 +99,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3216&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3614&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/lamp-da/" lang="en">en</a>
@@ -507,7 +507,7 @@ La V0 est le résultat de 6 ou 7 itérations de construction, ou diverses améli
 <h2 id="électronique">Électronique</h2>
 <ul>
 <li>bande de LED 12v, couleur 2800k: 2 mètres. Type COB pour un rendu unique et agréable à l&rsquo;œil.</li>
-<li>3 batteries li-ion 18650. Prendre le max de mAH possible (5000mAH pour ce genre de batteries). J&rsquo;utilise des 3500mAh</li>
+<li>3 batteries li-ion 18650. Prendre le max de mAH possible (5000mAH pour ce genre de batteries). J&rsquo;utilise des 3500mAh (référence exacte : LG INR18650-M36 3450mAh - 5A)</li>
 <li>BMS li-ion 3S: prendre format triangle, au moins 2A de courant de décharge</li>
 <li>chargeur li ion 3S 12v: de préférence, utiliser chargeur compatible fast charge, ça n&rsquo;est pas le cas de celui présenté ici. Ici, j&rsquo;utilise un chargeur Li-ion 3S 4 ampères.</li>
 <li>Contrôleur PWM. Courant de sortie 2A minimum.</li>
@@ -521,11 +521,16 @@ La V0 est le résultat de 6 ou 7 itérations de construction, ou diverses améli
 <p>On utilise trois batteries en série.
 Pour obtenir la puissance totale stockée dans la batterie, on peut multiplier par 3 la puissance d&rsquo;une batterie.
 3500mAh * 3 =&gt; 10500mAh =&gt; 10.5Ah</p>
+<p>Ça signifie que notre batterie peut alimenter quelque chose de 10.5A (c&rsquo;est énorme) pendant 1H, ou quelque chose de plus petit pendant plus longtemps.
+Par exemple si on veut alimenter quelque chose durant 20h, cette chose devra consommer moins que 10.5Ah / 20h -&gt; 0.525A (cad: 525mA).</p>
 <p>(A titre de comparaison, la batterie de l&rsquo;iPhone 15 est à peu près 3000mAh. Ma petite lampe contient 3.5x plus de puissance)</p>
 <p>Les batteries ont également un courant de décharge maximum, indiqué lors de l&rsquo;achat.
 Ce courant doit être supérieur à la consommation maximum du système !
-Ici, j&rsquo;ai des batteries 2A, donc en sortie ma batterie peut sortir 3*2A = 6A de puissance max.
-Il faut alors prendre un BMS qui protège de tensions plus élevées (8A annoncés dans mon cas, mais c&rsquo;est du AliExpress, rien n&rsquo;est sûr).
+Ici, j&rsquo;ai des batteries 5A, donc en sortie ma batterie totale peut sortir 5A de puissance max (les Ampères ne s&rsquo;additionnent pas en série).</p>
+<p>Il faut juste prendre un BMS qui supporte moins que ce que peuvent fournir nos batteries afin de les protéger (ici 5A), mais plus que ce que notre système consomme au maximum (2A, calculé plus tard) pour être capable de l&rsquo;alimenter.
+On pensera à choisir des batteries qui ont (individuellement) un courant de décharge max supérieur a la consommation de notre système.</p>
+<p>Il faut alors prendre un BMS sont la valeur de protection en Ampères est en dessous de 5A (puissance batteries) et au-dessus de 2A (conso du système).
+Celui que j&rsquo;ai sélectionné annonce 4A, mais c&rsquo;est du AliExpress, méfiance sur les specs.
 On peut aussi choisir un BMS adapté à la puissance de sortie maximum de notre système (2A comme calculé juste après).</p>
 <p>On peut aussi calculer la consommation du système. Il nous faut pour ça la consommation des LED.
 Elle est souvent donnée en Watt/mètres (12W/m pour les miennes)
@@ -534,16 +539,16 @@ Nos LED consomment 12V, on peut donc calculer la consommation instantanée du ru
 <p>On utilise 2 mètres de LED, on va en conséquence consommer 1A/m * 2m =&gt; 2A pour notre ruban entier.</p>
 <p>Ok, on a maintenant la conso max et la puissance des batteries, on peut calculer la durée d&rsquo;utilisation max :
 10.5Ah / 2A =&gt; 5h d&rsquo;utilisation à fond.</p>
-<p>À noter que la tension des batteries descend lentement de 12V à 9V</p>
+<p>À noter que la tension des batteries descend lentement de 12V à 9V.</p>
 <p>On peut également calculer le temps de charge.
 J&rsquo;utilise un module chargeur 5V 4A, la sortie (si on ne considère aucunes pertes, ce qui est une très très faux) sera a :
 5V * 4A =&gt; 20W
 20W / 12V =&gt; 1.66A</p>
 <p>Donc 12V 1.66A en sortie.</p>
-<p>A noter que ce calcul est pour le chargeur dans la lampe, le chargeur USB-C que vous utiliserez aura certainement une puissance différente.</p>
+<p>À noter que ce calcul est pour le chargeur dans la lampe, le chargeur USB-C que vous utiliserez aura certainement une puissance différente.</p>
 <p>Pour charger nos batteries complément vides, on prendra alors :
 10.5Ah / 1.66A =&gt; 6.3h</p>
-<p>6.3 heures de charges ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe, souvent moins long)</p>
+<p>6.3 heures de temps de charge ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe, souvent moins long)</p>
 
 </details>
 
@@ -551,7 +556,7 @@ J&rsquo;utilise un module chargeur 5V 4A, la sortie (si on ne considère aucunes
 <ul>
 <li>Tube diamètre 45mm: rare, mais trouvable en PVC sur des sites spécialisés en isolation Télécom (commande minimum 6m) : besoin de 125 mm de long. Le tube de 45 permet de mettre exactement 3 batteries 18650 côtes à côtes, avec très peu de jeux.</li>
 <li>Clou de 50mm de long avec tête large (ou clou de 45 avec tête conique).</li>
-<li>Gaine thermoretractable transparente, diamètre 50mm, au moins 15cm.</li>
+<li>Gaine thermorétractable transparente, diamètre 50mm, au moins 15cm de longueur pour couvrir la lampe. On aura aussi besoin de gaine thermo plus petite pour protèger les soudures.</li>
 <li>Paracorde 2mm de diamètre, 30cm</li>
 <li>Super glue : à mettre partout ou deux pièces sont censées ne plus bouger. Il faut en abuser le plus possible.</li>
 <li>Isolant pour batteries : matière papier/carton avec coté collant, servant à isoler les batteries l&rsquo;une de l&rsquo;autre.</li>
@@ -592,6 +597,7 @@ J&rsquo;utilise un module chargeur 5V 4A, la sortie (si on ne considère aucunes
 </ul>
 <p><img src="/static/lamp_da/capuchons.jpg" alt="&ldquo;Image: capuchons à imprimer&rdquo;">
 À gauche, le guide de batteries, au centre le capuchon logo, à droite le capuchon du dessus.</p>
+<p><a href="/static/files/lampda_prints.zip">&ldquo;Print files (stl)&rdquo;</a></p>
 <h1 id="structure-de-la-lampe">Structure de la lampe</h1>
 <p>Couper un morceau de 12.5 cm de notre tuyau 45mm.
 On va ensuite percer un trou à 2mm d&rsquo;un des bords : ça sera le côté bas de la lampe.
@@ -631,7 +637,7 @@ Allez, c&rsquo;est dit, bonne chance :</p>
 <p>Les batteries Li-ion sont à 4.2V en tension maximum, et 2.9V en tension minimum.
 Si vos batteries sont en dehors de ces tensions, il y a un grooooooos problème, ne pas les utiliser.
 Entourer chaque batterie d&rsquo;isolant (le scotch est suffisant), et ajouter un cercle isolant sur le positif.</p>
-<p><img src="/static/lamp_da/batteries_isol%C3%A9es.jpg" alt="Images: batteries isolées"></p>
+<p><img src="/static/lamp_da/batteries_isolees.jpg" alt="Image: batteries isolées"></p>
 <p>Commencer par charger les 3 batteries avec un chargeur adapté (chargeur Li-ion 18650).
 Souder les batteries en série en utilisant la configuration triangle suivante :</p>
 <p><img src="/static/lamp_da/batteries_serie_triangle.jpg" alt="Image: batteries en série"></p>
@@ -658,7 +664,7 @@ En cas de chauffe importante, on préfère éviter que le plastique d&rsquo;un f
 <p>Une fois l&rsquo;équilibreur installé, on peut scotcher la batterie pour éviter tout contact ne passant pas par le BMS.
 Il ne devrait rester que les deux fils GND et 12V en sortie.
 <img src="/static/lamp_da/batterie_finie.jpg" alt="Image: batterie assemblée"></p>
-<p>Et là, on repasse en zone sécurité, la batterie est normalement protégée contre les surcharges, décharges profondes, courts-circuits, et autres mauvaises utilisations.</p>
+<p>Et là, on repasse en zone sécurité, la batterie est convenablement protégée contre les surcharges, décharges profondes, courts-circuits, et autres mauvaises utilisations.</p>
 <h1 id="contrôleur-de-luminosité">Contrôleur de luminosité</h1>
 <p><img src="/static/lamp_da/pwm.jpg" alt="Image: choisir son controller">
 Sur l&rsquo;image ci-dessus, les deux contrôleurs PWM que j&rsquo;ai testé.
@@ -690,7 +696,8 @@ La LED devrait être éteinte, puis luminosité devrait passer de 5 à 100% en t
 <h1 id="ajout-du-chargeur">Ajout du chargeur</h1>
 <p>Il faut commencer par tester le chargeur sans batteries connectées : la tension de sortie devrait être entrée 12v et 14v (pas forcément stable).
 Une LED (bleue ?) devrait s&rsquo;allumer, elle indique que la charge est terminée.</p>
-<p>Dessouder les LEDs d&rsquo;indication déjà présente sur le chargeur et souder notre LED bicolore à la place, en suivant le code couleur de la photo.</p>
+<p>Dessouder les LEDs d&rsquo;indication déjà présente sur le chargeur et souder notre LED bicolore à la place, en suivant le code couleur de la photo.
+Si on utilise les tubes de 45mm, on va devoir couper les coins inférieurs de la carte (voir sur la photo, coté Bat et GND) pour que le chargeur rentre a plat dans le tube.</p>
 <p><img src="/static/lamp_da/chargeur_soud%C3%A9.jpg" alt="Image: Chargeur soudé"></p>
 <ul>
 <li>
@@ -745,6 +752,7 @@ Apply puis supprimer le logo extrudé.</p>
 <p>Exporter le résultat en stl.</p>
 <p>Imprimer avec votre matos !</p>
 <h1 id="points-faibles">Points faibles</h1>
+<h2 id="chargeur-mal-adapté">Chargeur mal adapté</h2>
 <p>Le seul gros point faible de ce système est son chargeur.
 J&rsquo;ai choisi d&rsquo;utiliser un chargeur 5V plutôt qu&rsquo;un compatible fast charge afin de rendre le tout étanche, mais on se retrouve avec quelques problèmes :</p>
 <ul>
@@ -757,11 +765,21 @@ Si la LED verte ou rouge clignote, c&rsquo;est que le chargeur utilisé n&rsquo;
 Lors de la charge, le corps de la lampe doit être chaud au touché, si ça n&rsquo;est pas le cas, c&rsquo;est que le chargeur ne fonctionne pas correctement.
 Ça peut être un problème de câble de charge, ou de chargeur, ou dans le pire des cas de composant de la lampe.</p>
 <p>Il est très facile d&rsquo;adapter le système pour utiliser un chargeur compatible fast charge, au détriment de l&rsquo;étanchéité, bonne chance !</p>
+<h2 id="faiblesse-structurelle-dans-un-sens">Faiblesse structurelle dans un sens</h2>
 <p>La lampe a également une faiblesse (vu une fois), ou lors d&rsquo;une chute, elle tombe verticalement sur le potentiomètre du contrôleur PWM, et casse l&rsquo;axe.
-La lampe fonctionne toujours, mais il n&rsquo;y a plus de régulation de luminosité (on passe d&rsquo;éteinte à 100% de luminosité).</p>
+La lampe fonctionne toujours, mais il n&rsquo;y a plus de régulation de luminosité (on passe d&rsquo;éteinte à 100% de luminosité).
+99% du temps, le plastique du capuchon se détachera sans que l&rsquo;axe casse, il suffit alors de recoller le plastique. Facile !</p>
+<h2 id="baisse-de-luminosité-lors-de-lutilisation">Baisse de luminosité lors de l&rsquo;utilisation</h2>
 <p>Lors de l&rsquo;utilisation, la luminosité maximum descend progressivement avec le niveau de batterie, jusqu&rsquo;au minimum.
-Les utilisateurs m&rsquo;ont dit que c&rsquo;était plutôt positif, car ça permet de vérifier le niveau de batterie.
+Les utilisateurs m&rsquo;ont dit que c&rsquo;était plutôt positif, car ça permet de vérifier le niveau de batterie, et ça n&rsquo;est pas gênant.
 Ça reste un défaut à mon avis.</p>
+<h2 id="limite-de-sous-charge-gérée-par-bms">Limite de sous charge gérée par BMS</h2>
+<p>Un autre défaut de conception assez mineur : si la batterie se vide sous la limite de sécurité (3V), le BMS va couper la lampe (ça, c&rsquo;est plutôt cool, c&rsquo;est son job).
+Le souci, c&rsquo;est que la batterie est alors en état critique de décharge, et doit être rechargée rapidement, sinon elle va commencer à se dégrader.
+En pratique, la lampe éclaire si peu dans les derniers 5% de batterie qu&rsquo;on est obligé de la recharger à ce moment, avant que la batterie soit en état critique, donc ça n&rsquo;est pas un vrai problème.
+On peut même argumenter qu&rsquo;elle devrait rester en état jusqu&rsquo;à 2.8V, et qu&rsquo;on a alors du temps avant de la charger, même après mise en sécurité.</p>
+<p>Idéalement, la lampe devrait se couper vers 3.2V pour garantir que la batterie gardera de la charge jusqu&rsquo;à être branchée.</p>
+<p>Merci d&rsquo;avoir suivi jusqu&rsquo;ici, bonne chance dans vos explorations obscures !</p>
 
         
           <div class="blog-tags">
@@ -951,7 +969,7 @@ Les utilisateurs m&rsquo;ont dit que c&rsquo;était plutôt positif, car ça per
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.120.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.121.2</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

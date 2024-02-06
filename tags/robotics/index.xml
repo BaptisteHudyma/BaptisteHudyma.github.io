@@ -15,16 +15,14 @@
       <link>https://BaptisteHudyma.github.io/post/slam_2/</link>
       <pubDate>Wed, 13 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/slam_2/</guid>
-      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2 : Optimisation de pose&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Une fois nos features détectées et associées, on va chercher à estimer le mouvement effectué entre les deux observations.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2 : Optimisation de pose&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Une fois nos features détectées et associées, on va chercher à estimer le mouvement effectué entre les deux observations.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 1</title>
       <link>https://BaptisteHudyma.github.io/post/slam_1/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/slam_1/</guid>
-      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 1: Introduction &amp;amp; detection de features&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Certaines personnes racontent qu&amp;rsquo;ils ont un mauvais sens de l&amp;rsquo;orientation. Ils peuvent se comparer à un robot et se sentir bien meilleurs.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 1: Introduction &amp;amp; detection de features&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Certaines personnes racontent qu&amp;rsquo;ils ont un mauvais sens de l&amp;rsquo;orientation. Ils peuvent se comparer à un robot et se sentir bien meilleurs.&lt;/p&gt;</description>
     </item>
     <item>
       <title>PPC SLAM</title>

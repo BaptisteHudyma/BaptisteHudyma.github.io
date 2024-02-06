@@ -59,7 +59,7 @@
   "headline": "Building a Compact Lantern",
   "description" : "Tutorial on building a compact and sturdy lantern.\n",
   "inLanguage" : "en",
-  "wordCount":  2973 ,
+  "wordCount":  3331 ,
   "datePublished" : "2023-11-22T00:00:00",
   "dateModified" : "2023-11-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.120.1">
+  <meta name="generator" content="Hugo 0.121.2">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/en/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -99,7 +99,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
-<script type="application/javascript">
+<script>
 var doNotTrack = false;
 if (!doNotTrack) {
 	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2973&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3331&nbsp;words
   
   
   &nbsp;&bull;&nbsp;Other languages: <a href="https://BaptisteHudyma.github.io/post/lamp-da/" lang="fr">fr</a>
@@ -507,7 +507,7 @@ V0 is the result of 6 or 7 construction iterations, where various improvements w
 <h2 id="electronics">Electronics</h2>
 <ul>
 <li>12V LED strip, 2800k color: 2 meters. COB type for a unique and pleasant look.</li>
-<li>3 18650 li-ion batteries. Choose the highest mAH possible (5000mAH for these types of batteries). I use 3500mAh ones.</li>
+<li>3 18650 li-ion batteries. Choose the highest mAH possible (5000mAH for these types of batteries). I use 3500mAh ones (exact ref: LG INR18650-M36 3450mAh - 5A).</li>
 <li>Li-ion 3S BMS: choose a triangle format, at least 2A discharge current.</li>
 <li>Li-ion 3S 12V charger: preferably, use a fast charge-compatible charger, which is not the case with the one presented here. Here, I use a 3S Li-ion 4-amp charger.</li>
 <li>PWM controller. Minimum 2A output current.</li>
@@ -521,12 +521,14 @@ V0 is the result of 6 or 7 construction iterations, where various improvements w
 <p>We use three batteries in series.
 To obtain the total power stored in the battery, we can multiply the power of one battery by 3.
 3500mAh * 3 =&gt; 10500mAh =&gt; 10.5Ah</p>
+<p>It means that our battery can power 10.5A (that&rsquo;s a lot) for 1h, or something smaller for a longer time.
+If we want to poser something for 20 hours  using this battery, this thing must use less than 10.5Ah / 20h -&gt; 0.525A -&gt; 525mA.</p>
 <p>(For comparison, the battery of the iPhone 15 is about 3000mAh. My little lamp contains 3.5 times more power)</p>
 <p>Batteries also have a maximum discharge current, indicated at the time of purchase.
 This current must be higher than the maximum consumption of the system!
-Here, I have 2A batteries, so my battery can output 3*2A = 6A of max power.
-We must then choose a BMS that protects against higher voltages (advertised 8A in my case, but it&rsquo;s from AliExpress, nothing is certain).
-We can also choose a BMS suitable for the maximum output power of our system (2A as calculated just after).</p>
+Here, I have 5A batteries, so my battery can output 5A (Amperes do not add up in serie).</p>
+<p>To protect our batteries, we need to choose a Battery Management System (BMS) that can handle less than what our batteries can provide (in this case 5A), but more than what our system consumes at maximum (2A, calculated later) in order to supply it. We should select batteries with an individual max discharge current greater than the consumption of our system.</p>
+<p>Then we need a BMS whose protection value is below 5A (battery power) and above 2A (system consumption). The one I have selected has a rating of 4A, but be cautious about AliExpress specs. We can also choose a BMS that matches the maximum output power of our system (2A as calculated just after).</p>
 <p>We can also calculate the system&rsquo;s consumption. We need the LED consumption for that.
 It is often given in Watt/meters (12W/m for mine).
 Our LEDs consume at 12V, so we can calculate the instantaneous consumption of the strip (at full power):
@@ -543,7 +545,7 @@ I use a 5V 4A charger module, the output (if we consider no losses, which is ver
 <p>Note that this calculation is for the charger in the lamp; the USB-C charger you use will likely have a different power.</p>
 <p>To charge our nearly empty batteries, we will take:
 10.5Ah / 1.66A =&gt; 6.3h</p>
-<p>6.3 hours of charging! (&lt;- indicative calculation, reality is much more complex, often less time)</p>
+<p>6.3 hours of charging time! (&lt;- indicative calculation, reality is much more complex, often less time)</p>
 
 </details>
 
@@ -592,6 +594,7 @@ I use a 5V 4A charger module, the output (if we consider no losses, which is ver
 </ul>
 <p><img src="/static/lamp_da/capuchons.jpg" alt="&ldquo;Image: caps to print&rdquo;">
 On the left, the battery guide, in the center the logo cap, on the right the top cap.</p>
+<p><a href="/static/files/lampda_prints.zip">&ldquo;Print files (stl)&rdquo;</a></p>
 <h1 id="lamp-structure">Lamp Structure</h1>
 <p>Cut a 12.5 cm piece from our 45mm tube.
 Next, drill a hole 2mm from one of the edges; this will be the bottom of the lamp.
@@ -621,7 +624,7 @@ There you go, it&rsquo;s said, good luck:</p>
 <p>Start by checking the batteries:</p>
 <p>Li-ion batteries have a maximum voltage of 4.2V and a minimum voltage of 2.9V.
 If your batteries are outside these voltages, there&rsquo;s a big problem; do not use them. Surround each battery with insulation (tape is sufficient) and add an insulating circle on the positive side.</p>
-<p><img src="/static/lamp_da/batteries_isol%C3%A9es.jpg" alt="Images: Isolated batteries"></p>
+<p><img src="/static/lamp_da/batteries_isolees.jpg" alt="Image: Isolated batteries"></p>
 <p>Begin by charging the 3 batteries with a suitable charger (18650 Li-ion charger). Solder the batteries in series using the following triangular configuration:</p>
 <p><img src="/static/lamp_da/batteries_serie_triangle.jpg" alt="Image: Batteries in series"></p>
 <p>BE VERY CAREFUL; this is the really dangerous step. Solder wires to 0V, 4V, 8V, and 12V, and connect them to the corresponding locations on the BMS. Check three times rather than risking an explosion. Don&rsquo;t forget to put insulation between the BMS and the batteries!!!</p>
@@ -673,7 +676,8 @@ The LED should be off initially, and the brightness should go from 5 to 100% by 
 <h1 id="adding-the-charger">Adding the Charger</h1>
 <p>Start by testing the charger without connected batteries: the output voltage should be between 12V and 14V (not necessarily stable).
 A blue LED should light up, indicating that the charging is complete.</p>
-<p>Desolder the existing indicator LEDs on the charger and solder our bi-color LED in their place, following the color code in the photo.</p>
+<p>Desolder the existing indicator LEDs on the charger and solder our bi-color LED in their place, following the color code in the photo.
+If we use 45mm tubing, we need to cut the lower corner of the charger (refer to the picture below, next to Bat and GND) or the charger won&rsquo;t fit flat in the tubing.</p>
 <p><img src="/static/lamp_da/chargeur_soud%C3%A9.jpg" alt="Image: Soldered charger"></p>
 <ul>
 <li>
@@ -726,6 +730,7 @@ Apply and then delete the extruded logo.</p>
 <p>Export the result in STL.</p>
 <p>Print it with your equipment!</p>
 <h1 id="weak-points">Weak Points</h1>
+<h2 id="unfit-charger-module">Unfit charger module</h2>
 <p>The only significant weakness of this system is its charger.
 I chose to use a 5V charger rather than a fast charge-compatible one to make everything waterproof, but it comes with a few issues:</p>
 <ul>
@@ -738,11 +743,20 @@ If the green or red LED flashes, it means the charger used doesn&rsquo;t have th
 During charging, the body of the lamp should be warm to the touch; if not, the charger is not working correctly.
 It can be a problem with the charging cable, the charger, or, in the worst case, a component of the lamp.</p>
 <p>It&rsquo;s straightforward to adapt the system to use a fast charge-compatible charger, at the expense of waterproofing. Good luck!</p>
+<h2 id="structural-failure-point">Structural failure point</h2>
 <p>The lamp also has a weakness (seen once), where during a fall, it falls vertically on the potentiometer of the PWM controller, breaking the axis.
-The lamp still works, but there is no longer brightness regulation (it goes from off to 100% brightness).</p>
+The lamp still works, but there is no longer brightness regulation (it goes from off to 100% brightness).
+99% of the time, the plastic cap will break of, saving the potentiometer. Just need to glue it back on, easy enough!</p>
+<h2 id="luminosity-drop-in-use">Luminosity drop in use</h2>
 <p>During use, the maximum brightness gradually decreases with the battery level until it reaches the minimum.
-Users have told me that this is somewhat positive as it allows them to check the battery level.
+Users have told me that this is somewhat positive as it allows them to check the battery level, and it is not noticeable.
 Still, it remains a flaw in my opinion.</p>
+<h2 id="under-charge-handled-by-bms">Under charge handled by BMS</h2>
+<p>Another minor design flaw: if the battery discharges below the safety limit (3V), the BMS will cut off the lamp (which is pretty cool, that&rsquo;s its job). The concern is that the battery is then in a critical state of discharge and needs to be recharged quickly, otherwise it will start degrading.
+In practice, the lamp lights up very little in the last 5% of the battery, so we need to recharge it before it gets too low, before it&rsquo;s in a critical state, which is not really a problem.
+We could even argue that it should stay at 2.8V and give us some time to charge it after being cut off, even after putting it back into safety mode.</p>
+<p>Ideally, the lamp should be cut off at 3.2V to ensure that the battery stays charged until it&rsquo;s plugged in</p>
+<p>Thank you for following until now, good luck on your dark explorations!</p>
 
         
           <div class="blog-tags">
@@ -932,7 +946,7 @@ Still, it remains a flaw in my opinion.</p>
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.120.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.121.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

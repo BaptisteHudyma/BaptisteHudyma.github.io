@@ -15,18 +15,14 @@
       <link>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</link>
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/</guid>
-      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2: Améliorations et encore plus de blabla !&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;Nous en étions restés à la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
-Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvées pour la méthode de base.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Partie 2: Améliorations et encore plus de blabla !&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Nous en étions restés à la construction d&amp;rsquo;une structure d&amp;rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&amp;rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).&#xA;Dans cette deuxième partie, je vais montrer les améliorations que j&amp;rsquo;ai trouvées pour la méthode de base.&lt;/p&gt;</description>
     </item>
     <item>
       <title>De CAPE et d&#39;Opés</title>
       <link>https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; est une méthode extrêmement efficace d&amp;rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
-Malgré l&amp;rsquo;efficacité de cette méthode, l&amp;rsquo;implémentation C++ du papier présente de nombreux défauts.&lt;/p&gt;
-&lt;p&gt;Dans ce post, je vais expliquer comment j&amp;rsquo;ai réparé la plupart de ces problèmes.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; est une méthode extrêmement efficace d&amp;rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.&#xA;Malgré l&amp;rsquo;efficacité de cette méthode, l&amp;rsquo;implémentation C++ du papier présente de nombreux défauts.&lt;/p&gt;&#xA;&lt;p&gt;Dans ce post, je vais expliquer comment j&amp;rsquo;ai réparé la plupart de ces problèmes.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
