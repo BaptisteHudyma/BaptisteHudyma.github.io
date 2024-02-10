@@ -59,7 +59,7 @@
   "headline": "Construction d\u0027une lanterne compacte",
   "description" : "Tuto construction d\u0026rsquo;une lanterne compacte et solide.\n",
   "inLanguage" : "fr",
-  "wordCount":  3614 ,
+  "wordCount":  3664 ,
   "datePublished" : "2023-11-22T00:00:00",
   "dateModified" : "2023-11-22T00:00:00",
   "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
@@ -463,7 +463,7 @@ if (!doNotTrack) {
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3614&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3664&nbsp;mots
   
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/lamp-da/" lang="en">en</a>
@@ -519,11 +519,11 @@ La V0 est le résultat de 6 ou 7 itérations de construction, ou diverses améli
 <details><summary>Calculer comment choisir les composants (cliquer pour étendre)</summary>
 <p>Aller un peu de maths pour savoir ce qu&rsquo;on fait :</p>
 <p>On utilise trois batteries en série.
-Pour obtenir la puissance totale stockée dans la batterie, on peut multiplier par 3 la puissance d&rsquo;une batterie.
-3500mAh * 3 =&gt; 10500mAh =&gt; 10.5Ah</p>
-<p>Ça signifie que notre batterie peut alimenter quelque chose de 10.5A (c&rsquo;est énorme) pendant 1H, ou quelque chose de plus petit pendant plus longtemps.
-Par exemple si on veut alimenter quelque chose durant 20h, cette chose devra consommer moins que 10.5Ah / 20h -&gt; 0.525A (cad: 525mA).</p>
-<p>(A titre de comparaison, la batterie de l&rsquo;iPhone 15 est à peu près 3000mAh. Ma petite lampe contient 3.5x plus de puissance)</p>
+Pour obtenir la puissance totale stockée dans la batterie, on prend la capacité d&rsquo;une batterie (la capacité n&rsquo;augmente pas en série) =&gt; 3500mAh =&gt; 3.5Ah</p>
+<p>Ça signifie que notre batterie peut alimenter quelque chose de 3.5A (c&rsquo;est beaucoup) pendant 1H, ou quelque chose de plus petit pendant plus longtemps.
+Par exemple si on veut alimenter quelque chose durant 20h, cette chose devra consommer moins que 3.5Ah / 20h -&gt; 0.175 (cad: 175mA).</p>
+<p>(A titre de comparaison, la batterie de l&rsquo;iPhone 15 est à peu près 3000mAh, mais sa tension de sortie est 3.7V, alors que la nôtre est 3x plus haute)</p>
+<p><a href="https://cellsaviors.com/pack-planner">Plus d&rsquo;infos sur le design de pack de batteries</a></p>
 <p>Les batteries ont également un courant de décharge maximum, indiqué lors de l&rsquo;achat.
 Ce courant doit être supérieur à la consommation maximum du système !
 Ici, j&rsquo;ai des batteries 5A, donc en sortie ma batterie totale peut sortir 5A de puissance max (les Ampères ne s&rsquo;additionnent pas en série).</p>
@@ -533,13 +533,15 @@ On pensera à choisir des batteries qui ont (individuellement) un courant de dé
 Celui que j&rsquo;ai sélectionné annonce 4A, mais c&rsquo;est du AliExpress, méfiance sur les specs.
 On peut aussi choisir un BMS adapté à la puissance de sortie maximum de notre système (2A comme calculé juste après).</p>
 <p>On peut aussi calculer la consommation du système. Il nous faut pour ça la consommation des LED.
-Elle est souvent donnée en Watt/mètres (12W/m pour les miennes)
+Elle est souvent donnée en Watt/mètres (10W/m pour les miennes)
 Nos LED consomment 12V, on peut donc calculer la consommation instantanée du ruban (à pleine puissance) :
-12W / 12V =&gt; 1A/m.</p>
-<p>On utilise 2 mètres de LED, on va en conséquence consommer 1A/m * 2m =&gt; 2A pour notre ruban entier.</p>
+10W / 12V =&gt; 0.83A/m.</p>
+<p>On utilise 2 mètres de LED, on va en conséquence consommer 0.83A/m * 2m =&gt; 1.66A pour notre ruban entier.
+La consommation minimum que j&rsquo;ai pu mesurer est d&rsquo;environ 0.3A avant que les LED ne s&rsquo;éteignent.</p>
 <p>Ok, on a maintenant la conso max et la puissance des batteries, on peut calculer la durée d&rsquo;utilisation max :
-10.5Ah / 2A =&gt; 5h d&rsquo;utilisation à fond.</p>
-<p>À noter que la tension des batteries descend lentement de 12V à 9V.</p>
+3.5Ah / 0.3A =&gt; 11.66H au maximum (luminosité minimum)
+3.5Ah / 1.66A =&gt; 2.1H au minimum (luminosité maximum)</p>
+<p>À noter que la tension des batteries descend lentement de 12V à 9V, et que l&rsquo;autonomie avancée ici est théorique.</p>
 <p>On peut également calculer le temps de charge.
 J&rsquo;utilise un module chargeur 5V 4A, la sortie (si on ne considère aucunes pertes, ce qui est une très très faux) sera a :
 5V * 4A =&gt; 20W
@@ -547,8 +549,9 @@ J&rsquo;utilise un module chargeur 5V 4A, la sortie (si on ne considère aucunes
 <p>Donc 12V 1.66A en sortie.</p>
 <p>À noter que ce calcul est pour le chargeur dans la lampe, le chargeur USB-C que vous utiliserez aura certainement une puissance différente.</p>
 <p>Pour charger nos batteries complément vides, on prendra alors :
-10.5Ah / 1.66A =&gt; 6.3h</p>
-<p>6.3 heures de temps de charge ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe, souvent moins long)</p>
+3.5Ah / 1.66A =&gt; 2h</p>
+<p>2 heures de temps de charge ! (&lt;- calcul à titre indicatif, la réalité est bieeeen plus complexe)</p>
+<p><a href="https://footprinthero.com/battery-charge-time-calculator">Calculs plus détaillés ici</a></p>
 
 </details>
 
