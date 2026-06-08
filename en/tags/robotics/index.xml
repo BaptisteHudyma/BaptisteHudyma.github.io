@@ -4,7 +4,7 @@
     <title>Robotics on HUB Logs</title>
     <link>https://BaptisteHudyma.github.io/en/tags/robotics/</link>
     <description>Recent content in Robotics on HUB Logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
@@ -22,7 +22,7 @@
       <link>https://BaptisteHudyma.github.io/en/post/slam_2/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/post/slam_2/</guid>
-      <description>Part 2: Pose Optimization Once our features are detected and associated, we aim to estimate the movement between the two observations.&#xA;After Part 1, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&#xA;Choosing the Pose Model to Optimize A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).</description>
+      <description>&lt;h2 id=&#34;part-2-pose-optimization&#34;&gt;Part 2: Pose Optimization&lt;/h2&gt;&#xA;&lt;p&gt;Once our features are detected and associated, we aim to estimate the movement between the two observations.&lt;/p&gt;&#xA;&lt;p&gt;After &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/slam_1/&#34;&gt;Part 1&lt;/a&gt;, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&lt;/p&gt;&#xA;&lt;h1 id=&#34;choosing-the-pose-model-to-optimize&#34;&gt;Choosing the Pose Model to Optimize&lt;/h1&gt;&#xA;&lt;p&gt;A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).&lt;/p&gt;</description>
     </item>
     <item>
       <title>CP SLAM</title>

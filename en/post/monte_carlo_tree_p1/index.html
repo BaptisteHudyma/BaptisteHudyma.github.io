@@ -1,7 +1,26 @@
+
+
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head>
-    
+  <head><script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        var dark = false;
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
+        }
+      })();
+    </script>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,86 +30,124 @@
   <meta name="description" content="Make AIs for board games">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "HUB Logs",
-    
-    "url": "https:\/\/BaptisteHudyma.github.io"
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#website",
+  "@type": "WebSite",
+  "name": "HUB Logs",
+  "url": "https://BaptisteHudyma.github.io/"
 }
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#organization",
   "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/BaptisteHudyma.github.io"
-  
-  
-  
-  
+  "name": "Baptiste Hudyma",
+  "url": "https://BaptisteHudyma.github.io/"
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/en\/post\/monte_carlo_tree_p1\/",
-          "name": ""
-        }
-    }]
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/",
+  "@type": "WebPage",
+  "breadcrumb": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/#breadcrumb"
+  },
+  "name": "",
+  "url": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/"
 }
-</script><script type="application/ld+json">
+</script>
+<script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/",
+      "name": "Home",
+      "position": 1
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/",
+      "name": "Posts",
+      "position": 2
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/",
+      "name": "",
+      "position": 3
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/#article",
   "@type": "Article",
   "author": {
-    "name" : "Baptiste Hudyma"
+    "@id": "https://BaptisteHudyma.github.io/#author",
+    "@type": "Person",
+    "name": "Baptiste Hudyma",
+    "url": "https://BaptisteHudyma.github.io/"
   },
+  "dateCreated": "2021-04-22T00:00:00+00:00",
+  "dateModified": "2021-04-22T00:00:00+00:00",
+  "datePublished": "2021-04-22T00:00:00+00:00",
+  "description": "Part 1: Blabla and Implementation\nI’m terrible at chess, checkers, get rolled over in Connect 4 – in short, board games are not my strong suit. However, I do fairly well in programming.\n",
   "headline": "",
-  "description" : "Part 1: Blabla and Implementation\nI\u0026rsquo;m terrible at chess, checkers, get rolled over in Connect 4 – in short, board games are not my strong suit. However, I do fairly well in programming.\n",
-  "inLanguage" : "en",
-  "wordCount":  2554 ,
-  "datePublished" : "2021-04-22T00:00:00",
-  "dateModified" : "2021-04-22T00:00:00",
-  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Cpp, IA" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/en\/post\/monte_carlo_tree_p1\/",
-  "publisher" : {
+  "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/"
+  },
+  "keywords": [
+    "Cpp",
+    "IA"
+  ],
+  "mainEntityOfPage": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name" : "https:\/\/BaptisteHudyma.github.io",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-        "height" :  60 ,
-        "width" :  60
-    }
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "height": 60,
+      "url": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+      "width": 60
+    },
+    "name": "HUB Logs"
+  },
+  "timeRequired": "PT12M",
+  "wordCount": 2554
 }
 </script>
 
-<meta property="og:title" content="HUB Logs" />
-<meta property="og:description" content="Make AIs for board games">
-<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="HUB Logs" />
 
+<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/">
+  <meta property="og:site_name" content="HUB Logs">
+  <meta property="og:title" content="HUB Logs">
+  <meta property="og:description" content="Part 1: Blabla and Implementation
+I’m terrible at chess, checkers, get rolled over in Connect 4 – in short, board games are not my strong suit. However, I do fairly well in programming.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-04-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-04-22T00:00:00+00:00">
+    <meta property="article:tag" content="CPP">
+    <meta property="article:tag" content="IA">
+<link rel="canonical" href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/" />
   <meta name="twitter:title" content="HUB Logs" />
   <meta name="twitter:description" content="Make AIs for board games">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.161.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/en/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -98,17 +155,6 @@
   <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-189718074-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
   </head>
@@ -381,53 +427,6 @@ if (!doNotTrack) {
 
 
     
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-
   
   
   
@@ -444,14 +443,17 @@ if (!doNotTrack) {
 
 
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p><em><strong>Part 1: Blabla and Implementation</strong></em></p>
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <article role="main" class="blog-post">
+          
+
+          
+
+          <p><em><strong>Part 1: Blabla and Implementation</strong></em></p>
 <p>I&rsquo;m terrible at chess, checkers, get rolled over in Connect 4 – in short, board games are not my strong suit. However, I do fairly well in programming.</p>
 <p>A quick note: from here on, when I say &ldquo;sequence of moves,&rdquo; I mean a turn order: I play, then my opponent, then me, and so on.</p>
-<!-- raw HTML omitted -->
 <p>Skip the blabla and jump to the interesting part.</p>
 <h1 id="imagine-yourself-playing-chess">Imagine Yourself Playing Chess</h1>
 <p>What strategy to adopt? One might think of keeping it simple and playing pawns randomly, but the probability of winning is quite low if your opponent doesn&rsquo;t have the same strategy (unless you pretend to know what you&rsquo;re doing, which can unsettle them). Let&rsquo;s call this the &ldquo;random method.&rdquo;</p>
@@ -481,15 +483,15 @@ if (!doNotTrack) {
 <h2 id="interface-game-state">Interface Game State</h2>
 <p>We need to code the game&rsquo;s logic. For that, feel free to do what you want! The only constraint is that your game logic class should inherit from our interface below:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="c1">// Interface
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">class</span> <span class="nc">IGame_State</span> <span class="p">{</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">IGame_State</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">// Return the score of this state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">get_score</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">double</span> <span class="nf">get_score</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// Return the number of possible moves from this state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">get_move_count</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="kt">int</span> <span class="nf">get_move_count</span><span class="p">()</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">// Perform a move from this state and return it
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">virtual</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="nf">do_move</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">virtual</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="nf">do_move</span><span class="p">(</span><span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Our derived class <code>IGame_State</code> will be used in our tree to know where we are in the game. It represents all the game logic, which is neatly separated from tree exploration.</p>
 <h3 id="get_score">get_score</h3>
@@ -507,30 +509,30 @@ if (!doNotTrack) {
 <p>Finally, the interesting part! Here, we create a Node class, representing a node in the tree. It is responsible for choosing which children to create, how to explore the mess, and how to propagate scores, then tell us what the best combo is.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Node</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//create the node from a game state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="p">(</span><span class="n">Node</span><span class="o">*</span> <span class="n">parent</span><span class="p">,</span> <span class="n">IGame_State</span><span class="o">*</span> <span class="n">gameState</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">//find the child with the best score
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCB</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCB</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="nf">get_best_child_UCT</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">//Add a child among the possible moves
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="nf">expand_children</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="nf">expand_children</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">//play a game from this node
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">float</span> <span class="nf">rollout</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="nf">rollout</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">//propagate the score to the root
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="kt">void</span> <span class="nf">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">private</span><span class="o">:</span>
 </span></span><span class="line"><span class="cl">        <span class="n">Node</span><span class="o">*</span> <span class="n">_parent</span><span class="p">;</span>           <span class="c1">//reference to the parent
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">list</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span> <span class="n">_children</span><span class="p">;</span>   <span class="c1">//reference to the children
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">IGame_State</span><span class="o">*</span> <span class="n">_state</span><span class="p">;</span>      <span class="c1">//reference to the game state associated with this node
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">        <span class="n">list</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span> <span class="n">_children</span><span class="p">;</span>   <span class="c1">//reference to the children
+</span></span></span><span class="line"><span class="cl">        <span class="n">IGame_State</span><span class="o">*</span> <span class="n">_state</span><span class="p">;</span>      <span class="c1">//reference to the game state associated with this node
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">_score</span><span class="p">;</span>           <span class="c1">//score at this node
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">_visitCount</span><span class="p">;</span>    <span class="c1">//Number of visits to this node
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">        <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">_visitCount</span><span class="p">;</span>    <span class="c1">//Number of visits to this node
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>Our class contains a reference to its parent in a pointer, for the backpropagation step.</p>
 <p>I use a list to store the children because we don&rsquo;t know their number. Using a vector is also possible, but here, I never need to access a child by index; they will always be chosen by iteration. Using a map or a dynamically sized array (like a vector) is not interesting when a simple linked list is sufficient. And yes, these are not smart pointers for readability reasons (there&rsquo;s not that much space on a blog post).</p>
@@ -566,12 +568,12 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
 <p>To create a new child, we use the <code>do_move</code> function of our <code>IGame_State</code> interface to get a new game state corresponding to the child&rsquo;s state. We can then call the node constructor with this game state.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span><span class="o">*</span> <span class="n">Node</span><span class="o">::</span><span class="n">expand_children</span><span class="p">()</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">unsigned</span> <span class="kt">int</span> <span class="n">index</span> <span class="o">=</span> <span class="c1">//choose an unexplored index
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>
+</span></span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">//get the next state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">IGame_State</span><span class="o">*</span> <span class="n">nextState</span> <span class="o">=</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">IGame_State</span><span class="o">*</span> <span class="n">nextState</span> <span class="o">=</span> <span class="n">_state</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span><span class="n">index</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="c1">//new node with this one as the parent and the new state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">return</span> <span class="k">new</span> <span class="nf">Node</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">nextState</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="k">new</span> <span class="nf">Node</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="n">nextState</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>For the choice of the index, you are entirely free. It&rsquo;s a good place to use a bit of randomness (for starters) and mark on your CV that you used a Monte Carlo search. We&rsquo;ll improve this in part 2.</p>
 <h3 id="rollout">rollout</h3>
@@ -585,10 +587,10 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="n">currentState</span> <span class="o">=</span> <span class="n">currentState</span><span class="o">-&gt;</span><span class="n">do_move</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//index to choose
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="p">));</span>
+</span></span></span><span class="line"><span class="cl">        <span class="p">));</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//propagate the score of the final state
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="k">this</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span>
+</span></span></span><span class="line"><span class="cl">    <span class="k">this</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span>
 </span></span><span class="line"><span class="cl">        <span class="n">currentState</span><span class="o">-&gt;</span><span class="n">get_score</span><span class="p">()</span>
 </span></span><span class="line"><span class="cl">    <span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
@@ -599,12 +601,12 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
 <p>Something like</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="kt">void</span> <span class="n">Node</span><span class="o">::</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//increment the visit count and score
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">_visitCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">_visitCount</span> <span class="o">+=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="n">_score</span> <span class="o">+=</span> <span class="n">score</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="k">dynamic_cast</span><span class="o">&lt;</span><span class="n">Node</span><span class="o">*&gt;</span><span class="p">(</span><span class="n">_parent</span><span class="p">)</span> <span class="o">!=</span> <span class="k">nullptr</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//propagate to the parent if it exists
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="n">_parent</span><span class="p">.</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl">        <span class="n">_parent</span><span class="p">.</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span>
 </span></span></code></pre></div><p>I used a <code>dynamic_cast</code> for testing the existence of the parent; it can save you in a case where this class is used as the base for a new Node class, created by a negligent programmer who didn&rsquo;t think to do <code>_parent = nullptr</code> in the constructor, or if we encounter wild deallocation of the parent between two calls (yes, yes, smart pointers&hellip;).</p>
@@ -614,11 +616,11 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-Cpp" data-lang="Cpp"><span class="line"><span class="cl"><span class="n">Node</span> <span class="nf">root</span><span class="p">(</span><span class="k">nullptr</span><span class="p">,</span> <span class="n">gameState</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="k">do</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="c1">//search for the best leaf
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl">    <span class="n">Node</span><span class="o">*</span> <span class="n">child</span> <span class="o">=</span> <span class="n">root</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">not</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">is_fully_expanded</span><span class="p">())</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">            <span class="c1">//all children have not been explored
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">            <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">expand_children</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">            <span class="k">break</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl">        <span class="p">}</span>
 </span></span><span class="line"><span class="cl">        <span class="n">child</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">get_best_child_UCT</span><span class="p">();</span>
@@ -626,70 +628,85 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
 </span></span><span class="line"><span class="cl">
 </span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="n">child</span><span class="o">-&gt;</span><span class="n">get_move_count</span><span class="p">()</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">        <span class="c1">//can expand
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span>        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
+</span></span></span><span class="line"><span class="cl">        <span class="kt">double</span> <span class="n">score</span> <span class="o">=</span> <span class="n">child</span><span class="o">-&gt;</span><span class="n">rollout</span><span class="p">();</span>
 </span></span><span class="line"><span class="cl">        <span class="n">child</span><span class="o">-&gt;</span><span class="n">backpropagate</span><span class="p">(</span><span class="n">score</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="p">}</span>
 </span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="k">while</span> <span class="p">(</span><span class="n">we</span> <span class="n">have</span> <span class="n">time</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">IGame_State</span><span class="o">*</span> <span class="n">bestMove</span> <span class="o">=</span> <span class="n">root</span><span class="o">-&gt;</span><span class="n">get_best_child_UCB</span><span class="p">();</span> <span class="c1">//use UCB
 </span></span></span></code></pre></div><p>And there you have it! The tree structure is very basic; in part 2, we&rsquo;ll discuss improvements!</p>
+          
+          
+
 
         
+        
           <div class="blog-tags">
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/cpp/">Cpp</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/ia/">IA</a>&nbsp;
-            
+            <span>Tags: </span>
+            <a href="https://BaptisteHudyma.github.io/en/tags/cpp/">Cpp</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/ia/">IA</a>&nbsp;
           </div>
         
 
         
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 
 
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
+<div class="share-box" role="region">
+    <ul class="share" aria-label="Social sharing" role="list">
       
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;text=&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
+      <li role="listitem">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;text=&amp;via=" target="_blank" rel="noopener noreferrer" title="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Twitter</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
+      <li role="listitem">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f" target="_blank" rel="noopener noreferrer" title="Share on Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Facebook</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;title=" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
+      <li role="listitem">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;title=" target="_blank" rel="noopener noreferrer" title="Share on Reddit">
+          <i class="fab fa-reddit" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Reddit</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;title=" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
+      <li role="listitem">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;title=" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on LinkedIn</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;title=" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
+      <li role="listitem">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;title=" target="_blank" rel="noopener noreferrer" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on StumbleUpon</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;description=" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
+      <li role="listitem">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;description=" target="_blank" rel="noopener noreferrer" title="Share on Pinterest">
+          <i class="fab fa-pinterest" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Pinterest</span>
+        </a>
+      </li>
+
+      
+      <li role="listitem">
+        <a href="mailto:?body=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonte_carlo_tree_p1%2f&amp;subject=" title="Share via email">
+          <i class="fab fa-at" aria-hidden="true"></i>
+          <span class="visually-hidden">Share via email</span>
         </a>
       </li>
     </ul>
@@ -701,41 +718,63 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
         
 
         
-          
-            
-          
-
-          
-                  <h4 class="see-also">See also</h4>
-                  <ul>
-                
-                
-                    <li><a href="/en/post/monte_carlo_tree_p2/">Exploration of Possibilities - Part 2</a></li>
-                
-                    <li><a href="/en/post/depth_map_segmentation/">Depth Map Segmentation</a></li>
-                
-                    <li><a href="/en/post/monocular_depth_map/">Monocular Depth Map</a></li>
-                
-                    <li><a href="/en/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
-                
-                    <li><a href="/en/post/ppc_slam/">CP SLAM</a></li>
-                
-              </ul>
-
+            <h4 class="see-also">See also</h4>
+            <div class="see-also-list">
+              
+                <a href="/en/post/monte_carlo_tree_p2/" class="see-also-item">
+                  <span class="see-also-item-title">Exploration of Possibilities - Part 2</span>
+                  <span class="see-also-item-subtitle">Make AIs for board games</span>
+                </a>
+              
+                <a href="/en/post/depth_map_segmentation/" class="see-also-item">
+                  <span class="see-also-item-title">Depth Map Segmentation</span>
+                  
+                </a>
+              
+                <a href="/en/post/monocular_depth_map/" class="see-also-item">
+                  <span class="see-also-item-title">Monocular Depth Map</span>
+                  <span class="see-also-item-subtitle">Generate a depth map from a monocular video</span>
+                </a>
+              
+                <a href="/en/post/de_cape_et_d_opes/" class="see-also-item">
+                  <span class="see-also-item-title">De CAPE et d&#39;Opés</span>
+                  <span class="see-also-item-subtitle">Correct and optimize the code of a publication</span>
+                </a>
+              
+                <a href="/en/post/ppc_slam/" class="see-also-item">
+                  <span class="see-also-item-title">CP SLAM</span>
+                  <span class="see-also-item-subtitle">A basic SLAM using constraint programming</span>
+                </a>
+              
+            </div>
           
         
       </article>
 
       
-        <ul class="pager blog-pager">
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" class="nav-side-arrow nav-side-prev" title="Depth Map Segmentation" aria-label="Previous Post: Depth Map Segmentation">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/" class="nav-side-arrow nav-side-next" title="Exploration of Possibilities - Part 2" aria-label="Next Post: Exploration of Possibilities - Part 2">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        
+        <ul class="post-pager blog-post-pager">
           
-            <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" data-toggle="tooltip" data-placement="top" title="Depth Map Segmentation">&larr; Previous Post</a>
+            <li class="pager-prev">
+              <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" data-bs-toggle="tooltip" data-bs-placement="top" title="Depth Map Segmentation"><i class="fas fa-chevron-left"></i> Previous Post</a>
             </li>
           
+          <li class="pager-center">
+            
+
+          </li>
           
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/" data-toggle="tooltip" data-placement="top" title="Exploration of Possibilities - Part 2">Next Post &rarr;</a>
+            <li class="pager-next">
+              <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/" data-bs-toggle="tooltip" data-bs-placement="top" title="Exploration of Possibilities - Part 2">Next Post <i class="fas fa-chevron-right"></i></a>
             </li>
           
         </ul>
@@ -743,65 +782,142 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
 
 
       
-        
+      
+
+      
+
+      
+      
+      
         
       
+
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#interface-game-state">Interface Game State</a>
+      <ul>
+        <li><a href="#get_score">get_score</a></li>
+        <li><a href="#get_move_count">get_move_count</a></li>
+        <li><a href="#do_move">do_move</a></li>
+      </ul>
+    </li>
+    <li><a href="#our-tree">Our Tree</a>
+      <ul>
+        <li><a href="#constructor">Constructor</a></li>
+        <li><a href="#get_best_child">get_best_child</a></li>
+        <li><a href="#expand_children">expand_children</a></li>
+        <li><a href="#rollout">rollout</a></li>
+        <li><a href="#backpropagate">backpropagate</a></li>
+      </ul>
+    </li>
+    <li><a href="#making-it-work">Making It Work</a></li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>
 </div>
 
+    
       
 <footer>
   <div class="container">
     
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-		
-		  <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://github.com/BaptisteHudyma" title="GitHub">
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="mailto:bapt.hudyma95650@gmail.com" title="Email me" aria-label="Email me">
 		
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://gitlab.com/BaptHdm" title="GitLab">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
           
-          <li>
-            <a href="" title="RSS">
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://github.com/BaptisteHudyma" title="GitHub" aria-label="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://gitlab.com/BaptHdm" title="GitLab" aria-label="GitLab">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://linkedin.com/in/in/baptiste-hudyma" title="LinkedIn" aria-label="LinkedIn">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="/en/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -809,42 +925,52 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
             </a>
           </li>
           
+          
         </ul>
         <p class="credits copyright text-muted">
           
             
               Baptiste Hudyma
             
+            &nbsp;&bull;&nbsp;
           
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2023
           
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://BaptisteHudyma.github.io/en/">HUB Logs</a>
+          
+          
+            <a href="https://BaptisteHudyma.github.io/en/">Hu B</a>
           
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.121.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.161.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
     </div>
   </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</footer>
 
-<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
-<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+      
+
+      
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="/js/main.js"></script><script src="/js/toc.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js" integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU" crossorigin="anonymous"></script><script> hljs.highlightAll(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script><script src="/js/load-photoswipe.js"></script>
+
+
+
+
 
 
 
@@ -857,4 +983,3 @@ With c a parameter allowing you to adjust the desired &ldquo;rate&rdquo; of expl
     
   </body>
 </html>
-

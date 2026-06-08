@@ -1,7 +1,26 @@
+
+
 <!DOCTYPE html>
 <html lang="fr" itemscope itemtype="http://schema.org/WebPage">
-  <head>
-    
+  <head><script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        var dark = false;
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
+        }
+      })();
+    </script>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,86 +30,128 @@
   <meta name="description" content="Corriger et optimiser le code d&#39;un papier">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "HUB Logs",
-    
-    "url": "https:\/\/BaptisteHudyma.github.io"
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#website",
+  "@type": "WebSite",
+  "name": "HUB Logs",
+  "url": "https://BaptisteHudyma.github.io/"
 }
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#organization",
   "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/BaptisteHudyma.github.io"
-  
-  
-  
-  
+  "name": "Baptiste Hudyma",
+  "url": "https://BaptisteHudyma.github.io/"
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/post\/de_cape_et_d_opes\/",
-          "name": "De cape et d\u0027 opés"
-        }
-    }]
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/",
+  "@type": "WebPage",
+  "breadcrumb": {
+    "@id": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/#breadcrumb"
+  },
+  "name": "De CAPE et d'Opés",
+  "url": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/"
 }
-</script><script type="application/ld+json">
+</script>
+<script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/",
+      "name": "Home",
+      "position": 1
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/post/",
+      "name": "Posts",
+      "position": 2
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/",
+      "name": "De CAPE et d'Opés",
+      "position": 3
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/#article",
   "@type": "Article",
   "author": {
-    "name" : "Baptiste Hudyma"
+    "@id": "https://BaptisteHudyma.github.io/#author",
+    "@type": "Person",
+    "name": "Baptiste Hudyma",
+    "url": "https://BaptisteHudyma.github.io/"
   },
-  "headline": "De CAPE et d\u0027Opés",
-  "description" : "CAPE (Cylinder And Plane Extraction) est une méthode extrêmement efficace d\u0026rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC. Malgré l\u0026rsquo;efficacité de cette méthode, l\u0026rsquo;implémentation C\u002b\u002b du papier présente de nombreux défauts.\nDans ce post, je vais expliquer comment j\u0026rsquo;ai réparé la plupart de ces problèmes.\n",
-  "inLanguage" : "fr",
-  "wordCount":  1202 ,
-  "datePublished" : "2021-01-11T00:00:00",
-  "dateModified" : "2021-01-11T00:00:00",
-  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Cpp, RGB-D, Optimisation, Paper" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/post\/de_cape_et_d_opes\/",
-  "publisher" : {
+  "dateCreated": "2021-01-11T00:00:00+00:00",
+  "dateModified": "2021-01-11T00:00:00+00:00",
+  "datePublished": "2021-01-11T00:00:00+00:00",
+  "description": "CAPE (Cylinder And Plane Extraction) est une méthode extrêmement efficace d’extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC. Malgré l’efficacité de cette méthode, l’implémentation C++ du papier présente de nombreux défauts.\nDans ce post, je vais expliquer comment j’ai réparé la plupart de ces problèmes.\n",
+  "headline": "De CAPE et d'Opés",
+  "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+  "inLanguage": "fr",
+  "isPartOf": {
+    "@id": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/"
+  },
+  "keywords": [
+    "Cpp",
+    "RGB-D",
+    "Optimisation",
+    "Paper"
+  ],
+  "mainEntityOfPage": {
+    "@id": "https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name" : "https:\/\/BaptisteHudyma.github.io",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-        "height" :  60 ,
-        "width" :  60
-    }
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "height": 60,
+      "url": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+      "width": 60
+    },
+    "name": "HUB Logs"
+  },
+  "timeRequired": "PT6M",
+  "wordCount": 1202
 }
 </script>
 
-<meta property="og:title" content="De CAPE et d&#39;Opés" />
-<meta property="og:description" content="Corriger et optimiser le code d&#39;un papier">
-<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="HUB Logs" />
 
+<meta property="og:url" content="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/">
+  <meta property="og:site_name" content="HUB Logs">
+  <meta property="og:title" content="De CAPE et d&#39;Opés">
+  <meta property="og:description" content="CAPE (Cylinder And Plane Extraction) est une méthode extrêmement efficace d’extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC. Malgré l’efficacité de cette méthode, l’implémentation C&#43;&#43; du papier présente de nombreux défauts.
+Dans ce post, je vais expliquer comment j’ai réparé la plupart de ces problèmes.">
+  <meta property="og:locale" content="fr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-01-11T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-01-11T00:00:00+00:00">
+    <meta property="article:tag" content="CPP">
+    <meta property="article:tag" content="RGB-D">
+    <meta property="article:tag" content="Optimisation">
+    <meta property="article:tag" content="Paper">
+<link rel="canonical" href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/" />
   <meta name="twitter:title" content="De CAPE et d&#39;Opés" />
   <meta name="twitter:description" content="Corriger et optimiser le code d&#39;un papier">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.161.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -98,17 +159,6 @@
   <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-189718074-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
   </head>
@@ -122,7 +172,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="https://BaptisteHudyma.github.io">HUB Logs 
+      <a class="navbar-brand" href="https://BaptisteHudyma.github.io/">HUB Logs 
       </a>
       <a class="navbar-brand">
       <div class="js-toggle-wrapper">
@@ -367,7 +417,7 @@ if (!doNotTrack) {
     
       <div class="avatar-container">
         <div class="avatar-img-border">
-          <a title="HUB Logs" href="https://BaptisteHudyma.github.io">
+          <a title="HUB Logs" href="https://BaptisteHudyma.github.io/">
             <img class="avatar-img" src="https://BaptisteHudyma.github.io/img/github_profile.jpg" alt="HUB Logs" />
           </a>
         </div>
@@ -381,53 +431,6 @@ if (!doNotTrack) {
 
 
     
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-
   
   
   
@@ -459,7 +462,9 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Publié le January 11, 2021
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le janvier 11, 2021
   
   
   
@@ -468,7 +473,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/" lang="en">en</a>
 </span>
-
 
               
             </div>
@@ -483,11 +487,15 @@ if (!doNotTrack) {
 
 
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p><a href="https://arxiv.org/abs/1803.02380">CAPE (Cylinder And Plane Extraction)</a> est une méthode extrêmement efficace d&rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <article role="main" class="blog-post">
+          
+
+          
+
+          <p><a href="https://arxiv.org/abs/1803.02380">CAPE (Cylinder And Plane Extraction)</a> est une méthode extrêmement efficace d&rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
 Malgré l&rsquo;efficacité de cette méthode, l&rsquo;implémentation C++ du papier présente de nombreux défauts.</p>
 <p>Dans ce post, je vais expliquer comment j&rsquo;ai réparé la plupart de ces problèmes.</p>
 <p>CAPE est une méthode efficace, fiable et rapide (&lt; 4ms pour une image de 640 * 480 pixels), dont l&rsquo;idée est basée sur <a href="https://www.merl.com/research/license/PEAC">PEAC</a>.
@@ -550,68 +558,79 @@ Il suffit de copier directement les valeurs symétriques au niveau des lignes 47
 <p>J&rsquo;ai vérifié mon travail à l&rsquo;aide de <em>valgrind</em>, et j&rsquo;ai pu confirmer le rebouchage des fuites mémoire, avec une amélioration négligeable (de l&rsquo;ordre de la demi milliseconde) des performances sans incidence sur la sortie.
 La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de performances générales de l&rsquo;algo.</p>
 <p>J&rsquo;ai profité de mes modifications pour ajouter des métriques d&rsquo;évaluation, inspirée de PEAC, a la place de certaines constantes.</p>
+          
+          
+
 
         
+        
           <div class="blog-tags">
-            
-              <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/tags/optimisation/">Optimisation</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/tags/paper/">Paper</a>&nbsp;
-            
+            <span>Tags: </span>
+            <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/optimisation/">Optimisation</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/paper/">Paper</a>&nbsp;
           </div>
         
 
         
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 
 
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
+<div class="share-box" role="region">
+    <ul class="share" aria-label="Social sharing" role="list">
       
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;text=De%20CAPE%20et%20d%27Op%c3%a9s&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
+      <li role="listitem">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;text=De%20CAPE%20et%20d%27Op%c3%a9s&amp;via=" target="_blank" rel="noopener noreferrer" title="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Twitter</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
+      <li role="listitem">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f" target="_blank" rel="noopener noreferrer" title="Share on Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Facebook</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
+      <li role="listitem">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" rel="noopener noreferrer" title="Share on Reddit">
+          <i class="fab fa-reddit" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Reddit</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
+      <li role="listitem">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on LinkedIn</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
+      <li role="listitem">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;title=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" rel="noopener noreferrer" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on StumbleUpon</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;description=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
+      <li role="listitem">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;description=De%20CAPE%20et%20d%27Op%c3%a9s" target="_blank" rel="noopener noreferrer" title="Share on Pinterest">
+          <i class="fab fa-pinterest" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Pinterest</span>
+        </a>
+      </li>
+
+      
+      <li role="listitem">
+        <a href="mailto:?body=https%3a%2f%2fBaptisteHudyma.github.io%2fpost%2fde_cape_et_d_opes%2f&amp;subject=De%20CAPE%20et%20d%27Op%c3%a9s" title="Share via email">
+          <i class="fab fa-at" aria-hidden="true"></i>
+          <span class="visually-hidden">Share via email</span>
         </a>
       </li>
     </ul>
@@ -623,41 +642,63 @@ La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de p
         
 
         
-          
-            
-          
-
-          
-                  <h4 class="see-also">Suggestions de lecture :</h4>
-                  <ul>
-                
-                
-                    <li><a href="/post/slam_2/">SLAM - Parti 2</a></li>
-                
-                    <li><a href="/post/slam_1/">SLAM - Parti 1</a></li>
-                
-                    <li><a href="/post/monte_carlo_tree_p2/">Exploration de possibilités - Partie 2</a></li>
-                
-                    <li><a href="/post/monte_carlo_tree_p1/">Exploration de possibilités - Partie 1</a></li>
-                
-                    <li><a href="/post/depth_map_segmentation/">Segmentation de depth map</a></li>
-                
-              </ul>
-
+            <h4 class="see-also">Suggestions de lecture :</h4>
+            <div class="see-also-list">
+              
+                <a href="/post/slam_2/" class="see-also-item">
+                  <span class="see-also-item-title">SLAM - Parti 2</span>
+                  <span class="see-also-item-subtitle">Implémenter mon propre système de localisation &amp; mapping</span>
+                </a>
+              
+                <a href="/post/slam_1/" class="see-also-item">
+                  <span class="see-also-item-title">SLAM - Parti 1</span>
+                  <span class="see-also-item-subtitle">Implémenter mon propre système de localisation &amp; mapping</span>
+                </a>
+              
+                <a href="/post/monte_carlo_tree_p2/" class="see-also-item">
+                  <span class="see-also-item-title">Exploration de possibilités - Partie 2</span>
+                  <span class="see-also-item-subtitle">Faire des IA pour les jeux de plateau</span>
+                </a>
+              
+                <a href="/post/monte_carlo_tree_p1/" class="see-also-item">
+                  <span class="see-also-item-title">Exploration de possibilités - Partie 1</span>
+                  <span class="see-also-item-subtitle">Faire des IA pour les jeux de plateau</span>
+                </a>
+              
+                <a href="/post/depth_map_segmentation/" class="see-also-item">
+                  <span class="see-also-item-title">Segmentation de depth map</span>
+                  
+                </a>
+              
+            </div>
           
         
       </article>
 
       
-        <ul class="pager blog-pager">
+        
+          <a href="https://BaptisteHudyma.github.io/post/ppc_slam/" class="nav-side-arrow nav-side-prev" title="PPC SLAM" aria-label="Post précédent: PPC SLAM">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        
+        
+          <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" class="nav-side-arrow nav-side-next" title="Monocular Depth Map" aria-label="Post suivant: Monocular Depth Map">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        
+        <ul class="post-pager blog-post-pager">
           
-            <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/post/ppc_slam/" data-toggle="tooltip" data-placement="top" title="PPC SLAM">&larr; Post précédent</a>
+            <li class="pager-prev">
+              <a href="https://BaptisteHudyma.github.io/post/ppc_slam/" data-bs-toggle="tooltip" data-bs-placement="top" title="PPC SLAM"><i class="fas fa-chevron-left"></i> Post précédent</a>
             </li>
           
+          <li class="pager-center">
+            
+
+          </li>
           
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" data-toggle="tooltip" data-placement="top" title="Monocular Depth Map">Post suivant &rarr;</a>
+            <li class="pager-next">
+              <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" data-bs-toggle="tooltip" data-bs-placement="top" title="Monocular Depth Map">Post suivant <i class="fas fa-chevron-right"></i></a>
             </li>
           
         </ul>
@@ -665,65 +706,127 @@ La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de p
 
 
       
-        
+      
+
+      
+
+      
+      
+      
         
       
+
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#classe-cape">Classe <code>CAPE</code></a></li>
+    <li><a href="#résultat-des-courses">Résultat des courses</a></li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>
 </div>
 
+    
       
 <footer>
   <div class="container">
     
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-		
-		  <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://github.com/BaptisteHudyma" title="GitHub">
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="mailto:bapt.hudyma95650@gmail.com" title="Email me" aria-label="Email me">
 		
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://gitlab.com/BaptHdm" title="GitLab">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
           
-          <li>
-            <a href="" title="RSS">
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://github.com/BaptisteHudyma" title="GitHub" aria-label="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://gitlab.com/BaptHdm" title="GitLab" aria-label="GitLab">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://linkedin.com/in/in/baptiste-hudyma" title="LinkedIn" aria-label="LinkedIn">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -731,42 +834,52 @@ La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de p
             </a>
           </li>
           
+          
         </ul>
         <p class="credits copyright text-muted">
           
             
               Baptiste Hudyma
             
+            &nbsp;&bull;&nbsp;
           
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
-            2023
+            2025
           
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://BaptisteHudyma.github.io">HUB Logs</a>
+          
+          
+            <a href="https://BaptisteHudyma.github.io/">Hu B</a>
           
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.121.2</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.161.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
     </div>
   </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</footer>
 
-<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
-<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+      
+
+      
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="/js/main.js"></script><script src="/js/toc.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js" integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU" crossorigin="anonymous"></script><script> hljs.highlightAll(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script><script src="/js/load-photoswipe.js"></script>
+
+
+
+
 
 
 
@@ -779,4 +892,3 @@ La prochaine étape consistera à chercher des pistes d&rsquo;amélioration de p
     
   </body>
 </html>
-

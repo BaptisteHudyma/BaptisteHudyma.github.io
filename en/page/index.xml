@@ -4,7 +4,7 @@
     <title>Pages on HUB Logs</title>
     <link>https://BaptisteHudyma.github.io/en/page/</link>
     <description>Recent content in Pages on HUB Logs</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
@@ -14,7 +14,7 @@
       <link>https://BaptisteHudyma.github.io/en/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
       <guid>https://BaptisteHudyma.github.io/en/page/about/</guid>
-      <description>Hi ! My name is Baptiste Hudyma, I&amp;rsquo;m a robotic engineer way too curious about way too many subjects. From programming to wood crafting, from physics to video games, and events organization,&#xA;In this blog/posts mashup/portfolio thingy, you will find details on some projects that I thought were interesting to share It will also serve as a written trace of some realizations, enabling me to take more time and more room to explain what the idea and processes behind those projects.</description>
+      <description>&lt;p&gt;Hi ! My name is Baptiste Hudyma, I&amp;rsquo;m a robotic engineer way too curious about way too many subjects.&#xA;From programming to wood crafting, from physics to video games, and events organization,&lt;/p&gt;&#xA;&lt;p&gt;In this blog/posts mashup/portfolio thingy, you will find details on some projects that I thought were interesting to share&#xA;It will also serve as a written trace of some realizations, enabling me to take more time and more room to explain what the idea and processes behind those projects.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

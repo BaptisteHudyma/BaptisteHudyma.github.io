@@ -1,7 +1,26 @@
+
+
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head>
-    
+  <head><script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        var dark = false;
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
+        }
+      })();
+    </script>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,86 +30,131 @@
   <meta name="description" content="In this post, I implement a real time depth map segmentation system, based on normal map analysis.">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "HUB Logs",
-    
-    "url": "https:\/\/BaptisteHudyma.github.io"
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#website",
+  "@type": "WebSite",
+  "name": "HUB Logs",
+  "url": "https://BaptisteHudyma.github.io/"
 }
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#organization",
   "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/BaptisteHudyma.github.io"
-  
-  
-  
-  
+  "name": "Baptiste Hudyma",
+  "url": "https://BaptisteHudyma.github.io/"
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/en\/post\/depth_map_segmentation\/",
-          "name": "Depth map segmentation"
-        }
-    }]
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/",
+  "@type": "WebPage",
+  "breadcrumb": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/#breadcrumb"
+  },
+  "name": "Depth Map Segmentation",
+  "url": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/"
 }
-</script><script type="application/ld+json">
+</script>
+<script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/",
+      "name": "Home",
+      "position": 1
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/",
+      "name": "Posts",
+      "position": 2
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/",
+      "name": "Depth Map Segmentation",
+      "position": 3
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/#article",
   "@type": "Article",
   "author": {
-    "name" : "Baptiste Hudyma"
+    "@id": "https://BaptisteHudyma.github.io/#author",
+    "@type": "Person",
+    "name": "Baptiste Hudyma",
+    "url": "https://BaptisteHudyma.github.io/"
   },
+  "dateCreated": "2021-02-15T00:00:00+00:00",
+  "dateModified": "2021-02-15T00:00:00+00:00",
+  "datePublished": "2021-02-15T00:00:00+00:00",
+  "description": "In this post, I implement a real time depth map segmentation system, based on normal map analysis.\n",
   "headline": "Depth Map Segmentation",
-  "description" : "In this post, I implement a real time depth map segmentation system, based on normal map analysis.\n",
-  "inLanguage" : "en",
-  "wordCount":  1155 ,
-  "datePublished" : "2021-02-15T00:00:00",
-  "dateModified" : "2021-02-15T00:00:00",
-  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Computer vision, Cpp, OpenCV, Depth Map, RGB-D, Paper" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/en\/post\/depth_map_segmentation\/",
-  "publisher" : {
+  "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/"
+  },
+  "keywords": [
+    "Computer vision",
+    "Cpp",
+    "OpenCV",
+    "Depth Map",
+    "RGB-D",
+    "Paper"
+  ],
+  "mainEntityOfPage": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name" : "https:\/\/BaptisteHudyma.github.io",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-        "height" :  60 ,
-        "width" :  60
-    }
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "height": 60,
+      "url": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+      "width": 60
+    },
+    "name": "HUB Logs"
+  },
+  "timeRequired": "PT6M",
+  "wordCount": 1155
 }
 </script>
 
-<meta property="og:title" content="Depth Map Segmentation" />
-<meta property="og:description" content="In this post, I implement a real time depth map segmentation system, based on normal map analysis.">
-<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="HUB Logs" />
 
+<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/">
+  <meta property="og:site_name" content="HUB Logs">
+  <meta property="og:title" content="Depth Map Segmentation">
+  <meta property="og:description" content="In this post, I implement a real time depth map segmentation system, based on normal map analysis.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-02-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-02-15T00:00:00+00:00">
+    <meta property="article:tag" content="Computer Vision">
+    <meta property="article:tag" content="CPP">
+    <meta property="article:tag" content="OpenCV">
+    <meta property="article:tag" content="Depth Map">
+    <meta property="article:tag" content="Rgb-D">
+    <meta property="article:tag" content="Paper">
+<link rel="canonical" href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" />
   <meta name="twitter:title" content="Depth Map Segmentation" />
   <meta name="twitter:description" content="In this post, I implement a real time depth map segmentation system, based on normal map analysis.">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.161.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/en/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -98,17 +162,6 @@
   <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-189718074-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
   </head>
@@ -381,53 +434,6 @@ if (!doNotTrack) {
 
 
     
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-
   
   
   
@@ -455,6 +461,8 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
+  
+  
   <i class="fas fa-calendar"></i>&nbsp;Posted on February 15, 2021
   
   
@@ -464,7 +472,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Other languages: <a href="https://BaptisteHudyma.github.io/post/depth_map_segmentation/" lang="fr">fr</a>
 </span>
-
 
               
             </div>
@@ -479,11 +486,15 @@ if (!doNotTrack) {
 
 
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p>In this post, I implement a real time depth map segmentation system, based on normal map analysis.</p>
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <article role="main" class="blog-post">
+          
+
+          
+
+          <p>In this post, I implement a real time depth map segmentation system, based on normal map analysis.</p>
 <p>Depth map analysis (as obtained by a RGB-D camera for example) is not an easy or fast task.
 The target of this post is simply to implement a method to segment elements from a depth map, like objects, planes, any closed 3D surface in fact.</p>
 <p>As always, I have a certain aversion (mistrust ?) toward neural networks, so I&rsquo;m trying my best without them a try to use them when the condition of failure for them are minimal.
@@ -499,12 +510,12 @@ As I have absolutely no use for classes here, I will only use normal separation.
 <p>Here I used a morphological closing, a median filtering and a bilateral filtering, which aim (in order) at closing the little holes, smooth those modifications and smooth the whole image while keeping the edges.</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">Mat</span> <span class="n">newTempoMat</span>
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">morphologyEx</span><span class="p">(</span><span class="n">depthMap</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="n">cv</span><span class="o">::</span><span class="n">MORPH_CLOSE</span><span class="p">,</span> <span class="n">kernel</span><span class="p">);</span> <span class="c1">// kernel is a 3x3 square
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
+</span></span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">medianBlur</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">newTempoMat</span><span class="p">,</span> <span class="mi">3</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl"><span class="n">cv</span><span class="o">::</span><span class="n">bilateralFilter</span><span class="p">(</span><span class="n">newTempoMat</span><span class="p">,</span> <span class="n">depthMap</span><span class="p">,</span>  <span class="mi">7</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">15</span><span class="p">);</span>
 </span></span></code></pre></div><p>The papers I used as references are all using a vertex map, which is a depth map converted as &ldquo;real&rdquo; units.
 I will consider in this post that my depth map is a vertex map (that&rsquo;s true, I just call it a depth map).</p>
 <h1 id="compute-normal-map">Compute Normal Map</h1>
-<p>A normal map is a RGB image which represents the normal vectors of each pixel to its neighbors (see <a href="https://en.wikipedia.org/wiki/Normal_(geometry)">Wikipedia: Normal (Geometry)</a> for more details as I wwon&rsquo;t go further here).</p>
+<p>A normal map is a RGB image which represents the normal vectors of each pixel to its neighbors (see <a href="https://en.wikipedia.org/wiki/Normal_%28geometry%29">Wikipedia: Normal (Geometry)</a> for more details as I wwon&rsquo;t go further here).</p>
 <p>This structure is made of NxM 3D vectors for a NxM sized image, and is stored as an RGB image with each channel as a vector component (smart !).
 The final effect is a blue/green/red nuanced image, depending on the direction of the prevailing normal direction (see <a href="https://blog.developpez.com/bouye/p12696/langage/java/javafx-8-x/bump">Blog de Fabrice Bouyé (French)</a> for nice and clear pictures)</p>
 <p>A normal map from simulated data is rather &ldquo;nice&rdquo;.
@@ -524,8 +535,8 @@ Those errors in the normal come from the depth map measurement error (see [6] fo
 <p>We then parse the normal map to detect concave features.
 I used an operator adapted from [1] which compares a point <code>(x, y)</code> convexity with its neighboring points <code>(xn, yn)</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="k">const</span> <span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&amp;</span> <span class="n">centerNormal</span> <span class="o">=</span> <span class="n">normalMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span> <span class="c1">//normal in the center of the zone to consider
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//depth map value at the centre
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">float</span> <span class="n">minConcavity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//depth map value at the centre
+</span></span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">minConcavity</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">neightborDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">vertexDot</span> <span class="o">=</span> <span class="n">centerVertex</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="n">xn</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">neightborDepth</span> <span class="o">-</span> <span class="n">centerDepth</span><span class="p">));</span>
@@ -542,7 +553,7 @@ I used an operator adapted from [1] which compares a point <code>(x, y)</code> c
 <p>For this step, we want to find depth discontinuities.
 I used the same operator as [1], which compared a point <code>(x, y)</code> distance to it&rsquo;s neighbors <code>(xn, yn)</code>:</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-CPP" data-lang="CPP"><span class="line"><span class="cl"><span class="k">const</span> <span class="kt">float</span><span class="o">&amp;</span> <span class="n">centerDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">);</span>           <span class="c1">//depth map value in the center
-</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="kt">float</span> <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+</span></span></span><span class="line"><span class="cl"><span class="kt">float</span> <span class="n">maxDiscontinuity</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
 </span></span><span class="line"><span class="cl"><span class="k">for</span><span class="p">(</span> <span class="n">each</span> <span class="n">neigbor</span> <span class="p">)</span> <span class="p">{</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">float</span> <span class="n">neightborDepth</span> <span class="o">=</span> <span class="n">depthMap</span><span class="p">.</span><span class="n">at</span><span class="o">&lt;</span><span class="kt">float</span><span class="o">&gt;</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">yn</span><span class="p">);</span>
 </span></span><span class="line"><span class="cl">    <span class="kt">double</span> <span class="n">vertexDot</span> <span class="o">=</span> <span class="n">centerVertex</span><span class="p">.</span><span class="n">dot</span><span class="p">(</span><span class="n">cv</span><span class="o">::</span><span class="n">Vec3f</span><span class="p">(</span><span class="n">xn</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">yn</span> <span class="o">-</span> <span class="n">y</span><span class="p">,</span> <span class="n">neightborDepth</span> <span class="o">-</span> <span class="n">centerDepth</span><span class="p">));</span>
@@ -581,72 +592,79 @@ It is also more heavy to run than CAPE, but is highly parallelizable.</p>
 <li>[5] <a href="https://www.researchgate.net/publication/264738039_Generative_Cognitive_Representation_for_Embodied_Agents">Generative Cognitive Representation for Embodied Agents</a></li>
 <li>[6] <a href="https://www.researchgate.net/publication/234028266_Modeling_Kinect_Sensor_Noise_for_Improved_3D_Reconstruction_and_Tracking">Modeling Kinect Sensor Noise for Improved 3D Reconstruction and Tracking</a></li>
 </ul>
+          
+          
+
 
         
+        
           <div class="blog-tags">
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/computer-vision/">Computer vision</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/cpp/">Cpp</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/opencv/">OpenCV</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/depth-map/">Depth Map</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/rgb-d/">RGB-D</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/paper/">Paper</a>&nbsp;
-            
+            <span>Tags: </span>
+            <a href="https://BaptisteHudyma.github.io/en/tags/computer-vision/">Computer vision</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/cpp/">Cpp</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/opencv/">OpenCV</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/depth-map/">Depth Map</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/rgb-d/">RGB-D</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/paper/">Paper</a>&nbsp;
           </div>
         
 
         
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 
 
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
+<div class="share-box" role="region">
+    <ul class="share" aria-label="Social sharing" role="list">
       
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;text=Depth%20Map%20Segmentation&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
+      <li role="listitem">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;text=Depth%20Map%20Segmentation&amp;via=" target="_blank" rel="noopener noreferrer" title="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Twitter</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
+      <li role="listitem">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f" target="_blank" rel="noopener noreferrer" title="Share on Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Facebook</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;title=Depth%20Map%20Segmentation" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
+      <li role="listitem">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;title=Depth%20Map%20Segmentation" target="_blank" rel="noopener noreferrer" title="Share on Reddit">
+          <i class="fab fa-reddit" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Reddit</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;title=Depth%20Map%20Segmentation" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
+      <li role="listitem">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;title=Depth%20Map%20Segmentation" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on LinkedIn</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;title=Depth%20Map%20Segmentation" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
+      <li role="listitem">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;title=Depth%20Map%20Segmentation" target="_blank" rel="noopener noreferrer" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on StumbleUpon</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;description=Depth%20Map%20Segmentation" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
+      <li role="listitem">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;description=Depth%20Map%20Segmentation" target="_blank" rel="noopener noreferrer" title="Share on Pinterest">
+          <i class="fab fa-pinterest" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Pinterest</span>
+        </a>
+      </li>
+
+      
+      <li role="listitem">
+        <a href="mailto:?body=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fdepth_map_segmentation%2f&amp;subject=Depth%20Map%20Segmentation" title="Share via email">
+          <i class="fab fa-at" aria-hidden="true"></i>
+          <span class="visually-hidden">Share via email</span>
         </a>
       </li>
     </ul>
@@ -658,41 +676,63 @@ It is also more heavy to run than CAPE, but is highly parallelizable.</p>
         
 
         
-          
-            
-          
-
-          
-                  <h4 class="see-also">See also</h4>
-                  <ul>
-                
-                
-                    <li><a href="/en/post/slam_1/">SLAM - Parti 1</a></li>
-                
-                    <li><a href="/en/post/slam_2/">SLAM - Parti 2</a></li>
-                
-                    <li><a href="/en/post/monte_carlo_tree_p2/">Exploration of Possibilities - Part 2</a></li>
-                
-                    <li><a href="/en/post/monte_carlo_tree_p1/"></a></li>
-                
-                    <li><a href="/en/post/monocular_depth_map/">Monocular Depth Map</a></li>
-                
-              </ul>
-
+            <h4 class="see-also">See also</h4>
+            <div class="see-also-list">
+              
+                <a href="/en/post/slam_1/" class="see-also-item">
+                  <span class="see-also-item-title">SLAM - Parti 1</span>
+                  <span class="see-also-item-subtitle">Implement my system of localization and mapping</span>
+                </a>
+              
+                <a href="/en/post/slam_2/" class="see-also-item">
+                  <span class="see-also-item-title">SLAM - Parti 2</span>
+                  <span class="see-also-item-subtitle">Implement my system of localization and mapping</span>
+                </a>
+              
+                <a href="/en/post/monte_carlo_tree_p2/" class="see-also-item">
+                  <span class="see-also-item-title">Exploration of Possibilities - Part 2</span>
+                  <span class="see-also-item-subtitle">Make AIs for board games</span>
+                </a>
+              
+                <a href="/en/post/monte_carlo_tree_p1/" class="see-also-item">
+                  <span class="see-also-item-title"></span>
+                  <span class="see-also-item-subtitle">Make AIs for board games</span>
+                </a>
+              
+                <a href="/en/post/monocular_depth_map/" class="see-also-item">
+                  <span class="see-also-item-title">Monocular Depth Map</span>
+                  <span class="see-also-item-subtitle">Generate a depth map from a monocular video</span>
+                </a>
+              
+            </div>
           
         
       </article>
 
       
-        <ul class="pager blog-pager">
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" class="nav-side-arrow nav-side-prev" title="Monocular Depth Map" aria-label="Previous Post: Monocular Depth Map">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/" class="nav-side-arrow nav-side-next" title="" aria-label="Next Post: ">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        
+        <ul class="post-pager blog-post-pager">
           
-            <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" data-toggle="tooltip" data-placement="top" title="Monocular Depth Map">&larr; Previous Post</a>
+            <li class="pager-prev">
+              <a href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" data-bs-toggle="tooltip" data-bs-placement="top" title="Monocular Depth Map"><i class="fas fa-chevron-left"></i> Previous Post</a>
             </li>
           
+          <li class="pager-center">
+            
+
+          </li>
           
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/" data-toggle="tooltip" data-placement="top" title="">Next Post &rarr;</a>
+            <li class="pager-next">
+              <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/" data-bs-toggle="tooltip" data-bs-placement="top" title="">Next Post <i class="fas fa-chevron-right"></i></a>
             </li>
           
         </ul>
@@ -700,65 +740,126 @@ It is also more heavy to run than CAPE, but is highly parallelizable.</p>
 
 
       
-        
+      
+
+      
+
+      
+      
+      
         
       
+
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#qualitative-comparison">Qualitative Comparison</a></li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>
 </div>
 
+    
       
 <footer>
   <div class="container">
     
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-		
-		  <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://github.com/BaptisteHudyma" title="GitHub">
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="mailto:bapt.hudyma95650@gmail.com" title="Email me" aria-label="Email me">
 		
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://gitlab.com/BaptHdm" title="GitLab">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
           
-          <li>
-            <a href="" title="RSS">
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://github.com/BaptisteHudyma" title="GitHub" aria-label="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://gitlab.com/BaptHdm" title="GitLab" aria-label="GitLab">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://linkedin.com/in/in/baptiste-hudyma" title="LinkedIn" aria-label="LinkedIn">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="/en/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -766,42 +867,52 @@ It is also more heavy to run than CAPE, but is highly parallelizable.</p>
             </a>
           </li>
           
+          
         </ul>
         <p class="credits copyright text-muted">
           
             
               Baptiste Hudyma
             
+            &nbsp;&bull;&nbsp;
           
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2023
           
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://BaptisteHudyma.github.io/en/">HUB Logs</a>
+          
+          
+            <a href="https://BaptisteHudyma.github.io/en/">Hu B</a>
           
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.121.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.161.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
     </div>
   </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</footer>
 
-<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
-<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+      
+
+      
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="/js/main.js"></script><script src="/js/toc.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js" integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU" crossorigin="anonymous"></script><script> hljs.highlightAll(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script><script src="/js/load-photoswipe.js"></script>
+
+
+
+
 
 
 
@@ -814,4 +925,3 @@ It is also more heavy to run than CAPE, but is highly parallelizable.</p>
     
   </body>
 </html>
-

@@ -1,7 +1,26 @@
+
+
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head>
-    
+  <head><script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        var dark = false;
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
+        }
+      })();
+    </script>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,86 +30,125 @@
   <meta name="description" content="The Lamp-da Tutorial">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "HUB Logs",
-    
-    "url": "https:\/\/BaptisteHudyma.github.io"
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#website",
+  "@type": "WebSite",
+  "name": "HUB Logs",
+  "url": "https://BaptisteHudyma.github.io/"
 }
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#organization",
   "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/BaptisteHudyma.github.io"
-  
-  
-  
-  
+  "name": "Baptiste Hudyma",
+  "url": "https://BaptisteHudyma.github.io/"
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/en\/post\/lamp-da\/",
-          "name": "Building a compact lantern"
-        }
-    }]
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/lamp-da/",
+  "@type": "WebPage",
+  "breadcrumb": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/lamp-da/#breadcrumb"
+  },
+  "name": "Building a Compact Lantern",
+  "url": "https://BaptisteHudyma.github.io/en/post/lamp-da/"
 }
-</script><script type="application/ld+json">
+</script>
+<script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/lamp-da/#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/",
+      "name": "Home",
+      "position": 1
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/",
+      "name": "Posts",
+      "position": 2
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/lamp-da/",
+      "name": "Building a Compact Lantern",
+      "position": 3
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/lamp-da/#article",
   "@type": "Article",
   "author": {
-    "name" : "Baptiste Hudyma"
+    "@id": "https://BaptisteHudyma.github.io/#author",
+    "@type": "Person",
+    "name": "Baptiste Hudyma",
+    "url": "https://BaptisteHudyma.github.io/"
   },
+  "dateCreated": "2023-11-22T00:00:00+00:00",
+  "dateModified": "2023-11-22T00:00:00+00:00",
+  "datePublished": "2023-11-22T00:00:00+00:00",
+  "description": "Tutorial on building a compact and sturdy lantern.\n",
   "headline": "Building a Compact Lantern",
-  "description" : "Tutorial on building a compact and sturdy lantern.\n",
-  "inLanguage" : "en",
-  "wordCount":  3370 ,
-  "datePublished" : "2023-11-22T00:00:00",
-  "dateModified" : "2023-11-22T00:00:00",
-  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Electronic, Design, 3D print" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/en\/post\/lamp-da\/",
-  "publisher" : {
+  "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/lamp-da/"
+  },
+  "keywords": [
+    "Electronic",
+    "Design",
+    "3D print"
+  ],
+  "mainEntityOfPage": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/lamp-da/"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name" : "https:\/\/BaptisteHudyma.github.io",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-        "height" :  60 ,
-        "width" :  60
-    }
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "height": 60,
+      "url": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+      "width": 60
+    },
+    "name": "HUB Logs"
+  },
+  "timeRequired": "PT16M",
+  "wordCount": 3370
 }
 </script>
 
-<meta property="og:title" content="Building a Compact Lantern" />
-<meta property="og:description" content="The Lamp-da Tutorial">
-<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/lamp-da/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="HUB Logs" />
 
+<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/lamp-da/">
+  <meta property="og:site_name" content="HUB Logs">
+  <meta property="og:title" content="Building a Compact Lantern">
+  <meta property="og:description" content="Tutorial on building a compact and sturdy lantern.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2023-11-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-11-22T00:00:00+00:00">
+    <meta property="article:tag" content="Electronic">
+    <meta property="article:tag" content="Design">
+    <meta property="article:tag" content="3D Print">
+<link rel="canonical" href="https://BaptisteHudyma.github.io/en/post/lamp-da/" />
   <meta name="twitter:title" content="Building a Compact Lantern" />
   <meta name="twitter:description" content="The Lamp-da Tutorial">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.161.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/en/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -98,17 +156,6 @@
   <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-189718074-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
   </head>
@@ -381,53 +428,6 @@ if (!doNotTrack) {
 
 
     
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-
   
   
   
@@ -459,6 +459,8 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
+  
+  
   <i class="fas fa-calendar"></i>&nbsp;Posted on November 22, 2023
   
   
@@ -468,7 +470,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Other languages: <a href="https://BaptisteHudyma.github.io/post/lamp-da/" lang="fr">fr</a>
 </span>
-
 
               
             </div>
@@ -483,13 +484,18 @@ if (!doNotTrack) {
 
 
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p>Tutorial on building a compact and sturdy lantern.</p>
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <article role="main" class="blog-post">
+          
+
+          
+
+          <p>Tutorial on building a compact and sturdy lantern.</p>
 <p><img src="/static/lamp_da/lampe_demo.jpg" alt="Image: Lamp in use"></p>
-<details><summary>Where did the idea come from? (click to expand)</summary>
+<details class="details-shortcode"><summary>Where did the idea come from? (click to expand)</summary>
+<p>
 <p>A few years ago, while navigating dark corridors equipped with my €10 Decathlon headlamp, I encountered a friendly guy with a large candle-colored lantern.
 Homemade, he said! (dedication to my friend Michel)</p>
 <p>Well, I had to make one too.
@@ -500,6 +506,7 @@ Simple and effective.</p>
 <p>The tutorial below explains how to build version 0 of the Lamp-da.
 V0 is the result of 6 or 7 construction iterations, where various improvements were made (the internet is not always a great help&hellip;)</p>
 
+</p>
 </details>
 
 <h1 id="bill-of-materials-bom">Bill of Materials (BOM):</h1>
@@ -516,7 +523,8 @@ V0 is the result of 6 or 7 construction iterations, where various improvements w
 <li>Waterproof USB-C connector.</li>
 <li>Electrical wires. The wire I use supports the following specifications: 60V, Max current 4.3A. Choose wire that can withstand more than the maximum current consumed by the LED strips and the charger (here, 2A).</li>
 </ul>
-<details><summary>Calculating how to choose components (click to expand)</summary>
+<details class="details-shortcode"><summary>Calculating how to choose components (click to expand)</summary>
+<p>
 <p>Let&rsquo;s do some math to understand what we&rsquo;re doing:</p>
 <p>We use three batteries in series.
 To obtain the total power stored in the battery, take the capacity of on battery (The capacity does not augment when using batteries in series)
@@ -550,6 +558,7 @@ I use a 5V 4A charger module, the output (if we consider no losses, which is ver
 3.5Ah / 1.66A =&gt; 2h</p>
 <p>2 hours of charging time! (&lt;- indicative calculation, reality is much more complex)</p>
 
+</p>
 </details>
 
 <h2 id="miscellaneous">Miscellaneous</h2>
@@ -595,7 +604,7 @@ I use a 5V 4A charger module, the output (if we consider no losses, which is ver
 <p>3D printer: for the caps. 3 pieces to print.</p>
 </li>
 </ul>
-<p><img src="/static/lamp_da/capuchons.jpg" alt="&ldquo;Image: caps to print&rdquo;">
+<p><img src="/static/lamp_da/capuchons.jpg" alt="“Image: caps to print”">
 On the left, the battery guide, in the center the logo cap, on the right the top cap.</p>
 <p><a href="/static/files/lampda_prints.zip">&ldquo;Print files (stl)&rdquo;</a></p>
 <h1 id="lamp-structure">Lamp Structure</h1>
@@ -608,7 +617,7 @@ Insert the nail into the hole and use a hammer to drive it through the tube, usi
 A dab of glue in each hole (nail and LED wires) can be used to seal everything.</p>
 <p><img src="/static/lamp_da/led_alignement.jpg" alt="Image: LED alignment"></p>
 <p>Cut a 15 cm section of heat-shrink tubing and slide it around the tube of our lamp. Using a hairdryer, heat the tubing enough for it to shrink around the tube, forming a kind of casing. Cut off the excess along the tube using a cutter.</p>
-<p><img src="/static/lamp_da/led_et_thermo.jpg" alt="Image: Lamp + heat shrink"></p>
+<p><img src="/static/lamp_da/led_et_thermo.jpg" alt="Image: Lamp &#43; heat shrink"></p>
 <p>Once the heat-shrink tubing is in place, you can install the first 3D-printed piece: the battery bottom. It should be placed at the bottom of the tube but not glued against the nail; there should be a 2mm gap between the piece and the nail. I use a 3D-printed guide to control the distance between the two. Glue the battery guide onto the tube with super glue.</p>
 <p><img src="/static/lamp_da/cul_de_lampe.jpg" alt="Image: Bare lamp back"></p>
 <p>Use the lamp base (3D-printed) to attach the end of the cord to the nail. Once the cord end is installed, generously apply glue between the battery guide and the lamp base without touching the cord. Glue the two parts together, pressing while it dries.</p>
@@ -631,7 +640,7 @@ If your batteries are outside these voltages, there&rsquo;s a big problem; do no
 <p>Begin by charging the 3 batteries with a suitable charger (18650 Li-ion charger). Solder the batteries in series using the following triangular configuration:</p>
 <p><img src="/static/lamp_da/batteries_serie_triangle.jpg" alt="Image: Batteries in series"></p>
 <p>BE VERY CAREFUL; this is the really dangerous step. Solder wires to 0V, 4V, 8V, and 12V, and connect them to the corresponding locations on the BMS. Check three times rather than risking an explosion. Don&rsquo;t forget to put insulation between the BMS and the batteries!!!</p>
-<p><img src="/static/lamp_da/batteries_BMS.jpg" alt="Image: Batteries + BMS"></p>
+<p><img src="/static/lamp_da/batteries_BMS.jpg" alt="Image: Batteries &#43; BMS"></p>
 <p>Test the output of the BMS. If it&rsquo;s &gt;12V, it&rsquo;s OK. If it&rsquo;s 0, recheck the connections one by one. If the connections are OK, use a 12V power supply and simultaneously touch the 0 and 12V BMS output with the 0 and 12V of the power supply to activate the BMS.</p>
 <p>If there&rsquo;s no 12V output from the BMS, change the BMS and try again.</p>
 <p>Once the BMS is fixed, the battery is secure.</p>
@@ -760,66 +769,79 @@ In practice, the lamp lights up very little in the last 5% of the battery, so we
 We could even argue that it should stay at 2.8V and give us some time to charge it after being cut off, even after putting it back into safety mode.</p>
 <p>Ideally, the lamp should be cut off at 3.2V to ensure that the battery stays charged until it&rsquo;s plugged in</p>
 <p>Thank you for following until now, good luck on your dark explorations!</p>
+          
+          
+
 
         
+        
           <div class="blog-tags">
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/electronic/">Electronic</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/design/">Design</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/3d-print/">3D print</a>&nbsp;
-            
+            <span>Tags: </span>
+            <a href="https://BaptisteHudyma.github.io/en/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/design/">Design</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/3d-print/">3D print</a>&nbsp;
           </div>
         
 
         
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 
 
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
+<div class="share-box" role="region">
+    <ul class="share" aria-label="Social sharing" role="list">
       
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;text=Building%20a%20Compact%20Lantern&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
+      <li role="listitem">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;text=Building%20a%20Compact%20Lantern&amp;via=" target="_blank" rel="noopener noreferrer" title="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Twitter</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
+      <li role="listitem">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f" target="_blank" rel="noopener noreferrer" title="Share on Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Facebook</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;title=Building%20a%20Compact%20Lantern" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
+      <li role="listitem">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;title=Building%20a%20Compact%20Lantern" target="_blank" rel="noopener noreferrer" title="Share on Reddit">
+          <i class="fab fa-reddit" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Reddit</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;title=Building%20a%20Compact%20Lantern" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
+      <li role="listitem">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;title=Building%20a%20Compact%20Lantern" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on LinkedIn</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;title=Building%20a%20Compact%20Lantern" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
+      <li role="listitem">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;title=Building%20a%20Compact%20Lantern" target="_blank" rel="noopener noreferrer" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on StumbleUpon</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;description=Building%20a%20Compact%20Lantern" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
+      <li role="listitem">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;description=Building%20a%20Compact%20Lantern" target="_blank" rel="noopener noreferrer" title="Share on Pinterest">
+          <i class="fab fa-pinterest" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Pinterest</span>
+        </a>
+      </li>
+
+      
+      <li role="listitem">
+        <a href="mailto:?body=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2flamp-da%2f&amp;subject=Building%20a%20Compact%20Lantern" title="Share via email">
+          <i class="fab fa-at" aria-hidden="true"></i>
+          <span class="visually-hidden">Share via email</span>
         </a>
       </li>
     </ul>
@@ -831,97 +853,186 @@ We could even argue that it should stay at 2.8V and give us some time to charge 
         
 
         
-          
-            
-          
-
-          
-                  <h4 class="see-also">See also</h4>
-                  <ul>
-                
-                
-                    <li><a href="/en/post/plant_touch_sensor/">Tactile Plant</a></li>
-                
-                    <li><a href="/en/post/harpe_laser/">Laser Harp</a></li>
-                
-              </ul>
-
+            <h4 class="see-also">See also</h4>
+            <div class="see-also-list">
+              
+                <a href="/en/post/plant_touch_sensor/" class="see-also-item">
+                  <span class="see-also-item-title">Tactile Plant</span>
+                  <span class="see-also-item-subtitle">Use a microcontroller as a capacitive interface</span>
+                </a>
+              
+                <a href="/en/post/harpe_laser/" class="see-also-item">
+                  <span class="see-also-item-title">Laser Harp</span>
+                  <span class="see-also-item-subtitle">Can we really call that a harp ?</span>
+                </a>
+              
+            </div>
           
         
       </article>
 
       
-        <ul class="pager blog-pager">
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/slam_1/" class="nav-side-arrow nav-side-prev" title="SLAM - Parti 1" aria-label="Previous Post: SLAM - Parti 1">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        
+        
+        <ul class="post-pager blog-post-pager">
           
-            <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/en/post/slam_1/" data-toggle="tooltip" data-placement="top" title="SLAM - Parti 1">&larr; Previous Post</a>
+            <li class="pager-prev">
+              <a href="https://BaptisteHudyma.github.io/en/post/slam_1/" data-bs-toggle="tooltip" data-bs-placement="top" title="SLAM - Parti 1"><i class="fas fa-chevron-left"></i> Previous Post</a>
             </li>
           
+          <li class="pager-center">
+            
+
+          </li>
+          
+            <li class="pager-next"></li>
           
         </ul>
       
 
 
       
-        
+      
+
+      
+
+      
+      
+      
         
       
+
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#electronics">Electronics</a></li>
+    <li><a href="#miscellaneous">Miscellaneous</a></li>
+    <li><a href="#tools">Tools</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#adding-the-balancer">Adding the Balancer</a>
+      <ul>
+        <li><a href="#connection">Connection</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#unfit-charger-module">Unfit charger module</a></li>
+    <li><a href="#structural-failure-point">Structural failure point</a></li>
+    <li><a href="#luminosity-drop-in-use">Luminosity drop in use</a></li>
+    <li><a href="#under-charge-handled-by-bms">Under charge handled by BMS</a></li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>
 </div>
 
+    
       
 <footer>
   <div class="container">
     
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-		
-		  <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://github.com/BaptisteHudyma" title="GitHub">
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="mailto:bapt.hudyma95650@gmail.com" title="Email me" aria-label="Email me">
 		
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://gitlab.com/BaptHdm" title="GitLab">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
           
-          <li>
-            <a href="" title="RSS">
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://github.com/BaptisteHudyma" title="GitHub" aria-label="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://gitlab.com/BaptHdm" title="GitLab" aria-label="GitLab">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://linkedin.com/in/in/baptiste-hudyma" title="LinkedIn" aria-label="LinkedIn">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="/en/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -929,42 +1040,52 @@ We could even argue that it should stay at 2.8V and give us some time to charge 
             </a>
           </li>
           
+          
         </ul>
         <p class="credits copyright text-muted">
           
             
               Baptiste Hudyma
             
+            &nbsp;&bull;&nbsp;
           
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2023
           
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://BaptisteHudyma.github.io/en/">HUB Logs</a>
+          
+          
+            <a href="https://BaptisteHudyma.github.io/en/">Hu B</a>
           
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.121.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.161.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
     </div>
   </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</footer>
 
-<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
-<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+      
+
+      
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="/js/main.js"></script><script src="/js/toc.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js" integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU" crossorigin="anonymous"></script><script> hljs.highlightAll(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script><script src="/js/load-photoswipe.js"></script>
+
+
+
+
 
 
 
@@ -977,4 +1098,3 @@ We could even argue that it should stay at 2.8V and give us some time to charge 
     
   </body>
 </html>
-

@@ -1,7 +1,26 @@
+
+
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head>
-    
+  <head><script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        var dark = false;
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
+        }
+      })();
+    </script>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,86 +30,129 @@
   <meta name="description" content="Generate a depth map from a monocular video">
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "HUB Logs",
-    
-    "url": "https:\/\/BaptisteHudyma.github.io"
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#website",
+  "@type": "WebSite",
+  "name": "HUB Logs",
+  "url": "https://BaptisteHudyma.github.io/"
 }
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#organization",
   "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/BaptisteHudyma.github.io"
-  
-  
-  
-  
+  "name": "Baptiste Hudyma",
+  "url": "https://BaptisteHudyma.github.io/"
 }
 </script>
 <script type="application/ld+json">
 {
-  "@context": "http://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [{
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io",
-          "name": "home"
-        }
-    },{
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@id": "https:\/\/BaptisteHudyma.github.io\/en\/post\/monocular_depth_map\/",
-          "name": "Monocular depth map"
-        }
-    }]
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/",
+  "@type": "WebPage",
+  "breadcrumb": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/#breadcrumb"
+  },
+  "name": "Monocular Depth Map",
+  "url": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/"
 }
-</script><script type="application/ld+json">
+</script>
+<script type="application/ld+json">
 {
-  "@context": "http://schema.org",
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/#breadcrumb",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/",
+      "name": "Home",
+      "position": 1
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/",
+      "name": "Posts",
+      "position": 2
+    },
+    {
+      "@type": "ListItem",
+      "item": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/",
+      "name": "Monocular Depth Map",
+      "position": 3
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/#article",
   "@type": "Article",
   "author": {
-    "name" : "Baptiste Hudyma"
+    "@id": "https://BaptisteHudyma.github.io/#author",
+    "@type": "Person",
+    "name": "Baptiste Hudyma",
+    "url": "https://BaptisteHudyma.github.io/"
   },
+  "dateCreated": "2021-01-24T00:00:00+00:00",
+  "dateModified": "2021-01-24T00:00:00+00:00",
+  "datePublished": "2021-01-24T00:00:00+00:00",
+  "description": "Use a video taken by a single camera to estimate the depth of objects in an image. A small dip in the world of epipolar geometry and key points analysis.\n",
   "headline": "Monocular Depth Map",
-  "description" : "Use a video taken by a single camera to estimate the depth of objects in an image. A small dip in the world of epipolar geometry and key points analysis.\n",
-  "inLanguage" : "en",
-  "wordCount":  1333 ,
-  "datePublished" : "2021-01-24T00:00:00",
-  "dateModified" : "2021-01-24T00:00:00",
-  "image" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-  "keywords" : [ "Computer vision, Cpp, OpenCV, Depth map, rgb-d" ],
-  "mainEntityOfPage" : "https:\/\/BaptisteHudyma.github.io\/en\/post\/monocular_depth_map\/",
-  "publisher" : {
+  "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+  "inLanguage": "en",
+  "isPartOf": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/"
+  },
+  "keywords": [
+    "Computer vision",
+    "Cpp",
+    "OpenCV",
+    "Depth map",
+    "rgb-d"
+  ],
+  "mainEntityOfPage": {
+    "@id": "https://BaptisteHudyma.github.io/en/post/monocular_depth_map/"
+  },
+  "publisher": {
     "@type": "Organization",
-    "name" : "https:\/\/BaptisteHudyma.github.io",
-    "logo" : {
-        "@type" : "ImageObject",
-        "url" : "https:\/\/BaptisteHudyma.github.io\/img\/github_profile.jpg",
-        "height" :  60 ,
-        "width" :  60
-    }
-  }
+    "logo": {
+      "@type": "ImageObject",
+      "height": 60,
+      "url": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
+      "width": 60
+    },
+    "name": "HUB Logs"
+  },
+  "timeRequired": "PT7M",
+  "wordCount": 1333
 }
 </script>
 
-<meta property="og:title" content="Monocular Depth Map" />
-<meta property="og:description" content="Generate a depth map from a monocular video">
-<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="HUB Logs" />
 
+<meta property="og:url" content="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/">
+  <meta property="og:site_name" content="HUB Logs">
+  <meta property="og:title" content="Monocular Depth Map">
+  <meta property="og:description" content="Use a video taken by a single camera to estimate the depth of objects in an image. A small dip in the world of epipolar geometry and key points analysis.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2021-01-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-01-24T00:00:00+00:00">
+    <meta property="article:tag" content="Computer Vision">
+    <meta property="article:tag" content="CPP">
+    <meta property="article:tag" content="OpenCV">
+    <meta property="article:tag" content="Depth Map">
+    <meta property="article:tag" content="Rgb-D">
+<link rel="canonical" href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" />
   <meta name="twitter:title" content="Monocular Depth Map" />
   <meta name="twitter:description" content="Generate a depth map from a monocular video">
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.161.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/en/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -98,17 +160,6 @@
   <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-189718074-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
   </head>
@@ -381,53 +432,6 @@ if (!doNotTrack) {
 
 
     
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-
   
   
   
@@ -459,6 +463,8 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
+  
+  
   <i class="fas fa-calendar"></i>&nbsp;Posted on January 24, 2021
   
   
@@ -468,7 +474,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Other languages: <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" lang="fr">fr</a>
 </span>
-
 
               
             </div>
@@ -483,11 +488,15 @@ if (!doNotTrack) {
 
 
     
-<div class="container" role="main">
-  <div class="row">
-    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-      <article role="main" class="blog-post">
-        <p>Use a video taken by a single camera to estimate the depth of objects in an image.
+  <div class="container" role="main">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <article role="main" class="blog-post">
+          
+
+          
+
+          <p>Use a video taken by a single camera to estimate the depth of objects in an image.
 A small dip in the world of epipolar geometry and key points analysis.</p>
 <h1 id="depths-maps-">Depths maps ?</h1>
 <p>Usually, if you want to give your vision system a sense of depth, you have a few options :</p>
@@ -541,10 +550,12 @@ Those key points can then be matched using the OpenCV DescriptorMatcher, using F
 <p>We than get matched pairs, that we can prune based on their distances to the target point, and obtain a clean list of matched points.</p>
 <p>In the above image, we can see at least two outliers (key points wrongly matched).
 Those outliers will be eliminated by the distance check mentioned earlier, or will be removed by the next step.</p>
-<details><summary>Details on epipolar projection</summary>
+<details class="details-shortcode"><summary>Details on epipolar projection</summary>
+<p>
 <strong>A quick note</strong>: Epipolar projection of the two images will deform them so two matched keypoints will be placed on the same straight line on the two images.
 Here, it almost looks like it&rsquo;s already the case: it&rsquo;s due to the proximity of the two images in time.
 A better visualization (and in depth explanations !) can be seen on the <a href="https://docs.opencv.org/master/da/de9/tutorial_py_epipolar_geometry.html">OpenCV page</a>.
+</p>
 </details>
 
 <h3 id="fundamental-matrix">Fundamental Matrix</h3>
@@ -552,13 +563,15 @@ A better visualization (and in depth explanations !) can be seen on the <a href=
 Calling the function <code>cv::findHomography</code> with the matched points pairs will return a fundamental matrix, that we can use to warp the second image with (<code>cv::warpPerspective</code>).
 I used <code>findHomography</code> with a <code>cv::FM_RANSAC</code> parameter.
 We can also get back the in/outliers list (as a vector) to further prune the points of interest (We don&rsquo;t really need them here).</p>
-<details><summary>Details on RANSAC</summary>
+<details class="details-shortcode"><summary>Details on RANSAC</summary>
+<p>
 <p>RANSAC (RANdom SAmple Consensus) is a great method (unfortunately non-deterministic), that I advise you to take a look at.
 It is able to detect outliers in data.
 In our case, we use it to find the optimal transformation matrix without being affected by outliers.</p>
 <p>Ransac can be used for a lot more use cases of course !
 I also used it to extract cylinders from a plane graph, like CAPE did.</p>
 
+</p>
 </details>
 
 <h3 id="stereo-matching">Stereo matching</h3>
@@ -599,70 +612,79 @@ The quality of the depth estimation will only be valuable for short distances, e
 <p>Here is the result of the error map, straight out of the filter.
 As expected, errors are for the most part located at the depth discontinuity points.</p>
 <p><img src="/static/depthmap/monodepth_error.png" alt="Filtered result"></p>
+          
+          
+
 
         
+        
           <div class="blog-tags">
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/computer-vision/">Computer vision</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/cpp/">Cpp</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/opencv/">OpenCV</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/depth-map/">Depth map</a>&nbsp;
-            
-              <a href="https://BaptisteHudyma.github.io/en/tags/rgb-d/">rgb-d</a>&nbsp;
-            
+            <span>Tags: </span>
+            <a href="https://BaptisteHudyma.github.io/en/tags/computer-vision/">Computer vision</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/cpp/">Cpp</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/opencv/">OpenCV</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/depth-map/">Depth map</a>&nbsp;<a href="https://BaptisteHudyma.github.io/en/tags/rgb-d/">rgb-d</a>&nbsp;
           </div>
         
 
         
             <hr/>
             <section id="social-share">
-              <div class="list-inline footer-links">
+              <div class="footer-links">
                 
 
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
+<div class="share-box" role="region">
+    <ul class="share" aria-label="Social sharing" role="list">
       
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;text=Monocular%20Depth%20Map&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
+      <li role="listitem">
+        <a href="//twitter.com/share?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;text=Monocular%20Depth%20Map&amp;via=" target="_blank" rel="noopener noreferrer" title="Share on Twitter">
+          <i class="fab fa-twitter" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Twitter</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
+      <li role="listitem">
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f" target="_blank" rel="noopener noreferrer" title="Share on Facebook">
+          <i class="fab fa-facebook" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Facebook</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
+      <li role="listitem">
+        <a href="//reddit.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" rel="noopener noreferrer" title="Share on Reddit">
+          <i class="fab fa-reddit" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Reddit</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
+      <li role="listitem">
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn">
+          <i class="fab fa-linkedin" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on LinkedIn</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
+      <li role="listitem">
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;title=Monocular%20Depth%20Map" target="_blank" rel="noopener noreferrer" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on StumbleUpon</span>
         </a>
       </li>
-  
+
       
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;description=Monocular%20Depth%20Map" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
+      <li role="listitem">
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;description=Monocular%20Depth%20Map" target="_blank" rel="noopener noreferrer" title="Share on Pinterest">
+          <i class="fab fa-pinterest" aria-hidden="true"></i>
+          <span class="visually-hidden">Share on Pinterest</span>
+        </a>
+      </li>
+
+      
+      <li role="listitem">
+        <a href="mailto:?body=https%3a%2f%2fBaptisteHudyma.github.io%2fen%2fpost%2fmonocular_depth_map%2f&amp;subject=Monocular%20Depth%20Map" title="Share via email">
+          <i class="fab fa-at" aria-hidden="true"></i>
+          <span class="visually-hidden">Share via email</span>
         </a>
       </li>
     </ul>
@@ -674,41 +696,63 @@ As expected, errors are for the most part located at the depth discontinuity poi
         
 
         
-          
-            
-          
-
-          
-                  <h4 class="see-also">See also</h4>
-                  <ul>
-                
-                
-                    <li><a href="/en/post/monte_carlo_tree_p2/">Exploration of Possibilities - Part 2</a></li>
-                
-                    <li><a href="/en/post/monte_carlo_tree_p1/"></a></li>
-                
-                    <li><a href="/en/post/depth_map_segmentation/">Depth Map Segmentation</a></li>
-                
-                    <li><a href="/en/post/de_cape_et_d_opes/">De CAPE et d&#39;Opés</a></li>
-                
-                    <li><a href="/en/post/ppc_slam/">CP SLAM</a></li>
-                
-              </ul>
-
+            <h4 class="see-also">See also</h4>
+            <div class="see-also-list">
+              
+                <a href="/en/post/monte_carlo_tree_p2/" class="see-also-item">
+                  <span class="see-also-item-title">Exploration of Possibilities - Part 2</span>
+                  <span class="see-also-item-subtitle">Make AIs for board games</span>
+                </a>
+              
+                <a href="/en/post/monte_carlo_tree_p1/" class="see-also-item">
+                  <span class="see-also-item-title"></span>
+                  <span class="see-also-item-subtitle">Make AIs for board games</span>
+                </a>
+              
+                <a href="/en/post/depth_map_segmentation/" class="see-also-item">
+                  <span class="see-also-item-title">Depth Map Segmentation</span>
+                  
+                </a>
+              
+                <a href="/en/post/de_cape_et_d_opes/" class="see-also-item">
+                  <span class="see-also-item-title">De CAPE et d&#39;Opés</span>
+                  <span class="see-also-item-subtitle">Correct and optimize the code of a publication</span>
+                </a>
+              
+                <a href="/en/post/ppc_slam/" class="see-also-item">
+                  <span class="see-also-item-title">CP SLAM</span>
+                  <span class="see-also-item-subtitle">A basic SLAM using constraint programming</span>
+                </a>
+              
+            </div>
           
         
       </article>
 
       
-        <ul class="pager blog-pager">
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/" class="nav-side-arrow nav-side-prev" title="De CAPE et d&#39;Opés" aria-label="Previous Post: De CAPE et d&#39;Opés">
+            <i class="fas fa-chevron-left"></i>
+          </a>
+        
+        
+          <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" class="nav-side-arrow nav-side-next" title="Depth Map Segmentation" aria-label="Next Post: Depth Map Segmentation">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        
+        <ul class="post-pager blog-post-pager">
           
-            <li class="previous">
-              <a href="https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/" data-toggle="tooltip" data-placement="top" title="De CAPE et d&#39;Opés">&larr; Previous Post</a>
+            <li class="pager-prev">
+              <a href="https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/" data-bs-toggle="tooltip" data-bs-placement="top" title="De CAPE et d&#39;Opés"><i class="fas fa-chevron-left"></i> Previous Post</a>
             </li>
           
+          <li class="pager-center">
+            
+
+          </li>
           
-            <li class="next">
-              <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" data-toggle="tooltip" data-placement="top" title="Depth Map Segmentation">Next Post &rarr;</a>
+            <li class="pager-next">
+              <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" data-bs-toggle="tooltip" data-bs-placement="top" title="Depth Map Segmentation">Next Post <i class="fas fa-chevron-right"></i></a>
             </li>
           
         </ul>
@@ -716,65 +760,133 @@ As expected, errors are for the most part located at the depth discontinuity poi
 
 
       
-        
+      
+
+      
+
+      
+      
+      
         
       
+
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#key-points">Key points</a></li>
+        <li><a href="#fundamental-matrix">Fundamental Matrix</a></li>
+        <li><a href="#stereo-matching">Stereo matching</a></li>
+        <li><a href="#filtering-step">Filtering step</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>
 </div>
 
+    
       
 <footer>
   <div class="container">
     
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-		
-		  <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://github.com/BaptisteHudyma" title="GitHub">
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="mailto:bapt.hudyma95650@gmail.com" title="Email me" aria-label="Email me">
 		
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://gitlab.com/BaptHdm" title="GitLab">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
           
-          <li>
-            <a href="" title="RSS">
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://github.com/BaptisteHudyma" title="GitHub" aria-label="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://gitlab.com/BaptHdm" title="GitLab" aria-label="GitLab">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://linkedin.com/in/in/baptiste-hudyma" title="LinkedIn" aria-label="LinkedIn">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="/en/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -782,42 +894,52 @@ As expected, errors are for the most part located at the depth discontinuity poi
             </a>
           </li>
           
+          
         </ul>
         <p class="credits copyright text-muted">
           
             
               Baptiste Hudyma
             
+            &nbsp;&bull;&nbsp;
           
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
             2023
           
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://BaptisteHudyma.github.io/en/">HUB Logs</a>
+          
+          
+            <a href="https://BaptisteHudyma.github.io/en/">Hu B</a>
           
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.121.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.161.1</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
     </div>
   </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</footer>
 
-<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
-<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+      
+
+      
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="/js/main.js"></script><script src="/js/toc.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js" integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU" crossorigin="anonymous"></script><script> hljs.highlightAll(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script><script src="/js/load-photoswipe.js"></script>
+
+
+
+
 
 
 
@@ -830,4 +952,3 @@ As expected, errors are for the most part located at the depth discontinuity poi
     
   </body>
 </html>
-

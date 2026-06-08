@@ -1,7 +1,26 @@
+
+
 <!DOCTYPE html>
 <html lang="fr" itemscope itemtype="http://schema.org/WebPage">
-  <head>
-    
+  <head><script>
+      (function() {
+        var saved = localStorage.getItem('theme');
+        var dark = false;
+        if (saved === 'dark') {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        } else if (saved === 'light') {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.setAttribute('data-theme', 'dark');
+          dark = true;
+        }
+        var hljsDark = document.getElementById('hljs-dark');
+        if (hljsDark) {
+          hljsDark.disabled = !dark;
+        }
+      })();
+    </script>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,36 +29,34 @@
   <title>Posts - HUB Logs</title>
   <meta name="author" content="Baptiste Hudyma"/><script type="application/ld+json">
 {
-    "@context": "http://schema.org",
-    "@type": "WebSite",
-    "name": "HUB Logs",
-    
-    "url": "https:\/\/BaptisteHudyma.github.io"
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#website",
+  "@type": "WebSite",
+  "name": "HUB Logs",
+  "url": "https://BaptisteHudyma.github.io/"
 }
-</script><script type="application/ld+json">
-{
-  "@context": "http://schema.org",
+</script>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@id": "https://BaptisteHudyma.github.io/#organization",
   "@type": "Organization",
-  "name": "",
-  "url": "https:\/\/BaptisteHudyma.github.io"
-  
-  
-  
-  
+  "name": "Baptiste Hudyma",
+  "url": "https://BaptisteHudyma.github.io/"
 }
 </script>
 
-<meta property="og:title" content="Posts" />
-<meta property="og:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
-<meta property="og:url" content="https://BaptisteHudyma.github.io/post/" />
-<meta property="og:type" content="website" />
-<meta property="og:site_name" content="HUB Logs" />
-
+<meta property="og:url" content="https://BaptisteHudyma.github.io/post/">
+  <meta property="og:site_name" content="HUB Logs">
+  <meta property="og:title" content="Posts">
+  <meta property="og:locale" content="fr">
+  <meta property="og:type" content="website">
+<link rel="canonical" href="https://BaptisteHudyma.github.io/post/" />
   <meta name="twitter:title" content="Posts" />
   <meta name="twitter:image" content="https://BaptisteHudyma.github.io/img/github_profile.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link href='https://BaptisteHudyma.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.121.2">
+  <meta name="generator" content="Hugo 0.161.1">
   <link rel="alternate" href="https://BaptisteHudyma.github.io/index.xml" type="application/rss+xml" title="HUB Logs"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -47,17 +64,6 @@
   <link rel="stylesheet" href="https://BaptisteHudyma.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
-
-<script>
-var doNotTrack = false;
-if (!doNotTrack) {
-	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-	ga('create', 'UA-189718074-1', 'auto');
-	
-	ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
 
 
   </head>
@@ -71,7 +77,7 @@ if (!doNotTrack) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="https://BaptisteHudyma.github.io">HUB Logs 
+      <a class="navbar-brand" href="https://BaptisteHudyma.github.io/">HUB Logs 
       </a>
       <a class="navbar-brand">
       <div class="js-toggle-wrapper">
@@ -316,7 +322,7 @@ if (!doNotTrack) {
     
       <div class="avatar-container">
         <div class="avatar-img-border">
-          <a title="HUB Logs" href="https://BaptisteHudyma.github.io">
+          <a title="HUB Logs" href="https://BaptisteHudyma.github.io/">
             <img class="avatar-img" src="https://BaptisteHudyma.github.io/img/github_profile.jpg" alt="HUB Logs" />
           </a>
         </div>
@@ -330,53 +336,6 @@ if (!doNotTrack) {
 
 
     
-
-
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-
-<div class="pswp__bg"></div>
-
-<div class="pswp__scroll-wrap">
-    
-    <div class="pswp__container">
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-      <div class="pswp__item"></div>
-    </div>
-    
-    <div class="pswp__ui pswp__ui--hidden">
-    <div class="pswp__top-bar">
-      
-      <div class="pswp__counter"></div>
-      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-      <button class="pswp__button pswp__button--share" title="Share"></button>
-      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-      
-      
-      <div class="pswp__preloader">
-        <div class="pswp__preloader__icn">
-          <div class="pswp__preloader__cut">
-            <div class="pswp__preloader__donut"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-      <div class="pswp__share-tooltip"></div>
-    </div>
-    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-    </button>
-    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-    </button>
-    <div class="pswp__caption">
-      <div class="pswp__caption__center"></div>
-    </div>
-    </div>
-    </div>
-</div>
-
-
   
   
   
@@ -404,7 +363,9 @@ if (!doNotTrack) {
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Publié le November 22, 2023
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le août 1, 2025
   
   
   
@@ -413,7 +374,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/" lang="en">en</a>
 </span>
-
 
               
             </div>
@@ -430,9 +390,348 @@ if (!doNotTrack) {
     
   <div class="container" role="main">
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         
         <div class="posts-list">
+          
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">
+        <h2 class="post-title">Lampda - Partie 7</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le août 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;6&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 7 - Postmortem &amp; conclusion</p>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">
+        <h2 class="post-title">Lampda - Partie 6</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le juillet 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;9&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 6 - Pré-série industrielle (construction de 200 lanternes)</p>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">
+        <h2 class="post-title">Lampda - Partie 5</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le juin 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 5 - Conception logiciel</p>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">
+        <h2 class="post-title">Lampda - Partie 4</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le mai 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 4 - Conception mécanique</p>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">
+        <h2 class="post-title">Lampda - Partie 3</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le avril 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 3 - Conception électronique</p>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">
+        <h2 class="post-title">Lampda - Partie 2</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le mars 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4044&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 2 - Choix techniques</p>
+        <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/" class="post-read-more">[Lire]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
+          
+            <article class="post-preview">
+    <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">
+        <h2 class="post-title">Lampda - Partie 1</h2>
+        
+        <h3 class="post-subtitle">
+            Créer un produit embarqué industriel
+        </h3>
+        
+        
+        
+    </a>
+
+    <p class="post-meta">
+        <span class="post-meta">
+  
+  
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le février 1, 2025
+  
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;627&nbsp;mots
+  
+  
+  
+</span>
+
+    </p>
+    <div class="post-entry">
+        
+        <p>Partie 1 - Postmortem des lanternes V0, Objectifs et spécifications des lanternes V1.</p>
+        <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/" class="post-read-more">[Lire]</a>
+        
+    </div>
+
+    
+    <div class="blog-tags">
+        
+        
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
+        
+    </div>
+    
+
+</article>
+
           
             <article class="post-preview">
     <a href="https://BaptisteHudyma.github.io/post/lamp-da/">
@@ -450,7 +749,9 @@ if (!doNotTrack) {
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Publié le November 22, 2023
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le novembre 22, 2023
   
   
   
@@ -459,7 +760,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/lamp-da/" lang="en">en</a>
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -472,16 +772,15 @@ if (!doNotTrack) {
     
     <div class="blog-tags">
         
-        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;
         
-        <a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/3d-print/">3D print</a>&nbsp;
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/electronic/">Electronic</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/design/">Design</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/3d-print/">3D print</a>&nbsp;
         
     </div>
     
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://BaptisteHudyma.github.io/post/slam_2/">
@@ -499,7 +798,9 @@ if (!doNotTrack) {
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Publié le October 13, 2021
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le octobre 13, 2021
   
   
   
@@ -508,7 +809,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/slam_2/" lang="en">en</a>
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -522,20 +822,15 @@ if (!doNotTrack) {
     
     <div class="blog-tags">
         
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">CPP</a>&nbsp;
         
-        <a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/levenberg-marquardt/">Levenberg-Marquardt</a>&nbsp;
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/cpp/">CPP</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/levenberg-marquardt/">Levenberg-Marquardt</a>&nbsp;
         
     </div>
     
 
 </article>
+
           
             <article class="post-preview">
     <a href="https://BaptisteHudyma.github.io/post/slam_1/">
@@ -553,7 +848,9 @@ if (!doNotTrack) {
         <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Publié le October 4, 2021
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publié le octobre 4, 2021
   
   
   
@@ -562,7 +859,6 @@ if (!doNotTrack) {
   
   &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/slam_1/" lang="en">en</a>
 </span>
-
 
     </p>
     <div class="post-entry">
@@ -576,445 +872,133 @@ if (!doNotTrack) {
     
     <div class="blog-tags">
         
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">CPP</a>&nbsp;
         
-        <a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
+        <span class="blog-tags-label">Tags: </span>
+        <a href="https://BaptisteHudyma.github.io/tags/cpp/">CPP</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;<a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
         
     </div>
     
 
 </article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/">
-        <h2 class="post-title">Exploration de possibilités - Partie 2</h2>
-        
-        <h3 class="post-subtitle">
-            Faire des IA pour les jeux de plateau
-        </h3>
-        
-        
-        
-    </a>
 
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le May 4, 2021
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1457&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p><em><strong>Partie 2: Améliorations et encore plus de blabla !</strong></em></p>
-<p>Nous en étions restés à la construction d&rsquo;une structure d&rsquo;arbre de recherche basique utilisant une recherche de possibilité basée sur un équilibre l&rsquo;exploration, de score et de chance (MCTS: Monte Carlo Tree Search).
-Dans cette deuxième partie, je vais montrer les améliorations que j&rsquo;ai trouvées pour la méthode de base.</p>
-        <a href="https://BaptisteHudyma.github.io/post/monte_carlo_tree_p2/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/ia/">IA</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/optimisation/">Optimisation</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/">
-        <h2 class="post-title">Exploration de possibilités - Partie 1</h2>
-        
-        <h3 class="post-subtitle">
-            Faire des IA pour les jeux de plateau
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le April 22, 2021
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2748&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p><em><strong>Partie 1: Blabla et implémentation</strong></em></p>
-<p>Je suis nul aux échecs, aux dames, me fait rouler dessus au Puissance 4, bref les jeux de société ne sont pas mon fort. Par contre, je me débrouille pas mal en programmation.</p>
-        <a href="https://BaptisteHudyma.github.io/post/monte_carlo_tree_p1/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/ia/">IA</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/depth_map_segmentation/">
-        <h2 class="post-title">Segmentation de depth map</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le February 15, 2021
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1264&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Dans ce post, j&rsquo;implémente un système de segmentation de depth map en temps réel, basé sur l&rsquo;analyse d&rsquo;une normal map.</p>
-        <a href="https://BaptisteHudyma.github.io/post/depth_map_segmentation/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/computer-vision/">Computer vision</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/opencv/">OpenCV</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/depth-map/">Depth Map</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/paper/">Paper</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/">
-        <h2 class="post-title">Monocular Depth Map</h2>
-        
-        <h3 class="post-subtitle">
-            Construire une depth map avec un flux d&#39;image monoculaire
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le January 24, 2021
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1561&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/monocular_depth_map/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Utiliser un flux vidéo issu d&rsquo;une seule caméra pour estimer la profondeur des objets dans l&rsquo;image.
-Un petit plongeon dans le monde de la géométrie épipolaire et de l&rsquo;analyse des points d&rsquo;intérêts.</p>
-        <a href="https://BaptisteHudyma.github.io/post/monocular_depth_map/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/computer-vision/">Computer vision</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/opencv/">OpenCV</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/depth-map/">Depth Map</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/">
-        <h2 class="post-title">De CAPE et d&#39;Opés</h2>
-        
-        <h3 class="post-subtitle">
-            Corriger et optimiser le code d&#39;un papier
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le January 11, 2021
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1202&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p><a href="https://arxiv.org/abs/1803.02380">CAPE (Cylinder And Plane Extraction)</a> est une méthode extrêmement efficace d&rsquo;extraction de plans et cylindres dans des images RGB-D, basée sur une méthode AHC.
-Malgré l&rsquo;efficacité de cette méthode, l&rsquo;implémentation C++ du papier présente de nombreux défauts.</p>
-<p>Dans ce post, je vais expliquer comment j&rsquo;ai réparé la plupart de ces problèmes.</p>
-        <a href="https://BaptisteHudyma.github.io/post/de_cape_et_d_opes/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/rgb-d/">RGB-D</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/optimisation/">Optimisation</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/paper/">Paper</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/ppc_slam/">
-        <h2 class="post-title">PPC SLAM</h2>
-        
-        <h3 class="post-subtitle">
-            Un SLAM basique utilisant la programmation par contrainte
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le December 28, 2020
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;696&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/ppc_slam/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Localiser un robot mobile dans un environnement virtuel grâce a la programmation par contraintes.</p>
-        <a href="https://BaptisteHudyma.github.io/post/ppc_slam/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/ppc/">PPC</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/slam/">SLAM</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/robotics/">Robotics</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/cpp/">Cpp</a>&nbsp;
-        
-    </div>
-    
-
-</article>
-          
-            <article class="post-preview">
-    <a href="https://BaptisteHudyma.github.io/post/ppc_intro/">
-        <h2 class="post-title">Programmation par Contraintes</h2>
-        
-        <h3 class="post-subtitle">
-            Résoudre des problèmes complexe avec la PPC
-        </h3>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Publié le November 26, 2020
-  
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;837&nbsp;mots
-  
-  
-  &nbsp;&bull;&nbsp;Traductions : <a href="https://BaptisteHudyma.github.io/en/post/ppc_intro/" lang="en">en</a>
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>Qu&rsquo;est-ce que la programmation par contraintes ?
-Quels en sont les avantages et les limites ?
-Peut-on faire en une heure un algorithme qui résout les Sudoku ?</p>
-<p>Une de ces réponses est <em><strong>oui</strong></em>.</p>
-        <a href="https://BaptisteHudyma.github.io/post/ppc_intro/" class="post-read-more">[Lire]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-        <a href="https://BaptisteHudyma.github.io/tags/ppc/">PPC</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/sudoku/">Sudoku</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/python/">Python</a>&nbsp;
-        
-        <a href="https://BaptisteHudyma.github.io/tags/opencv/">OpenCV</a>&nbsp;
-        
-    </div>
-    
-
-</article>
           
         </div>
         
-          <ul class="pager main-pager">
-            
-            
-              <li class="next">
-                <a href="https://BaptisteHudyma.github.io/post/page/2/">Anciens posts &rarr;</a>
-              </li>
-            
-          </ul>
-        
+  <ul class="post-pager">
+    
+    
+      <li class="pager-next">
+        <a href="/post/page/2">Anciens posts &rarr;</a>
+      </li>
+    
+  </ul>
+
+
       </div>
     </div>
+    <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="posts">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Posts</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><ul class="toc-post-list"><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Lampda - Partie 7</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Lampda - Partie 6</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Lampda - Partie 5</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Lampda - Partie 4</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Lampda - Partie 3</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Lampda - Partie 2</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Lampda - Partie 1</a></li><li><a href="https://BaptisteHudyma.github.io/post/lamp-da/">Construction d&#39;une lanterne compacte</a></li><li><a href="https://BaptisteHudyma.github.io/post/slam_2/">SLAM - Parti 2</a></li><li><a href="https://BaptisteHudyma.github.io/post/slam_1/">SLAM - Parti 1</a></li></ul></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
   </div>
 
+    
       
 <footer>
   <div class="container">
     
     <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <div class="col-md-10 offset-md-1">
         <ul class="list-inline text-center footer-links">
           
-              <li>
-		
-		  <a href="mailto:bapt.hudyma95650@gmail.com" title="Email me">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://github.com/BaptisteHudyma" title="GitHub">
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="mailto:bapt.hudyma95650@gmail.com" title="Email me" aria-label="Email me">
 		
                   <span class="fa-stack fa-lg">
                     <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://gitlab.com/BaptHdm" title="GitLab">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
-                  </span>
-                </a>
-              </li>
-              <li>
-		
-		  <a href="https://linkedin.com/in/baptiste-hudyma" title="LinkedIn">
-		
-                  <span class="fa-stack fa-lg">
-                    <i class="fas fa-circle fa-stack-2x"></i>
-                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse" aria-hidden="true"></i>
                   </span>
                 </a>
               </li>
           
-          <li>
-            <a href="/post/index.xml" title="RSS">
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://github.com/BaptisteHudyma" title="GitHub" aria-label="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://gitlab.com/BaptHdm" title="GitLab" aria-label="GitLab">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+              <li class="list-inline-item" >
+		  <a rel="noopener noreferrer" href="https://linkedin.com/in/in/baptiste-hudyma" title="LinkedIn" aria-label="LinkedIn">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse" aria-hidden="true"></i>
+                  </span>
+                </a>
+              </li>
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          <li class="list-inline-item">
+            <a href="/index.xml" title="RSS">
               <span class="fa-stack fa-lg">
                 <i class="fas fa-circle fa-stack-2x"></i>
                 <i class="fas fa-rss fa-stack-1x fa-inverse"></i>
@@ -1022,42 +1006,52 @@ Peut-on faire en une heure un algorithme qui résout les Sudoku ?</p>
             </a>
           </li>
           
+          
         </ul>
         <p class="credits copyright text-muted">
           
             
               Baptiste Hudyma
             
+            &nbsp;&bull;&nbsp;
           
-
-          &nbsp;&bull;&nbsp;&copy;
+          &copy;
           
-            2023
+            2025
           
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://BaptisteHudyma.github.io">HUB Logs</a>
+          
+          
+            <a href="https://BaptisteHudyma.github.io/">Hu B</a>
           
         </p>
         
         <p class="credits theme-by text-muted">
-          Carbure avec <a href="https://gohugo.io">Hugo v0.121.2</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          Carbure avec <a href="https://gohugo.io">Hugo v0.161.1</a>&nbsp;&bull;&nbsp; Avec le Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapté de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
     </div>
   </div>
-</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
-<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+</footer>
 
-<script src="https://BaptisteHudyma.github.io/js/main.js"></script>
-<script src="https://BaptisteHudyma.github.io/js/highlight.min.js"></script>
-<script> hljs.initHighlightingOnLoad(); </script>
-<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://BaptisteHudyma.github.io/js/load-photoswipe.js"></script>
+      
+
+      
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/katex.min.js" integrity="sha384-Tt7wBxLKwSzFVRET4O4U9H6v8MNaQ/CjN2FMP4xFm0ErrFu6aNqoonRVW5W40iGI" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.45/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-4.0.0.slim.min.js" integrity="sha384-tcspKDb5tWvyRCOWzevlAeQgHeEzYdUHJpcgnIhcP9w4CnfD7DLAcS+k9QzLbRJO" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+<script src="/js/main.js"></script><script src="/js/toc.js"></script><script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js" integrity="sha384-RH2xi4eIQ/gjtbs9fUXM68sLSi99C7ZWBRX1vDrVv6GQXRibxXLbwO2NGZB74MbU" crossorigin="anonymous"></script><script> hljs.highlightAll(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe.umd.min.js" integrity="sha384-k8EKyYcONphQ7zH4cQ0888JapXwrLTXQl/Ue1/jYgjVYahln1NWpnt2S4IC56LNh" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@5.4.4/dist/umd/photoswipe-lightbox.umd.min.js" integrity="sha384-IiBVbUz6+U+Tbm/ijO2P0XRwcVzNfrMzloNLkrqHkbi6w5H0v6ie4fI9BIO4SwdK" crossorigin="anonymous"></script><script src="/js/load-photoswipe.js"></script>
+
+
+
+
 
 
 
@@ -1070,4 +1064,3 @@ Peut-on faire en une heure un algorithme qui résout les Sudoku ?</p>
     
   </body>
 </html>
-
