@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Arduino on HUB Logs</title>
-    <link>https://BaptisteHudyma.github.io/en/tags/arduino/</link>
+    <link>http://localhost:1313/en/tags/arduino/</link>
     <description>Recent content in Arduino on HUB Logs</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
     <lastBuildDate>Fri, 13 Dec 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://BaptisteHudyma.github.io/en/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tactile Plant</title>
-      <link>https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/</link>
+      <link>http://localhost:1313/en/post/plant_touch_sensor/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/</guid>
+      <guid>http://localhost:1313/en/post/plant_touch_sensor/</guid>
       <description>&lt;p&gt;A small afternoon project to make a tactile interface with a microcontroller.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Laser Harp</title>
-      <link>https://BaptisteHudyma.github.io/en/post/harpe_laser/</link>
+      <link>http://localhost:1313/en/post/harpe_laser/</link>
       <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/harpe_laser/</guid>
+      <guid>http://localhost:1313/en/post/harpe_laser/</guid>
       <description>&lt;p&gt;What to do with 12 lasers, an Arduino, 4 planks and an afternoon ?&lt;/p&gt;</description>
     </item>
   </channel>

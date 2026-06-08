@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rgb-D on HUB Logs</title>
-    <link>https://BaptisteHudyma.github.io/en/tags/rgb-d/</link>
+    <link>http://localhost:1313/en/tags/rgb-d/</link>
     <description>Recent content in Rgb-D on HUB Logs</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
     <lastBuildDate>Mon, 04 Oct 2021 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://BaptisteHudyma.github.io/en/tags/rgb-d/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/tags/rgb-d/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SLAM - Parti 1</title>
-      <link>https://BaptisteHudyma.github.io/en/post/slam_1/</link>
+      <link>http://localhost:1313/en/post/slam_1/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/slam_1/</guid>
+      <guid>http://localhost:1313/en/post/slam_1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Part 1: Introduction &amp;amp; Feature Detection&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Some people claim to have a poor sense of direction. They might compare themselves to a robot and feel much better.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 2</title>
-      <link>https://BaptisteHudyma.github.io/en/post/slam_2/</link>
+      <link>http://localhost:1313/en/post/slam_2/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/slam_2/</guid>
-      <description>&lt;h2 id=&#34;part-2-pose-optimization&#34;&gt;Part 2: Pose Optimization&lt;/h2&gt;&#xA;&lt;p&gt;Once our features are detected and associated, we aim to estimate the movement between the two observations.&lt;/p&gt;&#xA;&lt;p&gt;After &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/slam_1/&#34;&gt;Part 1&lt;/a&gt;, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&lt;/p&gt;&#xA;&lt;h1 id=&#34;choosing-the-pose-model-to-optimize&#34;&gt;Choosing the Pose Model to Optimize&lt;/h1&gt;&#xA;&lt;p&gt;A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).&lt;/p&gt;</description>
+      <guid>http://localhost:1313/en/post/slam_2/</guid>
+      <description>&lt;h2 id=&#34;part-2-pose-optimization&#34;&gt;Part 2: Pose Optimization&lt;/h2&gt;&#xA;&lt;p&gt;Once our features are detected and associated, we aim to estimate the movement between the two observations.&lt;/p&gt;&#xA;&lt;p&gt;After &lt;a href=&#34;http://localhost:1313/en/post/slam_1/&#34;&gt;Part 1&lt;/a&gt;, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&lt;/p&gt;&#xA;&lt;h1 id=&#34;choosing-the-pose-model-to-optimize&#34;&gt;Choosing the Pose Model to Optimize&lt;/h1&gt;&#xA;&lt;p&gt;A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Depth Map Segmentation</title>
-      <link>https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/</link>
+      <link>http://localhost:1313/en/post/depth_map_segmentation/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/</guid>
+      <guid>http://localhost:1313/en/post/depth_map_segmentation/</guid>
       <description>&lt;p&gt;In this post, I implement a real time depth map segmentation system, based on normal map analysis.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Monocular Depth Map</title>
-      <link>https://BaptisteHudyma.github.io/en/post/monocular_depth_map/</link>
+      <link>http://localhost:1313/en/post/monocular_depth_map/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/monocular_depth_map/</guid>
+      <guid>http://localhost:1313/en/post/monocular_depth_map/</guid>
       <description>&lt;p&gt;Use a video taken by a single camera to estimate the depth of objects in an image.&#xA;A small dip in the world of epipolar geometry and key points analysis.&lt;/p&gt;</description>
     </item>
     <item>
       <title>De CAPE et d&#39;Opés</title>
-      <link>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</link>
+      <link>http://localhost:1313/en/post/de_cape_et_d_opes/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</guid>
+      <guid>http://localhost:1313/en/post/de_cape_et_d_opes/</guid>
       <description>&lt;p&gt;Certainly! Here is the translation:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; is an extremely efficient method for extracting planes and cylinders in RGB-D images, based on an AHC (Agglomerative Hierarchical Clustering) method. Despite the effectiveness of this method, the C++ implementation of the paper has many flaws.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will explain how I fixed most of these issues.&lt;/p&gt;</description>
     </item>
   </channel>
