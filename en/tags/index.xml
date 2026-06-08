@@ -2,152 +2,152 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on HUB Logs</title>
-    <link>http://localhost:1313/en/tags/</link>
+    <link>https://BaptisteHudyma.github.io/en/tags/</link>
     <description>Recent content in Tags on HUB Logs</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
     <lastBuildDate>Wed, 22 Nov 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://BaptisteHudyma.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>3D Print</title>
-      <link>http://localhost:1313/en/tags/3d-print/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/3d-print/</link>
       <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/3d-print/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/3d-print/</guid>
       <description></description>
     </item>
     <item>
       <title>Design</title>
-      <link>http://localhost:1313/en/tags/design/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/design/</link>
       <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/design/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/design/</guid>
       <description></description>
     </item>
     <item>
       <title>Electronic</title>
-      <link>http://localhost:1313/en/tags/electronic/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/electronic/</link>
       <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/electronic/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/electronic/</guid>
       <description></description>
     </item>
     <item>
-      <title>Cpp</title>
-      <link>http://localhost:1313/en/tags/cpp/</link>
+      <title>CPP</title>
+      <link>https://BaptisteHudyma.github.io/en/tags/cpp/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/cpp/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/cpp/</guid>
       <description></description>
     </item>
     <item>
       <title>Rgb-D</title>
-      <link>http://localhost:1313/en/tags/rgb-d/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/rgb-d/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/rgb-d/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/rgb-d/</guid>
       <description></description>
     </item>
     <item>
       <title>Robotics</title>
-      <link>http://localhost:1313/en/tags/robotics/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/robotics/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/robotics/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/robotics/</guid>
       <description></description>
     </item>
     <item>
       <title>SLAM</title>
-      <link>http://localhost:1313/en/tags/slam/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/slam/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/slam/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/slam/</guid>
       <description></description>
     </item>
     <item>
       <title>IA</title>
-      <link>http://localhost:1313/en/tags/ia/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/ia/</link>
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/ia/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/ia/</guid>
       <description></description>
     </item>
     <item>
       <title>Optimisation</title>
-      <link>http://localhost:1313/en/tags/optimisation/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/optimisation/</link>
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/optimisation/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/optimisation/</guid>
       <description></description>
     </item>
     <item>
       <title>Computer Vision</title>
-      <link>http://localhost:1313/en/tags/computer-vision/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/computer-vision/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/computer-vision/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/computer-vision/</guid>
       <description></description>
     </item>
     <item>
       <title>Depth Map</title>
-      <link>http://localhost:1313/en/tags/depth-map/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/depth-map/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/depth-map/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/depth-map/</guid>
       <description></description>
     </item>
     <item>
       <title>OpenCV</title>
-      <link>http://localhost:1313/en/tags/opencv/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/opencv/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/opencv/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/opencv/</guid>
       <description></description>
     </item>
     <item>
       <title>Paper</title>
-      <link>http://localhost:1313/en/tags/paper/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/paper/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/paper/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/paper/</guid>
       <description></description>
     </item>
     <item>
       <title>PPC</title>
-      <link>http://localhost:1313/en/tags/ppc/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/ppc/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/ppc/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/ppc/</guid>
       <description></description>
     </item>
     <item>
       <title>Python</title>
-      <link>http://localhost:1313/en/tags/python/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/python/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/python/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/python/</guid>
       <description></description>
     </item>
     <item>
       <title>Sudoku</title>
-      <link>http://localhost:1313/en/tags/sudoku/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/sudoku/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/sudoku/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/sudoku/</guid>
       <description></description>
     </item>
     <item>
       <title>Octree</title>
-      <link>http://localhost:1313/en/tags/octree/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/octree/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/octree/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/octree/</guid>
       <description></description>
     </item>
     <item>
       <title>Procedural Generation</title>
-      <link>http://localhost:1313/en/tags/procedural-generation/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/procedural-generation/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/procedural-generation/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/procedural-generation/</guid>
       <description></description>
     </item>
     <item>
       <title>Arduino</title>
-      <link>http://localhost:1313/en/tags/arduino/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/arduino/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/arduino/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/arduino/</guid>
       <description></description>
     </item>
     <item>
       <title>One Day Build</title>
-      <link>http://localhost:1313/en/tags/one-day-build/</link>
+      <link>https://BaptisteHudyma.github.io/en/tags/one-day-build/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/tags/one-day-build/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/tags/one-day-build/</guid>
       <description></description>
     </item>
   </channel>

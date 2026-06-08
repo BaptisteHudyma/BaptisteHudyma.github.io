@@ -2,110 +2,110 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HUB Logs</title>
-    <link>http://localhost:1313/en/</link>
+    <link>https://BaptisteHudyma.github.io/en/</link>
     <description>Recent content on HUB Logs</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
     <lastBuildDate>Wed, 22 Nov 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://BaptisteHudyma.github.io/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a Compact Lantern</title>
-      <link>http://localhost:1313/en/post/lamp-da/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/lamp-da/</link>
       <pubDate>Wed, 22 Nov 2023 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/lamp-da/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/lamp-da/</guid>
       <description>&lt;p&gt;Tutorial on building a compact and sturdy lantern.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 1</title>
-      <link>http://localhost:1313/en/post/slam_1/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/slam_1/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/slam_1/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/slam_1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Part 1: Introduction &amp;amp; Feature Detection&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;Some people claim to have a poor sense of direction. They might compare themselves to a robot and feel much better.&lt;/p&gt;</description>
     </item>
     <item>
       <title>SLAM - Parti 2</title>
-      <link>http://localhost:1313/en/post/slam_2/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/slam_2/</link>
       <pubDate>Mon, 04 Oct 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/slam_2/</guid>
-      <description>&lt;h2 id=&#34;part-2-pose-optimization&#34;&gt;Part 2: Pose Optimization&lt;/h2&gt;&#xA;&lt;p&gt;Once our features are detected and associated, we aim to estimate the movement between the two observations.&lt;/p&gt;&#xA;&lt;p&gt;After &lt;a href=&#34;http://localhost:1313/en/post/slam_1/&#34;&gt;Part 1&lt;/a&gt;, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&lt;/p&gt;&#xA;&lt;h1 id=&#34;choosing-the-pose-model-to-optimize&#34;&gt;Choosing the Pose Model to Optimize&lt;/h1&gt;&#xA;&lt;p&gt;A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).&lt;/p&gt;</description>
+      <guid>https://BaptisteHudyma.github.io/en/post/slam_2/</guid>
+      <description>&lt;h2 id=&#34;part-2-pose-optimization&#34;&gt;Part 2: Pose Optimization&lt;/h2&gt;&#xA;&lt;p&gt;Once our features are detected and associated, we aim to estimate the movement between the two observations.&lt;/p&gt;&#xA;&lt;p&gt;After &lt;a href=&#34;https://BaptisteHudyma.github.io/en/post/slam_1/&#34;&gt;Part 1&lt;/a&gt;, which focused on feature detection and association, we now delve into estimating our position and orientation over time.&lt;/p&gt;&#xA;&lt;h1 id=&#34;choosing-the-pose-model-to-optimize&#34;&gt;Choosing the Pose Model to Optimize&lt;/h1&gt;&#xA;&lt;p&gt;A pose represents the position and orientation of our robot in space. We can express it in the way and in the coordinate system that suits us best (I&amp;rsquo;ve seen spherical, but here, we prefer Cartesian).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Exploration of Possibilities - Part 2</title>
-      <link>http://localhost:1313/en/post/monte_carlo_tree_p2/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/</link>
       <pubDate>Tue, 04 May 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/monte_carlo_tree_p2/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p2/</guid>
       <description>&lt;h3 id=&#34;part-2-improvements-and-more-blabla&#34;&gt;Part 2: Improvements and More Blabla!&lt;/h3&gt;&#xA;&lt;p&gt;We left off with the construction of a basic search tree structure using a possibility-based search with a balance of exploration, score, and chance (MCTS: Monte Carlo Tree Search). In this second part, I will introduce the improvements I found for the basic method.&lt;/p&gt;</description>
     </item>
     <item>
       <title></title>
-      <link>http://localhost:1313/en/post/monte_carlo_tree_p1/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/</link>
       <pubDate>Thu, 22 Apr 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/monte_carlo_tree_p1/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/monte_carlo_tree_p1/</guid>
       <description>&lt;p&gt;&lt;em&gt;&lt;strong&gt;Part 1: Blabla and Implementation&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;I&amp;rsquo;m terrible at chess, checkers, get rolled over in Connect 4 – in short, board games are not my strong suit. However, I do fairly well in programming.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Depth Map Segmentation</title>
-      <link>http://localhost:1313/en/post/depth_map_segmentation/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/depth_map_segmentation/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/depth_map_segmentation/</guid>
       <description>&lt;p&gt;In this post, I implement a real time depth map segmentation system, based on normal map analysis.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Monocular Depth Map</title>
-      <link>http://localhost:1313/en/post/monocular_depth_map/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/monocular_depth_map/</link>
       <pubDate>Sun, 24 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/monocular_depth_map/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/monocular_depth_map/</guid>
       <description>&lt;p&gt;Use a video taken by a single camera to estimate the depth of objects in an image.&#xA;A small dip in the world of epipolar geometry and key points analysis.&lt;/p&gt;</description>
     </item>
     <item>
       <title>De CAPE et d&#39;Opés</title>
-      <link>http://localhost:1313/en/post/de_cape_et_d_opes/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/de_cape_et_d_opes/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/de_cape_et_d_opes/</guid>
       <description>&lt;p&gt;Certainly! Here is the translation:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://arxiv.org/abs/1803.02380&#34;&gt;CAPE (Cylinder And Plane Extraction)&lt;/a&gt; is an extremely efficient method for extracting planes and cylinders in RGB-D images, based on an AHC (Agglomerative Hierarchical Clustering) method. Despite the effectiveness of this method, the C++ implementation of the paper has many flaws.&lt;/p&gt;&#xA;&lt;p&gt;In this post, I will explain how I fixed most of these issues.&lt;/p&gt;</description>
     </item>
     <item>
       <title>CP SLAM</title>
-      <link>http://localhost:1313/en/post/ppc_slam/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/ppc_slam/</link>
       <pubDate>Mon, 28 Dec 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/ppc_slam/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/ppc_slam/</guid>
       <description>&lt;p&gt;Localize a mobile robot in a virtual environment with constraint programming.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Constraint Programming</title>
-      <link>http://localhost:1313/en/post/ppc_intro/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/ppc_intro/</link>
       <pubDate>Thu, 26 Nov 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/ppc_intro/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/ppc_intro/</guid>
       <description>&lt;p&gt;What is Constraint Programming ?&#xA;What are the advantages/limits ?&#xA;Can we make a sudoku solver in less than thirty minutes ?&lt;/p&gt;&#xA;&lt;p&gt;One of those answers is &lt;em&gt;&lt;strong&gt;yes&lt;/strong&gt;&lt;/em&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Galaxis Generation</title>
-      <link>http://localhost:1313/en/post/galaxy_generation/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/galaxy_generation/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/galaxy_generation/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/galaxy_generation/</guid>
       <description>&lt;p&gt;After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies&lt;/p&gt;</description>
     </item>
     <item>
       <title>Tactile Plant</title>
-      <link>http://localhost:1313/en/post/plant_touch_sensor/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/</link>
       <pubDate>Fri, 13 Dec 2019 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/plant_touch_sensor/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/plant_touch_sensor/</guid>
       <description>&lt;p&gt;A small afternoon project to make a tactile interface with a microcontroller.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Laser Harp</title>
-      <link>http://localhost:1313/en/post/harpe_laser/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/harpe_laser/</link>
       <pubDate>Thu, 20 Dec 2018 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/harpe_laser/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/harpe_laser/</guid>
       <description>&lt;p&gt;What to do with 12 lasers, an Arduino, 4 planks and an afternoon ?&lt;/p&gt;</description>
     </item>
     <item>
       <title>About me</title>
-      <link>http://localhost:1313/en/page/about/</link>
+      <link>https://BaptisteHudyma.github.io/en/page/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/page/about/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/page/about/</guid>
       <description>&lt;p&gt;Hi ! My name is Baptiste Hudyma, I&amp;rsquo;m a robotic engineer way too curious about way too many subjects.&#xA;From programming to wood crafting, from physics to video games, and events organization,&lt;/p&gt;&#xA;&lt;p&gt;In this blog/posts mashup/portfolio thingy, you will find details on some projects that I thought were interesting to share&#xA;It will also serve as a written trace of some realizations, enabling me to take more time and more room to explain what the idea and processes behind those projects.&lt;/p&gt;</description>
     </item>
   </channel>

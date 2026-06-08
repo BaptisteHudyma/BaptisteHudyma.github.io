@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Octree on HUB Logs</title>
-    <link>http://localhost:1313/en/tags/octree/</link>
+    <link>https://BaptisteHudyma.github.io/en/tags/octree/</link>
     <description>Recent content in Octree on HUB Logs</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</managingEditor>
     <webMaster>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</webMaster>
     <lastBuildDate>Mon, 15 Jun 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/octree/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://BaptisteHudyma.github.io/en/tags/octree/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Galaxis Generation</title>
-      <link>http://localhost:1313/en/post/galaxy_generation/</link>
+      <link>https://BaptisteHudyma.github.io/en/post/galaxy_generation/</link>
       <pubDate>Mon, 15 Jun 2020 00:00:00 +0000</pubDate><author>bapt.hudyma95650@gmail.com (Baptiste Hudyma)</author>
-      <guid>http://localhost:1313/en/post/galaxy_generation/</guid>
+      <guid>https://BaptisteHudyma.github.io/en/post/galaxy_generation/</guid>
       <description>&lt;p&gt;After tackling the procedural generation of planetary systems, I decided to step up a bit in universe and try to take on galaxies&lt;/p&gt;</description>
     </item>
   </channel>
