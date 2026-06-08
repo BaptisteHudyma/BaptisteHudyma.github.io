@@ -62,7 +62,7 @@
 
   .theme-toggle,
   #theme-toggle,
-  .toc-toggle {
+  #toc-toggle {
     display: none !important;
   }
 
