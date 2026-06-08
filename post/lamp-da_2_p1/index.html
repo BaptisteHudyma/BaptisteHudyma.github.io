@@ -331,7 +331,7 @@
           
 
           <p>Partie 1 - Postmortem des lanternes V0, Objectifs et spécifications des lanternes V1.</p>
-<h1 id="introduction">Introduction</h1>
+<h2 id="introduction">Introduction</h2>
 <p>Dans ce post et les suivants, je décrirai l&rsquo;ensemble du processus de création et industrialisation des lanternes V1.
 Chaque partie peut être lue de façon indépendante, et se concentre sur un domaine précis :</p>
 <ul>
@@ -343,7 +343,7 @@ Chaque partie peut être lue de façon indépendante, et se concentre sur un dom
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Postmortem &amp; conclusion</a></li>
 </ul>
-<h1 id="pourquoi-une-nouvelle-version-">Pourquoi une nouvelle version ?</h1>
+<h2 id="pourquoi-une-nouvelle-version-">Pourquoi une nouvelle version ?</h2>
 <p>Les premières lanternes que j&rsquo;ai créées (appelées <strong>les V0</strong>) ont connu un succès inattendu.
 (<a href="https://BaptisteHudyma.github.io/post/lamp-da/">Voir le tuto (mais c&rsquo;est pas top finalement)</a>)</p>
 <p>Après quelques mois, j&rsquo;ai vu revenir les premières lanternes qui ne fonctionnent plus.
@@ -362,15 +362,15 @@ Ces retours ont mis en évidence de nombreux points de faiblesse :</p>
 </ul>
 <p><strong>L&rsquo;objectif principal</strong> est de concevoir une nouvelle lanterne qui corrigera tout ces problèmes.
 Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensemble des composants actuels, le tout dans un système plus simple à assembler, à entretenir et à faire évoluer.</p>
-<h2 id="principaux-objectifs-v1">Principaux objectifs V1</h2>
+<h3 id="principaux-objectifs-v1">Principaux objectifs V1</h3>
 <ul>
 <li>Concevoir une lanterne au format canette de 50 cl, très résistante mécaniquement.</li>
 <li>Forte capacité d&rsquo;éclairage et grande autonomie.</li>
 <li>Assemblage et maintenance simplifiés.</li>
 <li>Rassembler tous les PCB en un seul, une plateforme électronique programmable et générique qui offrira une grande liberté de développement.</li>
 </ul>
-<h1 id="spécifications-techniques">Spécifications techniques</h1>
-<h2 id="must-have-requis">Must have (Requis)</h2>
+<h2 id="spécifications-techniques">Spécifications techniques</h2>
+<h3 id="must-have-requis">Must have (Requis)</h3>
 <p>Voici les fonctions <strong>non négociables</strong> que je veux avoir dans le système :</p>
 <table>
   <thead>
@@ -443,7 +443,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       </tr>
   </tbody>
 </table>
-<h2 id="should-have-souhaité">Should have (Souhaité)</h2>
+<h3 id="should-have-souhaité">Should have (Souhaité)</h3>
 <p>Voici les fonctions supplémentaires <strong>désirées mais pas nécessaires</strong>, dont les métriques peuvent varier:</p>
 <table>
   <thead>
@@ -496,7 +496,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       </tr>
   </tbody>
 </table>
-<h2 id="nice-to-have-optionnel">Nice to have (Optionnel)</h2>
+<h3 id="nice-to-have-optionnel">Nice to have (Optionnel)</h3>
 <p>Voici les fonctions supplémentaires, <strong>pas nécessaires au produit final</strong> mais intéressantes, à ajouter au besoin :</p>
 <table>
   <thead>
@@ -549,7 +549,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       </tr>
   </tbody>
 </table>
-<h1 id="todo-schema-archi-haut-niveau">TODO: Schema archi haut niveau</h1>
+<h2 id="todo-schema-archi-haut-niveau">TODO: Schema archi haut niveau</h2>
 <p>batterie -&gt; controleur -&gt; leds -&gt; entrée utilisateur, etc</p>
           
           
@@ -717,13 +717,20 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
     </div>
     <nav class="toc-body"><nav id="TableOfContents">
   <ul>
-    <li><a href="#principaux-objectifs-v1">Principaux objectifs V1</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#must-have-requis">Must have (Requis)</a></li>
-    <li><a href="#should-have-souhaité">Should have (Souhaité)</a></li>
-    <li><a href="#nice-to-have-optionnel">Nice to have (Optionnel)</a></li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#pourquoi-une-nouvelle-version-">Pourquoi une nouvelle version ?</a>
+      <ul>
+        <li><a href="#principaux-objectifs-v1">Principaux objectifs V1</a></li>
+      </ul>
+    </li>
+    <li><a href="#spécifications-techniques">Spécifications techniques</a>
+      <ul>
+        <li><a href="#must-have-requis">Must have (Requis)</a></li>
+        <li><a href="#should-have-souhaité">Should have (Souhaité)</a></li>
+        <li><a href="#nice-to-have-optionnel">Nice to have (Optionnel)</a></li>
+      </ul>
+    </li>
+    <li><a href="#todo-schema-archi-haut-niveau">TODO: Schema archi haut niveau</a></li>
   </ul>
 </nav></nav>
   </div>

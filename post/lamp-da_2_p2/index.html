@@ -334,7 +334,7 @@
           <p>Partie 2 - Choix techniques</p>
 <p>En déroulant les spécifications de la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1</a>, on peut décider de solutions techniques réelles.
 Ce post déroule ces solutions et les justifications qui accompagnent leurs choix :</p>
-<h1 id="châssis">Châssis</h1>
+<h2 id="châssis">Châssis</h2>
 <p>Choix d&rsquo;un tube en PVC de taille standard :</p>
 <ul>
 <li>standard facile à se procurer</li>
@@ -408,15 +408,15 @@ L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place i
 <p>La hauteur du tube sera fixée a 125mm, qui est le meilleur compromis en terme de taille/sensation/visuel, et permet de contenir largement les batteries et le circuit.</p>
 <p><strong>Choix d&rsquo;un tube PVC 125mm de haut, diamètre externe 50mm, diamètre interne 46mm</strong></p>
 <p>Ce tube posera des contraintes de conduction de chaleur, et limitera la capacité du système a être utilisé a forte puissance.</p>
-<h2 id="pièces-sur-mesure">Pièces sur mesure</h2>
+<h3 id="pièces-sur-mesure">Pièces sur mesure</h3>
 <p>Les extrémitées du tube seront refermées par des pièces sur mesure.
 Ces pièces auront des formes complexes, et ne nécéssiteront pas de résistance particulière.</p>
 <p><img src="/static/lamp_da_2/hubs_base_de_connaissance.jpg" alt="Source: ProtoLab network : Knowledge base"></p>
 <p>Ces pièces seront fabriquées <strong>en PDA par FDM</strong> (Dépôt de Matière Fondue, aka impression 3D) pour avoir une grande liberté de formes et un coût réduit.
 Leur utilisation ne sera pas affecté par les faiblesses de la FDM (fragilité le long des couches, faible résistance a la chaleur, &hellip;) et de la FDA (dégradation dans l&rsquo;eau, au soleil, &hellip;).</p>
 <p><a href="https://www.hubs.com/fr/base-de-connaissances/impression-3d-fdm">Ressource sur la fabrication de pièce 3D (choix de matières etc)</a></p>
-<h1 id="éclairage">Éclairage</h1>
-<h2 id="caractéristiques-communes">Caractéristiques communes</h2>
+<h2 id="éclairage">Éclairage</h2>
+<h3 id="caractéristiques-communes">Caractéristiques communes</h3>
 <p>Afin de minimiser le temps d&rsquo;assemblage, on utilisera un ruban plutôt que des LED individuelles a souder.
 De plus la plupart des rubans LED sont équipés d&rsquo;un dos autocollant, ce qui résoud le problème de &ldquo;comment fixer les LEDs&rdquo;.
 Ils sont également sectionnables tous les quelques centimètres, et visuellement jolis pour les versions COB.</p>
@@ -429,7 +429,7 @@ Cela peut être résolu en soudant une alimentation des deux cotés, mais ça aj
 <p>$$L \leq \frac{H}{p} \cdot \pi \cdot D$$</p>
 <p>Avec $L$ la longueur du ruban pour couvrir le tube de haut en bas, $H$ = 125mm, $D$ = 50mm, et $p$ la largeur du ruban.</p>
 <p>Donc la longueur du ruban sera $L ≤ 19634.375 / p$.</p>
-<h2 id="lanterne-jaune">Lanterne jaune</h2>
+<h3 id="lanterne-jaune">Lanterne jaune</h3>
 <p>Pour la lanterne jaune, la couleur doit se rapprocher d&rsquo;un jaune bougie (1800 - 2000 Kelvin).</p>
 <p>La densité de leds n&rsquo;est pas trés importante dans ce cas, la différence est visuellement minime et la consommation similaire entre les hautes et basses densités.</p>
 <p>La largeur du ruban peux aller de 5 mm à 10 mm, les rubans plus larges conduisants mieux la chaleur et l&rsquo;électricité, mais étant visuellements moins beau.
@@ -439,7 +439,7 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
 <p>La longueur du ruban $L$ sera $L ≤ 19634.375 / 8$, c&rsquo;est a dire $L ≤ 2454.3$ mm</p>
 <p>La lampe jaune sera donc équipée d&rsquo;un <strong>ruban de 2.45 mètres</strong>.</p>
 <p>Sa consommation sera donc de $2.45 m * 1 A/m = 2.45 A$, c&rsquo;est à dire en Watt $2.45 A * 12 V = 29.4 W$.</p>
-<h3 id="mesures-réelles">Mesures réelles</h3>
+<h4 id="mesures-réelles">Mesures réelles</h4>
 <p>Mesures sur des échantillons réels sur banc d&rsquo;éssai, longueur de 2.5M :</p>
 <table>
   <thead>
@@ -471,7 +471,7 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
       </tr>
   </tbody>
 </table>
-<h2 id="lanterne-colorée">Lanterne colorée</h2>
+<h3 id="lanterne-colorée">Lanterne colorée</h3>
 <p>Pour la lanterne colorée, je veux au moins 100 L/m pour avoir un résultat visuellement plaisant et facile a installer.
 je voudrais aussi pouvoir controller individuellement chaque pixel.
 Cela oriente le choix vers un ruban RGB indexable COB.</p>
@@ -482,7 +482,7 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
 <p>La longueur du ruban $L$ sera $L ≤ 19634.375 / 5$, c&rsquo;est a dire $L ≤ 3926.875$ mm</p>
 <p>La lampe jaune sera donc équipée d&rsquo;un <strong>ruban de 4 mètres</strong>, ce qui donnera $4 m * 160 L/m$ = <strong>640 LEDs individuellements controlables</strong> .</p>
 <p>Sa consommation sera donc de $4 m * 0.75 A/m = 3 A$, c&rsquo;est à dire en Watt $3 * 12 V = 36 W$.</p>
-<h3 id="mesures-réelles-1">Mesures réelles</h3>
+<h4 id="mesures-réelles-1">Mesures réelles</h4>
 <p>Mesures sur des échantillons réels sur banc d&rsquo;éssai, longueur de 4M :</p>
 <table>
   <thead>
@@ -515,7 +515,7 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
   </tbody>
 </table>
 <p>La vraie densité de LEDs est plutôt de 162.6 L/m.</p>
-<h1 id="protection-des-leds">Protection des LEDs</h1>
+<h2 id="protection-des-leds">Protection des LEDs</h2>
 <p>Pour protèger les LEDs de l’environnement, elles doivent être recouvertes par une protection transparente.</p>
 <p>Des rubans existent en IP67, mais pas ceux sélectionnés, qui sont IP20.</p>
 <p>Possibilité d’un tube en plastique rigide transparent: difficile a intègrer, doit être épais pour être solide, retient la chaleur. Mais facile a integrer sans plus de travail : couper un cyclindre d’acrylique est aussi difficile que couper un cylindre PVC donc l’integration est facile. Étanche ! Mais a tendance a se rayer facilement.</p>
@@ -527,8 +527,8 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
 <li><strong>Vieilli mal</strong>: moins facile a rayer que de l’acrylique, mais terni et se détend un peu a long terme. Se répare facilement en la passant rapidement sous un flux d’air chaud, et en nettoyant la gaine a l’eau.</li>
 <li><strong>Maintenance destructive</strong>: Impossible de réparer un problème avec les LEDs sans couper la gaine et en mettre une nouvelle. C’est un petit problème mais a garder en tête quand même.</li>
 </ul>
-<h1 id="alimentation">Alimentation</h1>
-<h2 id="batteries">Batteries</h2>
+<h2 id="alimentation">Alimentation</h2>
+<h3 id="batteries">Batteries</h3>
 <p>Pour une durée d&rsquo;utilisation typique de 5H, la lampe consommera :</p>
 <table>
   <thead>
@@ -692,7 +692,7 @@ prix de gros TTC : <strong>1.85€ par accu (achat de 640 accus)</strong></p>
 </table>
 <p>Ce sont des estimations qui ignorent les pertes, mais sont indicatives du fait que les batteries choisies correspondent aux objectifs d&rsquo;autonomie.</p>
 <p>Dans la réalité, les batteries ne seront pas utilisées a 100% de leur capacité non plus pour optimiser leur durée de vie.</p>
-<h2 id="port-de-charge">Port de charge</h2>
+<h3 id="port-de-charge">Port de charge</h3>
 <p>Je veux un port compact, solide, supportant charge et communication USB, et permettant la charge rapide. Ca implique des fils de donnée et des fils de négociation PD (PowerDelivery).</p>
 <p>Possibilité d’utiliser un port USB soudé sur la carte et prévoir que les pièces platiques puissent laisser passer ce port, avec un joint pour l’étanchéité, comme sur certains téléphones.</p>
 <p>Ou utiliser un port déporté, sur un autre circuit ou même un composant totalement a part.</p>
@@ -711,7 +711,7 @@ VBUS pour la puissance, D+ D- pour la communication, CC1 et CC2 pour la négocia
 </ul>
 <p>-&gt; <a href="https://www.ti.com/product/TPD8S300">Trouvé le composant <strong>TPD8S300 de TexasInstruments</strong></a>, dédié a la protection des ports USB-C, sauf de la ligne VBUS.
 Pour la ligne VBUS, ajout d&rsquo;une diode ESD de 22 V.</p>
-<h2 id="négociation-de-puissance-de-charge">Négociation de puissance de charge</h2>
+<h3 id="négociation-de-puissance-de-charge">Négociation de puissance de charge</h3>
 <p>Pour négocier la puissance en entrée sur le port USB (utilisation du PowerDelivery), besoin d’un composant dédié.
 Je veux choisir un composant trés répandu, pour lequel des drivers ont déjà été faits, et avec un coût et taille faible.</p>
 <ul>
@@ -722,8 +722,8 @@ Je veux choisir un composant trés répandu, pour lequel des drivers ont déjà 
 Il est également capable de changer de rôle (source -&gt; sink / sink -&gt; source), ce qui permet d&rsquo;implémenter le mode batterie externe.</p>
 <p>Les PDO au dessus de 20 V 3 A sont disponibles pour les chargeurs standard que avec une circuiterie VCONN, que j&rsquo;ai décidé de ne pas ajouter, mon port USB étant limité a 3 A, et les batteries ne pouvant pas fournir assez de courant.</p>
 <p>Le système aura donc accés a de nombreuses configurations de voltages et ampères en entrée (PDO).</p>
-<h1 id="chargeur-et-équilibrage">Chargeur et équilibrage</h1>
-<h2 id="composant-de-charge">Composant de charge</h2>
+<h2 id="chargeur-et-équilibrage">Chargeur et équilibrage</h2>
+<h3 id="composant-de-charge">Composant de charge</h3>
 <p>Le système doit pouvoir charger une batterie 3S1P depuis une entrée port USB-C (5V-20V négociable via PD).</p>
 <ul>
 <li>choix initial de BQ25703A, qui prend en entrée de 3.5 V a 24 V, et une sortie de 4.48 V a 20.8 V. Support i2c, avec l’addresse 0xD6. Mode OTG qui permet d’envoyer une tension sur le port USB (mode batterie externe). Exellentes performances annoncées.</li>
@@ -731,7 +731,7 @@ Il est également capable de changer de rôle (source -&gt; sink / sink -&gt; so
 </ul>
 <p>Ce composant est un chargeur de batteries Li-ion, associé a un ensemble de capteurs intégrés, un watchdog, un mode sommeil et un mode OTG qui permet de l&rsquo;utiliser comme générateur de tension réglable, de 3 V à 22 V.
 Il peux également gèrer jusqu&rsquo;à 6 A, ce qui est au dessus de ce que les batteries peuvent fournir, ce qui laisse une bonne marge de sécurité.</p>
-<h2 id="équilibreur-de-batteries">Équilibreur de batteries</h2>
+<h3 id="équilibreur-de-batteries">Équilibreur de batteries</h3>
 <p>Avec le chargeur, il faut prévoir un composant pour équilibrer les batteries entre elle, pour qu’elles soient toujours au même voltage.</p>
 <p>Critères : support 3S, I2C, peu de composants, petit format.</p>
 <ul>
@@ -740,14 +740,14 @@ Il peux également gèrer jusqu&rsquo;à 6 A, ce qui est au dessus de ce que les
 </ul>
 <p>Ce composant peux même servir de BMS, et propose de nombreuses sécurités, que je ne vais pas utiliser car elles sont redondantes avec celles du BQ25713 et je manque déjà de place sur le circuit.</p>
 <p>Possibilité de l’utiliser comme watchdog hardware, mais j’ai loupé cette possibilité lors du design.</p>
-<h1 id="alimentation-des-leds">Alimentation des LEDs</h1>
+<h2 id="alimentation-des-leds">Alimentation des LEDs</h2>
 <p>J’avais prévu au départ d’ajouter un composant dédié, et la il y a eu une réalisation : le mode OTG  du module de charge de batterie remplit déjà ce rôle ! Il peux produire une tension programmable entre 3 V et 20 V, avec un maximum de 6 A, parfait pour ce que je veux.</p>
 <p>Puisque qu’on a une sortie OTG programmable et un microcontroleur pour gérer la logique, on peux utiliser une porte électronique entre l’USB et la sortie OTG, comme ça la lampe peux aussi faire batterie externe.
 Le mode battery externe est une fonctionnalité bonus a implémenter en software plus tard, qui ne coute pas plus cher a mettre sur le circuit.</p>
 <p>Donc pour la suite j’ai décidé d’ajouter une porte USB-C, et une porte alimentation externe, qui me permettent de choisir ou envoyer la puissance générée par le chargeur.</p>
 <p>Seul bémol de cette méthode : on ne peux plus charger et allumer la lampe en même temps, ce qui est un bon tradeoff selon moi.
 Il faudra également prévoir en soft que le contrôle de la luminosité des rubans ne sera pas linéaire, car ils seront contrôlés par CV plutôt que CC.</p>
-<h2 id="portes-de-puissance">Portes de puissance</h2>
+<h3 id="portes-de-puissance">Portes de puissance</h3>
 <p>Afin de choisir si on veux envoyer de la puissance aux LEDs ou au port USB, il faut deux portes : l porte USB doit laisser passer de 3 V a 20 V, et supporter le fast role swap.</p>
 <ul>
 <li><a href="https://www.microchip.com/en-us/product/UCS3205">choix du <strong>UCS3205T</strong></a>, compact et fait spécialement pour cette application</li>
@@ -757,7 +757,7 @@ Il faudra également prévoir en soft que le contrôle de la luminosité des rub
 <p>Cette low side gate à produit des cas ou j’ai vu des fuites de puissance par les fils de signal de mes LEDs.
 La high side gate est bien plus sure car elle isole completement le circuit aprés elle.
 Elle est cependant un peu moins efficace et produit une petite baisse de tension et un échauffement quand le courant est fort.</p>
-<h1 id="choix-du-microcontroleur">Choix du microcontroleur</h1>
+<h2 id="choix-du-microcontroleur">Choix du microcontroleur</h2>
 <p>Besoin d’un microcontroleur avec interface USB, assez de GPIO pour gérer les composants et capteurs. Doit avoir assez de puissance et mémoire pour être libre de dev dessus sans trop s’inquieter des limites (affichage des 580 pixels a plus de 60FPS), et surtout de consommer le minimum de batterie en mode sommeil.
 Nombre de GPIOs nécéssaires :</p>
 <ul>
@@ -783,11 +783,11 @@ Ca augmente aussi le coût de la board.
 La version non BGA n&rsquo;a également pas les lignes USB, donc non programmable via USB.</p>
 <p>Une version sans capteurs et en optimisant les sorties (avec un driver pour l’indicateur led, qui fonctionnerait sur la ligne i2c par exemple, permettrait d’utiliser une version non BGA et réduire les coûts).
 Pareil, le Bluetooth n’est pas obligatoire, ce qui ferait tomber la conso et permettrait d’enlever l’antenne, qui coute relativement cher et prend de la place.</p>
-<h2 id="signal-usb">Signal USB</h2>
+<h3 id="signal-usb">Signal USB</h3>
 <p>L’entrée USB du microcontroler ne supporte que de 4.2 V à 5.5 V, mais avec la négocation PD le rail VBUS peux monter jusqu’à 20 V.
 Il faut donc un convertisseur qui prend de 5V a 20V et sort un signal entre 4.2 V et 5.5 V.
 Cette piste est sensée n’être qu’un signal de branchement et donc ne transporte presque pas de courant donc le composant peux etre tout petit (50mA max est suffisant).</p>
-<h1 id="alimentation-1">Alimentation</h1>
+<h2 id="alimentation-1">Alimentation</h2>
 <p>Le NRF52840 a deux modes d’alimentation : variable avec convertisseur interne (demande plus de composants, plus robuste) ou fixe 3.3 V avec alimentation externe (bien plus efficace, demande une alimentation stabilisée 3.3 V externe). Je choisi l’option 2, car de toutes facons j’ai besoin d’un alim externe 3.3 V.
 L’équilibreur fourni également une sortie 3.3 V stabilisée tres faible consommation, mais elle n’est pas exploitable avec le NRF52840, qui consomme trop au démarrage.
 Conso attendue : 3.3 V, pic de conso jusqu’ a 500 mA au démarrage et en cas d’utilisation du bluetooth.</p>
@@ -795,7 +795,7 @@ Conso attendue : 3.3 V, pic de conso jusqu’ a 500 mA au démarrage et en cas d
 <li>TPS629206 : Composant avec consommation extremement basse au repos, et capable de fournir des pics jusqu’à 500 mA a 3.3 V.
 Porte pour isoler les composants dormants du rail 3.3 V pour economiser encore plus de consommation au repo + permet des reset electroniques en cas de crash d’un composant.</li>
 </ul>
-<h1 id="interface-utilisateur">Interface utilisateur</h1>
+<h2 id="interface-utilisateur">Interface utilisateur</h2>
 <p>Utilisation d’un composant le plus solide et durable possible.</p>
 <p>Potentiomètre pas adpaté, car l’axe a tendance a casser lors des chutes.
 L’usure des connecteurs nécésite un entretient a long terme.</p>
@@ -808,21 +808,21 @@ L’usure des connecteurs nécésite un entretient a long terme.</p>
 <p>Pas d’interrupteur général, ce qui limite l’autonomie en mode sommeil mais permet d’utiliser moins de composants.
 De plus, le Bluetooth pourrait être utilisé pour du contrôle avancé.</p>
 <p>Le debouncing et autres traitements seront réalisés en software, afin de garder une certaine généricité de la carte électronique.</p>
-<h1 id="capteurs">Capteurs</h1>
+<h2 id="capteurs">Capteurs</h2>
 <p>Capteurs de gaz : tres cher et ne marcherait pas parce que dans un tube fermé hérmétiquement.</p>
 <p>Pas besoin d’ajouter des capteurs de temperature, chaque composants en a déjà un.</p>
-<h2 id="microphone">Microphone</h2>
+<h3 id="microphone">Microphone</h3>
 <p>Permet de faire de l’analyse de fréquences et des animations qui réagissent au son.
 Choix d’un mems, compact et solide, mais relativement cher. Ajout de [1; 3]€.
 Son efficacité sera réduite car il sera dans un tube fermé hermétiquement.
 Il captera surtout des basses, et ça tombe bien c’est ce qu’on lui demande !
 Ajout de 2 GPIO pour le controler.</p>
-<h2 id="centrale-inertielle">Centrale inertielle.</h2>
+<h3 id="centrale-inertielle">Centrale inertielle.</h3>
 <p>Permet de faire des animations dépendantes de la gravité.
 Ca aurait été cool d’avoir un magnétomètre mais ça coute trop cher !
 J’ai pris le même modèle que dans la board Seeed Sense, par simplicité (LSM6DS3).
 Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a la ligne i2c.</p>
-<h1 id="résumé-des-choix-techniques">Résumé des choix techniques</h1>
+<h2 id="résumé-des-choix-techniques">Résumé des choix techniques</h2>
 <table>
   <thead>
       <tr>
@@ -1067,45 +1067,51 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
     </div>
     <nav class="toc-body"><nav id="TableOfContents">
   <ul>
-    <li><a href="#pièces-sur-mesure">Pièces sur mesure</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#caractéristiques-communes">Caractéristiques communes</a></li>
-    <li><a href="#lanterne-jaune">Lanterne jaune</a>
+    <li><a href="#châssis">Châssis</a>
       <ul>
-        <li><a href="#mesures-réelles">Mesures réelles</a></li>
+        <li><a href="#pièces-sur-mesure">Pièces sur mesure</a></li>
       </ul>
     </li>
-    <li><a href="#lanterne-colorée">Lanterne colorée</a>
+    <li><a href="#éclairage">Éclairage</a>
       <ul>
-        <li><a href="#mesures-réelles-1">Mesures réelles</a></li>
+        <li><a href="#caractéristiques-communes">Caractéristiques communes</a></li>
+        <li><a href="#lanterne-jaune">Lanterne jaune</a></li>
+        <li><a href="#lanterne-colorée">Lanterne colorée</a></li>
       </ul>
     </li>
-  </ul>
-
-  <ul>
-    <li><a href="#batteries">Batteries</a></li>
-    <li><a href="#port-de-charge">Port de charge</a></li>
-    <li><a href="#négociation-de-puissance-de-charge">Négociation de puissance de charge</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#composant-de-charge">Composant de charge</a></li>
-    <li><a href="#équilibreur-de-batteries">Équilibreur de batteries</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#portes-de-puissance">Portes de puissance</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#signal-usb">Signal USB</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#microphone">Microphone</a></li>
-    <li><a href="#centrale-inertielle">Centrale inertielle.</a></li>
+    <li><a href="#protection-des-leds">Protection des LEDs</a></li>
+    <li><a href="#alimentation">Alimentation</a>
+      <ul>
+        <li><a href="#batteries">Batteries</a></li>
+        <li><a href="#port-de-charge">Port de charge</a></li>
+        <li><a href="#négociation-de-puissance-de-charge">Négociation de puissance de charge</a></li>
+      </ul>
+    </li>
+    <li><a href="#chargeur-et-équilibrage">Chargeur et équilibrage</a>
+      <ul>
+        <li><a href="#composant-de-charge">Composant de charge</a></li>
+        <li><a href="#équilibreur-de-batteries">Équilibreur de batteries</a></li>
+      </ul>
+    </li>
+    <li><a href="#alimentation-des-leds">Alimentation des LEDs</a>
+      <ul>
+        <li><a href="#portes-de-puissance">Portes de puissance</a></li>
+      </ul>
+    </li>
+    <li><a href="#choix-du-microcontroleur">Choix du microcontroleur</a>
+      <ul>
+        <li><a href="#signal-usb">Signal USB</a></li>
+      </ul>
+    </li>
+    <li><a href="#alimentation-1">Alimentation</a></li>
+    <li><a href="#interface-utilisateur">Interface utilisateur</a></li>
+    <li><a href="#capteurs">Capteurs</a>
+      <ul>
+        <li><a href="#microphone">Microphone</a></li>
+        <li><a href="#centrale-inertielle">Centrale inertielle.</a></li>
+      </ul>
+    </li>
+    <li><a href="#résumé-des-choix-techniques">Résumé des choix techniques</a></li>
   </ul>
 </nav></nav>
   </div>
