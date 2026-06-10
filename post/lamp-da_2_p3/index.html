@@ -126,7 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "wordCount": 5
+  "timeRequired": "PT9M",
+  "wordCount": 1761
 }
 </script>
 
@@ -180,6 +181,10 @@
       
       
       
+      
+      <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
+        <span class="fas fa-list"></span>
+      </button>
       
       
       
@@ -299,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1761&nbsp;mots
   
   
   
@@ -326,7 +331,148 @@
 
           
 
-          <p>Partie 3 - Conception électronique</p>
+          <p><em><strong>Partie 3 - Conception électronique</strong></em></p>
+<h2 id="conception-électronique">Conception électronique</h2>
+<p>Afin de réduire le prix le plus possible, j’ai réalisé une estimation avec les fabricants de PCB, pour repèrer les palliers d’augmentation de tarifs.
+Contraintes de fabrication</p>
+<ul>
+<li>épaisseur minimum des tracks: 4mil (0,1016mm)</li>
+<li>espacement minimum des tracks: 4mil (0,1016mm)</li>
+<li>Diamètre interne minimum des Vias : 0.3mm</li>
+<li>Via in padds: Normalement obligatoire pour les BGA, j’ai sacrifié plusieurs GPIO pour contourner la limitation.</li>
+<li>Nombre de couches: 4 minimum pour ce type de circuits</li>
+<li>Finition de la surface: ENIG (revetement or) nécéssaire pour les BGA, mais coûte cher</li>
+</ul>
+<p>L’épaisseur et écart des tracks et la taille des trous était la plus grosse contrainte, qui a ajouté beaucoup de complexité au routage. Mais j’ai réussit a tout faire tenir.
+J’ai été obligé de réduire le diamètre de deux points du BGA pour faire passer une track entre deux connections.</p>
+<h3 id="organisation-générale">Organisation générale</h3>
+<ul>
+<li>
+<p>Format rond de 44mm de diamètre</p>
+</li>
+<li>
+<p>Détrompeur d’orientation (pour que la calibration IMU reste valide, et les ports bien alignés)</p>
+</li>
+<li>
+<p>Antenne bluetooth éloignée des composants de puissance</p>
+</li>
+<li>
+<p>Power Path pour la charge de batteries, grande largeur de pistes</p>
+</li>
+<li>
+<p>Ligne de contrôle I2C parcourant toute la surface</p>
+</li>
+<li>
+<p>Capteurs de température répartis sur l’ensemble du circuit</p>
+</li>
+<li>
+<p>Entrée USB : 6 ports, dont 2 avec des pistes plus larges pour plus de courant (VBUS et GND)</p>
+</li>
+<li>
+<p>Sortie LED : 2 ports, avec pistes larges pour plus de courant</p>
+</li>
+<li>
+<p>Ports programmables pour le bouton et l’indicateur RGB (4 ports)</p>
+</li>
+<li>
+<p>priorité haute aux composants de puissance, priorité basse aux capteurs</p>
+</li>
+<li>
+<p>power path bien défini au nord du circuits</p>
+</li>
+<li>
+<p>capteurs et antennes a l’opposé, au sud</p>
+</li>
+<li>
+<p>couche interne GND pour absorption du bruit, et grosse largeur de piste retour</p>
+</li>
+<li>
+<p>GPIO sur les cotés du circuits</p>
+</li>
+<li>
+<p>détrompeur physique d’orientation, a voir dans le design mécanique</p>
+</li>
+<li>
+<p>Prise femelle de batterie a souder a la main plus tard. JST XH 4 broches</p>
+</li>
+<li>
+<p>Port de programmation physique JTAG, défini en trace sans composant externe.
+→ grosse économie d’échelle (pas de composants en plus)
+→ mais utilisation d’une probe JTAG assez chère pour programmer la puce.</p>
+</li>
+<li>
+<p>Port de reset défini en trace également.</p>
+</li>
+<li>
+<p>antenne bluetooth en bord de circuit, sans plan de masse proche.</p>
+</li>
+<li>
+<p>Passage alternatif du VBUS du port USB vers l’alim 3.3V pour récupèrer le circuit si les batteries tombent a 0V.</p>
+</li>
+</ul>
+<h2 id="prototypes">Prototypes</h2>
+<p>En tout, six générations de prototypes de circuit ont été construits. Ils représentent la vrai temporalité du projet, avec tous les problèmes qui ont été corrigés. Les résolutions de ces problèmes ont été mentionnés dans les specifications comme des données d’entrée, mais dans les faits ils ont été le fruit d’un travail itératif.</p>
+<h3 id="proto-1">Proto 1</h3>
+<p>X5 circuits, pas un seul ne fonctionne !!
+Impossible de programmer un seul circuit, pas de réponse du port USB.
+→ Je pensais que la puce était programmable par USB grace a l’interface native USB de la puce, mais non. Il faut lui charger un bootloader spécial, mais je n’avais pas prévu de port pour ca, oups !
+Le chargeur ne charge pas les batteries.
+→ J’ai implémenté un chargeur buck uniquement, pas boost. Une autre erreur qui rend le circuit inutilisable.
+C’est mon premier PCB custom, donc pas un drame de s’être planté</p>
+<h3 id="proto-2">Proto 2</h3>
+<p>X5 circuits, programmables graces a un bootloader que j’ai fait, mais inutilisables.
+USB jamais détecté. USB 5V jamais détecté.
+→ J’avais une résistance en trop qui produisait un drop de tension trop important, et donc pas de détection du signal.
+Le composant de negociation USB PD ne répond jamais sur la ligne i2c. Je n’ai jamais trouvé pourquoi, je l’ai changé par une version similaire avec le même pinout dans les futures versions et ca marche sans soucis.</p>
+<h3 id="proto-3">Proto 3</h3>
+<p>X5 circuits, rien ne marche !!! Pas de réponse USB, pas moyen de programmer la puce, rien de rien.
+→ L’usine a assemblé le composant du chargeur avec une rotation de 90°, ce qui provoque un cours circuit et la destruction des circuits… Refut de remboursement, et un simple bon d’achat d’une valeur de 2.5% de la valeur de la commande. J’ai changé de fournisseur, JLC PCB c’est plus jamais. PCB WAY était plus cher mais a fourni un travail de bien meilleure qualité.</p>
+<p>Aprés avoir trouvé le problème, j’ai dessoudé puis ressoudé le composant sur les boards restantes avec la bonne orientation, et j’ai pu tester les 2 boards survivantes qui fonctionnaient.
+La charge des batteries se passe super. Negociation de puissance USB-PD fontionne aussi, mais le circuit entier crame au bout de quelques minutes de charge quand VBUS est a 20V.
+→ la diode de régulation 5V ne tient pas la charge et crame au bout d’un moment, ce qui fait monter la ligne de signal a 20V, et crame donc le microcontroleur.
+Les GPIOs arretent de fonctionner rapidement quand les LEDs sont allumées.
+→ Une des GPIO utilisée pour mesurer la tension du régulateur utilisé pour les LEDs subit un pic de tension au démarrage de l’alimentation externe. Ce qui détruit la GPIO et ses voisines.</p>
+<h3 id="proto-4">Proto 4</h3>
+<p>X10 circuits, 5 fonctionnent.
+Premier test vraiment concluant, ou 5 lampes qui fonctionnent parfaitement ont pu être construites et données a des amis qui ont pu tester, faire des retours et programmer dessus eux même.</p>
+<p>Certains circuits refusent le bootloader et je ne peux rien en faire. D’autres plantent aléatoirement.
+→  Une des lampes qui plante prend juste de plus en plus de temps a faire un cycle principal, ce qui veux dire que le clock cycle s’allonge juqu’a planter le core.
+Pas sur de la raison, mais j’ai vu plus tard que le cristal oscillateur  nécéssitait un type trés précis de condensateur. Peut être que le peu de variation des condensateurs rend le cristal instable. Aprés un changement du cristal et condensateurs, je n’ai plus le problème dans les nouvelles versions.
+Les chargeurs compatibles power delivery plantent au moment ou ils sont branchés:
+→ Appel de courrant trop fort au démarrage des composants. Ajout d’une VBUS gate pour controler a quel moment on autorise les composants de charge a acceder a la ligne VBUS
+L’OTG ne fonctionne pas. La GPIO qui correspond a l’allumage ne passe jamais en état haut et le composant refuse d’activer l’OTG
+→ Plusieurs conditions sont a respectées, dont le fait que la ligne VBUS doit être sous les 3.2V pour l’activation de l’OTG. L’ajout de la VBUS gate permet de règler ce probleme également.
+Cette version était encore en 4S1P, et nécéssitait donc d’avoir un BMS et équlibreur externe.
+→ Modification pour avoir une batterie 3S1P, et ajout d’un équilibreur sur la board.
+→ C’est a ce moment la que j’ai décidé d’utiliser la sortie OTG pour alimenter les LEDs ! Et j’ai donc ajouté la OutputGate.</p>
+<h3 id="proto-5">Proto 5</h3>
+<p>10 circuits, 10 circuits fonctionnels :) Enfin c’est au point ! Mais il restait deux erreurs principales:
+Aucun bootloader flashable, aucunes puces programmables
+→ J’ai inversé deux condensateurs 10nF avec des 10uF… Dessoudage, ressoudage et ca marche super
+OutputGate ne fonctionne pas, elle ne bloque jamais la tension VBUS.
+→Utilisation d’un MOSFET N plutôt qu’un P… Dessousage, ressoudage et ca marche super
+Deux erreurs d’inattention donc ! Peut être que quelques jours de pose et plusieurs relectures auraient pu éviter ca.
+Difficile de souder les 4 fils de la batterie au circuit sans faire de cours circuits. J’ai cramé quelques circuits a cause de ca
+→ Ajout d’une trace de connecteur femelle XH pour connecter la batterie. Ca sera plus pratique pour la grosse production et ca évitera des erreurs d’assemblage
+Apparition du scintillement des LEDs
+→ Toujours pas résolu a ce jour !
+Les rubans indexables explosent quand on utilise la charge rapide !!
+→ J’utilisais une low side gate, qui ouvre donc le circuit au niveau du GND. Ca marche super SAUF QUE le ruban indexable a également un fil de contrôle relié a une GPIO. Donc le courant trouve un passage depuis le VBUS jusqu’au GND par la GPIO, ce qui fait griller le ruban et la GPIO, oupssssss
+Possibilité de réparer avec une diode sur le fil de contrôle, au risque qu’un utilisateur bricolant sa propre lampe oublie la diode et fasse exploser son circuit
+Ou remplacer la low side gate par une high side, moins efficace et un peu plus chere, mais bien plus foolproof. J’ai choisi cette option.</p>
+<h3 id="proto-6">Proto 6</h3>
+<p>Maintenant que tout est résolu, il est temps de faire la grosse commande de 300 circuits, presque 7000 euros. Pas interet de se planter a ce moment !
+J’ai testé la high side gate chez moi des dizaines de fois pour être sur qu’elle fonctionnera directement, mais c’était quand même un grand risque de commander tout les circuits sans tester cette grosse modification. Pas grave ! Je vivrai avec ma déception si c’est un echec !
+J’ai également ajouté des modifications mineures, comme des pullup sur les lignes de GPIO pour allèger leur charge, remplacer les MOSFET P par la même version mais a 30V plutôt que 20 pour la sécurité. Également ajouté une diode sur la GPIO 3.3V, pour éviter des erreurs utilisateur, et j’ai remplacé les résistances du balancer par des plus petits formats pour que tout rentre sur le circuit. Ca chauffera plus, mais c’est pas bien grave.
+On clique, on paye, on stress pendant 2 mois, et un carton bien protègé arrive a la maison: les 300 circuits.
+Et la, miracle ! Tout fonctionne sans accros !! soulagement et arrêt momentanné de la chute de cheveux due au stress.
+Il y a quand même deux problèmes durant les tests:</p>
+<ul>
+<li>Les rubans jaunes scintillent: J’ai mesuré a l’oscilloscope une oscillation de 15Hz de trés faible amplitude, mais sans jamais de succés pour l’attenuer plus.</li>
+<li>Quand le système est très chaud, VBUS recoit un voltage “fantome” de environ 4.5V. D’ou vient il ?? aprés des jours de recherche, je comprend enfin: c’est le fil de signal de connection, qui passe par le LDO 5V: il est relié a la batterie par une diode shottky pour éviter le backfeeding. Cette diode devient passante quand la température augmente et fait fuiter un peu de courant sur la ligne de signal. Ca produit un voltage sur cette ligne, qui repasse par le LDO a l’envers, et arrive sur VBUS.
+Une correction possible est une pulldown sur cette ligne, mais c’est un peu tard. J’ai donc implémenté un fix software qui ignore ce voltage dans certaines conditions. Il ne dépasse jamais 4.5V donc n’est pas dangereux pour d’éventuels appareils sur VBUS.</li>
+</ul>
+<p>Et on y est ! Des circuits fonctionnels, tout le design en place, il est temps de construire des lampes.</p>
           
           
 
@@ -485,7 +631,34 @@
         
       
 
-      
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#conception-électronique">Conception électronique</a>
+      <ul>
+        <li><a href="#organisation-générale">Organisation générale</a></li>
+      </ul>
+    </li>
+    <li><a href="#prototypes">Prototypes</a>
+      <ul>
+        <li><a href="#proto-1">Proto 1</a></li>
+        <li><a href="#proto-2">Proto 2</a></li>
+        <li><a href="#proto-3">Proto 3</a></li>
+        <li><a href="#proto-4">Proto 4</a></li>
+        <li><a href="#proto-5">Proto 5</a></li>
+        <li><a href="#proto-6">Proto 6</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>

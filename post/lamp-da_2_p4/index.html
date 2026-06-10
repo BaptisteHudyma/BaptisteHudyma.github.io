@@ -126,7 +126,7 @@
     },
     "name": "HUB Logs"
   },
-  "wordCount": 5
+  "wordCount": 544
 }
 </script>
 
@@ -180,6 +180,10 @@
       
       
       
+      
+      <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
+        <span class="fas fa-list"></span>
+      </button>
       
       
       
@@ -299,7 +303,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;544&nbsp;mots
   
   
   
@@ -326,7 +330,50 @@
 
           
 
-          <p>Partie 4 - Conception mécanique</p>
+          <p><em><strong>Partie 4 - Conception mécanique</strong></em></p>
+<h2 id="conception-méca">Conception méca</h2>
+<h3 id="objectifs">Objectifs</h3>
+<ul>
+<li>Résistant aux chocs</li>
+<li>Résistant aux projections d’eau et poussière</li>
+<li>Démontage non destructif</li>
+<li>Pas de composants /éléments mobiles
+→ maitenir le circuit
+→ maintenir les batteries</li>
+<li>Pas cher</li>
+<li>Customizable</li>
+<li>Possibilité d’accrocher ou suspendre la lampe</li>
+<li>Pas isolant éléctromagnétiquement (pour le bluetooth) ou phonétiquement (pour le microphone)</li>
+</ul>
+<h3 id="decisions">Decisions</h3>
+<p>→ Création de pièces “bouchons” qui ferment le tube PVC et maintiennent les composants
+• impression 3D PLA ok, pièces designés pour êtres protégées par le tube PVC
+◦ Prévoir des impressions sans supports, pour économiser en temps d’impression, prix, et moins de gachi de matière.
+• Permet des designs complexes (trous passants pour les goupilles, port USB, bouton, …)
+• Pour la pièce du bas, impression d’un design custom du projet, qui peux être modifié par nimporte qui qui voudrait construire la sienne. A l’intérieur de la lampe, une forme spéciale pour contraindre les trois batteries 21700 dans une certaine orientation.
+• Une goupille de 50mmx3mm pour solidariser les bouchons avec le tube PVC. Ce sont elle qu’il faut chasser pour démonter la lampe
+→ 3 pièces identiques pour relier la piece bouchon du haut et du bas, et maintenir les batteries a la même place dans le tube.
+• 2 goupille métallique standard de longueur 35mm qui servent de détrompeur pour le circuit, et stabilisent la connection entre les deux bouchons
+• L’inconvénient est que une des trois pièces n’est pas reliée aux autres, et nécéssite un point de colle pour la solidariser avec les deux autres pièces.
+Le tube lui meme doit être percé a plusieurs endroits pour permettre le passage des fils des rubans de LED, et de la goupille du haut et du bas:
+→ prévoir 3 trous en haut (2x3mm pour la goupille, 1x4mm pour les fils)
+→ prévoir 2 trous en bas (2x3mm pour la goupille)
+→ désaxer ces trous pour que le bouchon du haut et du bas ne puissent pas avoir de rotation synchronisées.
+→ Prévoir un guide de percage
+Enrouler les leds autour du tube (prévoir des rubans avec un autocollant en dessous pour maintenir)
+→ création d’un guide d’enroulage
+Appliquer un morceau de gaine thermo transparente de 150mm de long au dessus des leds, le réduire avec un décapeur thermique, couper l’exedant dans le tube.
+Toutes les pièces sont prévus pour êtres imprimées sans support, SAUF le bouchon du haut qui doivent avoir un support pour la première couche uniquement.</p>
+<h2 id="difficultés-dassemblage">Difficultés d’assemblage:</h2>
+<ul>
+<li>les goupilles doivent etre insérées sous la gaine thermo
+→ avantage de résistance aux élément
+→ démontage complexe sans abimer la gaine</li>
+<li>le décapeur peux déformer le tube PVC rendant l’assemblage complexe ou impossible</li>
+<li>les tolérances des pièces 3D auraient du être assez hautes, elles sont finalement assez basses, produisant des écarts ou des trous à agrandir.</li>
+<li>les tolérances nasses des tubes en PVC font qu’on n’arrive pas a 46mm interne, ce qui peux rendre l’insertion des batteries difficile ou impossible.</li>
+<li>Si la découpe du tube PVC n’est pas dans les 1mm de tolérance en longueur, l’assemblage peut etre difficile et nécéssiter un étaux ou un percage des pièces imprimées. Si le tube est trop petit, des contraintes fortes sont appliquées sur les goupilles qui relient les pièces au tube, et donc sur le tube lui même.</li>
+</ul>
           
           
 
@@ -485,7 +532,26 @@
         
       
 
-      
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#conception-méca">Conception méca</a>
+      <ul>
+        <li><a href="#objectifs">Objectifs</a></li>
+        <li><a href="#decisions">Decisions</a></li>
+      </ul>
+    </li>
+    <li><a href="#difficultés-dassemblage">Difficultés d’assemblage:</a></li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>

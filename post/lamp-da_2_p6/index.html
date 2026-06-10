@@ -126,7 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "wordCount": 9
+  "timeRequired": "PT7M",
+  "wordCount": 1478
 }
 </script>
 
@@ -180,6 +181,10 @@
       
       
       
+      
+      <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
+        <span class="fas fa-list"></span>
+      </button>
       
       
       
@@ -299,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;9&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1478&nbsp;mots
   
   
   
@@ -326,7 +331,76 @@
 
           
 
-          <p>Partie 6 - Pré-série industrielle (construction de 200 lanternes)</p>
+          <p><em><strong>Partie 6 - Pré-série industrielle (construction de 200 lanternes)</strong></em></p>
+<h2 id="production">Production</h2>
+<p>Aprés quelques simulations et statistiques, j’ai décidé de fabriquer 200 lampes, avec un taux d’erreur/casse possible de 5%. 200 est le bon compromis entre le prix et le temps de réalisation assez court pour que je tombe pas dans la folie.
+J’ai donc proposé a la réservation de vente (ie: pas de payement, juste une inscription pour pouvoir payer plus tard quand elles seront prêtes) un total de 190 lanternes, 42 colorées et 148 jaunes.
+→ document d’infos et réservations (merci Clem)
+→ Déterminer le prix de chaque lampe !
+→ Objectif est pas de gagner de l’argent mais rembourser le coût du matériel des prototypes, estimé a + de 3000 euros.
+→ les lampes colorées seront plus chères, car elles sont plus gadget/collector, et surtout les rubans sont bien plus chers que les jaunes. J’ai monté le coût des lampes colorées pour garder les jaunes le plus bas possible.
+→ Prévoir les impôts et taxes dans le total. Difficile a estimer car je n’y connait rien
+→ Prévoir les coûts des systèmes de payement, je ne veux pas recevoir des dizaines de millier d’euro en cash.</p>
+<h3 id="commandes-matériel">Commandes matériel</h3>
+<p>(oups tu sais pas compter malgrés ton tableur, il manque des choses: deux fois moins de corde que nécéssaire)
+Comme je commande en gros, je bénéficie des prix d’usine, et je peux revoir le prix des lanternes a la baisse :)</p>
+<p>→ Commande de rubans a la bonne longueur directement, ou un multiple de la bonne longueur, afin d’éviter d’avoir des points de soudure dans le ruban. Ca rendra le tout plus solide et durable
+→  Grosse incertitude sur la couleur des rubans jaunes !! Impossible de confirmer la couleur avec un échantillon, donc on croise les doigts pour que les 300 mètres de LEDs commandés soient au bon colori, et agréables a l’oeil.
+→ Au final, c’est trés proche mais pas parfait. Et aussi dans le lôt, il y a 20mètres de LED de la mauvaise couleur, on ne l’a remarqué que a l’allumage (donc il y a 10 lanternes blanches chaude plutot que jaune, oups)
+→ Les batteries viennent d’un projet avorté d’automobile, accus peu cher car déjà utilisés dans un montage. Certains sont un peu abimés visuellements mais ils n’ont jamais servis.
+→ pièces 3D commandées a une usine Européenne.
+→ Les premiers échantillons sont catastrophiques, et j’ai passé une bonne semaine a règler le soucis, avant que de nouvelles pièces de bien meilleures qualité arrivent.
+→ boutons RGB commandés en vrac, sans prix d’usine. J’ai raté une occasion d’optimisation la dessus.
+→ Gaine thermo commandée en vrac, pareil on croise les doigts car pas d’échantillon possible. On espere qu’il ne fera pas trop chaud pendant la livraison, ca m’est déjà arrivé de recevoir des gaines déjà rétractées (et donc bonnes pour la poubelle). Au final tout se passe très bien.
+→ Ports USB et connecteurs commandés en vrac, sans trop d’inquiètude car composants standards.
+→ goupilles 35mm et 50mm commandées a l’aveugle, car pas de possibilité d’échantillons. Mais ce sont des pièces sans trop de risque
+→ Fil d’accroche des lampes: Ficelle d’escalade standard.
+→ Et la le drame ! Plus aucune dispo a la bonne couleur (bleue). Heureusement, c’était une pénurie temporaire.</p>
+<p>→ Tu as déclarer tes imports pour payer les bonnes taxes ? Oui ??? et bien dommage y a encore plus de taxes (et des taxes sur les taxes que tu as déjà payé et celle don’t tu ignorais l’existence). Erreur de ma part de penser avoir compris comment ca fonctionnait. Heuresement, pas plus de quelques centaines d’euros, on reste dans le budget.
+→ Petit voyage d’achats de tubes avec Soupole et sa Soupomobile, 25 mètres de tuyau de PVC ca passe dans une voiture standard heureusement.
+→ Il a fallut passer du temps a vérifier le diamètre interne de chaque tuyau avec un gabarit pour être sur qu’il soit a la bonne taille.</p>
+<h3 id="matériel-nécéssaire-à-lassemblage">Matériel nécéssaire à l’assemblage</h3>
+<p>→ soudeuse a points et bande de nickel pour les accus
+→ décapeur thermique pour la gaine
+→ fers a souder
+→ gants latex pour toucher tout ce qui est métallique
+→ gants thermiques pour les activités chaudes de ta région (eg: décapeur thermique)</p>
+<h3 id="lieu-de-travail">Lieu de travail</h3>
+<p>→ Atelier Synergique, prêt du local de mars a juin 2025.
+→ Assez grand pour acceuillir des gens motivés, de la place pour stocker le matériel, du matériel dispo sur place (scie pendulaire, décapeur, fer a souder, …) un frigo pour les boissons fraiche
+→ Accessible jusqu’a 1h du matin, je ferai en sorte de venir aprés le travail pour ouvrir vers 18h30, et commencer à ranger/nettoyer à minuit. Ca fait journée de taf + deuxième journée de taf, ca va être quelques mois complexes.</p>
+<h3 id="planning">Planning</h3>
+<p>Je commence par décomposer la construction en étapes indépendantes.
+→ Découpage en tâches principales, divisées en tâches basiques faciles a expliquer et reproduire en autonomie (Fordisme ? Merde alors. On forcera le roulement des étapes entre les personnes pour que tout le monde apprenne des choses)
+→ Je construit une lampe en chronométrant chaque étapes. Estimation de la durée réelle des étapes en multipliant par 1.5</p>
+<p>En utilisant l’estimation de temps de chaque étape, et les dates estimées de livraison, je peux estimer quand le projet sera fini.
+Ca sera octobre dans le pire des cas. Ah mais heu et l’atelier qui ferme en juin ? Oups.
+Remaniement de l’ordre des tâches pour optimiser le temps de fabrication avec le matériel déjà dispo (batteries !), pour commencer le plus tôt possible le travail a l’atelier.
+Estimation du nombre de gens chauds pour aider ! Mais malgrés tout ca ca passe pas, impossible de finir le projet a l’atelier.
+Tant pis, je sais d’avance que je finirai ça dans ma chambre, mais 70 à 90% du travail sera déjà effectué.</p>
+<h3 id="au-boulot-">Au boulot !</h3>
+<p>→ Nourrir et abreuver la main d’oeuvre (ca à un coût), non prévu dans le projet, ca sortira des potentiels benefices du projet.
+→ Oups une semaine de canicule en plein milieu. Heureusement, le local reste assez frai, et on achète des glaces pour soulager les ouvier(e)s.
+→ Plus de gens motivés que j’aurai pensé ! Au totale N personnes volontaires, dont l’aide a été au top, merci !
+→ Je fais le compte de l’avancement des tâches avant de fermer le local a chaque séance, pour estimer l’avancement global.
+→ Les estimations sont bonnes dans l’ensemble, mais certaines tâches différent:
+→ couper les tuyaux: extrement plus rapide que ce que j’ai prévu: avec le savoir faire et le matériel, une personne fini tout le taf en une séance. N fois plus vite que prévu !
+→ enrouler les LEDs prend bien plus de temps que ce que j’ai prévu : apparement j’en ai tellement fait que c’est devenu trés rapide pour moi.
+→ Ajout d’étapes de repercage des pièces 3D, certains trous ne sont pas dans les tolérances prévues.
+→ le temps des apéros avait été oublié dans l’estimation des séances, et c’est important !
+→ En moyenne N personnes par séances
+→ On manquait de sécurité de stockage de batteries. Et d’une manière de gèrer les feux de batteries. Deux accidents de court circuits de batteries : j’ai isolé les accus chez moi, les gardant sous contrôle de caméra thermique jusqu’au retour a la normale. Ils ont été marqués et utilisés pour s’autres choses que des lanternes.
+→ J’ai fait en sorte de fournir des lanternes a des testeur/euses et programmeur/euse motivées pour améliorer le tout avant d’en donner a tout le monde. Ca a permis de trouver pleins de choses en avance, merci !
+→ Mise en place du système de payement et micro entreprise en parallèle pour commencer a recevoir des payements et réparer le trou de 9700€ de mon compte en banque.
+→ compliqué compliqué, heureusement 2K6 avait déjà fait et m’a bien aidé.
+→ les documents ont mis très longtemps a être acceptés, et j’ai donc raté le crénaux pour économiser la TVA sur l’import. On aurait pu faire des lampes 20% moins cheres…
+→ Demande officielle a mon vrai travail, pour éviter un problème de contrat qui ne m’autorise pas a gagner de l’argent en dehors de mon travail.
+→ Une fois le tout fait, mise en place d’un système avec Stripe, et premiers payements arrivent !
+→ et découverte dans la foulée de frai non prévus de Stripe, heureusement pas trés hauts.</p>
+<p>→ Fermeture et déménagement de l’atelier, on commence a prévoir le planning et les activités pour utiliser en priorité le matériel qui va être déménager en premier.</p>
+<p>Au final, fermeture de l’atelier a 80% d’avancement du projet, pile dans les prédictions !
+Il ne reste plus qu’a souder les circuits, les programmer, et fermer les lampes.
+Et ca a pris de juin a septembre, c’est long de bosser seul.</p>
           
           
 
@@ -485,7 +559,28 @@
         
       
 
-      
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#production">Production</a>
+      <ul>
+        <li><a href="#commandes-matériel">Commandes matériel</a></li>
+        <li><a href="#matériel-nécéssaire-à-lassemblage">Matériel nécéssaire à l’assemblage</a></li>
+        <li><a href="#lieu-de-travail">Lieu de travail</a></li>
+        <li><a href="#planning">Planning</a></li>
+        <li><a href="#au-boulot-">Au boulot !</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>

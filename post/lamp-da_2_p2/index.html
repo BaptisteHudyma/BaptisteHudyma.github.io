@@ -127,7 +127,7 @@
     "name": "HUB Logs"
   },
   "timeRequired": "PT20M",
-  "wordCount": 4081
+  "wordCount": 4253
 }
 </script>
 
@@ -304,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4081&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4253&nbsp;mots
   
   
   
@@ -343,68 +343,13 @@ Ce post déroule ces solutions et les justifications qui accompagnent leurs choi
 </ul>
 <p>Les diamètres utilisés peuvent êtres de 20 mm à 80 mm, par incréments de 10 mm.
 Les diamètres les plus agréables sont le 40 mm, 50 mm et 6 0mm, avec une canette standard entre 55 mm et 60 mm.</p>
-<p>Un tube de 40mm ne peut accepter que des configurations de batterie 2x18650 ou 1x21700, ce qui est trop peu pour mon utilisation.
-Un tube de 50mm peut accepter 4x18650 ou 3x21700.
-Un tube de 60mm peut accepter 7x18650 ou 5x21700.</p>
-<p><img src="/static/lamp_da_2/battery_in_60mm.jpg" alt="Configurations de batteries dans tube de diamètre 56mm interne">
-<img src="/static/lamp_da_2/battery_in_50mm.jpg" alt="Configurations de batteries dans tube de diamètre 46mm interne"></p>
+<p>Un tube de 40mm ne peut accepter que des configurations de batterie 2x18650 ou 1x21700, ce qui est trop peu pour mon utilisation.</p>
+<p>Un tube de 50mm peut accepter 4x18650 ou 3x21700 (5 configurations possibles).</p>
+<p>Un tube de 60mm peut accepter 7x18650 ou 5x21700 (4 configurations possibles).</p>
+<p><img src="/static/lamp_da_2/battery_in_60mm.png" alt="Configurations de batteries dans tube de diamètre 56mm interne">
+<img src="/static/lamp_da_2/battery_in_50mm.png" alt="Configurations de batteries dans tube de diamètre 46mm interne"></p>
 <p>Afin de garder un peu de marge pour l&rsquo;épaisseur des LEDs et la protection autour, le choix sera un tube de diamètre 50 mm, avec une paroi de 2 mm d&rsquo;épaisseur.
 L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place interne du tube.</p>
-<p>Configurations de batteries possibles :</p>
-<table>
-  <thead>
-      <tr>
-          <th>Type de batterie</th>
-          <th>Configuration</th>
-          <th>voltage min</th>
-          <th>voltage standard</th>
-          <th>voltage max</th>
-          <th>Amperage</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>4x18650</td>
-          <td>1S4P</td>
-          <td>3 V</td>
-          <td>3.7 V</td>
-          <td>4.2 V</td>
-          <td>4xC A</td>
-      </tr>
-      <tr>
-          <td></td>
-          <td>2S2P</td>
-          <td>6 V</td>
-          <td>7.4 V</td>
-          <td>8.4 V</td>
-          <td>2xC A</td>
-      </tr>
-      <tr>
-          <td></td>
-          <td>4S1P</td>
-          <td>12 V</td>
-          <td>14.8 V</td>
-          <td>16.8 V</td>
-          <td>1xC A</td>
-      </tr>
-      <tr>
-          <td>3x700</td>
-          <td>1S3P</td>
-          <td>3 V</td>
-          <td>3.7 V</td>
-          <td>4.2 V</td>
-          <td>3xC A</td>
-      </tr>
-      <tr>
-          <td></td>
-          <td>3S1P</td>
-          <td>9 V</td>
-          <td>11.1 V</td>
-          <td>12.6 V</td>
-          <td>1xC A</td>
-      </tr>
-  </tbody>
-</table>
 <p>La hauteur du tube sera fixée a 125mm, qui est le meilleur compromis en terme de taille/sensation/visuel, et permet de contenir largement les batteries et le circuit.</p>
 <p><strong>Choix d&rsquo;un tube PVC 125mm de haut, diamètre externe 50mm, diamètre interne 46mm</strong></p>
 <p>Ce tube posera des contraintes de conduction de chaleur, et limitera la capacité du système a être utilisé a forte puissance.</p>
@@ -515,20 +460,7 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
   </tbody>
 </table>
 <p>La vraie densité de LEDs est plutôt de 162.6 L/m.</p>
-<h2 id="protection-des-leds">Protection des LEDs</h2>
-<p>Pour protèger les LEDs de l’environnement, elles doivent être recouvertes par une protection transparente.</p>
-<p>Des rubans existent en IP67, mais pas ceux sélectionnés, qui sont IP20.</p>
-<p>Possibilité d’un tube en plastique rigide transparent: difficile a intègrer, doit être épais pour être solide, retient la chaleur. Mais facile a integrer sans plus de travail : couper un cyclindre d’acrylique est aussi difficile que couper un cylindre PVC donc l’integration est facile. Étanche ! Mais a tendance a se rayer facilement.</p>
-<p>Gaine thermorétractable transparente ! J’en ai testé plusieurs, et le meilleur compromis efficacité/ergonomie est une gaine trés épaisse, ce qui le rend solide, agréable en main, assez élastique pour absorber des chocs.</p>
-<p>Quelques problèmes par contre :</p>
-<ul>
-<li><strong>Retient la chaleur</strong>, par design. Ces gaines rétrécissent a la chaleur, donc elles ne sont pas trés conductrices, et surchauffent la lampe. Ca diminue beaucoup l’efficacité en éclairant fort.</li>
-<li><strong>Complexité a l’installation</strong> : couper des bouts a la bonne taille c’est facile, mais apres il faut les enfiler par dessus les leds (en évitant la poussiere et autres trucs), chauffer le tout (ce qui peux déformer le tube PVC si on chauffe trop), et découper l’exces aprés rétrécissage (ce qui prend du temps)</li>
-<li><strong>Vieilli mal</strong>: moins facile a rayer que de l’acrylique, mais terni et se détend un peu a long terme. Se répare facilement en la passant rapidement sous un flux d’air chaud, et en nettoyant la gaine a l’eau.</li>
-<li><strong>Maintenance destructive</strong>: Impossible de réparer un problème avec les LEDs sans couper la gaine et en mettre une nouvelle. C’est un petit problème mais a garder en tête quand même.</li>
-</ul>
-<h2 id="alimentation">Alimentation</h2>
-<h3 id="batteries">Batteries</h3>
+<h3 id="consommation-typique">Consommation typique</h3>
 <p>Pour une durée d&rsquo;utilisation typique de 5H, la lampe consommera :</p>
 <table>
   <thead>
@@ -554,8 +486,56 @@ Utiliser un ruban plus fin reviendra aussi a utiliser plus de ruban en l&rsquo;e
       </tr>
   </tbody>
 </table>
+<h2 id="protection-des-leds">Protection des LEDs</h2>
+<p>Pour protèger les LEDs de l’environnement, elles doivent être recouvertes par une protection transparente.</p>
+<p>Des rubans existent en IP67, mais pas ceux sélectionnés, qui sont IP20.</p>
+<p>Possibilité d’un tube en plastique rigide transparent: difficile a intègrer, doit être épais pour être solide, retient la chaleur. Mais facile a integrer sans plus de travail : couper un cyclindre d’acrylique est aussi difficile que couper un cylindre PVC donc l’integration est facile. Étanche ! Mais a tendance a se rayer facilement.</p>
+<p>Gaine thermorétractable transparente ! J’en ai testé plusieurs, et le meilleur compromis efficacité/ergonomie est une gaine trés épaisse, ce qui le rend solide, agréable en main, assez élastique pour absorber des chocs.</p>
+<p>Quelques problèmes par contre :</p>
+<ul>
+<li><strong>Retient la chaleur</strong>, par design. Ces gaines rétrécissent a la chaleur, donc elles ne sont pas trés conductrices, et surchauffent la lampe. Ca diminue beaucoup l’efficacité en éclairant fort.</li>
+<li><strong>Complexité a l’installation</strong> : couper des bouts a la bonne taille c’est facile, mais apres il faut les enfiler par dessus les leds (en évitant la poussiere et autres trucs), chauffer le tout (ce qui peux déformer le tube PVC si on chauffe trop), et découper l’exces aprés rétrécissage (ce qui prend du temps)</li>
+<li><strong>Vieilli mal</strong>: moins facile a rayer que de l’acrylique, mais terni et se détend un peu a long terme. Se répare facilement en la passant rapidement sous un flux d’air chaud, et en nettoyant la gaine a l’eau.</li>
+<li><strong>Maintenance destructive</strong>: Impossible de réparer un problème avec les LEDs sans couper la gaine et en mettre une nouvelle. C’est un petit problème mais a garder en tête quand même.</li>
+</ul>
+<h2 id="alimentation">Alimentation</h2>
+<h3 id="batteries">Batteries</h3>
 <p>Pour supporter les deux types de lampe avec le même matériel, on aura besoin d’une batterie qui peux fournir 39WH minimum.
 En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43WH minimum</strong>.</p>
+<p>Comparaison des formats de batteries li-ion :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Format</th>
+          <th>Diamètre (mm)</th>
+          <th>Hauteur (mm)</th>
+          <th>Capacité (AH)</th>
+          <th>Voltage type (V)</th>
+          <th>C rate</th>
+          <th>Prix (€)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>18650</td>
+          <td>18</td>
+          <td>65</td>
+          <td>2 - 3.5</td>
+          <td>3.7V</td>
+          <td>0.2 - 1</td>
+          <td>0.9 - 9</td>
+      </tr>
+      <tr>
+          <td>21700</td>
+          <td>21</td>
+          <td>70</td>
+          <td>3 - 5</td>
+          <td>3.7V</td>
+          <td>1 - 4</td>
+          <td>1.4 - 10</td>
+      </tr>
+  </tbody>
+</table>
 <p>Possibilités de configuration selon le tube choisi :</p>
 <ul>
 <li>4 x 18650 Li-ion, maximum a environ 3.5AH par cellule, c’est a dire 4 x 3.7V x 3.5AH = <strong>51.8WH</strong></li>
@@ -575,7 +555,7 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
   </thead>
   <tbody>
       <tr>
-          <td>18650</td>
+          <td>4x18650</td>
           <td>51.8WH</td>
           <td>1S4P</td>
           <td>3 V</td>
@@ -602,7 +582,7 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
           <td><strong>71% - 100%</strong></td>
       </tr>
       <tr>
-          <td>21700</td>
+          <td>3x21700</td>
           <td>55.5WH</td>
           <td>1S3P</td>
           <td>3 V</td>
@@ -622,14 +602,51 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
   </tbody>
 </table>
 <p>Li-ion 3S ou 4S pour maximiser l’efficacité autour de 12V: la convertion sera plus efficace si il y a peu de différence de voltage.</p>
-<p>La configuration <strong>4S1P est théoriquement la meilleur</strong> d’un point de vue electronique car elle a seulement besoin d’un buck converter.
-C&rsquo;est théoriquement la configuration la plus efficace en composants électrique et en rendement.
-Elle a cependant besoin d&rsquo;une batterie en plus a assembler, ce qui ajoute un fil et une plaquette de nickel a souder.
-Ca ajoute du temps de construction et un potentiel de casse plus élevé des fils entre batteries.
+<p>La configuration <strong>4S1P est théoriquement la meilleur</strong> d’un point de vue electronique car elle a seulement besoin d’un buck converter et est plus proche que les autres configurations du voltage cible.
+C&rsquo;est théoriquement la configuration la plus efficace en composants électrique et en rendement, mais elle donnera une autonomie plus faible de 3.7WH.</p>
+<p>Elle a cependant besoin d&rsquo;une batterie en plus a assembler, ce qui ajoute un fil et une plaquette de nickel a souder.
+Cela ajoute du temps de construction et augmente le potentiel de casse des fils entre batteries.
 De plus les 18650 ont un courant un peu faible pour tenir la charge du ruban de LEDs, ce qui ajoute au risque d&rsquo;emballement thermique des batteries Li-ion.</p>
 <p>La configuration <strong>3S1P des 21700 est plus adapté</strong> dans ce cas, car avec une batterie en moins avec un gain de capacité, on gagne également en temps d&rsquo;assemblage et fiabilité.
 Les 21700 peuvent également fournir plus d&rsquo;Ampères que les 18650, ce qui permettra de maintenir une meilleure fiabilité a forte luminosité.
 Cette configuration nécéssite par contre un circuit buck/boost pour convertir une entrée de 9 V à 12.6 V en tension stable de 12 V, ce qui nécéssite un peu plus de composants électroniques et est un peu moins efficace.</p>
+<details class="details-shortcode"><summary>Un autre choix ?? (click to expand)</summary>
+<p>
+<p>Début 2025, un nouveau format de batterie Li-ion a été mis a disposition des consommateurs : le 4680.
+Son nom devrait être 46800 pour suivre les conventions mais elle a été crée par Tesla qui font vraiment ce qu&rsquo;ils veulent.</p>
+<p>Initiallement réservée aux véhicules électriques, elle serait idéale pour une lanterne :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Format</th>
+          <th>Diamètre (mm)</th>
+          <th>Hauteur (mm)</th>
+          <th>Capacité (AH)</th>
+          <th>Voltage type (V)</th>
+          <th>C rate</th>
+          <th>Prix (€)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>4680</td>
+          <td>46</td>
+          <td>80</td>
+          <td>15 - 20</td>
+          <td>3.7V</td>
+          <td>1</td>
+          <td>17 - 28</td>
+      </tr>
+  </tbody>
+</table>
+<p>Pour le moment leur prix est très élevée, mais ce format commence a être adopté a plus grande échelle.
+Il offre une capacité de environ <strong>74WH</strong>, ce qui est absolument fou a cette échelle !</p>
+<p>Seul bémol, les courants et convertions de voltage nécéssiteront des composants bien plus gros et chers que ceux utilisés actuellement.</p>
+<p>Une possibilité a garder en tête pour un projet utilisant une tension plus basse autour de 3 V ou 5 V !</p>
+
+</p>
+</details>
+
 <p>Ajout d’un <strong>connecteur JST XH-2 pour brancher/débrancher la batterie</strong>. Évite de souder des « hot wires » de batteries, qui provoquent beaucoup de problèmes de cours-circuits quand on les soude.
 Le connecteur est également plus résiliant que des fils simplement soudés et facilite l’assemblage et l&rsquo;entretient.
 Ce type de connecteur est prévu jusqu’à 3 A.
@@ -990,24 +1007,29 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
             <h4 class="see-also">Suggestions de lecture :</h4>
             <div class="see-also-list">
               
-                <a href="/post/lamp-da_2_p1/" class="see-also-item">
-                  <span class="see-also-item-title">Lampda - Partie 1</span>
+                <a href="/post/lamp-da_2_p7/" class="see-also-item">
+                  <span class="see-also-item-title">Lampda - Partie 7</span>
                   <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
                 </a>
               
-                <a href="/post/lamp-da/" class="see-also-item">
-                  <span class="see-also-item-title">Construction d&#39;une lanterne compacte</span>
-                  <span class="see-also-item-subtitle">Le tuto Lamp-da</span>
+                <a href="/post/lamp-da_2_p6/" class="see-also-item">
+                  <span class="see-also-item-title">Lampda - Partie 6</span>
+                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
                 </a>
               
-                <a href="/post/plant_touch_sensor/" class="see-also-item">
-                  <span class="see-also-item-title">Plante tactile</span>
-                  <span class="see-also-item-subtitle">Utiliser un microcontrôleur comme interface capacitive</span>
+                <a href="/post/lamp-da_2_p5/" class="see-also-item">
+                  <span class="see-also-item-title">Lampda - Partie 5</span>
+                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
                 </a>
               
-                <a href="/post/harpe_laser/" class="see-also-item">
-                  <span class="see-also-item-title">Harpe laser</span>
-                  <span class="see-also-item-subtitle">Peut on vraiment appeler ça une harpe ?</span>
+                <a href="/post/lamp-da_2_p4/" class="see-also-item">
+                  <span class="see-also-item-title">Lampda - Partie 4</span>
+                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
+                </a>
+              
+                <a href="/post/lamp-da_2_p3/" class="see-also-item">
+                  <span class="see-also-item-title">Lampda - Partie 3</span>
+                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
                 </a>
               
             </div>
@@ -1022,6 +1044,10 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
           </a>
         
         
+          <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/" class="nav-side-arrow nav-side-next" title="Lampda - Partie 3" aria-label="Post suivant: Lampda - Partie 3">
+            <i class="fas fa-chevron-right"></i>
+          </a>
+        
         <ul class="post-pager blog-post-pager">
           
             <li class="pager-prev">
@@ -1033,7 +1059,9 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
 
           </li>
           
-            <li class="pager-next"></li>
+            <li class="pager-next">
+              <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/" data-bs-toggle="tooltip" data-bs-placement="top" title="Lampda - Partie 3">Post suivant <i class="fas fa-chevron-right"></i></a>
+            </li>
           
         </ul>
       
@@ -1068,6 +1096,7 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
         <li><a href="#caractéristiques-communes">Caractéristiques communes</a></li>
         <li><a href="#lanterne-jaune">Lanterne jaune</a></li>
         <li><a href="#lanterne-colorée">Lanterne colorée</a></li>
+        <li><a href="#consommation-typique">Consommation typique</a></li>
       </ul>
     </li>
     <li><a href="#protection-des-leds">Protection des LEDs</a></li>

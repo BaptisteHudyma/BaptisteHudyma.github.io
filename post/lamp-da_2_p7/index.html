@@ -126,7 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "wordCount": 6
+  "timeRequired": "PT9M",
+  "wordCount": 1850
 }
 </script>
 
@@ -180,6 +181,10 @@
       
       
       
+      
+      <button class="theme-toggle" id="toc-toggle" aria-label="Table of contents" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Table of contents">
+        <span class="fas fa-list"></span>
+      </button>
       
       
       
@@ -299,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;6&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1850&nbsp;mots
   
   
   
@@ -326,7 +331,88 @@
 
           
 
-          <p>Partie 7 - Postmortem &amp; conclusion</p>
+          <p><em><strong>Partie 7 - Postmortem &amp; conclusion</strong></em></p>
+<h2 id="postmortem">Postmortem</h2>
+<h3 id="distributions-et-problèmes">Distributions et problèmes</h3>
+<p>J’ai commencé a remettre les lampes a partir d’octobre 2025.
+Tout le monde était trés content, mais bien rapidement on a vu les premiers problèmes : des bugs logiciels un peu partout ! Trop d’attention sur la réalisation physique a produit des manques coté logiciel.
+Heureusement, j’avais prévu un système de mise a jour. Chaque bug est lié a une issue github, et corrigé dans la foulée. Les premières mises a jour sont très rapprochées dans le temps, et a la longue s’étalent tous les quelques mois.
+Les plus gros problèmes sont :</p>
+<ul>
+<li>les chargeurs rapides qui ne fonctionnent pas ou pas bien : L’algo USB PD est complexe et chaque cable a sa propre implémentation. J’ai corrigé du mieux que je pouvais en testant sur plusieurs chargeurs, mais c’est encore un problème a long terme.</li>
+<li>Certaines batteries sont mal connectées : quelques lampes remontent une erreur de mesure de batterie. Ces mesures proviennent de l’équilibreur, et aprés examen sont dues a un mauvais contact electrique dans les connecteurs XH. Ce mauvais contact est de ma faute : aprés que quelques fils se soient fait arrachés a l’assemblage, j’ai décidé d’ajouter une goutte de colle sur les fils du connecteur pour les renforcer. Problème: sur certaines lampes la colle est rentrée dans le connecteur et a recouvert les zones de contact. OUPS tu as modifié ton processus, sans test, pendant l’industrialisation (et surprise ca se passe mal). Je répare les lampes concernées en changeant totalement le connecteur XH, et tout se passe bien.</li>
+<li>Certaines lampes tombées en décharge profonde refusent de se rallumer. Enfin le circuit se rallume et indique que ni le chargeur ni l’équilibreur ne répondent présent. C’est due a l’ajout tardif d’une diode avant l’alim 3.3V, qui bloque au chargeur l’accés au courant de secour dont il a besoin pour s’allumer quand la batterie est vide. La correction en software est faite dans la foulée : si le chargeur et équilibreur n’est pas détecté sur la ligne i2c, on ouvre la VBUS gate pour qu’il se mette en route, ce qui déclenche la charge des batteries et tout le monde est content.</li>
+<li>Des boutons qui cessent de fonctionner ?? Aprés quelques mois d’utilisation, 3 lampes refusent de s’étteindre. Et quand on veux les charger elles se rallument tout simplement, comme ca, a la fraiche. Aprés mesures, on dirait que la GPIO qui gère le bouton ne fonctionne plus. J’ai en effet omit de protecter les GPIO contre les ESD et tirages de courants. Je pensais que la protection intégrée du NRF52840 était suffisante, et apparement pas dans certains cas (dues a la malchance). En réparant les lampes concernées, j’ai ajouté une résistance de 10K entre le fil du bouton et la GPIO, et en software une manière de choisir la GPIO du bouton.</li>
+<li>Une lampe colorée plantée sans aucunes réactions !! pas de redémarrage, pas de ligne de commande, quand elle se connecte a un ordinateur, elle est active en USB pendant 10 secondes puis se déconnecte et reconnecte aussitot pendant 10 secondes, etc. 10 secondes c’est la durée maximum du watchdog logiciel, donc il y a un soucis avec le software. Aprés MOULT recherches, j’ai trouvé : Son système de mémoire est corrompu. C’est due a la librairie LittleFS, ou du moins l’implementation par Adafruit. J’ai donc temporairement ajouté une suppression totale de la mémoire en cas de crash, ce qui résoud ce bug en attendant de résoudre le problème dans LittleFS.</li>
+<li>Une lampes éventrée : Elle a fait un vol planné depuis 2 à 3 mètres de hauteur sur une bonne distance et n’a pas aimé l’atterissage. D’aprés moi elle aurait du résister, donc j’ai quand même essayé de réparer. Elle avait un problème en effet : le tube était coupé trop court, et donc les pièces mécanique étaient sous tension. Le choc a fait exploser les pièces plastique en relachant cette énergie. J’ai racourci les pièces verticales et l’assemblage fonctionne très bien sans tensions.</li>
+<li>Une lampe qui clignote ?? Alors ca j’ai pas compris. Un circuit clignote, plutôt qu’envoyer un beau voltage stable. Je n’ai pas compris pourquoi, il est encore en examen.</li>
+</ul>
+<h3 id="budget">Budget</h3>
+<p>Total des dépenses matériels de lampe (TTC): 9000
+Total des dépenses matériel de construction: 300
+Total des dépenses en boisson/nourrite usine: 250
+Total des dépenses en prototypes: 3200</p>
+<p>Total des payements: 15600
+Total des impots: 1900
+Total des frais: 100</p>
+<p>Total :</p>
+<p>Youpi on est positif !
+(eg: XX de bénéfice par lampe)</p>
+<p>Lampes supplémentaires:
+Avec les restes du matériel, j’ai construit quelques lampes en RAB. Je n’ai pas pu estimer leur coût, car j’ai utilisé des composants achetés a part, parfois il y a longtemps
+Les coûts de réparation ne sont pas inclus, et sont a ma charge.</p>
+<h3 id="retours">Retours</h3>
+<p>Retours extremement positif, tout le monde est content, ouf !</p>
+<h4 id="positifs">Positifs</h4>
+<ul>
+<li>jolie couleur pour la lanterne jaune</li>
+<li>bien proportionnée en taille et poid.</li>
+<li>solide ! On s’en inquiète pas en l’utilisant.</li>
+<li>Pour au moins 6 personnes: trop cool de pouvoir programmer dessus.</li>
+<li>étanche ???? C’était pas prévu mais des personnes m’ont dit qu’elles ont survécu a des plongeons. Je ne parierai pas sur l’étanchéité du bousin, il n’a pas de vrais joints.</li>
+<li>Trés bien faite, on dirait un “produit officiel”, les finitions sont top.</li>
+</ul>
+<h4 id="négatifs">Négatifs</h4>
+<ul>
+<li>Un peu cher pour la colorée. C’est vrai, au départ du projet je visais maximum 80€ pour la colorée et 50€ pour la jaune, mais les prototypes ont coutés bien plus cher que prévu, et j’ai du payer la TVA sur les composants alors que j’aurai pu être exempté, a cause du retard de création de la microentreprise. Elles auraient pu coûter 20% de moins&hellip;</li>
+<li>Le bouton est compliqué a utiliser par rapport a un potentiomètre. C’est vrai aussi, les premières lampes étaient avec potentiomètre pour gèrer la luminosité, c’était mieux. Mais c’est une pièce trop fragile en cas de chute, j’ai préféré choisir plus solide.</li>
+<li>La charge est lente : de 6 a 12 heures. Je charge lentement (1R) pour conserver la durée de vie des batteries, mais c’est vrai que ca prend beaucoup de temps.</li>
+<li>Pas possible de changer les accus au milieu d’une expedition.</li>
+<li>Pas possible de s’éclairer et charger en même temps. Yes c’est a cause de la fonctione batterie externe, le VBUS et l’alimentation des LEDs passent pas le même fil donc c’est pas possible.</li>
+<li>Les commandes sont trop compliquées: C’est vrai, et malheuresement je n’ai pas les compétences en UI pour faire mieux. Beaucoup des commandes ont évoluées pour ressembler a Anduril, parce que pas mal d’utilisateurs y sont habitués.</li>
+<li>N’éclaire pas en dessous : Et oui il y a un point sombre sous la lampe si on la suspend.</li>
+<li>La colorée chauffe beaucoup et dure peu en batterie : les rubans sont peu optimisés au 12V, et je ne sais pas comment résoudre ca en gardant la même estetique.</li>
+</ul>
+<p>J’insiste sur le négatif, mais les retours sont extremement positifs, pas d’inquiètude.</p>
+<h3 id="regrets-techniques-et-améliorations">Regrets techniques et améliorations</h3>
+<h4 id="électronique">Électronique</h4>
+<ul>
+<li>Oublie de protection sur les GPIO coté utilisateur (bouton, leds). Manquerait un array de diode ESD 3.3V, ou au minimum une résistance en série au signal du bouton.</li>
+<li>GPIO programmable de l’équilibreur pas reliée, elle aurait pu servir de watchdog externe au NRF52840. Aurait pu diminuer la conso en mode sommeil en servant de signal de réveil.</li>
+<li>Manque un MOSFET pour déconnecter totalement la batterie en cas de problème, actuellement l’alimentation 3.3V est connectée en permanence</li>
+<li>Manque de stabilité du voltage sur la ligne VBUS a faible consommation, pas assez de condensateurs ? Ou manque de popcap. Ca produit un leger scintillement a luminosité moyenne, mais ca peux devenir vraiment instable quand la batterie est pleine, ce qui fait des pics de voltage en sortie.</li>
+<li>certains circuits ne peuvent pas être flachés avec le port de debug, problème d’assemblage ? Ou de tolérances du BGA ?</li>
+<li>utilisation d’un BGA (NRF52840) qui augmente la complexité et le prix, en imposant des traces plaquées en or.</li>
+<li>Alimentation 3.3V : Je pense qu’il aurait été possible de trouver un composant qui fait équilibre de batterie et alimentation 3.3V assez puissante (jusque 500mA).</li>
+<li>Led indicatrice drivée par des GPIO PWM, elle mériterait un composant dédié pour soulager la conso du microcontroleur. Ou mieux, avoir une interface simple monofil (WS2812b ou autre)</li>
+<li>Tolérances des pièces plastiques n’était pas fiables. FDM (Fuse Material Deposition) n’est pas la meilleure technique, mais la plus accessible (juste une imprimante 3D). Le tube en PVC aussi devait respecter des tolérances invérifiables (j’ai utilisé un gabarit imprimé en 3D pour aller acheter les tubes avec les bons diamètres).</li>
+<li>Il aurait été surement possible d’avoir un ESP32 comme microcontroleur principal, pour réduire les côuts encore plus, avec un deuxième microcontroleur tout petit qui ne gèrerait que la mise en route du système et la gestion du bouton (pour permettre une commande de hard reset si le microcontroleur principal est endommagé)</li>
+<li>Gestion de l’USB PD par un composant totalement séparé. Cette partie de l’algo consomme une bonne partie de la flash et RAM, et est toujours buggée car trop complexe. Trop de contraintes temps réel pour la mettre sur le même kernel que le programme utilisateur. Idéalement ce process serait gèré directement par un composant adressable via i2c pour soulager le microcontroleur</li>
+<li>Sur la RGB, les rubans sont trop peu efficaces pour la lumière produite. La raison c’est qu’ils utilisent des LED WS2812b (donc 5V) adaptées à un ruban 12V, et donc chauffent beaucoup même inactives. Des rubans de ce type en 12V n’existent pas encore, peut être que je pourrais travailler à en faire sur mesure?</li>
+</ul>
+<h4 id="méca">Méca</h4>
+<ul>
+<li>Système pas facilement démontable. Ca aurait été mieux avec des vis ! Peut etre une longue vis centrale, qui permet de serrer les couvercles autour du tube, avec un joint torroidale a chaque extremités ?</li>
+<li>Pas accés aux leds même en ayant tout démonté. Obligé de couper la gaine thermo pour y acceder. Pas trop d’idées de comment faire mieux !</li>
+<li>Pas facile de changer les batteries. C’est le seul composant (avec la gaine thermo) qui vieilli, il aurait été cool de permettre de les changer facilement. Peut etre prévoir que avec un système démontable, les batteries ne sont pas soudées, mais connectées quand la vis centrale est bien serrée ? Ca ajoute des choses a gérer coté circuit, et comment relié lees pôles des batteries.</li>
+<li>Le logo en dessous de la lampe est creux, et se rempli de poussière et terre a la longue. Peut etre prévoir deux pièces emboitables de deux couleurs differentes, ou une impression en deux couleurs ? Ca augmenterait le coût, et personne ne s’en est encore plaint donc ca n’est pas si grave.</li>
+<li>Qui a eu l’idée d’assembler un truc en PVC avec de la gaine thermo ? Le PVC se déforme sous la chaleur, certains tubes peuvent se retrouver inutilisables.</li>
+</ul>
+<h4 id="misc">Misc</h4>
+<ul>
+<li>Il aurait été intelligent de prévoir le circuit spécialement pour la lampe, et souder le port et le bouton directement dessus (voir enficher), plutôt que souder des fils. Ca serait bien plus rapide a construire et plus solide.</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
           
           
 
@@ -479,7 +565,28 @@
         
       
 
-      
+      <div class="toc-wrapper" id="toc-wrapper" data-toc-mode="headings">
+  <div class="toc-panel" id="toc-panel" role="dialog" aria-label="Table of contents">
+    <div class="toc-header">
+      <span class="toc-title">Table of Contents</span>
+      <button class="toc-close" id="toc-close" aria-label="Close table of contents">&times;</button>
+    </div>
+    <nav class="toc-body"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#postmortem">Postmortem</a>
+      <ul>
+        <li><a href="#distributions-et-problèmes">Distributions et problèmes</a></li>
+        <li><a href="#budget">Budget</a></li>
+        <li><a href="#retours">Retours</a></li>
+        <li><a href="#regrets-techniques-et-améliorations">Regrets techniques et améliorations</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></nav>
+  </div>
+  <div class="toc-backdrop" id="toc-backdrop"></div>
+</div>
 
     </div>
   </div>
