@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT20M",
-  "wordCount": 4253
+  "timeRequired": "PT21M",
+  "wordCount": 4278
 }
 </script>
 
@@ -304,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4253&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4278&nbsp;mots
   
   
   
@@ -342,12 +342,38 @@ Ce post déroule ces solutions et les justifications qui accompagnent leurs choi
 <li>pas d&rsquo;angles aigus autour dequels les rubans risquerait de s&rsquo;abimer</li>
 </ul>
 <p>Les diamètres utilisés peuvent êtres de 20 mm à 80 mm, par incréments de 10 mm.
-Les diamètres les plus agréables sont le 40 mm, 50 mm et 6 0mm, avec une canette standard entre 55 mm et 60 mm.</p>
+Les diamètres les plus agréables sont le 40 mm, 50 mm et 60 mm (une canette standard est entre 55 mm et 60 mm).</p>
+<p>Je sais déjà que j&rsquo;utiliserai des batteries 18650 ou 21700 car elles sont extrements matures, solides durables, facile à sourcer et installer&hellip;
+Ce sont des batteries cylindriques, qui seront donc installées verticalements dans le tube</p>
 <p>Un tube de 40mm ne peut accepter que des configurations de batterie 2x18650 ou 1x21700, ce qui est trop peu pour mon utilisation.</p>
-<p>Un tube de 50mm peut accepter 4x18650 ou 3x21700 (5 configurations possibles).</p>
-<p>Un tube de 60mm peut accepter 7x18650 ou 5x21700 (4 configurations possibles).</p>
-<p><img src="/static/lamp_da_2/battery_in_60mm.png" alt="Configurations de batteries dans tube de diamètre 56mm interne">
-<img src="/static/lamp_da_2/battery_in_50mm.png" alt="Configurations de batteries dans tube de diamètre 46mm interne"></p>
+
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/battery_in_50mm.png" alt="Un tube de 50mm peut accepter 4x18650 ou 3x21700"/>
+    </div>
+    <a href="/static/lamp_da_2/battery_in_50mm.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Un tube de 50mm peut accepter 4x18650 ou 3x21700</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/battery_in_60mm.png" alt="Un tube de 60mm peut accepter 7x18650 ou 5x21700"/>
+    </div>
+    <a href="/static/lamp_da_2/battery_in_60mm.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Un tube de 60mm peut accepter 7x18650 ou 5x21700</p>
+      </figcaption>
+  </figure>
+</div>
+
+
 <p>Afin de garder un peu de marge pour l&rsquo;épaisseur des LEDs et la protection autour, le choix sera un tube de diamètre 50 mm, avec une paroi de 2 mm d&rsquo;épaisseur.
 L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place interne du tube.</p>
 <p>La hauteur du tube sera fixée a 125mm, qui est le meilleur compromis en terme de taille/sensation/visuel, et permet de contenir largement les batteries et le circuit.</p>
@@ -356,10 +382,22 @@ L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place i
 <h3 id="pièces-sur-mesure">Pièces sur mesure</h3>
 <p>Les extrémitées du tube seront refermées par des pièces sur mesure.
 Ces pièces auront des formes complexes, et ne nécéssiteront pas de résistance particulière.</p>
-<p><img src="/static/lamp_da_2/hubs_base_de_connaissance.jpg" alt="Source: ProtoLab network : Knowledge base"></p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/hubs_base_de_connaissance.jpg" alt="Fabrication de pièces 3D"/>
+    </div>
+    <a href="/static/lamp_da_2/hubs_base_de_connaissance.jpg" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Fabrication de pièces 3D</p><p class="attr"><a href="https://www.hubs.com/fr/base-de-connaissances/impression-3d-fdm">Source: ProtoLab network</a></p>
+      </figcaption>
+  </figure>
+</div>
+
+
 <p>Ces pièces seront fabriquées <strong>en PDA par FDM</strong> (Dépôt de Matière Fondue, aka impression 3D) pour avoir une grande liberté de formes et un coût réduit.
 Leur utilisation ne sera pas affecté par les faiblesses de la FDM (fragilité le long des couches, faible résistance a la chaleur, &hellip;) et de la FDA (dégradation dans l&rsquo;eau, au soleil, &hellip;).</p>
-<p><a href="https://www.hubs.com/fr/base-de-connaissances/impression-3d-fdm">Ressource sur la fabrication de pièce 3D (choix de matières etc)</a></p>
 <h2 id="éclairage">Éclairage</h2>
 <h3 id="caractéristiques-communes">Caractéristiques communes</h3>
 <p>Afin de minimiser le temps d&rsquo;assemblage, on utilisera un <strong>ruban LED</strong> plutôt que des LED individuelles a souder.
