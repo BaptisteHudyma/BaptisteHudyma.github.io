@@ -127,7 +127,7 @@
     "name": "HUB Logs"
   },
   "timeRequired": "PT23M",
-  "wordCount": 4800
+  "wordCount": 4801
 }
 </script>
 
@@ -304,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4800&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4801&nbsp;mots
   
   
   
@@ -1051,18 +1051,18 @@ Le microcontrôleur choisi permet déjà d&rsquo;avoir une bonne autonomie en mo
 <p>Le debouncing et autres traitements seront réalisés en software, afin de garder une certaine généricité de la carte électronique.</p>
 <h2 id="capteurs">Capteurs</h2>
 <p>Pour profiter des GPIO restantes du NRF52840, j&rsquo;ai cherché des capteurs à intégrer.
-Les capteurs doivent fonctionner dans un environnement scellé (l&rsquo;intérieur de la lampe), ne pas nécéssiter d&rsquo;entretient, et ne pas trop consommer.</p>
+Les capteurs doivent fonctionner dans un environnement scellé (l&rsquo;intérieur de la lampe), ne pas nécessiter d&rsquo;entretien, et ne pas trop consommer.</p>
 <p>Les capteurs de gaz sont par exemple exclus, car ils sont très chers et ne pourraient pas fonctionner dans le tube.
-Les capteurs de température sont déjà présents dans les composant électriques principaux.</p>
+Les capteurs de température sont déjà présents dans les composants électriques principaux.</p>
 <h3 id="microphone">Microphone</h3>
-<p>Un microphone MEMS placé sur le circuit permet de coder des modes audioréactifs ou supporter des commandes vocales basiques.</p>
-<p>Son efficacité sera réduite, car il sera dans un tube fermé hermétiquement, mais il devrait tout de même capter les basses fréquences.</p>
-<p>Supporter ce composant nécéssite d&rsquo;utiliser 2 GPIO en plus.</p>
+<p>Un microphone MEMS placé sur le circuit permet de coder des modes audio réactifs ou supporter des commandes vocales basiques.</p>
+<p>Son efficacité sera réduite, parce qu&rsquo;il sera dans un tube fermé hermétiquement, mais il devrait tout de même capter les basses fréquences.</p>
+<p>Supporter ce composant nécessite d&rsquo;utiliser 2 GPIO en plus.</p>
 <h3 id="centrale-inertielle">Centrale inertielle.</h3>
-<p>une centrale inertielle avec gyroscope et accéléromètre permet de coder des animations réactives aux déplacements dans l&rsquo;espacde.</p>
+<p>Une centrale inertielle avec gyroscope et accéléromètre permet de coder des animations réactives aux déplacements dans l&rsquo;espace.</p>
 <p>L&rsquo;ajout d&rsquo;un magnétomètre aurait été un plus, mais c&rsquo;est un composant très cher, surtout pour l&rsquo;utilité qu&rsquo;il aurait eu dans une lanterne.</p>
-<p>J’ai pris le même modèle que dans la board Seeed Sense, par simplicité (LSM6DS3).</p>
-<p>Supporter ce composant nécéssite 2 GPIO de plus pour le contrôleur, et il doit être relié à la ligne I2C.</p>
+<p>J’ai pris le même modèle que dans la board Seeed Sense, par simplicité (<a href="https://www.st.com/en/mems-and-sensors/lsm6ds3tr-c.html">LSM6DS3</a>).</p>
+<p>Supporter ce composant nécessite 2 GPIO de plus pour le contrôleur, et il doit être relié à la ligne I2C.</p>
 <h2 id="résumé-des-choix-techniques">Résumé des choix techniques</h2>
 <table>
   <thead>
