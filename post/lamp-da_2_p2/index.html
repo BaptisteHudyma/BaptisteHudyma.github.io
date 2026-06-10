@@ -127,7 +127,7 @@
     "name": "HUB Logs"
   },
   "timeRequired": "PT21M",
-  "wordCount": 4278
+  "wordCount": 4291
 }
 </script>
 
@@ -304,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4278&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4291&nbsp;mots
   
   
   
@@ -409,9 +409,11 @@ De plus, l&rsquo;intensité lumineuse ne doit pas chuter sur la distance du ruba
 Cela peut être résolu en soudant une alimentation des deux cotés, mais ça ajouterai des constraintes structurelles et d&rsquo;assemblage en plus.</p>
 <p>Mon choix se porte donc sur <strong>des rubans 12 V</strong>, plus faciles a gérer que du 24 V avec l&rsquo;électronique que je prévois d&rsquo;utiliser.</p>
 <p>L&rsquo;équation pour le maximum de la longueur d&rsquo;un ruban enroulé autour d&rsquo;un tube sera :</p>
-<p>$$L \leq \frac{H}{p} \cdot \pi \cdot D$$</p>
-<p>Avec $ L $ la longueur du ruban pour couvrir le tube de haut en bas, $ H $ = 125mm, $ D $ = 50mm, et $ p $ la largeur du ruban.</p>
-<p>Donc la longueur du ruban sera $ L ≤ 19634.375 / p $.</p>
+<p>$$
+L \leq \frac{H}{p} \cdot \pi \cdot D
+$$</p>
+<p>Avec $L$ la longueur du ruban pour couvrir le tube de haut en bas, $H = 125mm$, $D = 50mm$, et $p$ la largeur du ruban.</p>
+<p>Donc la longueur du ruban devra être inférieur ou égale a $19634.375 / p$.</p>
 <h3 id="lanterne-jaune">Lanterne jaune</h3>
 <p>Pour la lanterne jaune, la couleur doit se rapprocher d&rsquo;un jaune bougie (1800 - 2000 Kelvin).</p>
 <p>La densité de leds n&rsquo;est pas trés importante dans ce cas, la différence est visuellement minime et la consommation similaire entre les hautes et basses densités.</p>
@@ -685,14 +687,50 @@ Il offre une capacité de environ <strong>74WH</strong>, ce qui est absolument f
 </p>
 </details>
 
-<p>Ajout d’un <strong>connecteur JST XH-2 pour brancher/débrancher la batterie</strong>. Évite de souder des « hot wires » de batteries, qui provoquent beaucoup de problèmes de cours-circuits quand on les soude.
-Le connecteur est également plus résiliant que des fils simplement soudés et facilite l’assemblage et l&rsquo;entretient.
-Ce type de connecteur est prévu jusqu’à 3 A.
+<p>Afin de faciliter l&rsquo;assemblage, ajout d’un <strong><a href="https://www.jst.com/wp-content/uploads/2025/06/eXH.pdf">connecteur JST XH 4P 2.54mm</a> pour brancher/débrancher la batterie</strong>.
+Cela Évite de souder les « hot wires » de batteries, qui provoquent beaucoup de problèmes de cours-circuits lors de l&rsquo;assemblage.
+Le connecteur est également plus résiliant que des fils simplement soudés et facilite l’assemblage et l&rsquo;entretient.</p>
+<p>Ce type de connecteur est prévu jusqu’à 3 A.
 Ajout d’un <strong>port femelle</strong> a souder sur le circuit (étape manuelle d&rsquo;assemblage en plus).</p>
 <p>Référence de batterie choisi :
 <strong>INR21700 M50LT : 4930mAh, 14.4A. Non protégés. Avec wrap.</strong></p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/21700.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/21700.png" alt="LG INR21700 M50LT"/>
+    </div>
+    <a href="/static/lamp_da_2/21700.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>LG INR21700 M50LT</p><p class="attr">Source: NKON</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/jst_xh_4p.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/jst_xh_4p.png" alt="JST XH 4P"/>
+    </div>
+    <a href="/static/lamp_da_2/jst_xh_4p.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>JST XH 4P</p><p class="attr">Source: NKON</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
 <p>Stocks issus d’un projet automobile annulé, donc moins chers mais avec des restes de soudure (pas important dans notre cas)
-prix de gros TTC : <strong>1.85€ par accu (achat de 640 accus)</strong></p>
+prix de gros TTC : <strong>1.85€ par batterie (achat de 640 unités)</strong> sur NKON.</p>
 <p>Le wrap est <strong>essentiel</strong> car les batteries sont physiquement trés proches et sans le wrap elles seraient en cours circuit entre elles.</p>
 <p>Le poid d&rsquo;une batterie est approximativement de 60 g à 80 g, donc de 180 g à 240 g pour la batterie totale.</p>
 <p>Donc : <strong>pack de batterie pouvant donner jusqu’à 14.4 A pic, 54.7 W/H de capacité</strong> (4.93 A/H * 3.7 V * 3).</p>
