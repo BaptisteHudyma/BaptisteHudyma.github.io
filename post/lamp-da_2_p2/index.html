@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT23M",
-  "wordCount": 4813
+  "timeRequired": "PT25M",
+  "wordCount": 5297
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4813&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5297&nbsp;mots
   
   
   
@@ -344,8 +344,18 @@
           
 
           <p><em><strong>Partie 2 - Choix techniques</strong></em></p>
-<p>En déroulant les spécifications de la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1</a>, on peut décider de solutions techniques réelles.
-Ce post déroule ces solutions et les justifications qui accompagnent leurs choix :</p>
+<p>Index :</p>
+<ul>
+<li>[Partie 1: Post-mortem V0, objectifs et spécifications des V1]https://BaptisteHudyma.github.io/post/lamp-da_2_p1/</li>
+<li><strong>Partie 2 (vous êtes ici)</strong> : Choix techniques</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 3: Conception électronique</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4: Conception mécanique</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie 5: Conception logicielle</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Post-mortem &amp; conclusion</a></li>
+</ul>
+<p>En déroulant les spécifications posées dans la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1</a>, on peut décider de solutions techniques réelles.
+Ce post déroule ces solutions techniques choisies et les justifications qui accompagnent leurs choix.</p>
 <h2 id="châssis">Châssis</h2>
 <p>Choix d&rsquo;un tube en PVC de taille standard :</p>
 <ul>
@@ -576,10 +586,14 @@ Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;
 <h2 id="protection-des-leds">Protection des Leds</h2>
 <p>Pour protéger les Leds de l’environnement, elles doivent être recouvertes par une protection transparente.</p>
 <p>Des rubans existent en IP67, mais pas ceux sélectionnés, qui sont IP20.</p>
-<p>Possibilité d’un tube en plastique rigide transparent : difficile à intégrer, doit être épais pour être solide, retient la chaleur.
-Mais facile à intégrer sans plus de travail : couper un cylindre d’acrylique est aussi difficile que couper un cylindre PVC donc l’intégration est facile.
-Étanche ! Mais à tendance à se rayer facilement.</p>
-<p>Gaine thermorétractable transparente ! J’en ai testé plusieurs, et le meilleur compromis efficacité/ergonomie est une gaine très épaisse, ce qui le rend solide, agréable en main, assez élastique pour absorber des chocs.</p>
+<p>Possibilité d’un <em>tube en plastique</em> rigide transparent : difficile à intégrer, doit être épais pour être solide, retient la chaleur.
+Mais facile à intégrer sans plus de travail : couper un cylindre d’acrylique est aussi difficile que couper un cylindre PVC donc l’intégration est facilitée.
+Cette option a l&rsquo;avantage de la solidité et étanchéité, mais ce genre de plastique a tendance à se rayer facilement, et ajoute un diamètre conséquent à la lampe.</p>
+<p>Un <em>tube en verre</em> est exclu, car il casserait à la première chute.</p>
+<p>Possibilité d&rsquo;utiliser de la <em>gaine thermorétractable transparente</em>.
+J’en ai déjà testé avec succès sur plusieurs prototypes.</p>
+<p>En utilisant une gaine très épaisse, on obtient le meilleur compromis efficacité/ergonomie.
+Le résultat est solide, agréable en main et assez élastique pour absorber des chocs.</p>
 <p>Quelques problèmes par contre :</p>
 <ul>
 <li><strong>Retient la chaleur</strong>, par design. Ces gaines rétrécissent à la chaleur, donc elles ne sont pas vraiment conductrices, et surchauffent la lampe. Ça diminue beaucoup l’efficacité en éclairant fort.</li>
@@ -587,6 +601,18 @@ Mais facile à intégrer sans plus de travail : couper un cylindre d’acrylique
 <li><strong>Vieilli mal</strong> : moins facile à rayer que de l’acrylique, mais terni et se détend un peu à long terme. Se répare facilement en la passant rapidement sous un flux d’air chaud, et en nettoyant la gaine à l’eau.</li>
 <li><strong>Maintenance destructive</strong> : Impossible de réparer un problème avec les Leds sans couper la gaine et en mettre une nouvelle. C’est un petit problème, mais à garder en tête quand même.</li>
 </ul>
+<p>J&rsquo;ai décidé d&rsquo;<strong>utiliser la gaine thermorétractable transparente</strong>, car les autres options ne me paraissaient pas adaptées.</p>
+<p>C&rsquo;est cependant un choix dont je ne suis pas convaincu, mais qui a résisté au test du temps et de l&rsquo;utilisation, donc il était rétrospectivement plutôt bon.</p>
+<details class="details-shortcode"><summary>Un autre choix ?? (click to expand)</summary>
+<p>
+<p>Utiliser une gaine plus fine et rigide est également possible.
+Ce type de gaine est plutôt utilisé comme wrap de batterie Li-ion, et retient beaucoup moins la chaleur.</p>
+<p>Elle est par contre rigide après rétractation et transmet les chocs directement au ruban Led, et est bien moins agréable à tenir et regarder.</p>
+<p>Les Leds utilisées étant toutes COB, leur gaine de diffusion permet déjà d&rsquo;absorber des chocs, ce qui rend cette option possible.</p>
+
+</p>
+</details>
+
 <h2 id="alimentation">Alimentation</h2>
 <h3 id="batteries">Batteries</h3>
 <p>Pour supporter les deux types de lampe avec le même matériel, on aura besoin d’une batterie qui peut fournir 39 WH minimum.
@@ -780,7 +806,12 @@ Ajout d’un <strong>port femelle</strong> à souder sur le circuit (étape manu
 
 <p>Stocks issus d’un projet automobile annulé, donc moins chers, mais avec des restes de soudure (pas important dans notre cas)
 prix de gros TTC : <strong>1.85€ par batterie (achat de 640 unités)</strong> sur NKON.</p>
-<p>Le wrap est <strong>essentiel</strong>, car les batteries sont physiquement très proches et sans le wrap, elles seraient en cours circuit entre elles.</p>
+<p>Le wrap est <strong>essentiel</strong>, car les batteries sont physiquement très proches et sans le wrap, elles seraient en cours circuit entre elles.
+La partie extérieure métallique des batteries de ce type est reliée au pôle -, et <strong>doit</strong> donc être isolé électriquement de l&rsquo;extérieur.
+Dans mon cas, les batteries sont très proches et branchées en série.
+Si les parties métalliques se touchent, la batterie sera détruite.</p>
+<p>Le wrap permet d&rsquo;éviter ce cas.
+Utiliser un wrap non transparent permettrait de vérifier visuellement qu&rsquo;il n&rsquo;y a pas de risque de contact.</p>
 <p>Le poids d&rsquo;une batterie est approximativement de 60 g à 80 g, donc de 180 g à 240 g pour la batterie totale.</p>
 <p>Donc : <strong>pack de batterie pouvant donner jusqu’à 14.4 A pic, 54.7 WH de capacité</strong> (4.93 A/H * 3.7 V * 3).</p>
 <p>Durée de fonctionnement estimée :</p>
@@ -835,13 +866,15 @@ prix de gros TTC : <strong>1.85€ par batterie (achat de 640 unités)</strong>
 <p>Ce sont des estimations qui ignorent les pertes, mais sont indicatives du fait que les batteries choisies correspondent aux objectifs d&rsquo;autonomie.</p>
 <p>Dans la réalité, les batteries ne seront pas utilisées à 100% de leur capacité non plus pour optimiser leur durée de vie.</p>
 <h3 id="port-de-charge">Port de charge</h3>
-<p>Je veux un port compact, solide, supportant charge et communication USB, et permettant la charge rapide. Ça implique des fils de donnée et des fils de négociation PD (PowerDelivery).</p>
+<p>Je veux un port compact, solide, supportant charge et communication USB, et permettant la charge rapide.
+Ça implique de relier les fils de puissance VBUS et GND, les fils de donnée D+ et D-, et les fils de négociation PD (PowerDelivery) CC1 et CC2.</p>
 <p>Possibilité d’utiliser un port USB soudé sur la carte et prévoir que les pièces plastiques puissent laisser passer ce port, avec un joint pour l’étanchéité, comme sur certains téléphones.</p>
 <p>Ou utiliser un port déporté, sur un autre circuit ou même un composant totalement à part.</p>
 <p>Le port déporté est plus facile à gérer pour moi, plus facile à se procurer, à remplacer, plus facile à étanchéifier.</p>
 <ul>
 <li>Trouvé <strong>port USB-C étanche déporté avec 6 fils</strong> de contrôle (VBUS, GND, D+, D-, CC1, CC2).
-VBUS pour la puissance, D+ et D- pour la communication, CC1 et CC2 pour la négociation de puissance. Puissance max par le fil de VBUS : 3 A.</li>
+VBUS pour la puissance, D+ et D- pour la communication, CC1 et CC2 pour la négociation de puissance.
+Puissance max par le fil de VBUS : 3 A.</li>
 </ul>
 <p>Ce port ajoute un composant à visser sur un capuchon et six fils à souder sur le circuit.</p>
 <p>Je veux protéger électriquement le port de l’environnement et des mauvais usages :</p>
@@ -903,7 +936,7 @@ Il peut produire une tension programmable entre 3 V et 20 V, avec un maximum de 
 <p>Puisque qu’on a une sortie OTG programmable et un microcontrôleur pour gérer la logique, on peut utiliser une porte électronique entre l’USB et la sortie OTG, comme ça la lampe sera capable de faire également batterie externe.
 Le mode batterie externe est une fonctionnalité bonus à implémenter en software plus tard, qui ne coute pas plus cher à mettre sur le circuit.</p>
 <p>Donc pour la suite, j’ai décidé d’ajouter une porte USB-C, et une porte alimentation externe, qui me permettent de choisir ou envoyer la puissance générée par le chargeur.</p>
-<p>Seul bémol de cette méthode : on ne peut plus charger et allumer la lampe en même temps, ce qui est un bon tradeoff selon moi.
+<p>Seul bémol de cette méthode : on ne peut plus charger et allumer la lampe en même temps, ce qui est un bon trade-off selon moi.
 Il faudra aussi prévoir en software que le contrôle de la luminosité des rubans ne sera pas linéaire, car ils seront contrôlés par CV plutôt que CC.</p>
 
 
@@ -994,7 +1027,7 @@ J&rsquo;ai décidé de rester sur <strong>le NRF52840</strong>, plus cher, mais 
 <p>De préférence, je voudrais utiliser la version QFN plutôt que BGA (Ball Grid Array), car elle est plus petite, moins chère et sera moins chère à intégrer.
 Les BGA nécessitent des traitements spéciaux sur les PCB, ce qui ajoute un coût non négligeable.
 Malheureusement, la version QFN n&rsquo;a pas de pins USB D+ et D-, ce qui la rend inutilisable pour mon cas.</p>
-<p>La version WLCSP serait aussi une très bonne solution, mais nécessiterait une intégration avec des Via in Pads + traitement spécial pour BGA, donc encore plus complexe et cher à intégrer.</p>
+<p>La version WLCSP serait aussi une très bonne solution, mais nécessiterait une intégration avec des &ldquo;Via in Pads&rdquo; + traitement spécial pour BGA, donc encore plus complexe et cher à intégrer.</p>
 <p>J&rsquo;ai donc fait mon design autour de la version aQFN, qui est le meilleur équilibre coût/fonctionnalité.</p>
 <p>Les modes de connectivité (eg: Bluetooth) ne sont pas obligatoires, ce qui ferait tomber la consommation et permettrait d’enlever l’antenne, qui coute relativement cher et prend de la place.
 J&rsquo;ai décidé de la garder quand même pour laisser plus d&rsquo;options aux développeurs.</p>
@@ -1010,7 +1043,7 @@ Je prévois quand même d&rsquo;utiliser cette piste comme alimentation de secou
 <p>J&rsquo;ai choisi l’option 2, car d&rsquo;autres composants du système auront besoin d’une alimentation de 3.3 V.</p>
 <p>L’équilibreur fourni également une sortie 3.3 V stabilisée très faible consommation, mais elle n’est pas exploitable avec le NRF52840, qui consomme trop au démarrage.
 Consommation attendue : 3.3 V, pic de conso jusqu’à 500 mA au démarrage et en cas d’utilisation du Bluetooth.</p>
-<p>Le composant choisi devra également consommer le minimum possible en mode sommeil.</p>
+<p>Le composant choisi devra aussi consommer le minimum possible en mode sommeil.</p>
 <p>Choix du <a href="https://www.ti.com/product/TPS629206">TPS629206</a> : Composant avec consommation extrêmement basse au repos, et capable de fournir des pics jusqu’à 500 mA à 3.3 V.</p>
 <p>Ajout d&rsquo;un porte pour isoler les composants dormants du rail 3.3 V, pour économiser encore plus de consommation au repos.
 Cette porte permettra en plus de réinitialiser ces composants en cas de crash.</p>
@@ -1069,15 +1102,15 @@ Cette porte permettra en plus de réinitialiser ces composants en cas de crash.<
 </table>
 <p>Détail des catégories :</p>
 <ul>
-<li><strong>Solidité</strong> :  Résistance générale aux chocs, à l&rsquo;humidité, à la poussière</li>
+<li><strong>Solidité</strong> : Résistance générale aux chocs, à l&rsquo;humidité, à la poussière</li>
 <li><strong>Qualité d&rsquo;utilisation</strong> : Facilité de prise en main par un utilisateur</li>
-<li><strong>Sureté</strong> : A quel point les commandes utilisateurs sont bien prises en compte (eg: est ce que ce composant a tendance a produire des appuis fantômes, est ce qu&rsquo;il prend bien en compte toutes les actions utilisateur, etc)</li>
+<li><strong>Sureté</strong> : A quel point les commandes utilisateurs sont bien prises en compte (eg: est ce que ce composant a tendance à produire des appuis fantômes, est ce qu&rsquo;il prend bien en compte toutes les actions utilisateur, etc)</li>
 <li><strong>Durabilité</strong> : Durée de vie a long terme. Les pièces mécaniques mobiles s&rsquo;usent plus vite.</li>
 <li><strong>Efficacité énergétique</strong> : Consommation électrique en fonctionnement.</li>
 </ul>
 <p>Dans mes recherches pour le bouton idéal, j&rsquo;ai trouvé un bouton avec Led RGB intégrée, ce qui permet de rassembler l&rsquo;interface utilisateur et l&rsquo;indicateur de statut de la lampe.</p>
-<p>J&rsquo;ai donc choisi un <strong>bouton poussoir 16mm avec Led RGB intégrée</strong>, étanche et résistant aux chocs.</p>
-<p>Ce composant ajout une étape de vissage lors de l&rsquo;assemblage, et cinq fils de plus à souder (4 pour la led, 2 pour le bouton).</p>
+<p>J&rsquo;ai donc choisi un <strong>bouton poussoir 16 mm avec Led RGB intégrée</strong>, étanche et résistant aux chocs.</p>
+<p>Ce composant ajout une étape de vissage lors de l&rsquo;assemblage et cinq fils de plus à souder (4 pour la led, 2 pour le bouton).</p>
 
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
@@ -1111,84 +1144,75 @@ Les capteurs de température sont déjà présents dans les composants électriq
 <p>J’ai pris le même modèle que dans la board Seeed Sense, par simplicité (<a href="https://www.st.com/en/mems-and-sensors/lsm6ds3tr-c.html">LSM6DS3</a>).</p>
 <p>Supporter ce composant nécessite 2 GPIO de plus pour le contrôleur, et il doit être relié à la ligne I2C.</p>
 <h2 id="résumé-des-choix-techniques">Résumé des choix techniques</h2>
+<p>Résumé des composants principaux et leurs fonctions :</p>
 <table>
   <thead>
       <tr>
-          <th></th>
-          <th>Charge des batteries</th>
-          <th>Alimentation des LEDS</th>
-          <th>Indicateur RGB</th>
-          <th>Batterie externe</th>
-          <th>Entrée utilisateur</th>
-          <th>Charge rapide</th>
-          <th>Capteur sécurité</th>
-          <th>Équilibre batteries</th>
-          <th>Alim 3.3V</th>
+          <th>Composant</th>
+          <th>Fonction principale</th>
+          <th>Pourquoi ce choix</th>
+          <th>Alternatives écartées</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>FUSB302</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>X</td>
-          <td></td>
-          <td>X</td>
-          <td>X</td>
-          <td></td>
-          <td></td>
+          <td>Négociation USB PD</td>
+          <td>Petite empreinte, driver mature, I2C, coût bas</td>
+          <td>RT1715 (problèmes de compatibilité)</td>
       </tr>
       <tr>
           <td>BQ25713</td>
-          <td>X</td>
-          <td>X</td>
-          <td></td>
-          <td>X</td>
-          <td></td>
-          <td>X</td>
-          <td>X</td>
-          <td></td>
-          <td></td>
+          <td>Charge Li-ion et mode OTG</td>
+          <td>Résolution OTG améliorée, I2C, marge 6 A</td>
+          <td>BQ25703A (plus ancien, moins précis)</td>
       </tr>
       <tr>
           <td>BQ76905</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>X</td>
-          <td>X</td>
-          <td></td>
-      </tr>
-      <tr>
-          <td>Bouton RGB</td>
-          <td></td>
-          <td></td>
-          <td>X</td>
-          <td></td>
-          <td>X</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>Équilibrage passif 3S</td>
+          <td>Format miniaturisé, I2C, redondance sécurité</td>
+          <td>Équilibreur actif (composants + coût)</td>
       </tr>
       <tr>
           <td>TPS629206</td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td>X</td>
+          <td>Régulation 3.3 V MCU</td>
+          <td>Courant bas, pics 500 mA</td>
+          <td>Convertisseurs buck classiques, LDO</td>
+      </tr>
+      <tr>
+          <td>UCS3205T</td>
+          <td>Porte USB-C / FRS</td>
+          <td>Intégré pour USB-C, protection VBUS, décharge rail</td>
+          <td>MOSFETs discrets (plus de composants)</td>
+      </tr>
+      <tr>
+          <td>Bouton RGB</td>
+          <td>Interface utilisateur</td>
+          <td>Intègre indicateur + commande, étanche, robuste</td>
+          <td>Potentiomètre (usure), tactile (fuites)</td>
       </tr>
   </tbody>
 </table>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical_global_view.png" alt="Vue globale de l&#39;organisation des composants liés a l&#39;électronique"/>
+    </div>
+    <a href="/static/lamp_da_2/electrical_global_view.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Vue globale de l&#39;organisation des composants liés a l&#39;électronique</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>La lampe fera <strong>12.5 cm de haut pour 5 cm</strong> de large (sans compter les leds et la gaine).</p>
+<p>La couleur de la lampe <strong>jaune sera 1800K</strong>, et la lampe <strong>colorée aura entre 580 et 640 pixels</strong> contrôlables.</p>
+<p>Les batteries choisies permettront d&rsquo;utiliser théoriquement la lanterne <strong>jaune pendant 14 heures</strong>, et la <strong>colorée pendant 7 heures</strong>.</p>
+<p>L&rsquo;utilisateur agira sur la lampe grâce au <strong>bouton poussoir</strong>, qui servira également de retour de statut et niveau de batterie grâce a sa Led RGB.</p>
+<p>La lampe pourra agir comme <strong>batterie externe</strong>, et sera équipée d&rsquo;un <strong>microphone</strong>, d&rsquo;une <strong>IMU</strong> et utilisable en <strong>Bluetooth</strong>.</p>
+<p>Dans la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 3</a>, je reviendrai sur le design électronique dans les détails.</p>
           
           
 
