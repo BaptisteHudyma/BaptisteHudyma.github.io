@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT19M",
-  "wordCount": 4044
+  "timeRequired": "PT20M",
+  "wordCount": 4081
 }
 </script>
 
@@ -304,7 +304,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4044&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4081&nbsp;mots
   
   
   
@@ -331,7 +331,7 @@
 
           
 
-          <p>Partie 2 - Choix techniques</p>
+          <p><em><strong>Partie 2 - Choix techniques</strong></em></p>
 <p>En déroulant les spécifications de la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1</a>, on peut décider de solutions techniques réelles.
 Ce post déroule ces solutions et les justifications qui accompagnent leurs choix :</p>
 <h2 id="châssis">Châssis</h2>
@@ -343,14 +343,14 @@ Ce post déroule ces solutions et les justifications qui accompagnent leurs choi
 </ul>
 <p>Les diamètres utilisés peuvent êtres de 20 mm à 80 mm, par incréments de 10 mm.
 Les diamètres les plus agréables sont le 40 mm, 50 mm et 6 0mm, avec une canette standard entre 55 mm et 60 mm.</p>
+<p>Un tube de 40mm ne peut accepter que des configurations de batterie 2x18650 ou 1x21700, ce qui est trop peu pour mon utilisation.
+Un tube de 50mm peut accepter 4x18650 ou 3x21700.
+Un tube de 60mm peut accepter 7x18650 ou 5x21700.</p>
+<p><img src="/static/lamp_da_2/battery_in_60mm.jpg" alt="Configurations de batteries dans tube de diamètre 56mm interne">
+<img src="/static/lamp_da_2/battery_in_50mm.jpg" alt="Configurations de batteries dans tube de diamètre 46mm interne"></p>
 <p>Afin de garder un peu de marge pour l&rsquo;épaisseur des LEDs et la protection autour, le choix sera un tube de diamètre 50 mm, avec une paroi de 2 mm d&rsquo;épaisseur.
 L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place interne du tube.</p>
-<p>Ce choix nous donne les possibilités suivantes en configuration de batteries :</p>
-<ul>
-<li>18650 x 4 batteries Li-ion</li>
-<li>21700 x 3 batteries Li-ion</li>
-</ul>
-<p>Configurations possibles :</p>
+<p>Configurations de batteries possibles :</p>
 <table>
   <thead>
       <tr>
@@ -364,7 +364,7 @@ L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place i
   </thead>
   <tbody>
       <tr>
-          <td>18650</td>
+          <td>4x18650</td>
           <td>1S4P</td>
           <td>3 V</td>
           <td>3.7 V</td>
@@ -388,7 +388,7 @@ L&rsquo;épaisseur de 2 mm est un bon compromis entre la solidité et la place i
           <td>1xC A</td>
       </tr>
       <tr>
-          <td>21700</td>
+          <td>3x700</td>
           <td>1S3P</td>
           <td>3 V</td>
           <td>3.7 V</td>
@@ -417,18 +417,18 @@ Leur utilisation ne sera pas affecté par les faiblesses de la FDM (fragilité l
 <p><a href="https://www.hubs.com/fr/base-de-connaissances/impression-3d-fdm">Ressource sur la fabrication de pièce 3D (choix de matières etc)</a></p>
 <h2 id="éclairage">Éclairage</h2>
 <h3 id="caractéristiques-communes">Caractéristiques communes</h3>
-<p>Afin de minimiser le temps d&rsquo;assemblage, on utilisera un ruban plutôt que des LED individuelles a souder.
+<p>Afin de minimiser le temps d&rsquo;assemblage, on utilisera un <strong>ruban LED</strong> plutôt que des LED individuelles a souder.
 De plus la plupart des rubans LED sont équipés d&rsquo;un dos autocollant, ce qui résoud le problème de &ldquo;comment fixer les LEDs&rdquo;.
-Ils sont également sectionnables tous les quelques centimètres, et visuellement jolis pour les versions COB.</p>
-<p>Les rubans sont aussi majoritairement pilotables en CV (constant voltage) plutôt que CC (constant current), ce qui est plus facile a calibrer pour une alimentation électronique.</p>
+Ils sont également sectionnables tous les quelques centimètres, et visuellement jolis pour les <strong>versions COB</strong>.</p>
+<p>Les rubans sont aussi majoritairement <strong>pilotables en CV</strong> (constant voltage) plutôt que CC (constant current), ce qui est plus facile a calibrer pour une alimentation électronique.</p>
 <p>Afin de ne réduire la taille des composants, le courant utilisé devra resté faible (&lt; 3 Ampères), ce qui implique une tension d&rsquo;alimentation plus élevée.
 De plus, l&rsquo;intensité lumineuse ne doit pas chuter sur la distance du ruban, ce qui tant a arriver avec des tensions plus basses sur de long rubans.
 Cela peut être résolu en soudant une alimentation des deux cotés, mais ça ajouterai des constraintes structurelles et d&rsquo;assemblage en plus.</p>
-<p>Mon choix se porte donc sur des rubans 12 V, plus faciles a gérer que du 24 V avec l&rsquo;électronique que je prévois d&rsquo;utiliser.</p>
+<p>Mon choix se porte donc sur <strong>des rubans 12 V</strong>, plus faciles a gérer que du 24 V avec l&rsquo;électronique que je prévois d&rsquo;utiliser.</p>
 <p>L&rsquo;équation pour le maximum de la longueur d&rsquo;un ruban enroulé autour d&rsquo;un tube sera :</p>
 <p>$$L \leq \frac{H}{p} \cdot \pi \cdot D$$</p>
-<p>Avec $L$ la longueur du ruban pour couvrir le tube de haut en bas, $H$ = 125mm, $D$ = 50mm, et $p$ la largeur du ruban.</p>
-<p>Donc la longueur du ruban sera $L ≤ 19634.375 / p$.</p>
+<p>Avec $ L $ la longueur du ruban pour couvrir le tube de haut en bas, $ H $ = 125mm, $ D $ = 50mm, et $ p $ la largeur du ruban.</p>
+<p>Donc la longueur du ruban sera $ L ≤ 19634.375 / p $.</p>
 <h3 id="lanterne-jaune">Lanterne jaune</h3>
 <p>Pour la lanterne jaune, la couleur doit se rapprocher d&rsquo;un jaune bougie (1800 - 2000 Kelvin).</p>
 <p>La densité de leds n&rsquo;est pas trés importante dans ce cas, la différence est visuellement minime et la consommation similaire entre les hautes et basses densités.</p>
@@ -622,7 +622,7 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
   </tbody>
 </table>
 <p>Li-ion 3S ou 4S pour maximiser l’efficacité autour de 12V: la convertion sera plus efficace si il y a peu de différence de voltage.</p>
-<p>La configuration <strong>4S1P est théoriquent la meilleur</strong> d’un point de vue electronique ça elle a seulement besoin d’un buck converter.
+<p>La configuration <strong>4S1P est théoriquement la meilleur</strong> d’un point de vue electronique car elle a seulement besoin d’un buck converter.
 C&rsquo;est théoriquement la configuration la plus efficace en composants électrique et en rendement.
 Elle a cependant besoin d&rsquo;une batterie en plus a assembler, ce qui ajoute un fil et une plaquette de nickel a souder.
 Ca ajoute du temps de construction et un potentiel de casse plus élevé des fils entre batteries.
@@ -741,6 +741,7 @@ Il peux également gèrer jusqu&rsquo;à 6 A, ce qui est au dessus de ce que les
 <p>Ce composant peux même servir de BMS, et propose de nombreuses sécurités, que je ne vais pas utiliser car elles sont redondantes avec celles du BQ25713 et je manque déjà de place sur le circuit.</p>
 <p>Possibilité de l’utiliser comme watchdog hardware, mais j’ai loupé cette possibilité lors du design.</p>
 <h2 id="alimentation-des-leds">Alimentation des LEDs</h2>
+<h3 id="contrôleur-dintensité">Contrôleur d&rsquo;intensité</h3>
 <p>J’avais prévu au départ d’ajouter un composant dédié, et la il y a eu une réalisation : le mode OTG  du module de charge de batterie remplit déjà ce rôle ! Il peux produire une tension programmable entre 3 V et 20 V, avec un maximum de 6 A, parfait pour ce que je veux.</p>
 <p>Puisque qu’on a une sortie OTG programmable et un microcontroleur pour gérer la logique, on peux utiliser une porte électronique entre l’USB et la sortie OTG, comme ça la lampe peux aussi faire batterie externe.
 Le mode battery externe est une fonctionnalité bonus a implémenter en software plus tard, qui ne coute pas plus cher a mettre sur le circuit.</p>
@@ -758,6 +759,7 @@ Il faudra également prévoir en soft que le contrôle de la luminosité des rub
 La high side gate est bien plus sure car elle isole completement le circuit aprés elle.
 Elle est cependant un peu moins efficace et produit une petite baisse de tension et un échauffement quand le courant est fort.</p>
 <h2 id="choix-du-microcontroleur">Choix du microcontroleur</h2>
+<h3 id="inventaire-des-besoins">Inventaire des besoins</h3>
 <p>Besoin d’un microcontroleur avec interface USB, assez de GPIO pour gérer les composants et capteurs. Doit avoir assez de puissance et mémoire pour être libre de dev dessus sans trop s’inquieter des limites (affichage des 580 pixels a plus de 60FPS), et surtout de consommer le minimum de batterie en mode sommeil.
 Nombre de GPIOs nécéssaires :</p>
 <ul>
@@ -787,7 +789,7 @@ Pareil, le Bluetooth n’est pas obligatoire, ce qui ferait tomber la conso et p
 <p>L’entrée USB du microcontroler ne supporte que de 4.2 V à 5.5 V, mais avec la négocation PD le rail VBUS peux monter jusqu’à 20 V.
 Il faut donc un convertisseur qui prend de 5V a 20V et sort un signal entre 4.2 V et 5.5 V.
 Cette piste est sensée n’être qu’un signal de branchement et donc ne transporte presque pas de courant donc le composant peux etre tout petit (50mA max est suffisant).</p>
-<h2 id="alimentation-1">Alimentation</h2>
+<h3 id="alimentation-1">Alimentation</h3>
 <p>Le NRF52840 a deux modes d’alimentation : variable avec convertisseur interne (demande plus de composants, plus robuste) ou fixe 3.3 V avec alimentation externe (bien plus efficace, demande une alimentation stabilisée 3.3 V externe). Je choisi l’option 2, car de toutes facons j’ai besoin d’un alim externe 3.3 V.
 L’équilibreur fourni également une sortie 3.3 V stabilisée tres faible consommation, mais elle n’est pas exploitable avec le NRF52840, qui consomme trop au démarrage.
 Conso attendue : 3.3 V, pic de conso jusqu’ a 500 mA au démarrage et en cas d’utilisation du bluetooth.</p>
@@ -988,29 +990,24 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
             <h4 class="see-also">Suggestions de lecture :</h4>
             <div class="see-also-list">
               
-                <a href="/post/lamp-da_2_p7/" class="see-also-item">
-                  <span class="see-also-item-title">Lampda - Partie 7</span>
+                <a href="/post/lamp-da_2_p1/" class="see-also-item">
+                  <span class="see-also-item-title">Lampda - Partie 1</span>
                   <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
                 </a>
               
-                <a href="/post/lamp-da_2_p6/" class="see-also-item">
-                  <span class="see-also-item-title">Lampda - Partie 6</span>
-                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
+                <a href="/post/lamp-da/" class="see-also-item">
+                  <span class="see-also-item-title">Construction d&#39;une lanterne compacte</span>
+                  <span class="see-also-item-subtitle">Le tuto Lamp-da</span>
                 </a>
               
-                <a href="/post/lamp-da_2_p5/" class="see-also-item">
-                  <span class="see-also-item-title">Lampda - Partie 5</span>
-                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
+                <a href="/post/plant_touch_sensor/" class="see-also-item">
+                  <span class="see-also-item-title">Plante tactile</span>
+                  <span class="see-also-item-subtitle">Utiliser un microcontrôleur comme interface capacitive</span>
                 </a>
               
-                <a href="/post/lamp-da_2_p4/" class="see-also-item">
-                  <span class="see-also-item-title">Lampda - Partie 4</span>
-                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
-                </a>
-              
-                <a href="/post/lamp-da_2_p3/" class="see-also-item">
-                  <span class="see-also-item-title">Lampda - Partie 3</span>
-                  <span class="see-also-item-subtitle">Créer un produit embarqué industriel</span>
+                <a href="/post/harpe_laser/" class="see-also-item">
+                  <span class="see-also-item-title">Harpe laser</span>
+                  <span class="see-also-item-subtitle">Peut on vraiment appeler ça une harpe ?</span>
                 </a>
               
             </div>
@@ -1025,10 +1022,6 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
           </a>
         
         
-          <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/" class="nav-side-arrow nav-side-next" title="Lampda - Partie 3" aria-label="Post suivant: Lampda - Partie 3">
-            <i class="fas fa-chevron-right"></i>
-          </a>
-        
         <ul class="post-pager blog-post-pager">
           
             <li class="pager-prev">
@@ -1040,9 +1033,7 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
 
           </li>
           
-            <li class="pager-next">
-              <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/" data-bs-toggle="tooltip" data-bs-placement="top" title="Lampda - Partie 3">Post suivant <i class="fas fa-chevron-right"></i></a>
-            </li>
+            <li class="pager-next"></li>
           
         </ul>
       
@@ -1095,15 +1086,17 @@ Ajout de [2; 4]€. Ajout de 2 GPIO pour le controler, et il doit être relié a
     </li>
     <li><a href="#alimentation-des-leds">Alimentation des LEDs</a>
       <ul>
+        <li><a href="#contrôleur-dintensité">Contrôleur d&rsquo;intensité</a></li>
         <li><a href="#portes-de-puissance">Portes de puissance</a></li>
       </ul>
     </li>
     <li><a href="#choix-du-microcontroleur">Choix du microcontroleur</a>
       <ul>
+        <li><a href="#inventaire-des-besoins">Inventaire des besoins</a></li>
         <li><a href="#signal-usb">Signal USB</a></li>
+        <li><a href="#alimentation-1">Alimentation</a></li>
       </ul>
     </li>
-    <li><a href="#alimentation-1">Alimentation</a></li>
     <li><a href="#interface-utilisateur">Interface utilisateur</a></li>
     <li><a href="#capteurs">Capteurs</a>
       <ul>
