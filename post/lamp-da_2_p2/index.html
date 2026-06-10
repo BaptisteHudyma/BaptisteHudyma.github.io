@@ -127,7 +127,7 @@
     "name": "HUB Logs"
   },
   "timeRequired": "PT23M",
-  "wordCount": 4801
+  "wordCount": 4813
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4801&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;4813&nbsp;mots
   
   
   
@@ -477,7 +477,7 @@ Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;
 <p>J&rsquo;ai donc choisi <strong>160 Leds/mètres à 12 V, format COB, ruban de 5 mm de large, consommation annoncée de 0.75 A/m</strong>, contrôlable avec le protocole WS2812B.</p>
 <p>Le choix aurait également pu être un ruban identique de 240 L/m, mais son prix était prohibitif par rapport à la différence visuelle, et la documentation en plus peu fiable sur ses caractéristiques physiques, et la mémoire nécessaire augmente rapidement.</p>
 <p>La longueur du ruban $L$ sera $L ≤ 19634.375 / 5$, c&rsquo;est a dire $L ≤ 3926.875 mm$.</p>
-<p>La lampe jaune sera donc équipée d&rsquo;un <strong>ruban de 4 mètres</strong>, ce qui donnera $4 m * 160 L/m$ = <strong>640 Leds individuellement contrôlables</strong>.</p>
+<p>La lampe colorée sera donc équipée d&rsquo;un <strong>ruban de 4 mètres</strong>, ce qui donnera $4 m * 160 L/m$ = <strong>640 Leds individuellement contrôlables</strong>.</p>
 <p>Sa consommation sera donc de $4 m * 0.75 A/m = 3 A$, c&rsquo;est-à-dire en Watt $3 * 12 V = 36 W$.</p>
 <h4 id="mesures-réelles-1">Mesures réelles</h4>
 <p>Mesures sur des échantillons réels sur banc d&rsquo;essai, longueur de 4M :</p>
@@ -538,6 +538,41 @@ Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;
       </tr>
   </tbody>
 </table>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/led_yellow.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/led_yellow.png" alt="Ruban jaune 1800K 12V (Aliexpress)"/>
+    </div>
+    <a href="/static/lamp_da_2/led_yellow.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Ruban jaune 1800K 12V (Aliexpress)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/led_rgb.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/led_rgb.png" alt="Ruban RGB indexable 12V 5mm 160L/m (Aliexpress)"/>
+    </div>
+    <a href="/static/lamp_da_2/led_rgb.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Ruban RGB indexable 12V 5mm 160L/m (Aliexpress)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
 <h2 id="protection-des-leds">Protection des Leds</h2>
 <p>Pour protéger les Leds de l’environnement, elles doivent être recouvertes par une protection transparente.</p>
 <p>Des rubans existent en IP67, mais pas ceux sélectionnés, qui sont IP20.</p>
@@ -842,8 +877,8 @@ Il peut également gérer jusqu&rsquo;à 6 A, ce qui est au-dessus de ce que les
 <p>Avec le chargeur, il faut prévoir un composant pour équilibrer les batteries entre elle, pour qu’elles soient toujours au même voltage.</p>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
-  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" >
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/battery_unbalanced.png" alt="Le niveau des batteries n&#39;est plus identique, elles doivent être équilibrées"/>
     </div>
@@ -872,8 +907,8 @@ Le mode batterie externe est une fonctionnalité bonus à implémenter en softwa
 Il faudra aussi prévoir en software que le contrôle de la luminosité des rubans ne sera pas linéaire, car ils seront contrôlés par CV plutôt que CC.</p>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
-  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/electrical_gates.png" alt="Power Rail: rail de puissance commun aux Leds et au port USB"/>
     </div>
@@ -892,8 +927,8 @@ Il faudra aussi prévoir en software que le contrôle de la luminosité des ruba
 <p>Pour la porte de puissance des Leds, création d’une porte sur mesure à base de MOSFET P-channel, les mêmes que j’ai utilisés autour du chargeur de batteries.</p>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
-  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/low_high_side_gates.png" alt="À gauche, High side gate. À droite, Low side gate"/>
     </div>
@@ -1045,8 +1080,8 @@ Cette porte permettra en plus de réinitialiser ces composants en cas de crash.<
 <p>Ce composant ajout une étape de vissage lors de l&rsquo;assemblage, et cinq fils de plus à souder (4 pour la led, 2 pour le bouton).</p>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
-  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/rgb_button.png" alt="Bouton RGB"/>
     </div>
