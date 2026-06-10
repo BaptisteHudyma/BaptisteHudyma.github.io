@@ -102,7 +102,7 @@
   "dateCreated": "2025-02-01T00:00:00+00:00",
   "dateModified": "2025-02-01T00:00:00+00:00",
   "datePublished": "2025-02-01T00:00:00+00:00",
-  "description": "Partie 1 - Postmortem des lanternes V0, Objectifs et spécifications des lanternes V1.\n",
+  "description": "Partie 1 - Post-mortem des lanternes V0, Objectifs et spécifications des lanternes V1.\n",
   "headline": "Lampda - Partie 1",
   "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
   "inLanguage": "fr",
@@ -126,7 +126,7 @@
     },
     "name": "HUB Logs"
   },
-  "wordCount": 627
+  "wordCount": 639
 }
 </script>
 
@@ -134,7 +134,7 @@
 <meta property="og:url" content="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">
   <meta property="og:site_name" content="HUB Logs">
   <meta property="og:title" content="Lampda - Partie 1">
-  <meta property="og:description" content="Partie 1 - Postmortem des lanternes V0, Objectifs et spécifications des lanternes V1.">
+  <meta property="og:description" content="Partie 1 - Post-mortem des lanternes V0, Objectifs et spécifications des lanternes V1.">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -303,7 +303,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;627&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;639&nbsp;mots
   
   
   
@@ -330,37 +330,37 @@
 
           
 
-          <p><em><strong>Partie 1 - Postmortem des lanternes V0, Objectifs et spécifications des lanternes V1.</strong></em></p>
+          <p><em><strong>Partie 1 - Post-mortem des lanternes V0, Objectifs et spécifications des lanternes V1.</strong></em></p>
 <h2 id="introduction">Introduction</h2>
 <p>Dans ce post et les suivants, je décrirai l&rsquo;ensemble du processus de création et industrialisation des lanternes V1.
 Chaque partie peut être lue de façon indépendante, et se concentre sur un domaine précis :</p>
 <ul>
-<li><strong>Partie 1 (vous êtes ici)</strong> : Postmortem V0, objectifs et spécifications des V1</li>
+<li><strong>Partie 1 (vous êtes ici)</strong> : Post-mortem V0, objectifs et spécifications des V1</li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2: Choix techniques</a></li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 3: Conception électronique</a></li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4: Conception mécanique</a></li>
-<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie 5: Conception logiciel</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie 5: Conception logicielle</a></li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
-<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Postmortem &amp; conclusion</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Post-mortem &amp; conclusion</a></li>
 </ul>
 <h2 id="pourquoi-une-nouvelle-version-">Pourquoi une nouvelle version ?</h2>
 <p>Les premières lanternes que j&rsquo;ai créées (appelées <strong>les V0</strong>) ont connu un succès inattendu.
-(<a href="https://BaptisteHudyma.github.io/post/lamp-da/">Voir le tuto (mais c&rsquo;est pas top finalement)</a>)</p>
+(<a href="https://BaptisteHudyma.github.io/post/lamp-da/">Voir le tuto (mais ce n&rsquo;est pas top finalement)</a>)</p>
 <p>Après quelques mois, j&rsquo;ai vu revenir les premières lanternes qui ne fonctionnent plus.
 Ces retours ont mis en évidence de nombreux points de faiblesse :</p>
 <ul>
-<li><strong>Chargeur inefficace</strong>: absence de charge rapide, incompatibilité USB-C (non conforme), échauffement excessif, et défaillance prématurée pour certains.</li>
-<li><strong>Tube de section non standard</strong>: Difficile a sourcer.</li>
-<li><strong>Potentiomètre</strong>: Pratique à l&rsquo;utilisation, mais fragile. Se casse lors de chutes.</li>
-<li><strong>Indicateur d&rsquo;état</strong>: Manque de retour du niveau de batterie, état du système, etc.</li>
-<li><strong>Base instable</strong>: L&rsquo;attache située en dessous de la lampe la rend instable quand posée.</li>
-<li><strong>Maintenance impossible</strong>: Boitier scellé et entretient destructif.</li>
-<li><strong>Assemblage complexe</strong>: Trop de composants séparés, trop de fils a souder, trop d&rsquo;opérations manuelles précises.</li>
-<li><strong>BMS basique</strong>: protection de batterie critique uniquement, sans protection préventive.</li>
-<li><strong>Luminosité non régulée</strong>: Chute de luminosité liée au niveau de batterie.</li>
-<li><strong>Fonctionnalités limitées</strong>: Absence de modes avances et possibilités d&rsquo;évolutions.</li>
+<li><strong>Chargeur inefficace</strong> : absence de charge rapide, incompatibilité USB-C (non conforme), échauffement excessif, et défaillance prématurée pour certains.</li>
+<li><strong>Tube de section non standard</strong> : Difficile à sourcer.</li>
+<li><strong>Potentiomètre</strong> : Pratique à l&rsquo;utilisation, mais fragile. Se casse lors de chutes.</li>
+<li><strong>Indicateur d&rsquo;état</strong> : Manque de retour du niveau de batterie, état du système, etc.</li>
+<li><strong>Base instable</strong> : L&rsquo;attache située en dessous de la lampe la rend instable quand posée.</li>
+<li><strong>Maintenance impossible</strong> : Boitier scellé et entretient destructif.</li>
+<li><strong>Assemblage complexe</strong> : Trop de composants séparés, trop de fils à souder, trop d&rsquo;opérations manuelles précises.</li>
+<li><strong>BMS basique</strong> : protection de batterie critique uniquement, sans protection préventive.</li>
+<li><strong>Luminosité non régulée</strong> : Chute de luminosité liée au niveau de batterie.</li>
+<li><strong>Fonctionnalités limitées</strong> : Absence de modes avances et possibilités d&rsquo;évolutions.</li>
 </ul>
-<p><strong>L&rsquo;objectif principal</strong> est de concevoir une nouvelle lanterne qui corrigera tout ces problèmes.
+<p><strong>L&rsquo;objectif principal</strong> est de concevoir une nouvelle lanterne qui corrigera tous ces problèmes.
 Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensemble des composants actuels, le tout dans un système plus simple à assembler, à entretenir et à faire évoluer.</p>
 <h3 id="principaux-objectifs-v1">Principaux objectifs V1</h3>
 <ul>
@@ -384,12 +384,12 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       <tr>
           <td>Éclairage</td>
           <td>Version monocouleur (jaune bougie)</td>
-          <td>≥ 2000 lumen, CRI &gt; 90</td>
+          <td>≥ 2000 lumens, CRI &gt; 90</td>
       </tr>
       <tr>
           <td></td>
           <td>Version RGB adressable</td>
-          <td>≥ 100 px/m, CRI &gt; 90, pixels contrôlables individuellements</td>
+          <td>≥ 100 px/m, CRI &gt; 90, pixels contrôlables individuellement</td>
       </tr>
       <tr>
           <td>Autonomie</td>
@@ -444,7 +444,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
   </tbody>
 </table>
 <h3 id="should-have-souhaité">Should have (Souhaité)</h3>
-<p>Voici les fonctions supplémentaires <strong>désirées mais pas nécessaires</strong>, dont les métriques peuvent varier:</p>
+<p>Voici les fonctions supplémentaires <strong>désirées, mais pas nécessaires</strong>, dont les métriques peuvent varier :</p>
 <table>
   <thead>
       <tr>
@@ -457,7 +457,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       <tr>
           <td>Batterie</td>
           <td>Type</td>
-          <td>Li-ion non protégée</td>
+          <td>Li-ion non protégé</td>
       </tr>
       <tr>
           <td></td>
@@ -497,7 +497,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
   </tbody>
 </table>
 <h3 id="nice-to-have-optionnel">Nice to have (Optionnel)</h3>
-<p>Voici les fonctions supplémentaires, <strong>pas nécessaires au produit final</strong> mais intéressantes, à ajouter au besoin :</p>
+<p>Voici les fonctions supplémentaires, <strong>pas nécessaires au produit final</strong>, mais intéressantes, à ajouter au besoin :</p>
 <table>
   <thead>
       <tr>
@@ -515,12 +515,12 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       <tr>
           <td></td>
           <td>Capteurs</td>
-          <td>Son, humidité, magnétisme, &hellip;</td>
+          <td>Son, humidité, magnétisme&hellip;</td>
       </tr>
       <tr>
           <td>Connectivité</td>
           <td>Sans fil</td>
-          <td>Commande a distance possible</td>
+          <td>Commande à distance possible</td>
       </tr>
       <tr>
           <td></td>
@@ -545,7 +545,7 @@ Elle sera construite autour d&rsquo;un unique PCB qui remplacera l&rsquo;ensembl
       <tr>
           <td>Environnement</td>
           <td>Résistance IP</td>
-          <td>IP67 minimum: étanche a l&rsquo;eau et poussière</td>
+          <td>IP67 minimum : étanche a l&rsquo;eau et poussière</td>
       </tr>
   </tbody>
 </table>
