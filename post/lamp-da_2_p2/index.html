@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT25M",
-  "wordCount": 5297
+  "timeRequired": "PT28M",
+  "wordCount": 5810
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5297&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;5810&nbsp;mots
   
   
   
@@ -355,22 +355,26 @@
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Post-mortem &amp; conclusion</a></li>
 </ul>
 <p>En déroulant les spécifications posées dans la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1</a>, on peut décider de solutions techniques réelles.
-Ce post déroule ces solutions techniques choisies et les justifications qui accompagnent leurs choix.</p>
+Ce post déroule ces solutions techniques choisies et les justifications qui accompagnent ces choix.</p>
 <h2 id="châssis">Châssis</h2>
-<p>Choix d&rsquo;un tube en PVC de taille standard :</p>
+<p>Je veux une lanterne cylindrique, format canette, pour plusieurs raisons :</p>
 <ul>
 <li>standard facile à se procurer</li>
 <li>répartition des forces équilibrée</li>
 <li>pas d&rsquo;angles aigus autour desquels les rubans risqueraient de s&rsquo;abimer</li>
+<li>compact à ranger dans un sac.</li>
 </ul>
-<p>Les diamètres utilisés peuvent être de 20 mm à 80 mm, par incréments de 10 mm.
-Les diamètres les plus agréables sont le 40 mm, 50 mm et 60 mm (une canette standard est entre 55 mm et 60 mm).</p>
-<p>Je sais déjà que j&rsquo;utiliserai des batteries 18650 ou 21700, car elles sont extrêmement matures, solides durables, facile à sourcer et installer&hellip;
+<p>Pour la matière, je voudrais une matière légère et résistante, donc soit du plastique, soit de l&rsquo;aluminium.
+Dans mon cas d&rsquo;utilisation, un tube en plastique est plus adapté, car cette matière n&rsquo;est pas électriquement conductrice, et plus légère que du métal.</p>
+<p>J&rsquo;ai choisi de m&rsquo;orienter vers des <strong>tubes en PVC</strong> format évacuation d&rsquo;eau, qui sont très communs à sourcer et à travailler.
+Les diamètres standards utiles dans mon cas peuvent être de 20 mm à 80 mm, par incréments de 10 mm.</p>
+<p>Les diamètres les plus agréables sont le 40 mm, 50 mm et 60 mm (une canette standard est entre 55 mm et 60 mm).</p>
+<p>Je sais déjà que j&rsquo;utiliserai des batteries 18650 ou 21700, car elles sont extrêmement matures, solides durables, communes à sourcer et installer&hellip;
 Ce sont des batteries cylindriques, qui seront donc installées verticalement dans le tube</p>
 <p>Un tube de 40 mm ne peut accepter que des configurations de batterie 2x18650 ou 1x21700, ce qui est trop peu pour mon utilisation.</p>
 
 <link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
-<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+<div class="box fancy-figure caption-position-bottom center" style="max-width:50%">
   <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/battery_in_50mm.png" alt="Un tube de 50 mm peut accepter 4x18650 ou 3x21700"/>
@@ -384,7 +388,7 @@ Ce sont des batteries cylindriques, qui seront donc installées verticalement da
 
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+<div class="box fancy-figure caption-position-bottom center" style="max-width:50%">
   <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/battery_in_60mm.png" alt="Un tube de 60 mm peut accepter 7x18650 ou 5x21700"/>
@@ -418,18 +422,18 @@ Ces pièces auront des formes complexes, et ne nécessiteront pas de résistance
 </div>
 
 
-<p>Ces pièces seront fabriquées <strong>en PDA par FDM</strong> (Dépôt de Matière Fondue, c.-à-d. impression 3D) pour avoir une grande liberté de formes et un coût réduit.
-Leur utilisation ne sera pas affectée par les faiblesses de la FDM (fragilité le long des couches, faible résistance a la chaleur&hellip;) et de la FDA (dégradation dans l&rsquo;eau, au soleil&hellip;).</p>
+<p>Ces pièces seront fabriquées <strong>en PLA par FDM</strong> (Dépôt de Matière Fondue, c.-à-d. impression 3D) pour avoir une grande liberté de formes et un coût réduit.
+Leur utilisation ne sera pas affectée par les faiblesses de la FDM (fragilité le long des couches, faible résistance a la chaleur&hellip;) et du PLA (dégradation dans l&rsquo;eau, au soleil&hellip;).</p>
 <h2 id="éclairage">Éclairage</h2>
 <h3 id="caractéristiques-communes">Caractéristiques communes</h3>
 <p>Afin de minimiser le temps d&rsquo;assemblage, on utilisera un <strong>ruban LED</strong> plutôt que des LED individuelles à souder.
-De plus la plupart des rubans LED sont équipés d&rsquo;un dos autocollant, ce qui résout le problème de &ldquo;comment fixer les Leds&rdquo;.
+De plus la plupart des rubans LED sont équipés d&rsquo;un dos autocollant, ce qui résout le problème de comment les fixer.
 Ils sont également sectionnables tous les quelques centimètres, et visuellement jolis pour les <strong>versions COB</strong>.</p>
 <p>Les rubans sont aussi majoritairement <strong>pilotables en CV</strong> (constant voltage) plutôt que CC (constant current), ce qui est plus facile à calibrer pour une alimentation électronique.</p>
-<p>Afin de ne réduire la taille des composants, le courant utilisé devra rester faible (&lt; 3 ampères), ce qui implique une tension d&rsquo;alimentation plus élevée.
-De plus, l&rsquo;intensité lumineuse ne doit pas chuter sur la distance du ruban, ce qui tant à arriver avec des tensions plus basses sur de longs rubans.
+<p>Afin de réduire la taille des composants électriques, le courant utilisé devra rester faible (&lt; trois ampères), ce qui implique une tension d&rsquo;alimentation plus élevée.
+De plus, l&rsquo;intensité lumineuse ne doit pas chuter sur la distance du ruban, ce qui tant à arriver avec des tensions plus basses (&lt; 9 V) sur de longs rubans.
 Cela peut être résolu en soudant une alimentation des deux cotés, mais ça ajoutera des contraintes structurelles et d&rsquo;assemblage en plus.</p>
-<p>Mon choix se porte donc sur <strong>des rubans 12 V</strong>, plus simples à gérer que du 24 V avec l&rsquo;électronique que je prévois d&rsquo;utiliser.</p>
+<p>Mon choix se porte donc sur <strong>des rubans 12 V</strong>, plus simples à gérer que du 24 V avec l&rsquo;électronique que je prévois d&rsquo;utiliser, et qui ne nécessiteront pas d&rsquo;être alimentés par les deux bouts.</p>
 <p>L&rsquo;équation pour le maximum de la longueur d&rsquo;un ruban enroulé autour d&rsquo;un tube sera :</p>
 <p>$$
 L \leq \frac{H}{p} \cdot \pi \cdot D
@@ -439,15 +443,16 @@ $$</p>
 <h3 id="lanterne-jaune">Lanterne jaune</h3>
 <p>Pour la lanterne jaune, la couleur doit se rapprocher d&rsquo;un jaune bougie (1800 - 2000 kelvin).</p>
 <p>La densité de leds n&rsquo;est pas très importante dans ce cas, la différence est visuellement minime et la consommation similaire entre les hautes et basses densités.</p>
-<p>La largeur du ruban peut aller de 5 mm à 10 mm, les rubans plus larges conduisant mieux la chaleur et l&rsquo;électricité, mais étant visuellement moins beau.
-Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;enroulant autour du tube.</p>
+<p>La largeur du ruban peut aller de 5 mm à 10 mm, les rubans plus larges conduisant mieux la chaleur et l&rsquo;électricité, mais sont visuellement moins beaux.
+Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban lorsqu&rsquo;il est enroulé autour du tube.
+Un ruban plus fin conduira moins bien la puissance et dissipera moins bien la chaleur.</p>
 <p>Mes précédents prototypes utilisaient des rubans 480 L/M de 8 mm de large.</p>
 <p>J&rsquo;ai donc choisi <strong>480 Leds/mètres à 12 V, format COB, ruban de 8 mm de large, consommation annoncée de 1 A/m</strong>.</p>
-<p>La longueur du ruban $L$ sera $L ≤ 19634.375 / 8$, c&rsquo;est-à-dire $L ≤ 2454.3 mm$.</p>
+<p>La longueur du ruban sera $L ≤ 19634.375 / 8$, c&rsquo;est-à-dire $L ≤ 2454.3 mm$.</p>
 <p>La lampe jaune sera donc équipée d&rsquo;un <strong>ruban de 2.45 mètres</strong>.</p>
-<p>Sa consommation sera donc de $2.45 m * 1 A/m = 2.45 A$, c&rsquo;est-à-dire en Watt $2.45 A * 12 V = 29.4 W$.</p>
+<p>Sa consommation sera donc de $2.45 m * 1 A/m = 2.45 A$, autrement dit en Watt $2.45 A * 12 V = 29.4 W$.</p>
 <h4 id="mesures-réelles">Mesures réelles</h4>
-<p>Mesures sur des échantillons réels sur banc d&rsquo;essai, longueur de 2.5 m :</p>
+<p>Mesures réelles sur des échantillons de ruban jaune sur banc d&rsquo;essai, longueur de 2.5 m :</p>
 <table>
   <thead>
       <tr>
@@ -482,15 +487,15 @@ Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;
 <p>Pour la lanterne colorée, je veux au moins 100 L/m pour avoir un résultat visuellement plaisant et facile à installer.
 Je voudrais aussi pouvoir contrôler individuellement chaque pixel.
 Cela oriente le choix vers un ruban RGB indexable COB.</p>
-<p>La largeur du ruban peut aller de 5 mm à 10 mm, les rubans plus larges conduisant mieux la chaleur et l&rsquo;électricité, mais étant visuellement moins beau.
-Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;enroulant autour du tube, mais plus de Leds à contrôler.</p>
-<p>J&rsquo;ai donc choisi <strong>160 Leds/mètres à 12 V, format COB, ruban de 5 mm de large, consommation annoncée de 0.75 A/m</strong>, contrôlable avec le protocole WS2812B.</p>
+<p>La largeur du ruban peut aller de 5 mm à 10 mm, les rubans plus larges conduisant mieux la chaleur et l&rsquo;électricité, mais sont visuellement moins beaux.
+Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban lorsqu&rsquo;il est enroulé autour du tube, mais donnera plus de Leds à contrôler.</p>
+<p>J&rsquo;ai donc choisi <strong>160 Leds/mètres à 12 V, format COB, ruban de 5 mm de large, consommation annoncée de 0.42 A/m</strong>, contrôlable avec le protocole WS2812B.</p>
 <p>Le choix aurait également pu être un ruban identique de 240 L/m, mais son prix était prohibitif par rapport à la différence visuelle, et la documentation en plus peu fiable sur ses caractéristiques physiques, et la mémoire nécessaire augmente rapidement.</p>
-<p>La longueur du ruban $L$ sera $L ≤ 19634.375 / 5$, c&rsquo;est a dire $L ≤ 3926.875 mm$.</p>
+<p>La longueur du ruban sera $L ≤ 19634.375 / 5$, c&rsquo;est-à-dire $L ≤ 3926.875 mm$.</p>
 <p>La lampe colorée sera donc équipée d&rsquo;un <strong>ruban de 4 mètres</strong>, ce qui donnera $4 m * 160 L/m$ = <strong>640 Leds individuellement contrôlables</strong>.</p>
-<p>Sa consommation sera donc de $4 m * 0.75 A/m = 3 A$, c&rsquo;est-à-dire en Watt $3 * 12 V = 36 W$.</p>
+<p>Sa consommation sera donc de $4 m * 0.42 A/m = 31.68 A$, autrement dit en Watt $1.68 * 12 V = 20 W$.</p>
 <h4 id="mesures-réelles-1">Mesures réelles</h4>
-<p>Mesures sur des échantillons réels sur banc d&rsquo;essai, longueur de 4M :</p>
+<p>Mesures réelles sur des échantillons de ruban RGB sur banc d&rsquo;essai, programmé en blanc (pire cas), longueur de 4M :</p>
 <table>
   <thead>
       <tr>
@@ -521,30 +526,30 @@ Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;
       </tr>
   </tbody>
 </table>
-<p>La vraie densité de LEDs est plutôt de 162.6 L/m.</p>
+<p>La vraie densité de Leds est plutôt de 162.6 L/m.</p>
 <h3 id="consommation-typique">Consommation typique</h3>
-<p>Pour une durée d&rsquo;utilisation typique de 5H, la lampe consommera :</p>
+<p>Résumé des caractéristiques des rubans et la puissance demandée pour un temps d&rsquo;utilisation de 5H :</p>
 <table>
   <thead>
       <tr>
           <th>Type</th>
-          <th>Consommation</th>
-          <th>Par heures</th>
+          <th>Consommation typique</th>
           <th>Consommation maximum</th>
+          <th>Puissance d&rsquo;alimentation pour 5H d&rsquo;utilisation typique</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>Jaune</td>
           <td>3.8 W</td>
-          <td>19.4 WH</td>
           <td>16.2 W</td>
+          <td>19 WH</td>
       </tr>
       <tr>
           <td>Colorée</td>
           <td>7.8 W</td>
-          <td>39 WH</td>
           <td>31.2 W</td>
+          <td>39 WH</td>
       </tr>
   </tbody>
 </table>
@@ -584,13 +589,13 @@ Utiliser un ruban plus fin reviendra aussi à utiliser plus de ruban en l&rsquo;
 </div>
 
 <h2 id="protection-des-leds">Protection des Leds</h2>
-<p>Pour protéger les Leds de l’environnement, elles doivent être recouvertes par une protection transparente.</p>
-<p>Des rubans existent en IP67, mais pas ceux sélectionnés, qui sont IP20.</p>
-<p>Possibilité d’un <em>tube en plastique</em> rigide transparent : difficile à intégrer, doit être épais pour être solide, retient la chaleur.
+<p>Des rubans déjà protégés existent en IP67, mais ceux que j&rsquo;ai sélectionnés sont indiqués en IP20 et n&rsquo;existent pas avec un meilleur IP.</p>
+<p>Pour protéger les Leds de l’environnement, elles doivent être recouvertes par une couche transparente.</p>
+<p>Possibilité d’un <strong>tube en plastique</strong> rigide transparent : difficile à intégrer, doit être épais pour être solide, retient la chaleur.
 Mais facile à intégrer sans plus de travail : couper un cylindre d’acrylique est aussi difficile que couper un cylindre PVC donc l’intégration est facilitée.
 Cette option a l&rsquo;avantage de la solidité et étanchéité, mais ce genre de plastique a tendance à se rayer facilement, et ajoute un diamètre conséquent à la lampe.</p>
-<p>Un <em>tube en verre</em> est exclu, car il casserait à la première chute.</p>
-<p>Possibilité d&rsquo;utiliser de la <em>gaine thermorétractable transparente</em>.
+<p>Un <strong>tube en verre</strong> est exclu, car il casserait à la première chute.</p>
+<p>Possibilité d&rsquo;utiliser de la <strong>gaine thermorétractable transparente</strong>.
 J’en ai déjà testé avec succès sur plusieurs prototypes.</p>
 <p>En utilisant une gaine très épaisse, on obtient le meilleur compromis efficacité/ergonomie.
 Le résultat est solide, agréable en main et assez élastique pour absorber des chocs.</p>
@@ -636,7 +641,7 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
           <td>18</td>
           <td>65</td>
           <td>2 - 3.5</td>
-          <td>3.7V</td>
+          <td>3.7</td>
           <td>0.2 - 1</td>
           <td>0.9 - 9</td>
       </tr>
@@ -645,7 +650,7 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
           <td>21</td>
           <td>70</td>
           <td>3 - 5</td>
-          <td>3.7V</td>
+          <td>3.7</td>
           <td>1 - 4</td>
           <td>1.4 - 10</td>
       </tr>
@@ -660,58 +665,58 @@ En imaginant un rendement minimum de 90%, ça demande une batterie de <strong>43
   <thead>
       <tr>
           <th>Type de batterie</th>
-          <th>Capacité</th>
+          <th>Capacité (WH)</th>
           <th>Configuration</th>
-          <th>voltage min</th>
-          <th>voltage standard</th>
-          <th>voltage max</th>
+          <th>voltage min (V)</th>
+          <th>voltage standard (V)</th>
+          <th>voltage max (V)</th>
           <th>Ratio de conversion à 12 V</th>
       </tr>
   </thead>
   <tbody>
       <tr>
           <td>4x18650</td>
-          <td>51.8 WH</td>
+          <td>51.8</td>
           <td>1S4P</td>
-          <td>3 V</td>
-          <td>3.7 V</td>
-          <td>4.2 V</td>
+          <td>3</td>
+          <td>3.7</td>
+          <td>4.2</td>
           <td>285% - 400%</td>
       </tr>
       <tr>
           <td></td>
           <td></td>
           <td>2S2P</td>
-          <td>6 V</td>
-          <td>7.4 V</td>
-          <td>8.4 V</td>
+          <td>6</td>
+          <td>7.4</td>
+          <td>8.4</td>
           <td>143% - 200%</td>
       </tr>
       <tr>
           <td></td>
           <td></td>
           <td>4S1P</td>
-          <td>12 V</td>
-          <td>14.8 V</td>
-          <td>16.8 V</td>
+          <td>12</td>
+          <td>14.8</td>
+          <td>16.8</td>
           <td><strong>71% - 100%</strong></td>
       </tr>
       <tr>
           <td>3x21700</td>
-          <td>55.5 WH</td>
+          <td>55.5</td>
           <td>1S3P</td>
-          <td>3 V</td>
-          <td>3.7 V</td>
-          <td>4.2 V</td>
+          <td>3</td>
+          <td>3.7</td>
+          <td>4.2</td>
           <td>285% - 400%</td>
       </tr>
       <tr>
           <td></td>
           <td></td>
           <td>3S1P</td>
-          <td>9 V</td>
-          <td>11.1 V</td>
-          <td>12.6 V</td>
+          <td>9</td>
+          <td>11.1</td>
+          <td>12.6</td>
           <td><strong>95% - 133%</strong></td>
       </tr>
   </tbody>
@@ -722,9 +727,9 @@ C&rsquo;est théoriquement la configuration la plus efficace en composants élec
 <p>Elle a cependant besoin d&rsquo;une batterie en plus à assembler, ce qui ajoute un fil et une plaquette de nickel à souder.
 Cela ajoute du temps de construction et augmente le potentiel de casse des fils entre batteries.
 De plus les 18650 ont un courant un peu faible pour tenir la charge du ruban de Leds, ce qui ajoute au risque d&rsquo;emballement thermique des batteries Li-ion.</p>
-<p>La configuration <strong>3S1P des 21700 est plus adapté</strong> dans ce cas, car avec une batterie en moins avec un gain de capacité, on gagne également en temps d&rsquo;assemblage et fiabilité.
-Les 21700 peuvent de plus fournir plus d&rsquo;Ampères que les 18650, ce qui permettra de maintenir une meilleure fiabilité à forte luminosité.
-Cette configuration nécessite par contre un circuit buck/boost pour convertir une entrée de 9 V à 12.6 V en tension stable de 12 V, ce qui nécessite un peu plus de composants électroniques et est un peu moins efficace.</p>
+<p>La configuration <strong>3S1P des 21700 est plus adapté</strong> dans ce cas, car avec une batterie en moins à assembler avec un gain de capacité, on gagne également en temps de construction et fiabilité.
+Les 21700 peuvent fournir plus d&rsquo;Ampères que les 18650, ce qui permettra de maintenir une meilleure stabilité du voltage à forte luminosité.
+Cette configuration nécessite par contre un circuit buck/boost pour convertir une entrée de 9 V à 12.6 V en tension stable de 12 V, ce qui demande un peu plus de composants électroniques et est un peu moins efficace qu&rsquo;un simple buck.</p>
 <details class="details-shortcode"><summary>Un autre choix ?? (click to expand)</summary>
 <p>
 <p>Début 2025, un nouveau format de batterie Li-ion a été mis à disposition des consommateurs : le 4680.
@@ -748,7 +753,7 @@ Son nom devrait être 46800 pour suivre les conventions, mais elle a été cré�
           <td>46</td>
           <td>80</td>
           <td>15 - 20</td>
-          <td>3.7V</td>
+          <td>3.7</td>
           <td>1</td>
           <td>17 - 28</td>
       </tr>
@@ -756,7 +761,8 @@ Son nom devrait être 46800 pour suivre les conventions, mais elle a été cré�
 </table>
 <p>Pour le moment leur prix est très élevé, mais ce format commence à être adopté à plus grande échelle.
 Il offre une capacité d&rsquo;environ <strong>74 WH</strong>, ce qui est absolument fou à cette échelle !</p>
-<p>Seul bémol, les courants et conversions de voltage nécessiteront des composants bien plus gros et chers que ceux utilisés actuellement.</p>
+<p>Seul bémol, les courants et conversions de voltage nécessiteront des composants bien plus gros et chers que ceux utilisés actuellement dans la lampe.
+Par contre, une seule batterie ne nécessitera pas d&rsquo;équilibreur, et un chargeur plus petit devrait suffire.</p>
 <p>Une possibilité à garder en tête pour un projet utilisant une tension plus basse autour de 3 V ou 5 V !</p>
 
 </p>
@@ -804,23 +810,23 @@ Ajout d’un <strong>port femelle</strong> à souder sur le circuit (étape manu
 
 </div>
 
-<p>Stocks issus d’un projet automobile annulé, donc moins chers, mais avec des restes de soudure (pas important dans notre cas)
-prix de gros TTC : <strong>1.85€ par batterie (achat de 640 unités)</strong> sur NKON.</p>
-<p>Le wrap est <strong>essentiel</strong>, car les batteries sont physiquement très proches et sans le wrap, elles seraient en cours circuit entre elles.
+<p>Ces batteries proviennent d&rsquo;un stock issu d’un projet automobile annulé, et sont donc moins chers, mais pas neufs, avec des restes de soudure (pas important dans notre cas).
+Prix de gros TTC : <strong>1.85€ par batterie (achat de 640 unités)</strong> sur NKON.</p>
+<p>Le wrap est <strong>essentiel</strong>, car les batteries sont physiquement très proches et sans cette couche isolante, elles seraient en cours circuit entre elles.
 La partie extérieure métallique des batteries de ce type est reliée au pôle -, et <strong>doit</strong> donc être isolé électriquement de l&rsquo;extérieur.
 Dans mon cas, les batteries sont très proches et branchées en série.
 Si les parties métalliques se touchent, la batterie sera détruite.</p>
 <p>Le wrap permet d&rsquo;éviter ce cas.
 Utiliser un wrap non transparent permettrait de vérifier visuellement qu&rsquo;il n&rsquo;y a pas de risque de contact.</p>
-<p>Le poids d&rsquo;une batterie est approximativement de 60 g à 80 g, donc de 180 g à 240 g pour la batterie totale.</p>
-<p>Donc : <strong>pack de batterie pouvant donner jusqu’à 14.4 A pic, 54.7 WH de capacité</strong> (4.93 A/H * 3.7 V * 3).</p>
+<p>Le poids d&rsquo;une batterie est approximativement de 60 g à 80 g, donc la batterie totale fera de 180 g à 240 g.</p>
+<p>Conclusion: <strong>pack de batterie pouvant donner jusqu’à 14.4 A pic, 54.7 WH de capacité</strong> (4.93 A/H * 3.7 V * 3).</p>
 <p>Durée de fonctionnement estimée :</p>
 <table>
   <thead>
       <tr>
           <th>Lampe</th>
           <th>Luminosité</th>
-          <th>Consommation</th>
+          <th>Consommation (W)</th>
           <th>Durée (optimiste)</th>
       </tr>
   </thead>
@@ -828,37 +834,37 @@ Utiliser un wrap non transparent permettrait de vérifier visuellement qu&rsquo;
       <tr>
           <td>Jaune</td>
           <td>Minimum</td>
-          <td>0.475 W</td>
+          <td>0.475</td>
           <td>115H</td>
       </tr>
       <tr>
           <td></td>
           <td><strong>Typique</strong></td>
-          <td>3.8 W</td>
+          <td>3.8</td>
           <td><strong>14.4H</strong></td>
       </tr>
       <tr>
           <td></td>
           <td>Maximum</td>
-          <td>16.2 W</td>
+          <td>16.2</td>
           <td>3.4H</td>
       </tr>
       <tr>
           <td>Colorée</td>
           <td>Minimum</td>
-          <td>0.84 W</td>
+          <td>0.84</td>
           <td>65H</td>
       </tr>
       <tr>
           <td></td>
           <td><strong>Typique</strong></td>
-          <td>7.8 W</td>
+          <td>7.8</td>
           <td><strong>7H</strong></td>
       </tr>
       <tr>
           <td></td>
           <td>Maximum</td>
-          <td>31.2 W</td>
+          <td>31.2</td>
           <td>1.75H</td>
       </tr>
   </tbody>
@@ -871,11 +877,9 @@ Utiliser un wrap non transparent permettrait de vérifier visuellement qu&rsquo;
 <p>Possibilité d’utiliser un port USB soudé sur la carte et prévoir que les pièces plastiques puissent laisser passer ce port, avec un joint pour l’étanchéité, comme sur certains téléphones.</p>
 <p>Ou utiliser un port déporté, sur un autre circuit ou même un composant totalement à part.</p>
 <p>Le port déporté est plus facile à gérer pour moi, plus facile à se procurer, à remplacer, plus facile à étanchéifier.</p>
-<ul>
-<li>Trouvé <strong>port USB-C étanche déporté avec 6 fils</strong> de contrôle (VBUS, GND, D+, D-, CC1, CC2).
+<p>J&rsquo;ai décidé d&rsquo;utiliser un <strong>port USB-C étanche déporté avec 6 fils</strong> de contrôle (VBUS, GND, D+, D-, CC1, CC2).
 VBUS pour la puissance, D+ et D- pour la communication, CC1 et CC2 pour la négociation de puissance.
-Puissance max par le fil de VBUS : 3 A.</li>
-</ul>
+Puissance max par le fil de VBUS : 3 A.</p>
 <p>Ce port ajoute un composant à visser sur un capuchon et six fils à souder sur le circuit.</p>
 <p>Je veux protéger électriquement le port de l’environnement et des mauvais usages :</p>
 <ul>
@@ -884,14 +888,14 @@ Puissance max par le fil de VBUS : 3 A.</li>
 <li>ESD (Décharge Électrostatiques)</li>
 <li>Cours circuit vers VBUS</li>
 </ul>
-<p>-&gt; <a href="https://www.ti.com/product/TPD8S300">Trouvé le composant <strong>TPD8S300 de TexasInstruments</strong></a>, dédié à la protection des ports USB-C, sauf de la ligne VBUS.
+<p>J&rsquo;utiliserai <a href="https://www.ti.com/product/TPD8S300">le composant <strong>TPD8S300 de TexasInstruments</strong></a>, dédié à la protection des ports USB-C, sauf de la ligne VBUS.
 Pour la ligne VBUS, ajout d&rsquo;une diode ESD de 22 V.</p>
 <h3 id="négociation-de-puissance-de-charge">Négociation de puissance de charge</h3>
 <p>Pour négocier la puissance en entrée sur le port USB (utilisation du PowerDelivery), besoin d’un composant dédié.
 Je veux choisir un composant très répandu, pour lequel des drivers ont déjà été faits, et avec un coût et taille faible.</p>
 <ul>
 <li>Choix initial du RT1715, qui n’a jamais fonctionné avec mes circuits.</li>
-<li><a href="https://www.onsemi.com/download/data-sheet/pdf/fusb302b-d.pdf"><strong>Changement pour le FUSB302</strong></a> qui a la même empreinte et pins.</li>
+<li><a href="https://www.onsemi.com/download/data-sheet/pdf/fusb302b-d.pdf"><strong>Changement pour le FUSB302 (ON Semi)</strong></a> qui a la même empreinte et pins.</li>
 </ul>
 <p>Ce composant peut négocier en PD2.0 tous les PDO standard (jusqu&rsquo;à 20V 3A) et des PDO spéciaux jusqu&rsquo;à 100 W (20 V 5 A).
 Il est également capable de changer de rôle (source -&gt; sink / sink -&gt; source), ce qui permet d&rsquo;implémenter le mode batterie externe.</p>
@@ -901,13 +905,16 @@ Il est également capable de changer de rôle (source -&gt; sink / sink -&gt; so
 <h3 id="composant-de-charge">Composant de charge</h3>
 <p>Le système doit pouvoir charger une batterie 3S1P depuis une entrée port USB-C (5V-20V négociable via PD).</p>
 <ul>
-<li>Choix initial de BQ25703A, qui prend en entrée de 3.5 V à 24 V, et une sortie de 4.48 V à 20.8 V. Support I2C, avec l’adresse 0xD6. Mode OTG qui permet d’envoyer une tension sur le port USB (mode batterie externe). Excellentes performances annoncées.</li>
-<li>Changement <a href="https://www.ti.com/product/BQ25713">pour le composant <strong>BQ25713</strong></a> qui propose une meilleure résolution OTG, et est plus moderne (adresse 0x6B).</li>
+<li>Choix initial de BQ25703A, qui prend en entrée de 3.5 V à 24 V, et une sortie de 4.48 V à 20.8 V. Support I2C et Mode OTG qui permet d’envoyer une tension sur le port USB (mode batterie externe). Excellentes performances annoncées autour de 12V.</li>
+<li>Changement <a href="https://www.ti.com/product/BQ25713">pour le composant <strong>BQ25713</strong></a> qui propose une meilleure résolution OTG, et est plus moderne.</li>
 </ul>
 <p>Ce composant est un chargeur de batteries Li-ion, associé à un ensemble de capteurs intégrés, un watchdog, un mode sommeil et un mode OTG qui permet de l&rsquo;utiliser comme générateur de tension réglable, de 3 V à 22 V.
-Il peut également gérer jusqu&rsquo;à 6 A, ce qui est au-dessus de ce que les batteries peuvent fournir, ce qui laisse une bonne marge de sécurité.</p>
+Il peut également gérer jusqu&rsquo;à 20 V 6 A (c.-à-d. 120 W), ce qui est au-dessus de ce que les batteries peuvent fournir, ce qui laisse une bonne marge de sécurité.</p>
+<p>Le mode OTG peut générer une tension précise associé à une limite de courant sur la ligne VBUS, pour alimenter le port USB en puissance.
+Associé à notre composant de négociation USB PD, <strong>la lampe pourra donc faire batterie externe</strong>.</p>
 <h3 id="équilibreur-de-batteries">Équilibreur de batteries</h3>
-<p>Avec le chargeur, il faut prévoir un composant pour équilibrer les batteries entre elle, pour qu’elles soient toujours au même voltage.</p>
+<p>Avec le chargeur, il faut prévoir un composant pour équilibrer les batteries entre elle, pour qu’elles restent toujours a la même différence de voltage.
+Un équilibreur est obligatoire quand on utilise plusieurs batteries en série.</p>
 
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade center" >
@@ -928,16 +935,14 @@ Il peut également gérer jusqu&rsquo;à 6 A, ce qui est au-dessus de ce que les
 <li><a href="https://www.ti.com/product/BQ76905">Choix du <strong>BQ76905</strong></a> (adresse 0x08), équilibreur pour 2 à 5 cellules, multiples capteurs. Taille très réduite !</li>
 </ul>
 <p>Ce composant peut même servir de BMS, et propose de nombreuses sécurités, que je ne vais pas utiliser, car elles sont redondantes avec celles du BQ25713 et je manque déjà de place sur le circuit.</p>
-<p>Possibilité de l’utiliser comme watchdog hardware, mais j’ai loupé cette possibilité lors du design.</p>
+<p>Il est également possible de l’utiliser comme watchdog hardware, mais j’ai loupé cette possibilité lors du design.</p>
 <h2 id="alimentation-des-leds">Alimentation des Leds</h2>
 <h3 id="contrôleur-dintensité">Contrôleur d&rsquo;intensité</h3>
 <p>J’avais prévu au départ d’ajouter un composant dédié, et là, il y a eu une réalisation : le mode OTG du module de charge de batterie remplit déjà ce rôle !
 Il peut produire une tension programmable entre 3 V et 20 V, avec un maximum de 6 A, parfait pour ce que je veux.</p>
-<p>Puisque qu’on a une sortie OTG programmable et un microcontrôleur pour gérer la logique, on peut utiliser une porte électronique entre l’USB et la sortie OTG, comme ça la lampe sera capable de faire également batterie externe.
-Le mode batterie externe est une fonctionnalité bonus à implémenter en software plus tard, qui ne coute pas plus cher à mettre sur le circuit.</p>
-<p>Donc pour la suite, j’ai décidé d’ajouter une porte USB-C, et une porte alimentation externe, qui me permettent de choisir ou envoyer la puissance générée par le chargeur.</p>
-<p>Seul bémol de cette méthode : on ne peut plus charger et allumer la lampe en même temps, ce qui est un bon trade-off selon moi.
-Il faudra aussi prévoir en software que le contrôle de la luminosité des rubans ne sera pas linéaire, car ils seront contrôlés par CV plutôt que CC.</p>
+<p>Afin de supporter à la fois le mode batterie externe et alimenter les Leds avec la même sortie OTG, j’ai besoin d’ajouter une porte USB-C, et une porte alimentation externe, qui me permettent de choisir ou envoyer la puissance générée par le chargeur.</p>
+<p>Seul bémol de cette méthode : on ne peut plus charger et allumer la lampe en même temps, ce qui est un bon trade-off selon moi.</p>
+<p>Il faudra aussi prévoir en software que le contrôle de la luminosité des rubans ne sera pas linéaire, car ils seront contrôlés par CV plutôt que CC.</p>
 
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
@@ -953,11 +958,11 @@ Il faudra aussi prévoir en software que le contrôle de la luminosité des ruba
 
 
 <h3 id="portes-de-puissance">Portes de puissance</h3>
-<p>Afin de choisir si on veut envoyer de la puissance aux Leds ou au port USB, il faut deux portes : l porte USB doit laisser passer de 3 V à 20 V, et supporter le fast role swap.</p>
+<p>Afin de choisir si on veut envoyer de la puissance aux Leds ou au port USB, il faut deux portes :</p>
 <ul>
-<li><a href="https://www.microchip.com/en-us/product/UCS3205">Choix du <strong>UCS3205T</strong></a>, compact et fait spécialement pour cette application</li>
+<li>La porte USB qui doit laisser passer de 3 V à 20 V, et supporter le fast role swap.</li>
+<li>La porte de puissance des Leds. Je vais créer une porte sur mesure à base de MOSFET P-channel.</li>
 </ul>
-<p>Pour la porte de puissance des Leds, création d’une porte sur mesure à base de MOSFET P-channel, les mêmes que j’ai utilisés autour du chargeur de batteries.</p>
 
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
@@ -973,14 +978,25 @@ Il faudra aussi prévoir en software que le contrôle de la luminosité des ruba
 
 
 <p>Le premier prototype utilisait une low side gate, plus avantageuse niveau puissance et composants.</p>
-<p>Cette low side gate a produit des cas où j’ai vu des fuites de puissance par les fils de signal de mes Leds.
-La high side gate est bien plus sûre, car elle isole complètement le circuit.
+<p>Cette low side gate a produit des cas où j’ai vu des fuites de puissance par les fils de signal de mes Leds, ce qui a brulè plusieurs circuits.</p>
+<p>La high side gate est bien plus sûre, car elle isole complètement les Leds, sans possibilité de fuite de courant.
 Elle est cependant un peu moins efficace et produit une petite baisse de tension et un échauffement quand le courant est fort.</p>
 <p><a href="https://www.baldengineer.com/low-side-vs-high-side-transistor-switch.html">Notes sur les Low/High side gates</a></p>
 <p>La porte pour le port USB a été choisi parmi les composants standard pour ce genre d&rsquo;applications :
 <a href="https://www.microchip.com/en-us/product/UCS3205">Composant UCS3205T-E/Q8A</a></p>
 <p>Ce composant ajoute une protection anti-survoltage sur la ligne VBUS, et des fonctions de FRS (Fast Role Swap) pour le mode batterie externe.
 Il permet également de décharger le power rail et isoler le chargeur du port USB, ce qui rend le système moins dangereux pour les chargeurs qui se brancheront dessus.</p>
+<p>Ce choix ajoute un danger de bug destructif : Si les deux portes de puissance sont passantes en même temps :</p>
+<ul>
+<li>La puissance peut passer directement du port USB aux Leds. Si un voltage supérieur au maximum des Leds (12 V) a été négocié, les Leds seront détruites.</li>
+<li>La puissance peut passer directement des Leds au port USB. Si les Leds sont alimentées (de 9 V à 12 V), le port USB le sera aussi, et tout appareil branché dessus à ce moment pourrait être endommagé.</li>
+</ul>
+<p>Pour éviter ces cas, plusieurs mesures ont été prises :</p>
+<ul>
+<li>Les portes sont désactivées par défaut. En cas de crash ou reboot non prévu, les portes restent inactives</li>
+<li>Sécurité software. Des sections critiques ont été ajoutées dans le code autour de ces ports, pour forcer une utilisation correct.</li>
+<li>La porte des Leds est unidirectionnelle, on ne peut pas injecter de la puissance via le port des Leds.</li>
+</ul>
 <h2 id="choix-du-microcontrôleur">Choix du microcontrôleur</h2>
 <h3 id="inventaire-des-besoins">Inventaire des besoins</h3>
 <p>Le choix du microcontrôleur est surement le plus important des choix techniques.
@@ -1031,6 +1047,7 @@ Malheureusement, la version QFN n&rsquo;a pas de pins USB D+ et D-, ce qui la re
 <p>J&rsquo;ai donc fait mon design autour de la version aQFN, qui est le meilleur équilibre coût/fonctionnalité.</p>
 <p>Les modes de connectivité (eg: Bluetooth) ne sont pas obligatoires, ce qui ferait tomber la consommation et permettrait d’enlever l’antenne, qui coute relativement cher et prend de la place.
 J&rsquo;ai décidé de la garder quand même pour laisser plus d&rsquo;options aux développeurs.</p>
+<p>Le fait d&rsquo;avoir plus de GPIO disponibles sur le microcontrôleur que nécessaire m&rsquo;a donné la possibilité d&rsquo;ajouter des GPIO libres, ce qui transforme le PCB d&rsquo;un contrôleur de lampe à une <strong>carte programmable générique pouvant gérer un pack de batteries 3S, avec sortie de puissance programmable</strong>.</p>
 <h3 id="signal-usb">Signal USB</h3>
 <p>L’entrée USB du microcontrôleur ne supporte que de 4.2 V à 5.5 V, mais avec la négociation PD le rail VBUS peut monter jusqu’à 20 V.</p>
 <p>Il faut donc un convertisseur qui prend de 5 V à 20 V et sort un signal entre 4.2 V et 5.5 V.</p>
@@ -1038,6 +1055,8 @@ J&rsquo;ai décidé de la garder quand même pour laisser plus d&rsquo;options a
 Je prévois quand même d&rsquo;utiliser cette piste comme alimentation de secours si les batteries viennent à décéder ou être déconnectées, et donc ce composant devra fournir le courant nécessaire au système complet (hors Leds).
 Ça représentera environ 200 mA standard, avec des pics potentiels a 500 mA.</p>
 <p>J&rsquo;ai choisi un <a href="https://www.digikey.com/en/products/detail/diodes-incorporated/AP2205-50W5-7/10294899"><strong>LDO AP2205-50W5-7</strong></a>, qui peut prendre en entrée de 5 V à 24 V, et sort une tension de 5 V à maximum 250 mA.</p>
+<p>Un LDO à un seuil de conversion de 0.4 V, et je compte donc sur le fait qu&rsquo;il soit passant si son voltage d&rsquo;entée est inférieur à 5.4 V pour obtenir tout de même 5 V.
+<strong>Un meilleur choix aurait été un LDO avec une sortie de 4.2 V directement</strong>, mais je n&rsquo;en ai pas trouvé avec les bonnes caractéristiques.</p>
 <h3 id="alimentation-1">Alimentation</h3>
 <p>Le NRF52840 a deux modes d’alimentation : variable avec convertisseur interne (demande plus de composants, plus robuste) ou fixe 3.3 V avec alimentation externe (bien plus efficace, demande une alimentation stabilisée 3.3 V externe).</p>
 <p>J&rsquo;ai choisi l’option 2, car d&rsquo;autres composants du système auront besoin d’une alimentation de 3.3 V.</p>
@@ -1127,13 +1146,13 @@ Cette porte permettra en plus de réinitialiser ces composants en cas de crash.<
 
 <p>Le système n&rsquo;aura pas d’interrupteur général, ce qui limitera l’autonomie en mode sommeil, mais permet d’utiliser moins de composants exposés.
 Le microcontrôleur choisi permet déjà d&rsquo;avoir une bonne autonomie en mode sommeil, ce n&rsquo;est donc pas si grave.</p>
-<p>De plus, le Bluetooth du NRF52840 pourrait être utilisé pour du contrôle avancé.</p>
+<p>Le Bluetooth du NRF52840 pourra aussi être utilisé pour du contrôle utilisateur avancé.</p>
 <p>Le debouncing et autres traitements seront réalisés en software, afin de garder une certaine généricité de la carte électronique.</p>
 <h2 id="capteurs">Capteurs</h2>
 <p>Pour profiter des GPIO restantes du NRF52840, j&rsquo;ai cherché des capteurs à intégrer.
 Les capteurs doivent fonctionner dans un environnement scellé (l&rsquo;intérieur de la lampe), ne pas nécessiter d&rsquo;entretien, et ne pas trop consommer.</p>
-<p>Les capteurs de gaz sont par exemple exclus, car ils sont très chers et ne pourraient pas fonctionner dans le tube.
-Les capteurs de température sont déjà présents dans les composants électriques principaux.</p>
+<p>Les capteurs de gaz sont par exemple exclus, car ils sont très chers et ne pourraient pas fonctionner dans le tube.</p>
+<p>Les capteurs de température sont déjà présents dans les composants électriques principaux.</p>
 <h3 id="microphone">Microphone</h3>
 <p>Un microphone MEMS placé sur le circuit permet de coder des modes audio réactifs ou supporter des commandes vocales basiques.</p>
 <p>Son efficacité sera réduite, parce qu&rsquo;il sera dans un tube fermé hermétiquement, mais il devrait tout de même capter les basses fréquences.</p>
@@ -1142,9 +1161,51 @@ Les capteurs de température sont déjà présents dans les composants électriq
 <p>Une centrale inertielle avec gyroscope et accéléromètre permet de coder des animations réactives aux déplacements dans l&rsquo;espace.</p>
 <p>L&rsquo;ajout d&rsquo;un magnétomètre aurait été un plus, mais c&rsquo;est un composant très cher, surtout pour l&rsquo;utilité qu&rsquo;il aurait eu dans une lanterne.</p>
 <p>J’ai pris le même modèle que dans la board Seeed Sense, par simplicité (<a href="https://www.st.com/en/mems-and-sensors/lsm6ds3tr-c.html">LSM6DS3</a>).</p>
-<p>Supporter ce composant nécessite 2 GPIO de plus pour le contrôleur, et il doit être relié à la ligne I2C.</p>
+<p>Supporter ce composant nécessite 2 GPIO de plus pour des interrupts, et il doit être relié à la ligne I2C.</p>
 <h2 id="résumé-des-choix-techniques">Résumé des choix techniques</h2>
-<p>Résumé des composants principaux et leurs fonctions :</p>
+<p>Résumé des choix d&rsquo;ensemble :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Composant</th>
+          <th>Fonction principale</th>
+          <th>Pourquoi ce choix</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Tube PVC</td>
+          <td>Châssis principal</td>
+          <td>Facile à sourcer, solide, léger, pas conducteur</td>
+      </tr>
+      <tr>
+          <td>Ruban Leds COB 12V</td>
+          <td>Éclairage</td>
+          <td>Autocollant, voltage élevé, joli</td>
+      </tr>
+      <tr>
+          <td>Gaine thermorétractable transparente</td>
+          <td>Protection des Leds</td>
+          <td>Léger, durable, agréable en main</td>
+      </tr>
+      <tr>
+          <td>Batteries 21700</td>
+          <td>Alimentation</td>
+          <td>Techno mature, bonne densité énergétique</td>
+      </tr>
+      <tr>
+          <td>Port USB-C en facade</td>
+          <td>Charge / Mise à jour</td>
+          <td>Étanche, robuste, générique</td>
+      </tr>
+      <tr>
+          <td>Bouton RGB</td>
+          <td>Interface utilisateur</td>
+          <td>Intègre indicateur + commande, étanche, robuste</td>
+      </tr>
+  </tbody>
+</table>
+<p>Résumé des composants électriques principaux et leurs fonctions :</p>
 <table>
   <thead>
       <tr>
@@ -1152,6 +1213,7 @@ Les capteurs de température sont déjà présents dans les composants électriq
           <th>Fonction principale</th>
           <th>Pourquoi ce choix</th>
           <th>Alternatives écartées</th>
+          <th>Adresse I2C</th>
       </tr>
   </thead>
   <tbody>
@@ -1160,39 +1222,46 @@ Les capteurs de température sont déjà présents dans les composants électriq
           <td>Négociation USB PD</td>
           <td>Petite empreinte, driver mature, I2C, coût bas</td>
           <td>RT1715 (problèmes de compatibilité)</td>
+          <td>0x22</td>
       </tr>
       <tr>
           <td>BQ25713</td>
           <td>Charge Li-ion et mode OTG</td>
           <td>Résolution OTG améliorée, I2C, marge 6 A</td>
           <td>BQ25703A (plus ancien, moins précis)</td>
+          <td>0x6B</td>
       </tr>
       <tr>
           <td>BQ76905</td>
           <td>Équilibrage passif 3S</td>
           <td>Format miniaturisé, I2C, redondance sécurité</td>
           <td>Équilibreur actif (composants + coût)</td>
+          <td>0x08</td>
       </tr>
       <tr>
           <td>TPS629206</td>
           <td>Régulation 3.3 V MCU</td>
           <td>Courant bas, pics 500 mA</td>
           <td>Convertisseurs buck classiques, LDO</td>
+          <td>X</td>
       </tr>
       <tr>
           <td>UCS3205T</td>
           <td>Porte USB-C / FRS</td>
           <td>Intégré pour USB-C, protection VBUS, décharge rail</td>
           <td>MOSFETs discrets (plus de composants)</td>
+          <td>X</td>
       </tr>
       <tr>
-          <td>Bouton RGB</td>
-          <td>Interface utilisateur</td>
-          <td>Intègre indicateur + commande, étanche, robuste</td>
-          <td>Potentiomètre (usure), tactile (fuites)</td>
+          <td>LSM6DS3</td>
+          <td>Centrale inertielle</td>
+          <td>Facile a source, drivers matures</td>
+          <td></td>
+          <td>0x6A</td>
       </tr>
   </tbody>
 </table>
+<p>On peux complèter le schéma des choix électronique, qui servira au design électronique de la partie 3 :</p>
 
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:100%">
@@ -1210,7 +1279,7 @@ Les capteurs de température sont déjà présents dans les composants électriq
 <p>La lampe fera <strong>12.5 cm de haut pour 5 cm</strong> de large (sans compter les leds et la gaine).</p>
 <p>La couleur de la lampe <strong>jaune sera 1800K</strong>, et la lampe <strong>colorée aura entre 580 et 640 pixels</strong> contrôlables.</p>
 <p>Les batteries choisies permettront d&rsquo;utiliser théoriquement la lanterne <strong>jaune pendant 14 heures</strong>, et la <strong>colorée pendant 7 heures</strong>.</p>
-<p>L&rsquo;utilisateur agira sur la lampe grâce au <strong>bouton poussoir</strong>, qui servira également de retour de statut et niveau de batterie grâce a sa Led RGB.</p>
+<p>L&rsquo;utilisateur agira sur la lampe grâce au <strong>bouton poussoir</strong>, qui servira également de retour de statut et niveau de batterie <strong>grâce a sa Led RGB</strong>.</p>
 <p>La lampe pourra agir comme <strong>batterie externe</strong>, et sera équipée d&rsquo;un <strong>microphone</strong>, d&rsquo;une <strong>IMU</strong> et utilisable en <strong>Bluetooth</strong>.</p>
 <p>Dans la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 3</a>, je reviendrai sur le design électronique dans les détails.</p>
           

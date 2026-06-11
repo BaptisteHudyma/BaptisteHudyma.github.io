@@ -127,7 +127,7 @@
     "name": "HUB Logs"
   },
   "timeRequired": "PT9M",
-  "wordCount": 1850
+  "wordCount": 1883
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1850&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1883&nbsp;mots
   
   
   
@@ -411,6 +411,7 @@ Les coûts de réparation ne sont pas inclus, et sont a ma charge.</p>
 <li>Il aurait été surement possible d’avoir un ESP32 comme microcontroleur principal, pour réduire les côuts encore plus, avec un deuxième microcontroleur tout petit qui ne gèrerait que la mise en route du système et la gestion du bouton (pour permettre une commande de hard reset si le microcontroleur principal est endommagé)</li>
 <li>Gestion de l’USB PD par un composant totalement séparé. Cette partie de l’algo consomme une bonne partie de la flash et RAM, et est toujours buggée car trop complexe. Trop de contraintes temps réel pour la mettre sur le même kernel que le programme utilisateur. Idéalement ce process serait gèré directement par un composant adressable via i2c pour soulager le microcontroleur</li>
 <li>Sur la RGB, les rubans sont trop peu efficaces pour la lumière produite. La raison c’est qu’ils utilisent des LED WS2812b (donc 5V) adaptées à un ruban 12V, et donc chauffent beaucoup même inactives. Des rubans de ce type en 12V n’existent pas encore, peut être que je pourrais travailler à en faire sur mesure?</li>
+<li>L&rsquo;équilibreur avait un mode sommeil profond, que j&rsquo;aurai pu utiliser avec une GPIO en plus, mais j&rsquo;ai loupé cette information lors du design. La lampe aurait pu avoir encore plus d&rsquo;autonomie en sommeil.</li>
 </ul>
 <h4 id="méca">Méca</h4>
 <ul>
