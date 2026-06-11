@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT9M",
-  "wordCount": 1761
+  "timeRequired": "PT15M",
+  "wordCount": 2984
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1761&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2984&nbsp;mots
   
   
   
@@ -344,147 +344,738 @@
           
 
           <p><em><strong>Partie 3 - Conception électronique</strong></em></p>
-<h2 id="conception-électronique">Conception électronique</h2>
-<p>Afin de réduire le prix le plus possible, j’ai réalisé une estimation avec les fabricants de PCB, pour repèrer les palliers d’augmentation de tarifs.
-Contraintes de fabrication</p>
+<p>Index :</p>
 <ul>
-<li>épaisseur minimum des tracks: 4mil (0,1016mm)</li>
-<li>espacement minimum des tracks: 4mil (0,1016mm)</li>
-<li>Diamètre interne minimum des Vias : 0.3mm</li>
-<li>Via in padds: Normalement obligatoire pour les BGA, j’ai sacrifié plusieurs GPIO pour contourner la limitation.</li>
-<li>Nombre de couches: 4 minimum pour ce type de circuits</li>
-<li>Finition de la surface: ENIG (revetement or) nécéssaire pour les BGA, mais coûte cher</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1: Post-mortem V0, objectifs et spécifications des V1</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2: Choix techniques</a></li>
+<li><strong>Partie 3 (vous êtes ici)</strong> : Conception électronique</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4: Conception mécanique</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie 5: Conception logicielle</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Post-mortem &amp; conclusion</a></li>
 </ul>
-<p>L’épaisseur et écart des tracks et la taille des trous était la plus grosse contrainte, qui a ajouté beaucoup de complexité au routage. Mais j’ai réussit a tout faire tenir.
-J’ai été obligé de réduire le diamètre de deux points du BGA pour faire passer une track entre deux connections.</p>
-<h3 id="organisation-générale">Organisation générale</h3>
+<p>Ce chapitre est réservé à la conception du circuit intégré, utilisant les composants choisis dans la Partie 2.</p>
+<h2 id="évaluation-des-optimisations-de-coût-de-fabrication">Évaluation des optimisations de coût de fabrication</h2>
+<p>En première étape, j&rsquo;ai réalisé une estimation avec les fabricants de PCB pour repérer les paliers d’augmentation de tarifs, à prendre en compte lors du design.</p>
+<p>On sait déjà qu&rsquo;on utilisera un composant BGA, ce qui nous oblige à utiliser une finition ENIG et des via de 0.3 mm.</p>
+<p>Contraintes de fabrication :</p>
 <ul>
-<li>
-<p>Format rond de 44mm de diamètre</p>
-</li>
-<li>
-<p>Détrompeur d’orientation (pour que la calibration IMU reste valide, et les ports bien alignés)</p>
-</li>
-<li>
-<p>Antenne bluetooth éloignée des composants de puissance</p>
-</li>
-<li>
-<p>Power Path pour la charge de batteries, grande largeur de pistes</p>
-</li>
-<li>
-<p>Ligne de contrôle I2C parcourant toute la surface</p>
-</li>
-<li>
-<p>Capteurs de température répartis sur l’ensemble du circuit</p>
-</li>
-<li>
-<p>Entrée USB : 6 ports, dont 2 avec des pistes plus larges pour plus de courant (VBUS et GND)</p>
-</li>
-<li>
-<p>Sortie LED : 2 ports, avec pistes larges pour plus de courant</p>
-</li>
-<li>
-<p>Ports programmables pour le bouton et l’indicateur RGB (4 ports)</p>
-</li>
-<li>
-<p>priorité haute aux composants de puissance, priorité basse aux capteurs</p>
-</li>
-<li>
-<p>power path bien défini au nord du circuits</p>
-</li>
-<li>
-<p>capteurs et antennes a l’opposé, au sud</p>
-</li>
-<li>
-<p>couche interne GND pour absorption du bruit, et grosse largeur de piste retour</p>
-</li>
-<li>
-<p>GPIO sur les cotés du circuits</p>
-</li>
-<li>
-<p>détrompeur physique d’orientation, a voir dans le design mécanique</p>
-</li>
-<li>
-<p>Prise femelle de batterie a souder a la main plus tard. JST XH 4 broches</p>
-</li>
-<li>
-<p>Port de programmation physique JTAG, défini en trace sans composant externe.
-→ grosse économie d’échelle (pas de composants en plus)
-→ mais utilisation d’une probe JTAG assez chère pour programmer la puce.</p>
-</li>
-<li>
-<p>Port de reset défini en trace également.</p>
-</li>
-<li>
-<p>antenne bluetooth en bord de circuit, sans plan de masse proche.</p>
-</li>
-<li>
-<p>Passage alternatif du VBUS du port USB vers l’alim 3.3V pour récupèrer le circuit si les batteries tombent a 0V.</p>
-</li>
+<li>épaisseur minimum des tracks: 4 mil (0,1016 mm)</li>
+<li>espacement minimum des tracks: 4 mil (0,1016 mm)</li>
+<li>Diamètre interne minimum des Vias : 0.3 mm</li>
+<li>Via in padds: Normalement obligatoire pour les BGA, j’ai sacrifié plusieurs GPIO pour contourner la limitation. Pas nécessaire donc</li>
+<li>Nombre de couches : 4 minimum pour ce type de circuits</li>
+<li>Finition de la surface : ENIG (revêtement or)</li>
+<li>Composants sur un seul coté</li>
 </ul>
+<h2 id="schématique">Schématique</h2>
+<p>La première étape est de peupler les composants complémentaires des composants choisis durant la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2</a>.</p>
+<p>C&rsquo;est l&rsquo;étape la plus longue et fastidieuse, ou il faut prendre les datasheet de chaque composants et sélectionner les composants qui vont lui permettre de fonctionner.
+La sélection des composants m&rsquo;a pris plusieurs semaines, et je me suis aidé d&rsquo;un LLM afin d&rsquo;être sur de ne pas oublier de vérifier un des paramètres d&rsquo;un composant.</p>
+<p>Pas exemple, le BQ25713 nécessite des condensateurs avec un certain derating, voltage, capacité&hellip; Mais également des MOSFETs avec une dizaine de paramètres à vérifier, etc.
+Certains composants nécessitent des calculs pour obtenir les valeurs à sélectionner, c&rsquo;est un gigantesque casse-tête.</p>
+<p>Mais après plusieurs semaines à lire des documents techniques, plusieurs semaines à relier les composants entre eux, et plusieurs semaines à se relire pour vérifier qu&rsquo;il n&rsquo;y a pas d&rsquo;erreurs, voici le résultat :</p>
+
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-zoom hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/33v_line.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/33v_line.png" alt="33v line" />
+				    </div>
+			      <figcaption>
+		          <p>33v line</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/33v_line.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/balancer.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/balancer.png" alt="Balancer" />
+				    </div>
+			      <figcaption>
+		          <p>Balancer</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/balancer.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/liion_charger.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/liion_charger.png" alt="Liion charger" />
+				    </div>
+			      <figcaption>
+		          <p>Liion charger</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/liion_charger.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/microcontroler.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/microcontroler.png" alt="Microcontroler" />
+				    </div>
+			      <figcaption>
+		          <p>Microcontroler</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/microcontroler.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/ports.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/ports.png" alt="Ports" />
+				    </div>
+			      <figcaption>
+		          <p>Ports</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/ports.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/power_gate.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/power_gate.png" alt="Power gate" />
+				    </div>
+			      <figcaption>
+		          <p>Power gate</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/power_gate.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/sensor_imu.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/sensor_imu.png" alt="Sensor imu" />
+				    </div>
+			      <figcaption>
+		          <p>Sensor imu</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/sensor_imu.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/sensor_mems.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/sensor_mems.png" alt="Sensor mems" />
+				    </div>
+			      <figcaption>
+		          <p>Sensor mems</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/sensor_mems.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/usb_negociation.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/usb_negociation.png" alt="USB negociation" />
+				    </div>
+			      <figcaption>
+		          <p>USB negociation</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/usb_negociation.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/usb_protection.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/usb_protection.png" alt="USB protection" />
+				    </div>
+			      <figcaption>
+		          <p>USB protection</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/usb_protection.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/usb_signal.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/usb_signal.png" alt="USB signal" />
+				    </div>
+			      <figcaption>
+		          <p>USB signal</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/usb_signal.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+				<div class="box">
+				  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+				    <div class="img" style="background-image: url('/static/lamp_da_2/electrical/vbus_gate.png');" >
+				      <img itemprop="thumbnail" src="/static/lamp_da_2/electrical/vbus_gate.png" alt="Vbus gate" />
+				    </div>
+			      <figcaption>
+		          <p>Vbus gate</p>
+			      </figcaption>
+				    <a href="/static/lamp_da_2/electrical/vbus_gate.png" itemprop="contentUrl"></a>
+				  </figure>
+				</div>
+</div>
+
+<p>Chaque bloc logique est représenté par une boite, et les entrées sorties sont représentées par des flèches bleues.
+On peux remarquer que le microcontrôleur à des sorties GPIO, qui seront reliées à des emplacements physiques sur le PCB, afin de permettre d&rsquo;utiliser cette carte électronique comme carte programmable standard.</p>
+<p>Une fois que le schematics est posé, il est temps de passer au routage.</p>
+<h2 id="conception-du-pcb">Conception du PCB</h2>
+<h3 id="forme-générale">Forme générale</h3>
+<p>La première étape du routage va être de déterminer la forme du PCB, ce qui va contraindre le placement des composants.</p>
+<p>Comme j&rsquo;utilise un tube de diamètre interne 46 mm, je vais faire un PCB circulaire de 44 mm de diamètre afin d&rsquo;avoir un peu de marge lors de l&rsquo;installation.
+C&rsquo;était une bonne décision en rétrospective, le diamètre interne des tubes n&rsquo;était pas fiable.</p>
+<p>Je vais ensuite ajouter des encoches circulaires de 3.4 mm de diamètre, à 60 degrés d&rsquo;écart pour laisser passer des pièces mécaniques.
+Ces encoches asymétriques servent également à toujours installer le PCB de la même façon dans le tube.
+Cette régularité permet de calibrer une seule fois la position et rotation de l&rsquo;IMU et réutiliser cette calibration dans toutes les lampes.
+Cela permet aussi d&rsquo;avoir toujours les mêmes distances entre les connecteurs physiques et les connecteurs du PCB.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_shape.png" alt="Format final du PCB"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_shape.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Format final du PCB</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<h3 id="zonage-des-composants">Zonage des composants</h3>
+<p>Maintenant que la forme du PCB est fixée, on doit déterminer ou vont aller les composants.</p>
+<p>Chaque composant appartient à une catégorie, qui va déterminer sa position sur le PCB.
+<strong>Les composants de puissance</strong> seront placés à une extrémité du PCB, le plus loin possible des capteurs et des composants sensibles qui risqueraient d&rsquo;être dérangés par leurs émissions.
+<strong>Les composants USB</strong> seront placés proches du port USB.
+<strong>Les capteurs</strong> seront placés le plus loin possible des composants de puissance et proche du microcontrôleur.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Composant</th>
+          <th>Catégorie</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>NRF52840</td>
+          <td>Contrôle, USB</td>
+      </tr>
+      <tr>
+          <td>FUSB302</td>
+          <td>USB</td>
+      </tr>
+      <tr>
+          <td>TPD8S300</td>
+          <td>USB</td>
+      </tr>
+      <tr>
+          <td>BQ25713</td>
+          <td>Puissance / charge</td>
+      </tr>
+      <tr>
+          <td>BQ76905</td>
+          <td>Batteries</td>
+      </tr>
+      <tr>
+          <td>TPS629206</td>
+          <td>Puissance</td>
+      </tr>
+      <tr>
+          <td>UCS3205T</td>
+          <td>Puissance</td>
+      </tr>
+      <tr>
+          <td>LSM6DS3</td>
+          <td>Capteur</td>
+      </tr>
+      <tr>
+          <td>Micro Mems</td>
+          <td>Capteur</td>
+      </tr>
+  </tbody>
+</table>
+<p>Le placement des composants contraint également le placement des ports de la carte.
+Sur l&rsquo;image ci-dessous, vous pourrez noter la position du port des Leds, du port USB, du connecteur des batteries et des GPIO.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_areas.png" alt="Zone des composants sur le PCB"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_areas.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Zone des composants sur le PCB</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>J’ai dû réduire le diamètre de deux points de la trace BGA du NRF52840 pour faire passer une piste entre deux connections.
+Ce n&rsquo;est pas une pratique standard, mais sans avoir de via-in-pads, je n&rsquo;avais pas le choix.
+Heureusement ça n&rsquo;a posé aucun problèmes en fonctionnement.</p>
+<h3 id="routage">Routage</h3>
+<p>J&rsquo;utiliserai les rôles de couche suivante :</p>
+<ul>
+<li>Couche supérieure : Signal/puissance.</li>
+<li>Couche interne 1 : Common ground plane.</li>
+<li>Couche interne 2 : Power lines.</li>
+<li>Couche inférieure : Signal/puissance.</li>
+</ul>
+<p>Ci-dessous, des images du placement des composants sur le PCB.
+Ce processus est itératif, je n&rsquo;ai pas obtenu ce résultat en un essai, mais en plusieurs semaines de travail.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_components.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_components.png" alt="Placement des composants"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_components.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Placement des composants</p><p class="attr">Source: NKON</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_components_render.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_components_render.png" alt="Placement des composants (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_components_render.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Placement des composants (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
+<p>Je place d&rsquo;abord les composants principaux, puis leurs condensateurs de découplage.
+Ces condensateurs doivent être au plus près de la pin à laquelle ils sont associés, et servent à réguler la tension en entrée.</p>
+<p>Une fois ces composants placés, j&rsquo;ajoute les plus gros composants (Inducteur, rangées de condensateurs, connecteurs sur circuit), puis les composants de puissance qui nécessitent des pistes larges et droites (MOSFET, Shunts).</p>
+<p>L&rsquo;antenne est placée dans une zone isolée du reste du circuit, et il faudra se rappeler lors du routage qu&rsquo;aucuns fils ne doit passer à portée pour ne pas brouiller le signal.</p>
+<p>Les composants de sécurité doivent être placés au plus près des éléments qu&rsquo;ils protègent, en particulier les composants protégeant des décharges électrostatiques.</p>
+<p>Une fois les composants principaux placés, on peut commencer le routage.
+C&rsquo;est une étape que je trouve satisfaisante, comme résoudre un labyrinthe qui n&rsquo;a pas forcément de solutions.</p>
+<p>L&rsquo;épaisseur des pistes et leur espacement minimum est la plus grosse contrainte, qui oblige de bien planifier certains passages étroits entre des composants.
+De même, le placement des vias (trous de connexion à travers le PCB) est critique et contraint beaucoup le routage.</p>
+<p>Quelques règles générales s&rsquo;appliquent pour éviter des problèmes de CEM (Compatibilité ÉlectroMagnétique) :</p>
+<ul>
+<li>Peu de pistes parallèles, surtout si elles transportent des signaux hautes fréquences.</li>
+<li>Des angles les moins aigus possibles sur les pistes, plutôt si elles transportent des signaux hautes fréquences.</li>
+<li>Croiser les pistes entre les couches : Une couche ne devrait pas être routée parallèlement à une autre couche.</li>
+<li>Ne pas séparer le plan de masse en sections. Garder la plus grande surface possible</li>
+<li>et bien d&rsquo;autres, mais c&rsquo;est un métier à part entière.</li>
+</ul>
+<p>Certaines pistes doivent avoir une longueur égale à une autre, comme les pistes D+ et D- de l&rsquo;USB, qui doivent avoir une longueur très similaire.</p>
+<p>Les documentations de composants peuvent parfois recommander des agencements de pistes et plans.
+Il est important de les respecter dans la mesure où ces décisions font du sens.
+J&rsquo;ai par exemple perdu beaucoup de temps à implémenter deux plans de masses (un pour la haute puissance et un pour la basse puissance), jusqu&rsquo;à une consultation avec un ingénieur en électronique de mon entreprise qui m&rsquo;a conseillé de ne pas le faire.
+Et après ces modifications, j&rsquo;ai observé moins de problèmes qu&rsquo;avec le design conseillé.</p>
+<p>J&rsquo;ai utilisé un port JTAG pour la programmation initiale du microcontrôleur.
+C&rsquo;est un modèle de port sans composant, uniquement une trace sur le PCB, ce qui le rend gratuit à installer.
+Il nécessite cependant une sonde JTAG (70€) pour être utilisé.
+Dans mon cas, c&rsquo;est très avantageux, car je peux économiser le coût du connecteur sur tous les circuits.</p>
+<p>J&rsquo;ai utilisé la même logique pour le port de Reset du microcontrôleur : plutôt qu&rsquo;ajouter un bouton qui ne servira jamais, j&rsquo;ai ajouté deux pads très proche, qui peuvent être touchés avec un objet conducteur pour remettre le microcontrôleur à zéro.</p>
+<p>Un autre aspect important a été de penser en avance au placement des connecteurs sur une face du PCB.
+Le connecteur USB, le bouton et les Leds seront au-dessus du PCB, mais la batterie sera en dessous.
+J&rsquo;ai donc placé le port femelle du connecteur XH en dessous du PCB.</p>
+<p>Le dernier point important est la largeur des pistes.
+Certaines pistes de ce PCB vont transporter jusqu&rsquo;à 3 ampères à 20 volts, et doivent avoir une grande largeur en conséquence.
+Cette largeur dépend de l&rsquo;épaisseur des couches et la qualité du cuivre, et est donc dépendante du fabricant.
+Pour ma part, j&rsquo;ai pu tester avec des prototypes que la largeur que j&rsquo;avais choisis était suffisante.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_routed.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_routed.png" alt="Routage final (sans plan de masse)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_routed.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Routage final (sans plan de masse)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_routed_front_render.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_routed_front_render.png" alt="Routage final avant (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_routed_front_render.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Routage final avant (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_routed_back_render.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_routed_back_render.png" alt="Routage final arrière (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_routed_back_render.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Routage final arrière (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
+<p>On remarque bien sur cette image à quel point la place était limitée pour faire rentrer tous les composants.</p>
+<p>J&rsquo;ai fait en sorte que les lignes I2C traversent tout le PCB en gardant la même longueur, en les faisant également passé par des pads en dessous du PCB.
+Ces pads serviront à débugger les communications au besoin et ajouter des nouveaux composants sur la ligne au besoin.</p>
+<p>Une fois tout ce processus terminé, le PCB est prêt à être construit.</p>
 <h2 id="prototypes">Prototypes</h2>
-<p>En tout, six générations de prototypes de circuit ont été construits. Ils représentent la vrai temporalité du projet, avec tous les problèmes qui ont été corrigés. Les résolutions de ces problèmes ont été mentionnés dans les specifications comme des données d’entrée, mais dans les faits ils ont été le fruit d’un travail itératif.</p>
-<h3 id="proto-1">Proto 1</h3>
-<p>X5 circuits, pas un seul ne fonctionne !!
-Impossible de programmer un seul circuit, pas de réponse du port USB.
-→ Je pensais que la puce était programmable par USB grace a l’interface native USB de la puce, mais non. Il faut lui charger un bootloader spécial, mais je n’avais pas prévu de port pour ca, oups !
-Le chargeur ne charge pas les batteries.
-→ J’ai implémenté un chargeur buck uniquement, pas boost. Une autre erreur qui rend le circuit inutilisable.
-C’est mon premier PCB custom, donc pas un drame de s’être planté</p>
-<h3 id="proto-2">Proto 2</h3>
-<p>X5 circuits, programmables graces a un bootloader que j’ai fait, mais inutilisables.
-USB jamais détecté. USB 5V jamais détecté.
-→ J’avais une résistance en trop qui produisait un drop de tension trop important, et donc pas de détection du signal.
-Le composant de negociation USB PD ne répond jamais sur la ligne i2c. Je n’ai jamais trouvé pourquoi, je l’ai changé par une version similaire avec le même pinout dans les futures versions et ca marche sans soucis.</p>
-<h3 id="proto-3">Proto 3</h3>
-<p>X5 circuits, rien ne marche !!! Pas de réponse USB, pas moyen de programmer la puce, rien de rien.
-→ L’usine a assemblé le composant du chargeur avec une rotation de 90°, ce qui provoque un cours circuit et la destruction des circuits… Refut de remboursement, et un simple bon d’achat d’une valeur de 2.5% de la valeur de la commande. J’ai changé de fournisseur, JLC PCB c’est plus jamais. PCB WAY était plus cher mais a fourni un travail de bien meilleure qualité.</p>
-<p>Aprés avoir trouvé le problème, j’ai dessoudé puis ressoudé le composant sur les boards restantes avec la bonne orientation, et j’ai pu tester les 2 boards survivantes qui fonctionnaient.
-La charge des batteries se passe super. Negociation de puissance USB-PD fontionne aussi, mais le circuit entier crame au bout de quelques minutes de charge quand VBUS est a 20V.
-→ la diode de régulation 5V ne tient pas la charge et crame au bout d’un moment, ce qui fait monter la ligne de signal a 20V, et crame donc le microcontroleur.
-Les GPIOs arretent de fonctionner rapidement quand les LEDs sont allumées.
-→ Une des GPIO utilisée pour mesurer la tension du régulateur utilisé pour les LEDs subit un pic de tension au démarrage de l’alimentation externe. Ce qui détruit la GPIO et ses voisines.</p>
-<h3 id="proto-4">Proto 4</h3>
-<p>X10 circuits, 5 fonctionnent.
-Premier test vraiment concluant, ou 5 lampes qui fonctionnent parfaitement ont pu être construites et données a des amis qui ont pu tester, faire des retours et programmer dessus eux même.</p>
-<p>Certains circuits refusent le bootloader et je ne peux rien en faire. D’autres plantent aléatoirement.
-→  Une des lampes qui plante prend juste de plus en plus de temps a faire un cycle principal, ce qui veux dire que le clock cycle s’allonge juqu’a planter le core.
-Pas sur de la raison, mais j’ai vu plus tard que le cristal oscillateur  nécéssitait un type trés précis de condensateur. Peut être que le peu de variation des condensateurs rend le cristal instable. Aprés un changement du cristal et condensateurs, je n’ai plus le problème dans les nouvelles versions.
-Les chargeurs compatibles power delivery plantent au moment ou ils sont branchés:
-→ Appel de courrant trop fort au démarrage des composants. Ajout d’une VBUS gate pour controler a quel moment on autorise les composants de charge a acceder a la ligne VBUS
-L’OTG ne fonctionne pas. La GPIO qui correspond a l’allumage ne passe jamais en état haut et le composant refuse d’activer l’OTG
-→ Plusieurs conditions sont a respectées, dont le fait que la ligne VBUS doit être sous les 3.2V pour l’activation de l’OTG. L’ajout de la VBUS gate permet de règler ce probleme également.
-Cette version était encore en 4S1P, et nécéssitait donc d’avoir un BMS et équlibreur externe.
-→ Modification pour avoir une batterie 3S1P, et ajout d’un équilibreur sur la board.
-→ C’est a ce moment la que j’ai décidé d’utiliser la sortie OTG pour alimenter les LEDs ! Et j’ai donc ajouté la OutputGate.</p>
-<h3 id="proto-5">Proto 5</h3>
-<p>10 circuits, 10 circuits fonctionnels :) Enfin c’est au point ! Mais il restait deux erreurs principales:
-Aucun bootloader flashable, aucunes puces programmables
-→ J’ai inversé deux condensateurs 10nF avec des 10uF… Dessoudage, ressoudage et ca marche super
-OutputGate ne fonctionne pas, elle ne bloque jamais la tension VBUS.
-→Utilisation d’un MOSFET N plutôt qu’un P… Dessousage, ressoudage et ca marche super
-Deux erreurs d’inattention donc ! Peut être que quelques jours de pose et plusieurs relectures auraient pu éviter ca.
-Difficile de souder les 4 fils de la batterie au circuit sans faire de cours circuits. J’ai cramé quelques circuits a cause de ca
-→ Ajout d’une trace de connecteur femelle XH pour connecter la batterie. Ca sera plus pratique pour la grosse production et ca évitera des erreurs d’assemblage
-Apparition du scintillement des LEDs
-→ Toujours pas résolu a ce jour !
-Les rubans indexables explosent quand on utilise la charge rapide !!
-→ J’utilisais une low side gate, qui ouvre donc le circuit au niveau du GND. Ca marche super SAUF QUE le ruban indexable a également un fil de contrôle relié a une GPIO. Donc le courant trouve un passage depuis le VBUS jusqu’au GND par la GPIO, ce qui fait griller le ruban et la GPIO, oupssssss
-Possibilité de réparer avec une diode sur le fil de contrôle, au risque qu’un utilisateur bricolant sa propre lampe oublie la diode et fasse exploser son circuit
-Ou remplacer la low side gate par une high side, moins efficace et un peu plus chere, mais bien plus foolproof. J’ai choisi cette option.</p>
-<h3 id="proto-6">Proto 6</h3>
-<p>Maintenant que tout est résolu, il est temps de faire la grosse commande de 300 circuits, presque 7000 euros. Pas interet de se planter a ce moment !
-J’ai testé la high side gate chez moi des dizaines de fois pour être sur qu’elle fonctionnera directement, mais c’était quand même un grand risque de commander tout les circuits sans tester cette grosse modification. Pas grave ! Je vivrai avec ma déception si c’est un echec !
-J’ai également ajouté des modifications mineures, comme des pullup sur les lignes de GPIO pour allèger leur charge, remplacer les MOSFET P par la même version mais a 30V plutôt que 20 pour la sécurité. Également ajouté une diode sur la GPIO 3.3V, pour éviter des erreurs utilisateur, et j’ai remplacé les résistances du balancer par des plus petits formats pour que tout rentre sur le circuit. Ca chauffera plus, mais c’est pas bien grave.
-On clique, on paye, on stress pendant 2 mois, et un carton bien protègé arrive a la maison: les 300 circuits.
-Et la, miracle ! Tout fonctionne sans accros !! soulagement et arrêt momentanné de la chute de cheveux due au stress.
-Il y a quand même deux problèmes durant les tests:</p>
+<p>La section précédente a présenté le résultat final d&rsquo;un long processus.
+Je ne suis pas formé à la conception de circuits intégrés, et j&rsquo;ai appris à l&rsquo;usage (ce circuit est mon premier PCB custom), et j&rsquo;ai donc fait mon lot d&rsquo;erreurs.</p>
+<p>En tout, six générations de prototypes de circuit ont été construits.
+Ils représentent la vraie temporalité du projet, avec tous les problèmes qui ont été corrigés.
+Les résolutions de ces problèmes ont été mentionnés dans les spécifications comme des données d’entrée, mais dans les faits, ils ont été le fruit d’un travail itératif.</p>
+<p>Revenons sur ces prototypes et les causes de leur décès :</p>
+<h3 id="prototype-1--5-circuits">Prototype 1 : 5 circuits</h3>
+<p>Ce sont mes tout premier PCB custom, et en conséquence pas un seul ne fonctionne.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Problème</th>
+          <th>Cause</th>
+          <th>Correction</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Impossible de programmer la puce</td>
+          <td>Oublie d&rsquo;un port de programmation bootloader</td>
+          <td>Ajout de pads reliés aux pins de programmation</td>
+      </tr>
+      <tr>
+          <td>Les batteries ne chargent pas avec moins de 14 V sur le port USB</td>
+          <td>Le chargeur est un buck, pas buck boost</td>
+          <td>Changement pour un chargeur buck-boost</td>
+      </tr>
+  </tbody>
+</table>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_1.png" alt="Prototype 1 (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_proto_1.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Prototype 1 (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>On peut voir sur ce circuit qu&rsquo;un composant en haut a droite est réservé pour l&rsquo;alimentation des Leds : c&rsquo;est un contrôleur CC.
+Je n&rsquo;avais pas encore réalisé que le mode OTG était capable de jouer ce rôle.</p>
+<h3 id="proto-2--5-circuits">Proto 2 : 5 circuits</h3>
+<p>En utilisant le port de programmation, j&rsquo;ai cette fois pu ajouter un bootloader qui permet de programmer les circuits via USB.</p>
+<p>Cette fois-ci le circuit est bien programmable via USB, et j&rsquo;ai pu tester avec succès la charge des batteries et l&rsquo;alimentation externe des Leds.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Problème</th>
+          <th>Cause</th>
+          <th>Correction</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>USB jamais détecté</td>
+          <td>Résistance qui produit un drop de tension trop fort sur VBUS</td>
+          <td>Enlever cette résistance</td>
+      </tr>
+      <tr>
+          <td>Composant USB-PD pas présent sur la ligne I2C</td>
+          <td>Cause inconnue</td>
+          <td>Changement pour un composant similaire avec le même format et pinout</td>
+      </tr>
+  </tbody>
+</table>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_2.png" alt="Prototype 2 (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_proto_2.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Prototype 2 (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>Ce circuit comporte déjà les traits du circuit final, avec son port de programmation et le port de reset en pads, et le module de charge de la famille BQ257.</p>
+<p>Il n&rsquo;est pas équipé d&rsquo;un équilibreur, car mon plan initial était de créer un circuit à part avec un BMS et un équilibreur dessus.
+La lampe aurait donc eu deux PCB custom.
+Quand j&rsquo;ai gagné en maturité sur la conception de circuits intégrés, j&rsquo;ai vite corrigé ce design inefficace.</p>
+<h3 id="proto-3---5-circuits">Proto 3 :  5 circuits</h3>
+<table>
+  <thead>
+      <tr>
+          <th>Problème</th>
+          <th>Cause</th>
+          <th>Correction</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Rien ne fonctionne, pas de réponse USB, pas de possibilité de flasher le bootloader&hellip;</td>
+          <td>L&rsquo;usine à assembler le BQ257 avec la mauvaise orientation</td>
+          <td>Dessouder et ressouder le composant</td>
+      </tr>
+  </tbody>
+</table>
+<p>J&rsquo;ai grillé 3 circuits avant de comprendre la cause du problème.
+L&rsquo;usine (via JLC-PCB) a refusé tout remboursement et m&rsquo;a à la place fournie un bon d&rsquo;achat d&rsquo;une valeur de 2.5% le montant de la commande.
+J&rsquo;ai donc changé de fournisseur et je ne travaillerai plus jamais avec eux.</p>
+<p>J&rsquo;utilise maintenant PCB WAY, qui sont plus chers, mais dont je n&rsquo;ai jamais eu à me plaindre.
+Leur travail est à mon avis de bien meilleure qualité.</p>
+<p>Après réparation des deux derniers circuits encore fonctionnels, j&rsquo;ai pu continuer les tests de cette génération.</p>
+<p>La négociation USB-PD fonctionne sans accrocs, la charge des batteries est parfaite, le circuit est stable en tension et température.
+L&rsquo;alimentation des Leds fonctionne sans accros également.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Problème</th>
+          <th>Cause</th>
+          <th>Correction</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Si VBUS monte au-dessus de 15V, le PCB brûle</td>
+          <td>La méthode utilisée pour avoir un VBUS 5V est mauvaise</td>
+          <td>Remplacement de la diode Zener par un LDO</td>
+      </tr>
+      <tr>
+          <td>Les GPIO se détruisent quand le ruban Leds est alimenté</td>
+          <td>Une des GPIO est utilisée pour mesurer la tension de la sortie Leds, qui monte bien au-dessus de la limite de voltage (à cause du contrôleur CV)</td>
+          <td>Ne pas mesurer la tension de sortie avec une GPIO</td>
+      </tr>
+  </tbody>
+</table>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_3.png" alt="Prototype 3 (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_proto_3.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Prototype 3 (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<h3 id="proto-4--10-circuits">Proto 4 : 10 circuits</h3>
+<p>Avec la dernière génération en grande majorité fonctionnelle, j&rsquo;ai commandé plus de PCB qu&rsquo;avant.</p>
+<p>Sur les 10 circuits, cinq fonctionnent parfaitement !</p>
+<p>Les autres ont été détruits dans des tests assez violents.
+J&rsquo;ai par exemple tenté d&rsquo;alimenter un ruban RGB avec le contrôleur CV, ce qui a juste produit des surtentions sur la GPIO de contrôle des Leds indexables.
+D&rsquo;autres tests de sureté sur les surtensions/courants sur VBUS et la batterie ont aussi eu raison de certains circuits.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Problème</th>
+          <th>Cause</th>
+          <th>Correction</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>un des circuits plante régulièrement</td>
+          <td>Pas confirmée, mais surement due aux oscillateurs pas adaptés au NRF52840</td>
+          <td>Remplacement des oscillateurs plus compatibles</td>
+      </tr>
+      <tr>
+          <td>Les chargeurs USB-PD plantent quand brancher</td>
+          <td>Appel de courant trop fort par le BQ257</td>
+          <td>Ajout de la VBUS gate</td>
+      </tr>
+      <tr>
+          <td>Mode OTG refuse de démarrer</td>
+          <td>Une des conditions d&rsquo;activation n&rsquo;est pas respectée : VBUS &lt; 3.2 V</td>
+          <td>Ajout de la VBUS gate</td>
+      </tr>
+  </tbody>
+</table>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_4.png" alt="Prototype 4 (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_proto_4.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Prototype 4 (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>Cette version était encore avec des batteries 18650 en configuration 4S1P, et nécessitait le PCB supplémentaire pour faire BMS et équilibreur.</p>
+<p>J&rsquo;ai utilisé les 5 circuits fonctionnels pour construire cinq lanternes, prêtées à des amis pour qu&rsquo;ils puissent tester et éprouver le système.</p>
+<h3 id="proto-5--10-circuits-v10">Proto 5 : 10 circuits (V1.0)</h3>
+<p>10/10, tous les circuits sont fonctionnels !!</p>
+<p>Cette version est la première à utiliser le mode OTG comme alimentation des Leds, et a donc aussi ajouté la Output gate.
+Elle est par ailleurs la version ou l&rsquo;équilibreur et d&rsquo;autres sécurités font leur apparition sur le même PCB.
+La configuration des batteries a aussi été changée pour des batteries 21700 en configuration 3S1P.</p>
+<p>Utilisation du port et de la sonde JTAG pour flasher les bootloader plutôt que les fils à souder comme précédemment.</p>
+<p>Cependant, ces circuits ne fonctionnaient pas dès la réception :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Problème</th>
+          <th>Cause</th>
+          <th>Correction</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bootloader flashable, mais sans réponse</td>
+          <td>utilisation de condensateurs 10 µF plutôt que 10 nF autour des oscillateurs</td>
+          <td>Remplacer par des 10 nF</td>
+      </tr>
+      <tr>
+          <td>L&rsquo;output gate est toujours passante</td>
+          <td>Un MOSFET P a été échangé avec un P</td>
+          <td>Changer le MOSFET pour un type P</td>
+      </tr>
+      <tr>
+          <td>Si VBUS &gt; 15 V, les Leds indexables explosent</td>
+          <td>Utilisation d&rsquo;une low side gate, fuites de courant via le fil de contrôle indexable</td>
+          <td>Changement pour une high side gate. Temporairement arrangé avec une diode</td>
+      </tr>
+      <tr>
+          <td>Léger scintillement des Leds jaunes</td>
+          <td>Inconnue</td>
+          <td>Inconnue</td>
+      </tr>
+  </tbody>
+</table>
+<p>Sur cette génération, j&rsquo;ai commencé à fatiguer de faire des cours circuits en soudant les fils de batteries (hot wires), et j&rsquo;ai donc ajouté le connecteur XH sur la prochaine.</p>
+<p>Le PCB commence à être bien mature, la prochaine génération sera celle de la production de masse.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_5.png" alt="Prototype 5 (render)"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_proto_5.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Prototype 5 (render)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<h3 id="génération-6--300-circuits-v11">Génération 6 : 300 circuits (V1.1)</h3>
+<p>La dernière génération est celle qui servira lors de la petite production de 200 lanternes.</p>
+<p>Le circuit est déjà fonctionnel, mais j&rsquo;ai quand même risqué des modifications de dernier moment :</p>
 <ul>
-<li>Les rubans jaunes scintillent: J’ai mesuré a l’oscilloscope une oscillation de 15Hz de trés faible amplitude, mais sans jamais de succés pour l’attenuer plus.</li>
-<li>Quand le système est très chaud, VBUS recoit un voltage “fantome” de environ 4.5V. D’ou vient il ?? aprés des jours de recherche, je comprend enfin: c’est le fil de signal de connection, qui passe par le LDO 5V: il est relié a la batterie par une diode shottky pour éviter le backfeeding. Cette diode devient passante quand la température augmente et fait fuiter un peu de courant sur la ligne de signal. Ca produit un voltage sur cette ligne, qui repasse par le LDO a l’envers, et arrive sur VBUS.
-Une correction possible est une pulldown sur cette ligne, mais c’est un peu tard. J’ai donc implémenté un fix software qui ignore ce voltage dans certaines conditions. Il ne dépasse jamais 4.5V donc n’est pas dangereux pour d’éventuels appareils sur VBUS.</li>
+<li>Utilisation de la High side gate. C&rsquo;était risqué de ne pas tester ce changement sur un PCB avant, mais j&rsquo;ai effectué des dizaines de tests avec les composants exacts avant de passer commande donc j&rsquo;étais assez sûr de moi.</li>
+<li>Ajout de pullups sur beaucoup de lignes en ayant besoin plutôt que se reposer sur les pullups intégrés au NRF52840.</li>
+<li>Remplacement des MOSFET P par une autre version identique, mais avec une tolérance à 30 V plutôt que 20 pour avoir une marge de sécurité. Ce changement était risqué sans tester le composant en avance.</li>
+<li>Ajout d&rsquo;une diode sur la ligne 3.3 V disponible à l&rsquo;utilisateur.</li>
+<li>Remplacement des résistances de l&rsquo;équilibreur par des versions plus petites. Elles chaufferont plus, mais me permettent d&rsquo;utiliser un connecteur de batterie JST-XH.</li>
+</ul>
+<p>La commande totale s&rsquo;élève à 6364€, et l&rsquo;attente commence&hellip;
+Les circuits arrivent un mois plus tard et les tests effectués dans l&rsquo;anxiété révélèrent <strong>que tout fonctionne parfaitement</strong> !</p>
+<p>Les circuits V1.1 ont tout de même des petits problèmes, que j&rsquo;ai corrigé pour la V1.1 pour la plupart :</p>
+<ul>
+<li>Les rubans jaunes scintillent : C&rsquo;est à peine visible, mais je mesure une oscillation de 15 Hz avec une amplitude de quelques millivolts qui suffit à produire un scintillement visible. Je n&rsquo;ai toujours pas trouvé la cause.</li>
+<li>Quand le système est très chaud, un voltage de 4.5 V apparait sur VBUS même si aucun cable USB n&rsquo;est branché. J&rsquo;ai identifié que ce voltage provient d&rsquo;une diode Schottky qui devient passante au-dessus de 70°C. Ajout d&rsquo;une pulldown sur la ligne VBUS_5V. En attendant, j&rsquo;ai développé un fix Software pour les circuits V1.0.</li>
 </ul>
 <p>Et on y est ! Des circuits fonctionnels, tout le design en place, il est temps de construire des lampes.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_v11_back.jpeg');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_v11_back.jpeg" alt="PCB version 1.1 arrière"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_v11_back.jpeg" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>PCB version 1.1 arrière</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_v11_front.jpeg');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_v11_front.jpeg" alt="PCB version 1.1 avant"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_v11_front.jpeg" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>PCB version 1.1 avant</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_test_1.jpeg');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_test_1.jpeg" alt="Test d&#39;un PCB avec des condensateurs électrolytiques"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_test_1.jpeg" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Test d&#39;un PCB avec des condensateurs électrolytiques</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/rgb_lamp_test.jpeg');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/rgb_lamp_test.jpeg" alt="Test de la lampe colorée avec un circuit 1.0"/>
+    </div>
+    <a href="/static/lamp_da_2/rgb_lamp_test.jpeg" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Test de la lampe colorée avec un circuit 1.0</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>Après 5 prototypes, la version 6 est fonctionnelle et prête à être intégrée.</p>
+<p>Le design à été revu avec un ingénieur qualifié avant le prototype 5, et ces circuits sont déjà en circulation depuis octobre 2025 avec beaucoup de succès.</p>
+<p>La <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4</a> portera sur la conception mécanique des lampes.</p>
           
           
 
@@ -651,21 +1242,26 @@ Une correction possible est une pulldown sur cette ligne, mais c’est un peu ta
     </div>
     <nav class="toc-body"><nav id="TableOfContents">
   <ul>
-    <li><a href="#conception-électronique">Conception électronique</a>
+    <li><a href="#évaluation-des-optimisations-de-coût-de-fabrication">Évaluation des optimisations de coût de fabrication</a></li>
+    <li><a href="#schématique">Schématique</a></li>
+    <li><a href="#conception-du-pcb">Conception du PCB</a>
       <ul>
-        <li><a href="#organisation-générale">Organisation générale</a></li>
+        <li><a href="#forme-générale">Forme générale</a></li>
+        <li><a href="#zonage-des-composants">Zonage des composants</a></li>
+        <li><a href="#routage">Routage</a></li>
       </ul>
     </li>
     <li><a href="#prototypes">Prototypes</a>
       <ul>
-        <li><a href="#proto-1">Proto 1</a></li>
-        <li><a href="#proto-2">Proto 2</a></li>
-        <li><a href="#proto-3">Proto 3</a></li>
-        <li><a href="#proto-4">Proto 4</a></li>
-        <li><a href="#proto-5">Proto 5</a></li>
-        <li><a href="#proto-6">Proto 6</a></li>
+        <li><a href="#prototype-1--5-circuits">Prototype 1 : 5 circuits</a></li>
+        <li><a href="#proto-2--5-circuits">Proto 2 : 5 circuits</a></li>
+        <li><a href="#proto-3---5-circuits">Proto 3 :  5 circuits</a></li>
+        <li><a href="#proto-4--10-circuits">Proto 4 : 10 circuits</a></li>
+        <li><a href="#proto-5--10-circuits-v10">Proto 5 : 10 circuits (V1.0)</a></li>
+        <li><a href="#génération-6--300-circuits-v11">Génération 6 : 300 circuits (V1.1)</a></li>
       </ul>
     </li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></nav>
   </div>
