@@ -127,7 +127,7 @@
     "name": "HUB Logs"
   },
   "timeRequired": "PT15M",
-  "wordCount": 2984
+  "wordCount": 3135
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2984&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3135&nbsp;mots
   
   
   
@@ -371,7 +371,7 @@
 <h2 id="schématique">Schématique</h2>
 <p>La première étape est de peupler les composants complémentaires des composants choisis durant la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2</a>.</p>
 <p>C&rsquo;est l&rsquo;étape la plus longue et fastidieuse, ou il faut prendre les datasheet de chaque composants et sélectionner les composants qui vont lui permettre de fonctionner.
-La sélection des composants m&rsquo;a pris plusieurs semaines, et je me suis aidé d&rsquo;un LLM afin d&rsquo;être sur de ne pas oublier de vérifier un des paramètres d&rsquo;un composant.</p>
+La sélection des composants m&rsquo;a pris plusieurs semaines, et je me suis aidé d&rsquo;un LLM pour vérifer mes choix de composants afin d&rsquo;être sûr de ne pas oublier de vérifier un des paramètres d&rsquo;un composant.</p>
 <p>Pas exemple, le BQ25713 nécessite des condensateurs avec un certain derating, voltage, capacité&hellip; Mais également des MOSFETs avec une dizaine de paramètres à vérifier, etc.
 Certains composants nécessitent des calculs pour obtenir les valeurs à sélectionner, c&rsquo;est un gigantesque casse-tête.</p>
 <p>Mais après plusieurs semaines à lire des documents techniques, plusieurs semaines à relier les composants entre eux, et plusieurs semaines à se relire pour vérifier qu&rsquo;il n&rsquo;y a pas d&rsquo;erreurs, voici le résultat :</p>
@@ -606,6 +606,13 @@ Sur l&rsquo;image ci-dessous, vous pourrez noter la position du port des Leds, d
 </div>
 
 
+<p>Code couleur de l&rsquo;image ci-dessus :</p>
+<ul>
+<li>la zone rouge <strong>Power</strong> contiendra les composants de puissance : les pistes pour les Leds, les gates VBUS et power, le charger et l&rsquo;équilibreur de batterie.</li>
+<li>La zone bleue <strong>USB</strong> contient les composants de protection et négociation USB.</li>
+<li>La zone verte <strong>MIC</strong> contient le microcontrôleur et l&rsquo;antenne 2.4 Ghz.</li>
+<li>La zone verte <strong>SENS</strong> contient les capteurs et GPIO.</li>
+</ul>
 <p>J’ai dû réduire le diamètre de deux points de la trace BGA du NRF52840 pour faire passer une piste entre deux connections.
 Ce n&rsquo;est pas une pratique standard, mais sans avoir de via-in-pads, je n&rsquo;avais pas le choix.
 Heureusement ça n&rsquo;a posé aucun problèmes en fonctionnement.</p>
@@ -663,6 +670,8 @@ Ces condensateurs doivent être au plus près de la pin à laquelle ils sont ass
 C&rsquo;est une étape que je trouve satisfaisante, comme résoudre un labyrinthe qui n&rsquo;a pas forcément de solutions.</p>
 <p>L&rsquo;épaisseur des pistes et leur espacement minimum est la plus grosse contrainte, qui oblige de bien planifier certains passages étroits entre des composants.
 De même, le placement des vias (trous de connexion à travers le PCB) est critique et contraint beaucoup le routage.</p>
+<details class="details-shortcode"><summary>Règles générales de routage (click to expand)</summary>
+<p>
 <p>Quelques règles générales s&rsquo;appliquent pour éviter des problèmes de CEM (Compatibilité ÉlectroMagnétique) :</p>
 <ul>
 <li>Peu de pistes parallèles, surtout si elles transportent des signaux hautes fréquences.</li>
@@ -676,6 +685,10 @@ De même, le placement des vias (trous de connexion à travers le PCB) est criti
 Il est important de les respecter dans la mesure où ces décisions font du sens.
 J&rsquo;ai par exemple perdu beaucoup de temps à implémenter deux plans de masses (un pour la haute puissance et un pour la basse puissance), jusqu&rsquo;à une consultation avec un ingénieur en électronique de mon entreprise qui m&rsquo;a conseillé de ne pas le faire.
 Et après ces modifications, j&rsquo;ai observé moins de problèmes qu&rsquo;avec le design conseillé.</p>
+
+</p>
+</details>
+
 <p>J&rsquo;ai utilisé un port JTAG pour la programmation initiale du microcontrôleur.
 C&rsquo;est un modèle de port sans composant, uniquement une trace sur le PCB, ce qui le rend gratuit à installer.
 Il nécessite cependant une sonde JTAG (70€) pour être utilisé.
@@ -747,6 +760,26 @@ Je ne suis pas formé à la conception de circuits intégrés, et j&rsquo;ai app
 <p>En tout, six générations de prototypes de circuit ont été construits.
 Ils représentent la vraie temporalité du projet, avec tous les problèmes qui ont été corrigés.
 Les résolutions de ces problèmes ont été mentionnés dans les spécifications comme des données d’entrée, mais dans les faits, ils ont été le fruit d’un travail itératif.</p>
+<script defer src="/js/mermaid.js"></script>
+<script defer src="/js/mermaid-render.js"></script>
+<div class="mermaid-container" style="text-align:center"><div class="theme-light"></div>
+  <div class="theme-dark"></div></div>
+<pre class="mermaid-src" style="display:none">
+
+gantt
+    title Lamp-da prototypes timeline
+    dateFormat  YYYY-MM-DD
+    section JLC-PCB
+    Prototype 1     :a1, 2024-04-05, 2024-04-17
+    Prototype 2     :a2, after a1, 2024-05-23
+    Prototype 3     :a3, after a2, 2024-06-13
+    section PCB-WAY
+    Prototype 4     :a4, after a3, 2025-02-20
+    V1.0    :a5, after a4, 2025-05-23
+    v1.1    :active, a6, after a5, 2025-08-23
+
+</pre>
+
 <p>Revenons sur ces prototypes et les causes de leur décès :</p>
 <h3 id="prototype-1--5-circuits">Prototype 1 : 5 circuits</h3>
 <p>Ce sont mes tout premier PCB custom, et en conséquence pas un seul ne fonctionne.</p>
@@ -787,7 +820,7 @@ Les résolutions de ces problèmes ont été mentionnés dans les spécification
 
 <p>On peut voir sur ce circuit qu&rsquo;un composant en haut a droite est réservé pour l&rsquo;alimentation des Leds : c&rsquo;est un contrôleur CC.
 Je n&rsquo;avais pas encore réalisé que le mode OTG était capable de jouer ce rôle.</p>
-<h3 id="proto-2--5-circuits">Proto 2 : 5 circuits</h3>
+<h3 id="prototype-2--5-circuits">Prototype 2 : 5 circuits</h3>
 <p>En utilisant le port de programmation, j&rsquo;ai cette fois pu ajouter un bootloader qui permet de programmer les circuits via USB.</p>
 <p>Cette fois-ci le circuit est bien programmable via USB, et j&rsquo;ai pu tester avec succès la charge des batteries et l&rsquo;alimentation externe des Leds.</p>
 <table>
@@ -829,7 +862,7 @@ Je n&rsquo;avais pas encore réalisé que le mode OTG était capable de jouer ce
 <p>Il n&rsquo;est pas équipé d&rsquo;un équilibreur, car mon plan initial était de créer un circuit à part avec un BMS et un équilibreur dessus.
 La lampe aurait donc eu deux PCB custom.
 Quand j&rsquo;ai gagné en maturité sur la conception de circuits intégrés, j&rsquo;ai vite corrigé ce design inefficace.</p>
-<h3 id="proto-3---5-circuits">Proto 3 :  5 circuits</h3>
+<h3 id="prototype-3--5-circuits">Prototype 3 : 5 circuits</h3>
 <table>
   <thead>
       <tr>
@@ -848,6 +881,7 @@ Quand j&rsquo;ai gagné en maturité sur la conception de circuits intégrés, j
 </table>
 <p>J&rsquo;ai grillé 3 circuits avant de comprendre la cause du problème.
 L&rsquo;usine (via JLC-PCB) a refusé tout remboursement et m&rsquo;a à la place fournie un bon d&rsquo;achat d&rsquo;une valeur de 2.5% le montant de la commande.
+De plus, j&rsquo;ai souvent eu des frais supplémentaires à payer après que la commande soit lancée, ce qui ne permettait pas de prévoir les coûts en avance.
 J&rsquo;ai donc changé de fournisseur et je ne travaillerai plus jamais avec eux.</p>
 <p>J&rsquo;utilise maintenant PCB WAY, qui sont plus chers, mais dont je n&rsquo;ai jamais eu à me plaindre.
 Leur travail est à mon avis de bien meilleure qualité.</p>
@@ -889,7 +923,7 @@ L&rsquo;alimentation des Leds fonctionne sans accros également.</p>
 </div>
 
 
-<h3 id="proto-4--10-circuits">Proto 4 : 10 circuits</h3>
+<h3 id="prototype-4--10-circuits">Prototype 4 : 10 circuits</h3>
 <p>Avec la dernière génération en grande majorité fonctionnelle, j&rsquo;ai commandé plus de PCB qu&rsquo;avant.</p>
 <p>Sur les 10 circuits, cinq fonctionnent parfaitement !</p>
 <p>Les autres ont été détruits dans des tests assez violents.
@@ -936,8 +970,8 @@ D&rsquo;autres tests de sureté sur les surtensions/courants sur VBUS et la batt
 
 
 <p>Cette version était encore avec des batteries 18650 en configuration 4S1P, et nécessitait le PCB supplémentaire pour faire BMS et équilibreur.</p>
-<p>J&rsquo;ai utilisé les 5 circuits fonctionnels pour construire cinq lanternes, prêtées à des amis pour qu&rsquo;ils puissent tester et éprouver le système.</p>
-<h3 id="proto-5--10-circuits-v10">Proto 5 : 10 circuits (V1.0)</h3>
+<p>J&rsquo;ai utilisé les cinq circuits fonctionnels pour construire cinq lanternes, prêtées à des amis pour qu&rsquo;ils puissent tester et éprouver le système.</p>
+<h3 id="v10--10-circuits-prototype-5">V1.0 : 10 circuits (Prototype 5)</h3>
 <p>10/10, tous les circuits sont fonctionnels !!</p>
 <p>Cette version est la première à utiliser le mode OTG comme alimentation des Leds, et a donc aussi ajouté la Output gate.
 Elle est par ailleurs la version ou l&rsquo;équilibreur et d&rsquo;autres sécurités font leur apparition sur le même PCB.
@@ -991,7 +1025,7 @@ La configuration des batteries a aussi été changée pour des batteries 21700 e
 </div>
 
 
-<h3 id="génération-6--300-circuits-v11">Génération 6 : 300 circuits (V1.1)</h3>
+<h3 id="v11--300-circuits-prototype-6">V1.1 : 300 circuits (Prototype 6)</h3>
 <p>La dernière génération est celle qui servira lors de la petite production de 200 lanternes.</p>
 <p>Le circuit est déjà fonctionnel, mais j&rsquo;ai quand même risqué des modifications de dernier moment :</p>
 <ul>
@@ -1003,10 +1037,10 @@ La configuration des batteries a aussi été changée pour des batteries 21700 e
 </ul>
 <p>La commande totale s&rsquo;élève à 6364€, et l&rsquo;attente commence&hellip;
 Les circuits arrivent un mois plus tard et les tests effectués dans l&rsquo;anxiété révélèrent <strong>que tout fonctionne parfaitement</strong> !</p>
-<p>Les circuits V1.1 ont tout de même des petits problèmes, que j&rsquo;ai corrigé pour la V1.1 pour la plupart :</p>
+<p>Les circuits V1.1 ont tout de même des petits problèmes, que j&rsquo;ai corrigé pour la V1.2 pour la plupart :</p>
 <ul>
 <li>Les rubans jaunes scintillent : C&rsquo;est à peine visible, mais je mesure une oscillation de 15 Hz avec une amplitude de quelques millivolts qui suffit à produire un scintillement visible. Je n&rsquo;ai toujours pas trouvé la cause.</li>
-<li>Quand le système est très chaud, un voltage de 4.5 V apparait sur VBUS même si aucun cable USB n&rsquo;est branché. J&rsquo;ai identifié que ce voltage provient d&rsquo;une diode Schottky qui devient passante au-dessus de 70°C. Ajout d&rsquo;une pulldown sur la ligne VBUS_5V. En attendant, j&rsquo;ai développé un fix Software pour les circuits V1.0.</li>
+<li>Quand le système est très chaud, un voltage de 4.5 V apparait sur VBUS même si aucun cable USB n&rsquo;est branché. J&rsquo;ai identifié que ce voltage provient d&rsquo;une diode Schottky qui devient passante au-dessus de 70°C. Ajout d&rsquo;une pulldown sur la ligne VBUS_5V. En attendant, j&rsquo;ai développé un fix Software pour les circuits V1.0 et V1.1.</li>
 </ul>
 <p>Et on y est ! Des circuits fonctionnels, tout le design en place, il est temps de construire des lampes.</p>
 
@@ -1073,8 +1107,8 @@ Les circuits arrivent un mois plus tard et les tests effectués dans l&rsquo;anx
 </div>
 
 <h2 id="conclusion">Conclusion</h2>
-<p>Après 5 prototypes, la version 6 est fonctionnelle et prête à être intégrée.</p>
-<p>Le design à été revu avec un ingénieur qualifié avant le prototype 5, et ces circuits sont déjà en circulation depuis octobre 2025 avec beaucoup de succès.</p>
+<p>Après cinq prototypes, la version 6 est fonctionnelle et prête à être intégrée.</p>
+<p>Le design a été revu avec un ingénieur qualifié avant le prototype 5, et ces circuits sont déjà en circulation depuis octobre 2025 avec beaucoup de succès.</p>
 <p>La <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4</a> portera sur la conception mécanique des lampes.</p>
           
           
@@ -1254,11 +1288,11 @@ Les circuits arrivent un mois plus tard et les tests effectués dans l&rsquo;anx
     <li><a href="#prototypes">Prototypes</a>
       <ul>
         <li><a href="#prototype-1--5-circuits">Prototype 1 : 5 circuits</a></li>
-        <li><a href="#proto-2--5-circuits">Proto 2 : 5 circuits</a></li>
-        <li><a href="#proto-3---5-circuits">Proto 3 :  5 circuits</a></li>
-        <li><a href="#proto-4--10-circuits">Proto 4 : 10 circuits</a></li>
-        <li><a href="#proto-5--10-circuits-v10">Proto 5 : 10 circuits (V1.0)</a></li>
-        <li><a href="#génération-6--300-circuits-v11">Génération 6 : 300 circuits (V1.1)</a></li>
+        <li><a href="#prototype-2--5-circuits">Prototype 2 : 5 circuits</a></li>
+        <li><a href="#prototype-3--5-circuits">Prototype 3 : 5 circuits</a></li>
+        <li><a href="#prototype-4--10-circuits">Prototype 4 : 10 circuits</a></li>
+        <li><a href="#v10--10-circuits-prototype-5">V1.0 : 10 circuits (Prototype 5)</a></li>
+        <li><a href="#v11--300-circuits-prototype-6">V1.1 : 300 circuits (Prototype 6)</a></li>
       </ul>
     </li>
     <li><a href="#conclusion">Conclusion</a></li>
