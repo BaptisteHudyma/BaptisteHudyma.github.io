@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT15M",
-  "wordCount": 3135
+  "timeRequired": "PT16M",
+  "wordCount": 3381
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3135&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;3381&nbsp;mots
   
   
   
@@ -769,12 +769,13 @@ Les résolutions de ces problèmes ont été mentionnés dans les spécification
 gantt
     title Lamp-da prototypes timeline
     dateFormat  YYYY-MM-DD
+    axisFormat  %Y-%m
     section JLC-PCB
-    Prototype 1     :a1, 2024-04-05, 2024-04-17
-    Prototype 2     :a2, after a1, 2024-05-23
-    Prototype 3     :a3, after a2, 2024-06-13
+    Prototype 1    :a1, 2024-04-05, 2024-04-17
+    Prototype 2    :a2, after a1, 2024-05-23
+    Prototype 3    :a3, after a2, 2024-06-13
     section PCB-WAY
-    Prototype 4     :a4, after a3, 2025-02-20
+    Prototype 4    :a4, after a3, 2025-02-20
     V1.0    :a5, after a4, 2025-05-23
     v1.1    :active, a6, after a5, 2025-08-23
 
@@ -806,7 +807,7 @@ gantt
 </table>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_1.png" alt="Prototype 1 (render)"/>
@@ -846,7 +847,7 @@ Je n&rsquo;avais pas encore réalisé que le mode OTG était capable de jouer ce
 </table>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_2.png" alt="Prototype 2 (render)"/>
@@ -911,7 +912,7 @@ L&rsquo;alimentation des Leds fonctionne sans accros également.</p>
 </table>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_3.png" alt="Prototype 3 (render)"/>
@@ -957,7 +958,7 @@ D&rsquo;autres tests de sureté sur les surtensions/courants sur VBUS et la batt
 </table>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_4.png" alt="Prototype 4 (render)"/>
@@ -976,7 +977,9 @@ D&rsquo;autres tests de sureté sur les surtensions/courants sur VBUS et la batt
 <p>Cette version est la première à utiliser le mode OTG comme alimentation des Leds, et a donc aussi ajouté la Output gate.
 Elle est par ailleurs la version ou l&rsquo;équilibreur et d&rsquo;autres sécurités font leur apparition sur le même PCB.
 La configuration des batteries a aussi été changée pour des batteries 21700 en configuration 3S1P.</p>
-<p>Utilisation du port et de la sonde JTAG pour flasher les bootloader plutôt que les fils à souder comme précédemment.</p>
+<p>J&rsquo;ai également revu ce circuit lors d&rsquo;une design review avec un ingénieur électronique qualifié de mon entreprise, ce qui a levé beaucoup de petits problèmes dont je n&rsquo;avais pas conscience, ou de choix de design pas justifiés.</p>
+<p>Un des conseils à été d&rsquo;utiliser un port et de la sonde JTAG (TC2030-IDC-NL) pour flasher les bootloader plutôt que les fils à placer manuellement sur un contact comme précédemment.
+Ces ports de programmation ne coûtent rien, car ils sont définis uniquement sous forme de trace sur le circuit.</p>
 <p>Cependant, ces circuits ne fonctionnaient pas dès la réception :</p>
 <table>
   <thead>
@@ -1009,11 +1012,11 @@ La configuration des batteries a aussi été changée pour des batteries 21700 e
       </tr>
   </tbody>
 </table>
-<p>Sur cette génération, j&rsquo;ai commencé à fatiguer de faire des cours circuits en soudant les fils de batteries (hot wires), et j&rsquo;ai donc ajouté le connecteur XH sur la prochaine.</p>
+<p>Sur cette génération, j&rsquo;ai commencé à fatiguer de faire des cours circuits en soudant les fils de batteries (hot wires), et j&rsquo;ai donc décidé d&rsquo;ajouter le connecteur XH pour les batteries sur la prochaine version.</p>
 <p>Le PCB commence à être bien mature, la prochaine génération sera celle de la production de masse.</p>
 
 
-<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" style="max-width:50%">
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img">
       <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_proto_5.png" alt="Prototype 5 (render)"/>
@@ -1079,6 +1082,20 @@ Les circuits arrivent un mois plus tard et les tests effectués dans l&rsquo;anx
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade" >
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pcb_components_render.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_components_render.png" alt="PCB version 1.1 render"/>
+    </div>
+    <a href="/static/lamp_da_2/pcb_components_render.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>PCB version 1.1 render</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img" style="background-image: url('/static/lamp_da_2/pcb_test_1.jpeg');">
       <img itemprop="thumbnail" src="/static/lamp_da_2/pcb_test_1.jpeg" alt="Test d&#39;un PCB avec des condensateurs électrolytiques"/>
     </div>
@@ -1107,9 +1124,71 @@ Les circuits arrivent un mois plus tard et les tests effectués dans l&rsquo;anx
 </div>
 
 <h2 id="conclusion">Conclusion</h2>
-<p>Après cinq prototypes, la version 6 est fonctionnelle et prête à être intégrée.</p>
-<p>Le design a été revu avec un ingénieur qualifié avant le prototype 5, et ces circuits sont déjà en circulation depuis octobre 2025 avec beaucoup de succès.</p>
-<p>La <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4</a> portera sur la conception mécanique des lampes.</p>
+<p>Voici un bref résumé du développement des prototypes :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Prototype</th>
+          <th>Date</th>
+          <th>Quantité</th>
+          <th>Coût unitaire (€)</th>
+          <th>Note</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1</td>
+          <td>avril 2024</td>
+          <td>5</td>
+          <td>54.64</td>
+          <td>0/5</td>
+      </tr>
+      <tr>
+          <td>2</td>
+          <td>mai 2024</td>
+          <td>5</td>
+          <td>71.20</td>
+          <td>1/5</td>
+      </tr>
+      <tr>
+          <td>3</td>
+          <td>juin 2024</td>
+          <td>5</td>
+          <td>60.90</td>
+          <td>1/5</td>
+      </tr>
+      <tr>
+          <td>4</td>
+          <td>juillet 2024 - février 2025</td>
+          <td>10</td>
+          <td>40.45</td>
+          <td>3/5</td>
+      </tr>
+      <tr>
+          <td>V1.0</td>
+          <td>mars - mai 2025</td>
+          <td>10</td>
+          <td>66.89</td>
+          <td>4/5</td>
+      </tr>
+      <tr>
+          <td>V1.1</td>
+          <td>juin 2026</td>
+          <td>300</td>
+          <td>21.22</td>
+          <td>4.5/5</td>
+      </tr>
+  </tbody>
+</table>
+<p>Ce chapitre a détaillé la création et le fonctionnement du circuit des Lamp-da, qui ont pu être validés lors d&rsquo;une design review et de tests fonctionnels.
+Les circuits V1.1 sont en circulation depuis octobre 2025 avec beaucoup de succès et seulement quelques défauts et regrets techniques.</p>
+<p>Leçons clés de ce chapitre :</p>
+<ul>
+<li><strong>Validation croisée et regard extérieur</strong> : Une tonne de travail et de dépenses aurait été évitée grâce à plus de circuits de tests, simulations et revues.</li>
+<li><strong>Confiance des fournisseurs</strong> : Les entreprises qui produisent les PCB ne sont pas forcément fiables, et leurs tests de qualité sont insuffisants.</li>
+<li><strong>Évolutivité et généricité</strong> : Créer un circuit plus générique qu&rsquo;un contrôleur de lanterne était plus compliqué, mais permet une grande liberté de développements futurs. Les ports de debug et reset en trace permettent de réaliser d&rsquo;énormes économies d&rsquo;échelle.</li>
+</ul>
+<p>Maintenant que le circuit est terminé et fiable, il est temps de travailler l&rsquo;architecture physique des lampes, qui sera traitée dans la <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4</a>.</p>
           
           
 
