@@ -126,7 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "wordCount": 544
+  "timeRequired": "PT7M",
+  "wordCount": 1464
 }
 </script>
 
@@ -315,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;544&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1464&nbsp;mots
   
   
   
@@ -343,49 +344,470 @@
           
 
           <p><em><strong>Partie 4 - Conception mécanique</strong></em></p>
-<h2 id="conception-méca">Conception méca</h2>
-<h3 id="objectifs">Objectifs</h3>
+<p>Index :</p>
 <ul>
-<li>Résistant aux chocs</li>
-<li>Résistant aux projections d’eau et poussière</li>
-<li>Démontage non destructif</li>
-<li>Pas de composants /éléments mobiles
-→ maitenir le circuit
-→ maintenir les batteries</li>
-<li>Pas cher</li>
-<li>Customizable</li>
-<li>Possibilité d’accrocher ou suspendre la lampe</li>
-<li>Pas isolant éléctromagnétiquement (pour le bluetooth) ou phonétiquement (pour le microphone)</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1: Post-mortem V0, objectifs et spécifications des V1</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2: Choix techniques</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 4: Conception électronique</a></li>
+<li><strong>Partie 4 (vous êtes ici)</strong> : Conception mécanique</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie 5: Conception logicielle</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Post-mortem &amp; conclusion</a></li>
 </ul>
-<h3 id="decisions">Decisions</h3>
-<p>→ Création de pièces “bouchons” qui ferment le tube PVC et maintiennent les composants
-• impression 3D PLA ok, pièces designés pour êtres protégées par le tube PVC
-◦ Prévoir des impressions sans supports, pour économiser en temps d’impression, prix, et moins de gachi de matière.
-• Permet des designs complexes (trous passants pour les goupilles, port USB, bouton, …)
-• Pour la pièce du bas, impression d’un design custom du projet, qui peux être modifié par nimporte qui qui voudrait construire la sienne. A l’intérieur de la lampe, une forme spéciale pour contraindre les trois batteries 21700 dans une certaine orientation.
-• Une goupille de 50mmx3mm pour solidariser les bouchons avec le tube PVC. Ce sont elle qu’il faut chasser pour démonter la lampe
-→ 3 pièces identiques pour relier la piece bouchon du haut et du bas, et maintenir les batteries a la même place dans le tube.
-• 2 goupille métallique standard de longueur 35mm qui servent de détrompeur pour le circuit, et stabilisent la connection entre les deux bouchons
-• L’inconvénient est que une des trois pièces n’est pas reliée aux autres, et nécéssite un point de colle pour la solidariser avec les deux autres pièces.
-Le tube lui meme doit être percé a plusieurs endroits pour permettre le passage des fils des rubans de LED, et de la goupille du haut et du bas:
-→ prévoir 3 trous en haut (2x3mm pour la goupille, 1x4mm pour les fils)
-→ prévoir 2 trous en bas (2x3mm pour la goupille)
-→ désaxer ces trous pour que le bouchon du haut et du bas ne puissent pas avoir de rotation synchronisées.
-→ Prévoir un guide de percage
-Enrouler les leds autour du tube (prévoir des rubans avec un autocollant en dessous pour maintenir)
-→ création d’un guide d’enroulage
-Appliquer un morceau de gaine thermo transparente de 150mm de long au dessus des leds, le réduire avec un décapeur thermique, couper l’exedant dans le tube.
-Toutes les pièces sont prévus pour êtres imprimées sans support, SAUF le bouchon du haut qui doivent avoir un support pour la première couche uniquement.</p>
-<h2 id="difficultés-dassemblage">Difficultés d’assemblage:</h2>
+<p>Ce chapitre est réservé à la conception du design mécanique de la lanterne.</p>
+<h2 id="conception-mécanique">Conception mécanique</h2>
+<p>Dans la partie 2, dédiée aux choix techniques, nous avons déterminé qu&rsquo;on va utiliser un tube en PVC de 120 mm de haut pour 50 mm de large, avec un diamètre interne de 46 mm.</p>
+<p>L&rsquo;éclairage sera effectué par des rubans Led avec un dos autocollant.</p>
+<p>Les batteries seront placées verticalement dans le tube, sous le circuit.</p>
+<p>Le circuit sera créé avec un détrompeur physique intégré.</p>
+
+<link rel="stylesheet" href="/css/hugo-easy-gallery.css" />
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/lamp_model_empty.png" alt="Vue 3D des composants actuels, circuit batteries et tube"/>
+    </div>
+    <a href="/static/lamp_da_2/lamp_model_empty.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Vue 3D des composants actuels, circuit batteries et tube</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>Cette partie va détailler le design des pièces qui fermeront le tube et sécuriseront les composants internes.</p>
+<h3 id="rappel-des-objectifs">Rappel des objectifs</h3>
+<p>Rappel des objectifs posés dans la Partie 1 :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Critère</th>
+          <th>Critère</th>
+          <th>Métrique</th>
+          <th>Résolu</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Must have</td>
+          <td>Résistance IP</td>
+          <td>IP44 min. (référence non certifiée)</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Dimensions max</td>
+          <td>H &lt; 15 cm, Ø &lt; 8 cm</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Masse totale</td>
+          <td>&lt; 500 g</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Point d&rsquo;accroche</td>
+          <td>Supporte ≥ 5 kg en traction</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td>Should have</td>
+          <td>Temps de construction</td>
+          <td>≤ 1 heure (assemblage)</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Outils de fabrication</td>
+          <td>Aucun outil spécialisé</td>
+          <td>~</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Résistance aux chutes</td>
+          <td>≥ 1 m sur béton</td>
+          <td>✔</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Entretien</td>
+          <td>Démontage non destructif</td>
+          <td>~</td>
+      </tr>
+      <tr>
+          <td>Nice to have</td>
+          <td>Différenciation</td>
+          <td>Personnalisation esthétique/visible par l&rsquo;utilisateur</td>
+          <td>~</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>Résistance IP</td>
+          <td>IP67 minimum : étanche a l&rsquo;eau et poussière</td>
+          <td>✘</td>
+      </tr>
+  </tbody>
+</table>
+<p>J&rsquo;ai ajouté une colonne pour expliciter les points qui ont été validés par la suite.</p>
+<p>Les points traités en partie sont :</p>
 <ul>
-<li>les goupilles doivent etre insérées sous la gaine thermo
-→ avantage de résistance aux élément
-→ démontage complexe sans abimer la gaine</li>
-<li>le décapeur peux déformer le tube PVC rendant l’assemblage complexe ou impossible</li>
-<li>les tolérances des pièces 3D auraient du être assez hautes, elles sont finalement assez basses, produisant des écarts ou des trous à agrandir.</li>
-<li>les tolérances nasses des tubes en PVC font qu’on n’arrive pas a 46mm interne, ce qui peux rendre l’insertion des batteries difficile ou impossible.</li>
-<li>Si la découpe du tube PVC n’est pas dans les 1mm de tolérance en longueur, l’assemblage peut etre difficile et nécéssiter un étaux ou un percage des pièces imprimées. Si le tube est trop petit, des contraintes fortes sont appliquées sur les goupilles qui relient les pièces au tube, et donc sur le tube lui même.</li>
+<li><strong>Outils de fabrication</strong> : Les batteries doivent être soudées, ce qui nécessite un soudeur par point.</li>
+<li><strong>Entretien</strong> : Les Leds seront protégées avec de la gaine thermorétractable transparente, ce qui nécessite de couper la gaine pour entretenir les Leds.</li>
+<li><strong>Différenciation</strong> : La personnalisation est possible en imprimant une pièce customisée, mais ça n&rsquo;est pas accessible à tout le monde.</li>
 </ul>
+<p>Les points non traités sont :</p>
+<ul>
+<li><strong>Résistance IP</strong> : Je n&rsquo;ai pas réussi à rendre le système étanche, notamment à cause des tolérances des pièces plastiques.</li>
+</ul>
+<p>Les composants de façade ont également été choisis dans la partie 2 :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Composant</th>
+          <th>Fonction</th>
+          <th>Diamètre vis (mm)</th>
+          <th>Diamètre en façade (mm)</th>
+          <th>longueur (mm)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bouton</td>
+          <td>Interface utilisateur</td>
+          <td>16</td>
+          <td>17.8</td>
+          <td>10</td>
+      </tr>
+      <tr>
+          <td>Port USB</td>
+          <td>Charge et mise-à-jour</td>
+          <td>10.5</td>
+          <td>13.8</td>
+          <td>14.5</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="design">Design</h2>
+<p>Utiliser l&rsquo;impression 3D me permet une grande liberté de formes, dont je vais avoir bien besoin.
+Je vais également me concentrer lors de la conception pour que les pièces puissent être imprimées sans support pour éviter du gâchis de matériel et faire des économies de coût et temps d&rsquo;impression.</p>
+<p>J&rsquo;ai utilisé FreeCAD comme logiciel de modélisation, avec beaucoup de difficultés, car il est assez buggé et peu intuitif.
+Les autres options disponibles en local sont soit trop chères (SolidWorks&hellip;), pas disponible sur Linux (Fusion&hellip;) ou pas adaptées (Blender&hellip;).</p>
+<h3 id="bouchon-supérieur">Bouchon supérieur</h3>
+<p>C&rsquo;est la pièce la plus importante qui doit accueillir le port USB et le bouton.
+La première étape est de dessiner un cercle de 46 mm et les trous adaptés pour les connecteurs :</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/top_piece_holes.png" alt="Marques pour connecteurs et bouton"/>
+    </div>
+    <a href="/static/lamp_da_2/top_piece_holes.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Marques pour connecteurs et bouton</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>Les mesures présentées tiennent compte des tolérances d&rsquo;impression 3D.</p>
+<p>Après avoir extrudé cette pièce et ajouté une couche de 50 mm par-dessus pour recouvrir le haut du tube, j&rsquo;ai ajouté un trou traversant de 3 mm de diamètre.
+Ce trou servira à faire passer une goupille de 50 mm de long et 3 mm de diamètre, qui sera responsable de maintenir l&rsquo;assemblage final.
+Utiliser une goupille me permet de garder le système solide tout en étant démontable facilement en chassant cette goupille.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/top_piece_bar_hole.png" alt="Passage de goupille"/>
+    </div>
+    <a href="/static/lamp_da_2/top_piece_bar_hole.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Passage de goupille</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>Cette goupille sera également utilisée comme attache pour la suspension de la lampe, qui permettra de la suspendre solidement.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/top_piece_rope_holes.png" alt="Encoches pour l&#39;attache de la lampe"/>
+    </div>
+    <a href="/static/lamp_da_2/top_piece_rope_holes.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Encoches pour l&#39;attache de la lampe</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>Cette attache sera réalisée avec une cordelette d&rsquo;escalade de 2 mm de diamètre, capable de supporter 0.8 K/N, c&rsquo;est-à-dire environ 80 Kg de force statique.
+La goupille elle-même est une goupille de 3 mm de diamètre et sera donc extrêmement résistance.
+Le point de faiblesse sera donc le tube PVC à travers duquel passera la goupille.</p>
+<p>Les touches finales consistent à ajouter des chanfreins partout, et laisser une partie vide pour laisser passer le fil d&rsquo;alimentation des Leds.
+Il y a aussi deux encoches d&rsquo;alignement, qui correspondent aux encoches d&rsquo;alignement du circuit intégré.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/top_piece_final.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/top_piece_final.png" alt="Pièce supérieure (Vu du dessous)"/>
+    </div>
+    <a href="/static/lamp_da_2/top_piece_final.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Pièce supérieure (Vu du dessous)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/top_piece_final2.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/top_piece_final2.png" alt="Pièce supérieure (Vu du dessus)"/>
+    </div>
+    <a href="/static/lamp_da_2/top_piece_final2.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Pièce supérieure (Vu du dessus)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
+<p>Cette pièce <strong>doit être imprimée avec des supports pour la première couche</strong> uniquement.</p>
+<h3 id="bouchon-inférieur">Bouchon inférieur</h3>
+<p>Le bouchon inférieur est mécaniquement plus simple que la partie supérieure.</p>
+<p>Il sert à stabiliser la batterie et sceller l&rsquo;intérieur de la lampe.</p>
+<p>La première étape, comme pour le bouchon supérieur, est d&rsquo;extruder un cercle de 46 mm de diamètre puis d&rsquo;y tracer nos mesures.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_battery_slot.png" alt="Alignement des batteries"/>
+    </div>
+    <a href="/static/lamp_da_2/bottom_piece_battery_slot.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Alignement des batteries</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>On ajoute ensuite des encoches verticales qui permettront d&rsquo;accueillir des pièces spéciales pour solidariser le bouchon supérieur et inférieur.
+Il faut également prévoir un trou traversant pour la goupille du bouchon inférieur.
+Cette goupille sera fixée à un angle de 30 degrés par rapport à celle du bouchon supérieur pour mieux contraindre les rotations relatives de ces pièces.</p>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_poles.png" alt="Encoches pour les pôles"/>
+    </div>
+    <a href="/static/lamp_da_2/bottom_piece_poles.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Encoches pour les pôles</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+<p>L&rsquo;étape finale est encore d&rsquo;ajouter des chanfreins et la couche supérieure de 50 mm qui couvrira la surface du tube.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/bottom_piece_final2.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_final2.png" alt="Pièce inférieur (Vu du dessus)"/>
+    </div>
+    <a href="/static/lamp_da_2/bottom_piece_final2.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Pièce inférieur (Vu du dessus)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/bottom_piece_final.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_final.png" alt="Pièce inférieur (Vu du dessous)"/>
+    </div>
+    <a href="/static/lamp_da_2/bottom_piece_final.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Pièce inférieur (Vu du dessous)</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
+<p>La grande surface plane du dessous de la lampe sera utilisée pour la customisation.
+On peut y intégrer un logo personnalisé, ou dans le cas de ce projet, un logo unique du projet.</p>
+<h3 id="pôles">Pôles</h3>
+<p>Cette pièce fera la liaison entre le bouchon du haut et du bas, et maintiendra les batteries et le circuit.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pole_final.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pole_final.png" alt="Pôle"/>
+    </div>
+    <a href="/static/lamp_da_2/pole_final.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Pôle</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/pole_final2.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/pole_final2.png" alt="/static/lamp_da_2/pole_final2.png"/>
+    </div>
+    <a href="/static/lamp_da_2/pole_final2.png" itemprop="contentUrl" target="_blank"></a>
+  </figure>
+</div>
+
+
+
+</div>
+
+<p>Il est impossible d&rsquo;imprimer une pièce qui fasse la jonction directement entre les deux bouchons, et j&rsquo;ai donc prévu à la place deux goupilles verticales de 35 mm de long, enfichées au bout des pôles et dans la pièce supérieure.
+Seulement deux goupilles seront utilisées pour conserver d&rsquo;asymétrie du détrompeur du circuit intégré.</p>
+<p>Les pôles sont conçus pour être génériques et êtres présents par trois dans chaque lampe.
+C&rsquo;est pourquoi le haut du pôle inclus une encoche de 60°, pour s&rsquo;interfacer avec d&rsquo;autres pièces du même type.</p>
+<h3 id="assemblage-final">Assemblage final</h3>
+<p>Toutes ces pièces peuvent être visualisées ensemble pour s&rsquo;assurer que tout fonctionne conjointement.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/assembly_full2.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/assembly_full2.png" alt="Vue d&#39;enssemble"/>
+    </div>
+    <a href="/static/lamp_da_2/assembly_full2.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Vue d&#39;enssemble</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/assembly_full.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/assembly_full.png" alt="/static/lamp_da_2/assembly_full.png"/>
+    </div>
+    <a href="/static/lamp_da_2/assembly_full.png" itemprop="contentUrl" target="_blank"></a>
+  </figure>
+</div>
+
+
+
+</div>
+
+<h2 id="assemblage">Assemblage</h2>
+<h3 id="tube">Tube</h3>
+<p>Le tube de PVC doit être percé pour permettre le passage des goupilles et des fils d&rsquo;alimentation des Leds.</p>
+<p>Afin de faciliter l&rsquo;assemblage et le perçage, j&rsquo;ai également prévu des guides de perçage et enroulage.</p>
+
+
+<div class="gallery caption-position-bottom caption-effect-fade hover-effect-grow hover-transition" itemscope itemtype="http://schema.org/ImageGallery">
+	  
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/guide_percage.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/guide_percage.png" alt="Guide de percage"/>
+    </div>
+    <a href="/static/lamp_da_2/guide_percage.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Guide de percage</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/guide_enroulage_5mm.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/guide_enroulage_5mm.png" alt="Guide d&#39;enroulage pour ruban 5 mm"/>
+    </div>
+    <a href="/static/lamp_da_2/guide_enroulage_5mm.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Guide d&#39;enroulage pour ruban 5 mm</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade" >
+  <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img" style="background-image: url('/static/lamp_da_2/guide_enroulage_8mm.png');">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/guide_enroulage_8mm.png" alt="Guide d&#39;enroulage pour ruban 8 mm"/>
+    </div>
+    <a href="/static/lamp_da_2/guide_enroulage_8mm.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Guide d&#39;enroulage pour ruban 8 mm</p>
+      </figcaption>
+  </figure>
+</div>
+
+
+
+</div>
+
+<p>Le guide de perçage permet de placer 3 trous en haut du tube et 2 trous en bas, avec un angle relatif de 30 degrés.</p>
+<p>A l&rsquo;usure, nous avons eu besoin de 4 guides de perçage et 2 guides d&rsquo;enroulage de chaque format (5 mm et 8 mm).</p>
+<h3 id="gaine-thermorétractable">Gaine thermorétractable</h3>
+<p>La gaine thermorétractable transparente doit pouvoir encercler tout le tube et les Leds, et couvrir également les extrémités du tube.</p>
+<p>Les facteurs de rétractation fournis par les constructeurs ne se sont pas avérés fiables, et j&rsquo;ai donc fait les tests moi-même pour arriver à une longueur idéale de 14 cm.
+Cette longueur permet de contracter la gaine en la gardant centrée, et couper simplement l&rsquo;excédant.</p>
+<h3 id="difficultés-dassemblage">Difficultés d’assemblage</h3>
+<p>Les goupilles doivent être insérées sous las gaine thermorétractable, ce qui rend le tout bien plus résistant aux éléments, mais complexe à assembler.
+Le démontage devient aussi bien plus complexe sans abimer la gaine.</p>
+<p>L&rsquo;utilisation d&rsquo;un décapeur thermique pour contracter la gaine peut aussi déformer le tube PVC rendant l’assemblage complexe ou impossible.</p>
+<p>Les tolérances des pièces plastiques sont suffisantes, mais celles du tube PVC ne sont pas fiables.
+J&rsquo;ai sélectionné les tubes en utilisant une pièce de calibration en magasin, mais cette méthode n&rsquo;est pas idéale.</p>
+<p>La découpe du tube PVC à la bonne longueur est également complexe, car aucune tolérance n&rsquo;a été prévue dans cet axe.
+Nous avons découpé les tubes avec une scie pendulaire et un jig de découpe sur mesure, avec de très bons résultats.</p>
+<p>Les trous des pièces 3D ont dû être repercés pour bien respecter les diamètres de trous de 3 mm.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>En tout, trois pièces ont été crées :</p>
+<ul>
+<li><strong>le bouchon supérieur</strong> qui intègre le bouton et port USB</li>
+<li><strong>le bouchon inférieur</strong> qui bloque la position des batteries</li>
+<li><strong>les pôles</strong> qui relient le bouchon supérieur à l&rsquo;inférieur en maintenant les batteries.</li>
+</ul>
+<p>Une lanterne nécessite un bouchon supérieur, inférieur, trois pôles, deux goupilles de 50 mm x 3 mm, deux goupilles de 35 mm x 3 mm, et une section de gaine thermorétractable transparente de 14 cm.</p>
+<p>La <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie suivante</a> abordera le design logiciel de la lampe.</p>
           
           
 
@@ -552,13 +974,27 @@ Toutes les pièces sont prévus pour êtres imprimées sans support, SAUF le bou
     </div>
     <nav class="toc-body"><nav id="TableOfContents">
   <ul>
-    <li><a href="#conception-méca">Conception méca</a>
+    <li><a href="#conception-mécanique">Conception mécanique</a>
       <ul>
-        <li><a href="#objectifs">Objectifs</a></li>
-        <li><a href="#decisions">Decisions</a></li>
+        <li><a href="#rappel-des-objectifs">Rappel des objectifs</a></li>
       </ul>
     </li>
-    <li><a href="#difficultés-dassemblage">Difficultés d’assemblage:</a></li>
+    <li><a href="#design">Design</a>
+      <ul>
+        <li><a href="#bouchon-supérieur">Bouchon supérieur</a></li>
+        <li><a href="#bouchon-inférieur">Bouchon inférieur</a></li>
+        <li><a href="#pôles">Pôles</a></li>
+        <li><a href="#assemblage-final">Assemblage final</a></li>
+      </ul>
+    </li>
+    <li><a href="#assemblage">Assemblage</a>
+      <ul>
+        <li><a href="#tube">Tube</a></li>
+        <li><a href="#gaine-thermorétractable">Gaine thermorétractable</a></li>
+        <li><a href="#difficultés-dassemblage">Difficultés d’assemblage</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
   </ul>
 </nav></nav>
   </div>
