@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT7M",
-  "wordCount": 1464
+  "timeRequired": "PT8M",
+  "wordCount": 1497
 }
 </script>
 
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1464&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1497&nbsp;mots
   
   
   
@@ -348,7 +348,7 @@
 <ul>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1: Post-mortem V0, objectifs et spécifications des V1</a></li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2: Choix techniques</a></li>
-<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 4: Conception électronique</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 3: Conception électronique</a></li>
 <li><strong>Partie 4 (vous êtes ici)</strong> : Conception mécanique</li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie 5: Conception logicielle</a></li>
 <li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
@@ -458,7 +458,7 @@
 </ul>
 <p>Les points non traités sont :</p>
 <ul>
-<li><strong>Résistance IP</strong> : Je n&rsquo;ai pas réussi à rendre le système étanche, notamment à cause des tolérances des pièces plastiques.</li>
+<li><strong>Résistance IP</strong> : Je n&rsquo;ai pas réussi à rendre le système étanche, notamment à cause des tolérances des pièces plastiques FDM.</li>
 </ul>
 <p>Les composants de façade ont également été choisis dans la partie 2 :</p>
 <table>
@@ -604,7 +604,7 @@ Il y a aussi deux encoches d&rsquo;alignement, qui correspondent aux encoches d&
 
 <p>On ajoute ensuite des encoches verticales qui permettront d&rsquo;accueillir des pièces spéciales pour solidariser le bouchon supérieur et inférieur.
 Il faut également prévoir un trou traversant pour la goupille du bouchon inférieur.
-Cette goupille sera fixée à un angle de 30 degrés par rapport à celle du bouchon supérieur pour mieux contraindre les rotations relatives de ces pièces.</p>
+Cette goupille sera fixée à un angle de 30 degrés par rapport à celle du bouchon supérieur pour mieux contraindre les rotations relatives de ces pièces et éliminer les jeux mécaniques.</p>
 
 
 <div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
@@ -629,10 +629,10 @@ Cette goupille sera fixée à un angle de 30 degrés par rapport à celle du bou
 <div class="box fancy-figure caption-position-bottom caption-effect-fade" >
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img" style="background-image: url('/static/lamp_da_2/bottom_piece_final2.png');">
-      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_final2.png" alt="Pièce inférieur (Vu du dessus)"/>
+      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_final2.png" alt="Pièce inférieure (Vu du dessus)"/>
     </div>
     <a href="/static/lamp_da_2/bottom_piece_final2.png" itemprop="contentUrl" target="_blank"></a>
-      <figcaption><p>Pièce inférieur (Vu du dessus)</p>
+      <figcaption><p>Pièce inférieure (Vu du dessus)</p>
       </figcaption>
   </figure>
 </div>
@@ -643,10 +643,10 @@ Cette goupille sera fixée à un angle de 30 degrés par rapport à celle du bou
 <div class="box fancy-figure caption-position-bottom caption-effect-fade" >
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img" style="background-image: url('/static/lamp_da_2/bottom_piece_final.png');">
-      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_final.png" alt="Pièce inférieur (Vu du dessous)"/>
+      <img itemprop="thumbnail" src="/static/lamp_da_2/bottom_piece_final.png" alt="Pièce inférieure (Vu du dessous)"/>
     </div>
     <a href="/static/lamp_da_2/bottom_piece_final.png" itemprop="contentUrl" target="_blank"></a>
-      <figcaption><p>Pièce inférieur (Vu du dessous)</p>
+      <figcaption><p>Pièce inférieure (Vu du dessous)</p>
       </figcaption>
   </figure>
 </div>
@@ -696,6 +696,7 @@ On peut y intégrer un logo personnalisé, ou dans le cas de ce projet, un logo 
 Seulement deux goupilles seront utilisées pour conserver d&rsquo;asymétrie du détrompeur du circuit intégré.</p>
 <p>Les pôles sont conçus pour être génériques et êtres présents par trois dans chaque lampe.
 C&rsquo;est pourquoi le haut du pôle inclus une encoche de 60°, pour s&rsquo;interfacer avec d&rsquo;autres pièces du même type.</p>
+<p>Ils serviront aussi à absorber les chocs provoqués par batteries lors d&rsquo;une chute, les batteries étant l&rsquo;élément solidaire le plus lourd de la lampe.</p>
 <h3 id="assemblage-final">Assemblage final</h3>
 <p>Toutes ces pièces peuvent être visualisées ensemble pour s&rsquo;assurer que tout fonctionne conjointement.</p>
 
@@ -707,10 +708,10 @@ C&rsquo;est pourquoi le haut du pôle inclus une encoche de 60°, pour s&rsquo;i
 <div class="box fancy-figure caption-position-bottom caption-effect-fade" >
   <figure itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
     <div class="img" style="background-image: url('/static/lamp_da_2/assembly_full2.png');">
-      <img itemprop="thumbnail" src="/static/lamp_da_2/assembly_full2.png" alt="Vue d&#39;enssemble"/>
+      <img itemprop="thumbnail" src="/static/lamp_da_2/assembly_full2.png" alt="Vue d&#39;ensemble"/>
     </div>
     <a href="/static/lamp_da_2/assembly_full2.png" itemprop="contentUrl" target="_blank"></a>
-      <figcaption><p>Vue d&#39;enssemble</p>
+      <figcaption><p>Vue d&#39;ensemble</p>
       </figcaption>
   </figure>
 </div>
@@ -787,13 +788,15 @@ C&rsquo;est pourquoi le haut du pôle inclus une encoche de 60°, pour s&rsquo;i
 <p>Le guide de perçage permet de placer 3 trous en haut du tube et 2 trous en bas, avec un angle relatif de 30 degrés.</p>
 <p>A l&rsquo;usure, nous avons eu besoin de 4 guides de perçage et 2 guides d&rsquo;enroulage de chaque format (5 mm et 8 mm).</p>
 <h3 id="gaine-thermorétractable">Gaine thermorétractable</h3>
-<p>La gaine thermorétractable transparente doit pouvoir encercler tout le tube et les Leds, et couvrir également les extrémités du tube.</p>
+<p>La gaine thermorétractable transparente doit pouvoir encercler tout le tube et les Leds, et couvrir aussi les extrémités du tube.</p>
 <p>Les facteurs de rétractation fournis par les constructeurs ne se sont pas avérés fiables, et j&rsquo;ai donc fait les tests moi-même pour arriver à une longueur idéale de 14 cm.
 Cette longueur permet de contracter la gaine en la gardant centrée, et couper simplement l&rsquo;excédant.</p>
-<h3 id="difficultés-dassemblage">Difficultés d’assemblage</h3>
-<p>Les goupilles doivent être insérées sous las gaine thermorétractable, ce qui rend le tout bien plus résistant aux éléments, mais complexe à assembler.
+<h3 id="difficultés">Difficultés</h3>
+<h4 id="assemblage-1">Assemblage</h4>
+<p>Les goupilles doivent être insérées sous la gaine thermorétractable, ce qui rend le tout bien plus résistant aux éléments, mais complexe à assembler.
 Le démontage devient aussi bien plus complexe sans abimer la gaine.</p>
 <p>L&rsquo;utilisation d&rsquo;un décapeur thermique pour contracter la gaine peut aussi déformer le tube PVC rendant l’assemblage complexe ou impossible.</p>
+<h4 id="tolérances">Tolérances</h4>
 <p>Les tolérances des pièces plastiques sont suffisantes, mais celles du tube PVC ne sont pas fiables.
 J&rsquo;ai sélectionné les tubes en utilisant une pièce de calibration en magasin, mais cette méthode n&rsquo;est pas idéale.</p>
 <p>La découpe du tube PVC à la bonne longueur est également complexe, car aucune tolérance n&rsquo;a été prévue dans cet axe.
@@ -806,6 +809,20 @@ Nous avons découpé les tubes avec une scie pendulaire et un jig de découpe su
 <li><strong>le bouchon inférieur</strong> qui bloque la position des batteries</li>
 <li><strong>les pôles</strong> qui relient le bouchon supérieur à l&rsquo;inférieur en maintenant les batteries.</li>
 </ul>
+
+
+<div class="box fancy-figure caption-position-bottom caption-effect-fade center" style="max-width:50%">
+  <figure class="center" itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/static/lamp_da_2/assembly_full2.png" alt="Assemblage mécanique"/>
+    </div>
+    <a href="/static/lamp_da_2/assembly_full2.png" itemprop="contentUrl" target="_blank"></a>
+      <figcaption><p>Assemblage mécanique</p>
+      </figcaption>
+  </figure>
+</div>
+
+
 <p>Une lanterne nécessite un bouchon supérieur, inférieur, trois pôles, deux goupilles de 50 mm x 3 mm, deux goupilles de 35 mm x 3 mm, et une section de gaine thermorétractable transparente de 14 cm.</p>
 <p>La <a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">Partie suivante</a> abordera le design logiciel de la lampe.</p>
           
@@ -991,7 +1008,7 @@ Nous avons découpé les tubes avec une scie pendulaire et un jig de découpe su
       <ul>
         <li><a href="#tube">Tube</a></li>
         <li><a href="#gaine-thermorétractable">Gaine thermorétractable</a></li>
-        <li><a href="#difficultés-dassemblage">Difficultés d’assemblage</a></li>
+        <li><a href="#difficultés">Difficultés</a></li>
       </ul>
     </li>
     <li><a href="#conclusion">Conclusion</a></li>

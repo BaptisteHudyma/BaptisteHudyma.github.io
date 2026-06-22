@@ -102,7 +102,7 @@
   "dateCreated": "2025-06-01T00:00:00+00:00",
   "dateModified": "2025-06-01T00:00:00+00:00",
   "datePublished": "2025-06-01T00:00:00+00:00",
-  "description": "Partie 5 - Conception logiciel\n",
+  "description": "Partie 5 - Conception logicielle\n",
   "headline": "Lampda - Partie 5",
   "image": "https://BaptisteHudyma.github.io/img/github_profile.jpg",
   "inLanguage": "fr",
@@ -126,8 +126,8 @@
     },
     "name": "HUB Logs"
   },
-  "timeRequired": "PT6M",
-  "wordCount": 1185
+  "timeRequired": "PT10M",
+  "wordCount": 2003
 }
 </script>
 
@@ -135,7 +135,7 @@
 <meta property="og:url" content="https://BaptisteHudyma.github.io/post/lamp-da_2_p5/">
   <meta property="og:site_name" content="HUB Logs">
   <meta property="og:title" content="Lampda - Partie 5">
-  <meta property="og:description" content="Partie 5 - Conception logiciel">
+  <meta property="og:description" content="Partie 5 - Conception logicielle">
   <meta property="og:locale" content="fr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="post">
@@ -316,7 +316,7 @@
   
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1185&nbsp;mots
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2003&nbsp;mots
   
   
   
@@ -343,93 +343,372 @@
 
           
 
-          <p><em><strong>Partie 5 - Conception logiciel</strong></em></p>
-<h2 id="conception-software">Conception software</h2>
-<p>La programmation va être responsable pour la gestion de tout le comportement de la lampe. Cette étape ne sera pas décrite en détail ici, la documentation étant disponible en ligne sur le git.</p>
-<h3 id="objectifs">Objectifs</h3>
-<pre><code>• Robustesse aux erreurs fatales, qui nécéssiterait un démontage pour être réparée
-• Possibilité de mettre a jour le système sans démontage, via USB
-• Sécurité des batteries (Pas de risque d’emballement thermique)
-• Sécurité d’utilisation : pas de risque d’autodestruction à cause de mauvaises manipulations
-• Démarage rapide depuis le mode veille
-• indication de toute erreur et alerte avec l’indicateur coloré
-• Enregistrement de paramètres et variables utilisateur
-• S’assurer que les commandes boutons soient toujours prises en compte correctement (Minimiser la frustration utilisateur)
-• Commandes intuitives
-</code></pre>
-<h3 id="bootloader">Bootloader</h3>
-<p>Code du bootloader basé sur un bootloader customisé de Adafruit.
-Permet de flasher le circuit via USB (méthode DFU).
-Permet de controler l’état du port de reset, en cas de gros crash, il est possible de vider totalement la mémoire en connectant 5 fois rapidement le port de reset.
-Possibilité de la modifier pour ajouter une mise a jour OTA (Over The Air) via bluetooth.
-Possibilité de modifier pour ajouter un check du programme aprés une mise a jour, pour empecher de bloquer la board en débranchant le cable par exemple.</p>
-<h3 id="gestion-des-entrées-sorties">Gestion des entrées sorties</h3>
-<pre><code>• bouton
-• indicateur RGB
-• luminosité des LED, et pour RGB de ce qui est affiché
-• Signaux d’alertes hardware
-• Signaux de controle hardware
-</code></pre>
-<h3 id="gestion-des-machines-a-états">Gestion des machines a états:</h3>
-<pre><code>• Mode allumé : utilisation standard, batterie se vide, les LEDS sont allumées, l’utilisateur contrôle le comportement du système avec le bouton.
-• Mode charge : LED éteintes, les batteries chargent, l’utilisateur peux allumer le système avec le bouton. Le système s’éteint si le câble de charge est débranché
-• Mode batterie externe: LED éteintes, les batteries se déchargent, l’utilisateur peux allumer le système avec le bouton. Le système s’éteint si le câble de charge est débranché
-• Mode éteint; LED éteintes, indicateur éteint, aucun composant actifs, le système se révaillera en mode charge si un cable USB est branché, ou en mode allumé ou batterie externe si le bouton est pressé.
-• Mode sureté: se déclenche en cas de bug grave ou d’alerte hardware. Bloque toute action utilisateur a part éteindre la lampe avec un clic bouton.
-• Dans tout mode:
-    ◦ L’indicateur affiche des alertes utiles a l’utilisateur ou au programmeur
-    ◦ La lampe répond aux commandes de terminal série
-    ◦ Les capteurs sont surveillés pour que le système ne dépasse jamais ses conditions de fonctionnement
-</code></pre>
-<p>En mode charge, le système gère le processus de Power Delivery et les algorithmes de charge et équilibrage des batteries.
-En mode allumé, il gère les différent modes et menus d’affichage. Pour la version RGB, l’affichage ne doit pas tomber sous les 60FPS.
-A tout moment a part en mode sommeil, un watchdog bas niveau redémarrera le système si il n’est pas notifié fréquemment par la boucle utilisateur et la boucle de charge.</p>
-<h3 id="sections-critiques">Sections critiques:</h3>
+          <p><em><strong>Partie 5 - Conception logicielle</strong></em></p>
+<p>Index :</p>
 <ul>
-<li>gestion des interruptions du bouton</li>
-<li>Affichage des erreurs</li>
-<li>controle des capteurs et des limites systèmes</li>
-<li>gestion de la batterie</li>
-<li>gestion du power path : LED et USB partagent une même section de power path et en AUCUN CAS la porte LED et USB ne doivent être ouvertes en même temps.</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p1/">Partie 1: Post-mortem V0, objectifs et spécifications des V1</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p2/">Partie 2: Choix techniques</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p3/">Partie 3: Conception électronique</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p4/">Partie 4: Conception mécanique</a></li>
+<li><strong>Partie 5 (vous êtes ici)</strong> : Conception logicielle</li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p6/">Partie 6: Pré-série industrielle (construction de 200 lanternes)</a></li>
+<li><a href="https://BaptisteHudyma.github.io/post/lamp-da_2_p7/">Partie 7: Post-mortem &amp; conclusion</a></li>
+</ul>
+<h2 id="conception-software">Conception software</h2>
+<p>La programmation va être responsable pour la gestion de tout le comportement de la lampe.</p>
+<p>L&rsquo;implémentation ne sera que survolée ici, <a href="https://baptistehudyma.github.io/Lamp-Da/">la documentation étant disponible en ligne sur le git</a>.</p>
+<p>Le tout sera codé en C++ 17, avec une partie en C++11 pour le core FreeRTOS.</p>
+<h3 id="objectifs">Objectifs</h3>
+<ul>
+<li>Base temps réel</li>
+<li>Robustesse aux erreurs fatales, qui nécessiterait un démontage pour être réparée</li>
+<li>Possibilité de mettre à jour le système sans démontage, via USB</li>
+<li>Sécurité des batteries (Pas de risque d’emballement thermique)</li>
+<li>Sécurité d’utilisation : pas de risque d’autodestruction à cause de mauvaises manipulations</li>
+<li>Démarrage rapide depuis le mode veille</li>
+<li>indication de toute erreur et alerte avec l’indicateur coloré</li>
+<li>Enregistrement de paramètres et variables utilisateur</li>
+<li>S’assurer que les commandes boutons soient toujours prises en compte correctement (Minimiser la frustration utilisateur)</li>
+<li>Commandes intuitives</li>
+</ul>
+<h3 id="bootloader">Bootloader</h3>
+<p>Le bootloader est le logiciel de base du microcontrôleur, qui sera le premier élément à être activé, et déterminera tout le comportement de base.
+C&rsquo;est également la partie responsable des mises à jour par exemple.</p>
+<p>En conséquence, cette partie doit être <strong>extrêmement</strong> robuste.</p>
+<p>J&rsquo;ai utilisé comme base un bootloader réalisé par Adafruit, qui permet de flasher le circuit via USB (méthode DFU).
+Ce bootloader contrôle aussi le comportement du port de reset, qui est l&rsquo;ultime sécurité en cas de crash sévère du système, avant de devoir reprogrammer le bootloader.
+Cinq contacts rapides sur le port de reset enlèvent totalement le programme de la mémoire et force le mode DFU.</p>
+<p>La mise à jour par DFU est capable de mettre à jour le programme principal, mais aussi le bootloader lui-même.
+Cette opération est extrêmement risquée, car toute mauvaise manipulation casserait (le terme consacré est &ldquo;brickerait&rdquo;) le bootloader lui-même, obligeant à démonter la lampe pour réparer le bootloader.</p>
+<p>Des améliorations possibles du bootloader peuvent permettre des mises à jour sans connexion physique (OTA), ou des sécurités pour valider un nouveau programme, au coût du double de la mémoire, ce qui n&rsquo;est pas désirable ici.</p>
+<h3 id="gestion-des-machines-à-états">Gestion des machines à états</h3>
+<p>Le fonctionnement global de la lampe est articulé autour de machines à états.
+Voici le diagramme haut niveau de ces machines :</p>
+<script defer src="/js/mermaid.js"></script>
+<script defer src="/js/mermaid-render.js"></script>
+<div class="mermaid-container" style="text-align:center"><div class="theme-light"></div>
+  <div class="theme-dark"></div></div>
+<pre class="mermaid-src" style="display:none">
+
+stateDiagram-v2
+    direction LR
+    state "Erreur" as Error
+    state "Éteint" as Shutdown
+
+    state "Si allumé par bouton et batterie suffisante" as ifStart
+    state "Si chargeur branché" as ifStop
+
+    state ifStart_state <<choice>>
+    state ifStop_state <<choice>>
+    state ifExtBat_state <<choice>>
+
+    Charge: Charge
+    state Charge {
+        direction LR
+        state "Charge batteries" as BattCharge
+        state "Batterie externe" as BattExtern
+        state "Si est batterie externe" as BattMode
+
+        [*] --> BattMode
+        BattMode --> ifExtBat_state
+        ifExtBat_state --> BattCharge: Non
+        ifExtBat_state --> BattExtern : Oui
+        BattExtern --> [*]
+        BattCharge --> [*]
+    }
+
+    Output: Allumé
+    state Output {
+        direction LR
+        state "Leds allumées" as OutputOn
+        state "Si lampe vérouillée" as IsLocked
+
+        [*] --> IsLocked
+        
+        IsLocked --> OutputOn: Non
+        IsLocked --> [*]: Oui
+        OutputOn --> [*]
+    }
+
+    [*] --> ifStart
+    Error --> Shutdown
+    ifStart --> ifStart_state
+    ifStart_state --> Output: Oui    
+    ifStart_state --> ifStop : Non
+    Output --> ifStop
+    ifStop --> ifStop_state
+    ifStop_state --> Shutdown : Non
+    ifStop_state --> Charge : Oui
+    Charge --> ifStart
+    Shutdown --> [*]
+
+</pre>
+
+<p>Note: les transitions vers <strong>Erreur</strong> ne peuvent êtres récupèrées qu&rsquo;aprés un redémarrage de la lampe.</p>
+<p>Détail des modes :</p>
+<table>
+  <thead>
+      <tr>
+          <th>Mode</th>
+          <th>Caractéristiques</th>
+          <th>Changement de Mode</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Allumé</td>
+          <td>utilisation standard, batterie se vide, les LEDS sont allumées, l’utilisateur contrôle le comportement du système avec le bouton</td>
+          <td>Appui bouton ou alerte.</td>
+      </tr>
+      <tr>
+          <td>Charge</td>
+          <td>LED éteintes, les batteries chargent, les batteries sont équilibrées, l’utilisateur peut allumer le système avec le bouton.</td>
+          <td>Débranchement du câble de charge ou appui bouton ou  alerte.</td>
+      </tr>
+      <tr>
+          <td>Batterie externe</td>
+          <td>LED éteintes, les batteries se déchargent, l’utilisateur peut allumer le système avec le bouton.</td>
+          <td>Débranchement du câble de charge ou appui bouton ou alerte.</td>
+      </tr>
+      <tr>
+          <td>Éteint</td>
+          <td>LED éteintes, indicateur éteint, aucun composant actif</td>
+          <td>Branchement du câble de charge ou appui bouton.</td>
+      </tr>
+      <tr>
+          <td>Erreur</td>
+          <td>Se déclenche en cas de bug grave ou d’alerte hardware. Bloque toute action utilisateur à part éteindre la lampe</td>
+          <td>Appui bouton.</td>
+      </tr>
+  </tbody>
+</table>
+<p>Dans tout mode :</p>
+<ul>
+<li>L’indicateur affiche des alertes utiles a l’utilisateur ou au programmeur</li>
+<li>La lampe répond aux commandes de terminal série</li>
+<li>Les capteurs sont surveillés pour que le système ne dépasse jamais ses conditions de fonctionnement.</li>
+<li>Un watchdog bas niveau redémarrera le système s&rsquo;il n’est pas notifié fréquemment par le programme.</li>
 </ul>
 <h3 id="animations-utilisateur">Animations utilisateur</h3>
-<p>Design d’un système de pages et de modes génériques, ainsi qu’un manager générique, qui laisse assez de liberté a l’utilisateur pour programmer beaucoup d’animations différentes.
-Sans entrer dans les détails, c’est un système fortement templatisé pour produire du code a la compilation, et économiser des ressources en RAM et cycle CPU.</p>
-<h2 id="modes-de-sécurité">Modes de sécurité</h2>
-<p>Il faut prévoir en avance de phase tous les cas d’échec du système, et comment en récupèrer.
-Il faut pouvoir informer l’utilisateur/ice de tout problème.</p>
-<p><em>Choix d’un système logique</em></p>
+<p>Design d’un système de pages et de modes génériques, ainsi qu’un manager générique, qui laisse assez de liberté à l’utilisateur pour programmer beaucoup d’animations différentes.
+Sans entrer dans les détails, c’est un système fortement templatisé pour produire du code à la compilation, et économiser des ressources en RAM et cycle CPU.</p>
+<p>Chaque animation doit implémenter ses fonctions principales (on_enter_mode, on_exit_mode, loop, on_ramp_update, etc) qui lui permettent d&rsquo;intéragir avec la logique haut niveau et le matériel.
+Les animations peuvent également acceder aux données microphone et centrale intertielle.</p>
+<p>Les animations doivent être <strong>non bloquantes</strong>, et ont un temps limite de processeur à respecter, au dela duquel une alerte sera levée.
+Chaque animation à également accès a un petit espace de stockage en flash, qui permet de concerver des données entre les allumages de la lampe.</p>
+<p>Les animations sont définies à la compilation, et ne peuvent pas êtres modifiées quand le code est en fonctionnement.</p>
+<h3 id="hardware-abstraction-layer-hal">Hardware Abstraction Layer (HAL)</h3>
+<p>Lors de la création du programme, j&rsquo;ai passé beaucoup de temps à séparer clairement les composantes spécifiques au microcontrôleur (registres etc) du reste du code afin d&rsquo;avoir une frontière claire entre le programme et de la plateforme.
+Cette séparation se présente sous la forme d&rsquo;une HAL qu&rsquo;il est possible de remplacer lors de la compilation, dans le but de faire fonctionner le programme sur n&rsquo;importe quelle autre plateforme.</p>
+<p>Cela a permis d&rsquo;implémenter une simulation de la lampe qui peut fonctionner sur un ordinateur, afin de faciliter le processus de développement, mais aussi d&rsquo;ajouter des tests unitaires et d&rsquo;intégration.
+L&rsquo;ajout de tests n&rsquo;est jamais facile pour de l&rsquo;implémentation microcontrôleur, et est encore en cours, avec le but de couvrir en priorité les parties critiques, et à long terme l&rsquo;ensemble du programme.</p>
+<h3 id="gestion-des-entrées-sorties">Gestion des entrées sorties</h3>
+<p>La gestion des entrées et sortie (GPIO) du microcontrôleur est un processus à part des machines à état.</p>
+<table>
+  <thead>
+      <tr>
+          <th>Composant</th>
+          <th>Signal/Pin</th>
+          <th>Type</th>
+          <th>Rôle</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bouton RGB</td>
+          <td>X</td>
+          <td>Entrée (INT)</td>
+          <td>Détection appui</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td>X</td>
+          <td>Sortie (PWM)</td>
+          <td>Contrôle led RGB</td>
+      </tr>
+      <tr>
+          <td>USB-PD</td>
+          <td><code>CH_INT_N</code></td>
+          <td>Entrée (INT)</td>
+          <td>Interrupt pour communication I2C</td>
+      </tr>
+      <tr>
+          <td>USB protection</td>
+          <td><code>FAULT</code></td>
+          <td>Entrée (INT)</td>
+          <td>Signal d&rsquo;erreur sur le port USB ou composant</td>
+      </tr>
+      <tr>
+          <td>Bus I2C</td>
+          <td><code>I2CM_SDA</code></td>
+          <td>Entrée/sortie</td>
+          <td>Bus I2C</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>I2CM_CLK</code></td>
+          <td>Sortie</td>
+          <td>Bus I2C</td>
+      </tr>
+      <tr>
+          <td>VBUS gate</td>
+          <td><code>VBUS_FAULT</code></td>
+          <td>Entrée</td>
+          <td>Signal d&rsquo;erreur composant</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>VBUS_DSCHRG</code></td>
+          <td>Sortie</td>
+          <td>Contrôle du déchargement du power rail</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>VBUS_DIR</code></td>
+          <td>Sortie</td>
+          <td>Contrôle du sens de circulation du courant sur VBUS</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>VBUS_FRS</code></td>
+          <td>Sortie</td>
+          <td>Contrôle de l&rsquo;activation du FastRoleSwap</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>VBUS_GATE_DRV</code></td>
+          <td>Sortie</td>
+          <td>Contrôle de l&rsquo;activation de la gate</td>
+      </tr>
+      <tr>
+          <td>Power gate</td>
+          <td><code>STRIP_OUT_DRV</code></td>
+          <td>Sortie</td>
+          <td>Contrôle de l&rsquo;activation de la gate</td>
+      </tr>
+      <tr>
+          <td>3.3 V gate</td>
+          <td><code>V33_EXT_EN</code></td>
+          <td>Sortie</td>
+          <td>Contrôle de l&rsquo;activation de la ligne 3.3 V</td>
+      </tr>
+      <tr>
+          <td>Chargeur</td>
+          <td><code>CH_OTG_EN</code></td>
+          <td>Sortie</td>
+          <td>Contrôle de l&rsquo;activation du mode OTG</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>CH_PROC_HOT</code></td>
+          <td>Entrée</td>
+          <td>Signal d&rsquo;erreur du chargeur</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>CH_CHARGE_OK</code></td>
+          <td>Entrée</td>
+          <td>Signal de validité du voltage en entrée</td>
+      </tr>
+      <tr>
+          <td>Équilibreur</td>
+          <td><code>BLNC_ALERT</code></td>
+          <td>Entrée</td>
+          <td>Signal d&rsquo;erreur de l&rsquo;équilibreur</td>
+      </tr>
+      <tr>
+          <td>IMU</td>
+          <td><code>IMU_INT1</code></td>
+          <td>Entrée (INT)</td>
+          <td>Signal événementiel configurable</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>IMU_INT2</code></td>
+          <td>Entrée (INT)</td>
+          <td>Signal événementiel configurable</td>
+      </tr>
+      <tr>
+          <td>MEMS</td>
+          <td><code>MIC_PWR</code></td>
+          <td>Entrée</td>
+          <td>Alimentation du microphone</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>I2S_DATA</code></td>
+          <td>Entrée</td>
+          <td>Bus I2S</td>
+      </tr>
+      <tr>
+          <td></td>
+          <td><code>I2S_CLK</code></td>
+          <td>Entrée</td>
+          <td>Bus I2S</td>
+      </tr>
+  </tbody>
+</table>
+<p>Les signaux interrupts ne doivent jamais porter des sections de code &ldquo;lourdes&rdquo; et ne se suffisent pas à gérer des actions complexes.</p>
+<p>La consommation des GPIO doit être limitée à moins de 15 mA, ce qui suffira pour les éléments qui consomment le plus (Led RGB).</p>
+<p>Les GPIO accessibles à l&rsquo;utilisateur seront également celles responsables du bouton, sa led RGB et pour la lampe colorée, le signal du ruban de Leds.</p>
+<h3 id="sections-critiques">Sections critiques</h3>
+<p>Le programme contient plusieurs sections critiques qui prennent toute la priorité sur les autres fonctions.
+Ces sections sont les suivantes, dans l&rsquo;ordre de criticité :</p>
+<ul>
+<li><strong>Gestion du power path</strong> : LED et USB partagent une même section de power path et en AUCUN CAS la porte LED et USB ne doivent être ouvertes en même temps.</li>
+<li><strong>Gestion de la batterie</strong> : La batterie doit être surveillée à tout moment, son voltage son courant et sa température sont des caractéristiques critiques de sécurité.</li>
+<li><strong>Contrôle des capteurs et des limites systèmes</strong> : La température interne, les voltages USB et des Leds et la bonne réponse des composants sont contrôlés très régulièrement.</li>
+<li><strong>Gestion des interruptions du bouton</strong> : les commandes utilisateurs sont très importante, car des dysfonctionnements à ce niveau produisent une grande frustration.</li>
+<li><strong>Affichage des erreurs</strong> : Des erreurs identifiées doivent être remontées rapidement à l&rsquo;utilisateur.</li>
+</ul>
+<h3 id="gestion-des-modes-de-sécurité">Gestion des modes de sécurité</h3>
+<p>Il faut prévoir en avance de phase tous les cas d’échec du système, et comment en récupérer, et pouvoir informer l’utilisateur de tout problème.</p>
+<h4 id="choix-dun-système-logique">Choix d’un système logique</h4>
 <ul>
 <li>Les erreurs sont affichées avec des clignotements de couleur</li>
 <li>Les informations sont affichées avec des animations “breeze”, plus douces</li>
-<li>Chaque erreur utilise des couleurs bien différentes faciles a reconnaitre (désolé si vous êtes daltoniens, j’ai pas trouvé mieux). Certains ont des fréquences plus ou moins rapides pour faire passer un message sur l’urgence.
-→ Alertes graves sont plus rapides que les alertes classiques.</li>
+<li>Chaque erreur utilise des couleurs bien différentes faciles à reconnaitre (désolé si vous êtes daltoniens, je n’ai pas trouvé mieux). Certains ont des fréquences plus ou moins rapides pour faire passer un message sur l’urgence.</li>
+<li>Alertes graves sont plus rapides que les alertes classiques.</li>
 </ul>
-<p><em>La lampe ne doit pas pouvoir être utilisée lors d’alertes graves</em>
-→ le système s’étteint tout seul et bloque des fonctionnalités en fonction de la nature de l’alerte.</p>
-<p><em>Si la batterie tombe sous les 4V nécéssaires a produire la tension de 3.3V pour alimenter le système,  ou si cette alimentation est défaillante</em>
-Comment le savoir ? Sans cette alimentation, le microcontroleur ne démarrera jamais.
-→ Utilisation du VBUS pour alimenter le système sans batterie
-Si l’USB est branché, on peux utiliser le fil VBUS comme alimentation de secour: en surdimmentionnant le signal 5V, on peux fournir au convertisseur 3.3V une tension d’entrée suffisante pour démarrer le système et permettre le rechargement des batteries même si elles tombent a 0V.</p>
-<p><em>Si un composant arrête de fonctionner, le microcontroleur doit pouvoir le signaler</em>
-→ Ajout d’un controle des signaux de statut de tous les composants. Et verification des statuts dans le code</p>
-<p><em>Si un des accus se retrouve isolé du reste (bande de niquel qui saute, fil ou connecteur endommagé, etc), les batteries ne peuvent pas être utilisées</em>
-→ Ajout d’un controle software de l’état des batteries et de l’équilibreur, qui détecte les problèmes grâces a la tension de chaque fil d’équilibrage (une connection rompue fait sauter la tension d’un fil hors de la zone de voltages autorisée pour un accu)</p>
-<p><em>En cas de crash logiciel, le système doit pouvoir se remettre en état tout seul, ou au minimum empecher une mauvaise utilisation</em>
-→ Ajout d’un watchdog logiciel, qui reset le programme et la mémoire si aucun signal de vie n’est envoyé au bout d’une période de 10 secondes.
-→ Idéalement, il aurait également fallut un watchdog hardware qui reset la board entière en cas d’absence de signal. Ca aurait été possible avec l’équilibreur, mais j’ai manqué de temps.
-→ En cas de crash absolu (mémoire corrompue ou autre), GPIO de reset directement sur la board. Suffit de la connecter rapidement 5 fois et le bootloader efface toute la mémoire et le programme, et affiche la board comme un périphérique de stockage de masse.
-→ Si même cela échoue, un port hardware est disponible sur la board pour reflasher le bootloader.</p>
-<p><em>En cas de situations d’utilisation hors norme, bloquer l’utilisation</em>
-→ Contrôle de consommation des batteries a tout moment
-→ Controle de temperature en plusieurs points de la carte
-→ Détection de courts circuits sur VBUS et l’USB en général
-→ Détection de surtensions sur VBUS</p>
-<p><em>Contrôle des paramètres physiques attendus par rapports aux réels</em>
-→ Vérification de la puissance coté USB/LED par rapport a la puissance mesurée coté batterie, elles doivent êtres proches
-→ Limitation de la conso de la board via le PDO selectionnée USB PD
-→ Limitation de l’utilisation de puissance sur VBUS en mode OTG, via le PDO sélectionné par le consommateur.
-→ Ajout de TestPoints sur le circuit pour mesurer manuellement les endroits critiques.</p>
+<h4 id="la-lampe-ne-doit-pas-pouvoir-être-utilisée-lors-dalertes-graves">La lampe ne doit pas pouvoir être utilisée lors d’alertes graves</h4>
+<ul>
+<li>le système s’éteint tout seul et bloque des fonctionnalités en fonction de la nature de l’alerte.</li>
+</ul>
+<h4 id="si-la-batterie-tombe-sous-les-4v-nécessaires-à-produire-la-tension-de-33-v-pour-alimenter-le-système-ou-si-cette-alimentation-est-défaillante">Si la batterie tombe sous les 4V nécessaires à produire la tension de 3.3 V pour alimenter le système, ou si cette alimentation est défaillante</h4>
+<p>Comment le savoir ? Sans cette alimentation, le microcontrôleur ne démarrera jamais.</p>
+<ul>
+<li>Utilisation du VBUS pour alimenter le système sans batterie
+Si l’USB est branché, on peut utiliser le fil VBUS comme alimentation de secours : en surdimensionnant le signal 5V, on peut fournir au convertisseur 3.3 V une tension d’entrée suffisante pour démarrer le système et permettre le rechargement des batteries même si elles tombent à 0V.</li>
+</ul>
+<h4 id="si-un-composant-arrête-de-fonctionner-le-microcontrôleur-doit-pouvoir-le-signaler">Si un composant arrête de fonctionner, le microcontrôleur doit pouvoir le signaler</h4>
+<ul>
+<li>Ajout d’un contrôle des signaux de statut de tous les composants. Et vérification des statuts dans le code</li>
+</ul>
+<h4 id="si-un-des-batteries-se-retrouve-isolé-du-reste-bande-de-nickel-qui-saute-fil-ou-connecteur-endommagé-etc-les-batteries-ne-peuvent-pas-être-utilisées">Si un des batteries se retrouve isolé du reste (bande de nickel qui saute, fil ou connecteur endommagé, etc), les batteries ne peuvent pas être utilisées</h4>
+<ul>
+<li>Ajout d’un contrôle software de l’état des batteries et de l’équilibreur, qui détecte les problèmes grâces a la tension de chaque fil d’équilibrage (une connexion rompue fait sauter la tension d’un fil hors de la zone de voltages autorisée pour un accu)</li>
+</ul>
+<h4 id="en-cas-de-situations-dutilisation-hors-norme-bloquer-lutilisation">En cas de situations d’utilisation hors norme, bloquer l’utilisation</h4>
+<ul>
+<li>Contrôle de consommation des batteries à tout moment</li>
+<li>Contrôle de température en plusieurs points de la carte</li>
+<li>Détection de courts-circuits sur VBUS et l’USB en général</li>
+<li>Détection de surtensions sur VBUS</li>
+</ul>
+<h4 id="contrôle-des-paramètres-physiques-attendus-par-rapports-aux-réels">Contrôle des paramètres physiques attendus par rapports aux réels</h4>
+<ul>
+<li>Vérification de la puissance coté USB/LED par rapport a la puissance mesurée coté batterie, elles doivent être proches</li>
+<li>Limitation de la conso de la board via le PDO sélectionnée USB PD</li>
+<li>Limitation de l’utilisation de puissance sur VBUS en mode OTG, via le PDO sélectionné par le consommateur.</li>
+<li>Ajout de TestPoints sur le circuit pour mesurer manuellement les endroits critiques.</li>
+</ul>
+<h4 id="en-cas-de-crash-logiciel-le-système-doit-pouvoir-se-remettre-en-état-tout-seul-ou-au-minimum-empêcher-une-mauvaise-utilisation">En cas de crash logiciel, le système doit pouvoir se remettre en état tout seul, ou au minimum empêcher une mauvaise utilisation</h4>
+<ul>
+<li>Ajout d’un watchdog logiciel, qui reset le programme et la mémoire si aucun signal de vie n’est envoyé au bout d’une période de 10 secondes.</li>
+<li>Idéalement, il aurait également fallu un watchdog hardware qui reset la board entière en cas d’absence de signal. Ça aurait été possible avec l’équilibreur, mais j’ai manqué de temps.</li>
+<li>En cas de crash absolu (mémoire corrompue ou autre), GPIO de reset directement sur la board. Suffit de la connecter rapidement 5 fois et le bootloader efface toute la mémoire et le programme, et affiche la board comme un périphérique de stockage de masse.</li>
+<li>Si même cela échoue, un port hardware est disponible sur la board pour reflasher le bootloader.</li>
+</ul>
           
           
 
@@ -600,13 +879,14 @@ Si l’USB est branché, on peux utiliser le fil VBUS comme alimentation de seco
       <ul>
         <li><a href="#objectifs">Objectifs</a></li>
         <li><a href="#bootloader">Bootloader</a></li>
-        <li><a href="#gestion-des-entrées-sorties">Gestion des entrées sorties</a></li>
-        <li><a href="#gestion-des-machines-a-états">Gestion des machines a états:</a></li>
-        <li><a href="#sections-critiques">Sections critiques:</a></li>
+        <li><a href="#gestion-des-machines-à-états">Gestion des machines à états</a></li>
         <li><a href="#animations-utilisateur">Animations utilisateur</a></li>
+        <li><a href="#hardware-abstraction-layer-hal">Hardware Abstraction Layer (HAL)</a></li>
+        <li><a href="#gestion-des-entrées-sorties">Gestion des entrées sorties</a></li>
+        <li><a href="#sections-critiques">Sections critiques</a></li>
+        <li><a href="#gestion-des-modes-de-sécurité">Gestion des modes de sécurité</a></li>
       </ul>
     </li>
-    <li><a href="#modes-de-sécurité">Modes de sécurité</a></li>
   </ul>
 </nav></nav>
   </div>
